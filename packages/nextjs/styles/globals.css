@@ -1,0 +1,59 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Added by Lulox */
+.invert-colors {
+  filter: invert(100%);
+}
+
+.tab-active {
+  @apply bg-red-600 text-white;
+}
+
+.tab-bordered {
+  @apply border-x border-gray-500;
+}
+
+.function-button {
+  @apply bg-red-600 text-white border-none;
+}
+
+[data-theme="light"] .invert-colors {
+  filter: invert(100%);
+}
+
+[data-theme="dark"] .invert-colors {
+  filter: none;
+}
+
+/* End added by Lulox */
+
+:root,
+[data-theme] {
+  background: oklch(var(--b2));
+}
+
+body {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+.btn {
+  @apply shadow-md;
+}
+
+.btn.btn-ghost {
+  @apply shadow-none;
+}
