@@ -11,7 +11,8 @@ import { SimpleMintNFT } from "./SimpleMintNFT.sol";
  * @notice A contract to enable artists uploading and signing their art, and someone else paying for the gas to mint it on the blockchain
  */
 contract SimpleMint is EIP712 {
-  // mapping(address => uint256) public artistNonces;
+  address[] public collections;
+
   event CollectionStarted(
     address indexed nft,
     address artist,
@@ -20,13 +21,12 @@ contract SimpleMint is EIP712 {
     string tokenURI
   );
 
-  bytes32 public constant TYPEHASH = keccak256(
-    "startCollection(string name,string symbol,string tokenURI,address artist)"
-  );
+  bytes32 public constant TYPEHASH =
+    keccak256("startCollection(string,string,string,address)");
 
   constructor() EIP712("SimpleMint", "1.0.0") { }
 
-  // Add a nonce to prevent collections being started more than once
+  // Function to start a collection by the artist
   function startCollection(
     string memory _name,
     string memory _symbol,
@@ -34,25 +34,40 @@ contract SimpleMint is EIP712 {
     address _artist
   ) public returns (address) {
     SimpleMintNFT nft = new SimpleMintNFT(_name, _symbol, _tokenURI, _artist);
+    collections.push(address(nft));
     emit CollectionStarted(address(nft), _artist, _name, _symbol, _tokenURI);
     return address(nft);
   }
 
+  // Function to start a collection by a third party using a signature from the artist
   function startCollectionBySig(
     string memory _name,
     string memory _symbol,
     string memory _tokenURI,
     address _artist,
     bytes memory signature
-  ) external {
+  ) external returns (address) {
+    // 1. Create a hash of the input data using the provided type hash
     bytes32 structHash =
       keccak256(abi.encode(TYPEHASH, _name, _symbol, _tokenURI, _artist));
     bytes32 hash = _hashTypedDataV4(structHash);
+
+    // 2. Recover the artist's address from the signature
     address signer = ECDSA.recover(hash, signature);
-    require(signer == _artist, "Invalid signature");
-    startCollection(_name, _symbol, _tokenURI, _artist);
+
+    // 3. Verify that the signer matches the provided artist address
+    require(
+      signer == _artist, "Invalid signature: signer does not match artist"
+    );
+
+    // 4. Start the collection using the verified artist's address
+    address collectionInstanceAddress =
+      startCollection(_name, _symbol, _tokenURI, _artist);
+
+    return collectionInstanceAddress;
   }
 
+  // Helper function to get the message hash for signing
   function getMessageHash(
     string memory _name,
     string memory _symbol,
