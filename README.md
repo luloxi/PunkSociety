@@ -13,21 +13,15 @@
 
 🧪 This NFT Marketplace dApp is designed to facilitate art tokenization for artists, big and small.
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript,
+⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
 
-🔗 To be deployed on Polygon and Avalanche
+🔗 To be deployed on Polygon and Avalanche (or other EVM compatible chains)
 
 ## Deployed artifacts
 
 ### Frontend
 
-[https://technai-marketplace.vercel.app/](https://technai-marketplace.vercel.app/)
-
-### Contracts on Polygon Amoy
-
-- Mock USDC: [https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6](https://amoy.polygonscan.com/address/0x80292e202a59957ae482b8c1821d51a234f5b0b6)
-- Mock NFT: [https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410](https://amoy.polygonscan.com/address/0x312504ef3562d2b06b52f8b657fe60171ff94410)
-- Marketplace: [https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e](https://amoy.polygonscan.com/address/0xe2b5359ef857dcd2cf3274962895967cb447888e)
+### Contracts
 
 ## Quickstart
 
@@ -65,7 +59,7 @@ yarn start
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page.
 
-# Features
+# Completed product features
 
 🎨 **Simple Mint**: Simple Mint is the way for artist to upload their art without needing to pay for minting or transactions, enabling collectors to pay for the first mint of a collection. By leveraging Simple Mint we aim to make artists access tokenizing their art without friction.
 
@@ -99,8 +93,8 @@ In the case of Simple Mint, the first minter of a collection gets a share of the
 ## Phase 1 (Marketplace)
 
 - ✅ **Page for interacting with the marketplace** buy function (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
-- ✅ **Payment in native gas token**
-- Add integration to marketplace for displaying auction info and interactions
+- ✅ **Payment in native gas token** and USDC token
+- Add integration to marketplace for **displaying auction info and interactions**
 
 ## Phase 2 (Simple Mint)
 
