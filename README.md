@@ -36,8 +36,8 @@ To get started follow the steps below:
 1. Open a terminal and run this commands to clone this repo and install dependencies:
 
 ```
-git clone https://github.com/luloxi/technai-marketplace.git
-cd technai-marketplace
+git clone https://github.com/luloxi/Technai-foundry.git
+cd Technai-foundry
 yarn install
 ```
 
@@ -49,7 +49,7 @@ yarn chain
 
 This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/hardhat/hardhat.config.ts`.
 
-3. Open a second terminal, navigate to `eleveNeleven` and run this command to deploy the test contract:
+3. Open a second terminal, navigate to `Technai-foundry` and run this command to deploy the test contract:
 
 ```
 yarn deploy
