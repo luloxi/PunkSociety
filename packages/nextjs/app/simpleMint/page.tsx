@@ -153,7 +153,7 @@ const SimpleMint: NextPage = () => {
         <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 py-6 sticky top-0">
           <div className="flex flex-col items-center">
             <h3 className="text-2xl font-bold mb-2">Enter your NFT details here</h3>
-            <span className="text-red-500">* are required fields</span>
+            <span className="text-red-500">* required fields</span>
           </div>
           <div className="flex flex-row items-center justify-evenly">
             <div className="py-2 w-full pr-4">
@@ -256,47 +256,70 @@ const SimpleMint: NextPage = () => {
           {/* Flex container for media and text */}
           <div className="flex flex-row items-start space-x-4 mb-4">
             {/* Media Section */}
-            <div className="flex flex-col items-start w-44 h-auto">
+            {/* Media Section */}
+            <div className="flex items-center justify-center w-44 h-44 bg-gray-200 rounded-lg shadow-lg relative">
               {image ? (
-                <img src={image} alt="NFT Preview" className="w-full h-auto rounded-lg shadow-lg mb-2" />
+                <img src={image} alt="NFT Preview" className="w-full h-auto rounded-lg" />
               ) : (
-                <div className="w-full h-auto bg-gray-200 text-gray-500 text-center flex items-center justify-center rounded-lg shadow-lg mb-2">
+                <div className="absolute inset-0 flex items-center justify-center bg-red-500 text-white font-bold text-center p-2 rounded-lg">
                   No image provided
                 </div>
-              )}
-
-              {animationUrl && (
-                <video controls className="w-full h-auto m-2">
-                  <source src={animationUrl} type="audio/mpeg" />
-                </video>
               )}
             </div>
 
             {/* Text Section */}
             <div className="text-left flex-1 lg:pl-3">
               <p>
-                <strong>Collection Name:</strong> {collectionName || "Not provided"}
+                <strong>Collection Name:</strong>{" "}
+                {collectionName ? (
+                  <span className="text-green-600">{collectionName}</span>
+                ) : (
+                  <span className="text-red-500">Not provided</span>
+                )}
               </p>
               <p>
-                <strong>Symbol:</strong> {collectionSymbol || "Not provided"}
+                <strong>Symbol:</strong>{" "}
+                {collectionSymbol ? (
+                  <span className="text-green-600">{collectionSymbol}</span>
+                ) : (
+                  <span className="text-red-500">Not provided</span>
+                )}
               </p>
               <p className="break-words">
-                <strong>Description:</strong> {description || "Not provided"}
-              </p>
-              <p>
-                <strong>Attributes:</strong>
-              </p>
-              <ul className="list-disc ml-4">
-                {attributes.length > 0 && attributes[0].traitType && attributes[0].value ? (
-                  attributes.map((attr, index) => (
-                    <li key={index}>
-                      {attr.traitType ? `${attr.traitType}: ${attr.value}` : "No attributes provided"}
-                    </li>
-                  ))
+                <strong>Description:</strong>{" "}
+                {description ? (
+                  <span className="text-green-600">{description}</span>
                 ) : (
-                  <li>No attributes provided</li>
+                  <span className="text-red-500">Not provided</span>
                 )}
-              </ul>
+              </p>
+
+              {/* Conditionally render the attributes section only if there are valid attributes */}
+              {attributes.length > 0 && attributes.some(attr => attr.traitType && attr.value) && (
+                <>
+                  <p>
+                    <strong>Attributes:</strong>
+                  </p>
+                  <ul className="list-disc ml-4">
+                    {attributes.map(
+                      (attr, index) =>
+                        attr.traitType &&
+                        attr.value && (
+                          <li key={index} className="text-green-600">
+                            {attr.traitType}: {attr.value}
+                          </li>
+                        ),
+                    )}
+                  </ul>
+                </>
+              )}
+
+              {/* Conditionally render a music player if there is an animationUrl */}
+              {animationUrl && (
+                <video controls className="w-full h-12 my-2">
+                  <source src={animationUrl} type="audio/mpeg" />
+                </video>
+              )}
             </div>
           </div>
 
