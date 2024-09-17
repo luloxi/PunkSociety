@@ -207,6 +207,20 @@ const SimpleMint: NextPage = () => {
 
             {attributes.map((attr, index) => (
               <div key={index} className="flex items-center space-x-2 mb-2">
+                {/* Button to remove the attribute */}
+                <button onClick={() => removeAttribute(index)} className="ml-2 bg-red-500 text-white p-2 rounded">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+
                 <div>
                   <span className="font-bold p-3">Trait Type:</span>
                   <InputBase
@@ -224,20 +238,6 @@ const SimpleMint: NextPage = () => {
                     onChange={value => handleAttributeChange(index, "value", value)}
                   />
                 </div>
-
-                {/* Button to remove the attribute */}
-                <button onClick={() => removeAttribute(index)} className="ml-2 bg-red-500 text-white p-2 rounded">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
               </div>
             ))}
           </div>
@@ -341,7 +341,7 @@ const SimpleMint: NextPage = () => {
               disabled={loading}
               onClick={handleSignAndUpload}
             >
-              Propose NFT
+              Propose NFT collection
             </button>
           </div>
 

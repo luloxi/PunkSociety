@@ -106,6 +106,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - ✅ **Add music to NFTs metadata** and **integrate with frontend** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
 - ✅ **Create a contract for SimpleMint and SimpleMintNFT**
 - ✅ **Page for minting** that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
+- ✅ **Display NFT being built as a preview** before minting (display the NFT and the metadata)
+- **Add an option to start a collection paying gas** on the Simple Mint page, with a toggle to switch between gasless and paying gas
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Add a page for first minters** reading from the database with NFTs available to complete the Simple Mint process
 
@@ -113,50 +115,46 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - ✅ **Page for interacting with the marketplace** buy and sell functions (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - ✅ **Payment in native gas token** and USDC token
-- **Display auction info and interactions**
-- **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
-- **Add a page for the collector** with their NFTs and info about them
-- **Add a page for the artist** with their NFTs and info about them
-- **Add a page for starting a collection** with the same fields as the Simple Mint page, but with a mint button that pays the gas costs and deploys the contract
 
 ## Phase 2
 
-- **Add a way for artists (and collectors) to register their info (ideally with a signature)**
-
 ### Simple Mint
 
-- **Display NFT being built as a preview** before minting (display the NFT and the metadata)
 - **Allow setting max tokenId and price**
 - **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
 - **Periodically airdrop dividends** in USDC for creators (and first minters if appliable) (may not even be necessary if royalties pay redirect funds to the creators directly)
-- **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
 
 ### Marketplace
 
 - **Display Simple Minted NFTs in the marketplace**
+- **Display auction info and interactions**
 - **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
 
+### Social
+
+- **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
+- **Add a page for the collector** with their NFTs and info about them
+- **Add a page for the artist** with their NFTs and info about them
+- **Add a way for artists (and collectors) to register their info (ideally with a signature)**
+- **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
+
 ## Phase 3
+
+### Social
 
 - **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc
 - **Token gated content**: Holders of song NFTs get access to special content for holders
+- Introduce **web2 social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
+- **Feature for creating collections** of NFTs and displaying them in a gallery
 
 ### Music player
 
 - **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
 - **Tip for artists**: Enable or require tipping with tokens, and if you don’t have $ to pay, you can watch an ad as payment (i.e: for every 6 songs, 1 ad that gets distributed among the 6 artists reproduced for free).
 
-### Social
-
-- Introduce **web2 social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
-- **Feature for creating collections** of NFTs and displaying them in a gallery
-
 ## Phase 4
-
-- **Guided Onboarding**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with blockchain or Web3 concepts.
-- **Educational Content**: Tutorials or content to explain Web3 concepts, NFT minting, and royalties can improve user adoption.
 
 ### Marketplace
 
@@ -170,12 +168,14 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
 - **Direct Messaging system** for artists and collectors
 - Ability to **make your own group/community**
+- **Guided Onboarding**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with blockchain or Web3 concepts.
+- **Educational Content**: Tutorials or content to explain Web3 concepts, NFT minting, and royalties can improve user adoption.
 
 ### Performance improvements
 
 - **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 - **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
-- **Integrate GraphQL to index NFTs** and save RPC calls
+- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 - **Upload the NFT Metadata to Filecoin** instead of IPFS, and use it with a EIP-712 signature for Simple Mint. (Reference: [Viem recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
 
 # Completed product description
