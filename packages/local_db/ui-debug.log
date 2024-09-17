@@ -1,2 +1,11 @@
-Web / API server started at 127.0.0.1:4000
-Web / API server started at ::1:4000
+node:internal/modules/cjs/loader:986
+    throw new ERR_REQUIRE_ESM(filename, true);
+    ^
+
+Error [ERR_REQUIRE_ESM]: require() of ES Module /home/lulox/.cache/firebase/emulators/ui-v1.13.0/server/server.mjs not supported.
+Instead change the require of /home/lulox/.cache/firebase/emulators/ui-v1.13.0/server/server.mjs to a dynamic import() which is available in all CommonJS modules.
+    at Function.runMain (pkg/prelude/bootstrap.js:1979:12) {
+  code: 'ERR_REQUIRE_ESM'
+}
+
+Node.js v18.5.0

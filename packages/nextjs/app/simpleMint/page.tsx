@@ -1,9 +1,10 @@
 "use client";
 
-import { lazy, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { TextAreaBase } from "./_components/TextAreaBase";
-import generateTokenURI from "./generateTokenURI";
-import { SimpleMintDescription } from "./simpleMintDescription";
+import generateTokenURI from "./_components/generateTokenURI";
+import { SimpleMintDescription } from "./_components/simpleMintDescription";
 import type { NextPage } from "next";
 // import useSWRMutation from "swr/mutation";
 import { useAccount, useSignTypedData } from "wagmi";
@@ -15,7 +16,7 @@ import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 // import nftsMetadata from "~~/utils/simpleNFT/nftsMetadata";
 // import { postMutationFetcher } from "~~/utils/swr";
 
-const LazyReactJson = lazy(() => import("react-json-view"));
+const LazyReactJson = dynamic(() => import("react-json-view"), { ssr: false });
 
 const SimpleMint: NextPage = () => {
   const { address: connectedAddress } = useAccount();
