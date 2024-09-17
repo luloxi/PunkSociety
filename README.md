@@ -10,6 +10,15 @@
 
 🔗 To be deployed on Polygon and Avalanche (or other EVM compatible chains)
 
+## Development notes
+
+- Update `eip712.ts` info with the deployed contract info (address and chain) when deploying to a live chain or when deploying a second version on the local chaion
+
+### (Backend is currently not implemented)
+
+- [Here are the files that interact with backend](https://lulox.notion.site/Database-files-04686fe4dfde4025a7939a3a9a5caca8?pvs=4)
+- [Here's how I configured the local backend](https://lulox.notion.site/Firebase-10213362a574808a80f6c0bd8f890db2?pvs=4) (good to debug if it doesn't work out of the box)
+
 ## Deployed artifacts
 
 ### Frontend
@@ -39,15 +48,29 @@ This command starts a local Ethereum network using Hardhat. The network runs on 
 3. Open a second terminal, navigate to `Technai-foundry` and run this command to deploy the test contract:
 
 ```
+
 yarn deploy
+
 ```
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
-4. Open a third terminal, and run this command to start your NextJS app:
+4. Open a third terminal, and run this command to start your Firebase backend:
 
 ```
+
+yarn backend
+
+```
+
+Visit your backend on: `http://localhost:4000/`. You can see what data is being stored in your Firebase database.
+
+5. Open a fourth terminal, and run this command to start your NextJS app:
+
+```
+
 yarn start
+
 ```
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page.
@@ -164,3 +187,7 @@ In the case of Simple Mint, the first minter of a collection gets a share of the
 🔄 **Remixing Feature**: Take another artists piece and remix it. Then upload specifying what piece you remixed, and you can be displayed as a remixer artist on the art piece you remixed. The creator of the original piece will receive a percent of the royalties of the remix.
 
 🤝 **Social Features**: You can create your own profile, like NFTs, get notifications on your favorite artists, message with other collectors and artists, comment on NFTs, and much more!
+
+```
+
+```

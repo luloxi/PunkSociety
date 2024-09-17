@@ -29,6 +29,25 @@ const deployedContracts = {
         },
         {
           type: "function",
+          name: "collections",
+          inputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
           name: "eip712Domain",
           inputs: [],
           outputs: [
@@ -168,7 +187,13 @@ const deployedContracts = {
               internalType: "bytes",
             },
           ],
-          outputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
           stateMutability: "nonpayable",
         },
         {
@@ -259,8 +284,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {
-        eip712Domain:
-          "lib/openzeppelin-contracts/contracts/utils/cryptography/EIP712.sol",
+        eip712Domain: "lib/openzeppelin-contracts/contracts/utils/cryptography/EIP712.sol",
       },
     },
     MockNFT: {
@@ -866,35 +890,21 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {
-        approve:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        balanceOf:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        getApproved:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        isApprovedForAll:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        approve: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        balanceOf: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        getApproved: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        isApprovedForAll: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
         name: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        ownerOf:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        safeTransferFrom:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        setApprovalForAll:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        supportsInterface:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        symbol:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        tokenURI:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        transferFrom:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
-        tokenByIndex:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
-        tokenOfOwnerByIndex:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
-        totalSupply:
-          "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
+        ownerOf: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        safeTransferFrom: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        setApprovalForAll: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        supportsInterface: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        symbol: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        tokenURI: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        transferFrom: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721URIStorage.sol",
+        tokenByIndex: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
+        tokenOfOwnerByIndex: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
+        totalSupply: "lib/openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
       },
     },
     MockUSDC: {
@@ -1338,31 +1348,20 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {
-        allowance:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-        approve:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-        balanceOf:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-        decimals:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        allowance: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        approve: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        balanceOf: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        decimals: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
         name: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-        symbol:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-        totalSupply:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-        transfer:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-        transferFrom:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        symbol: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        totalSupply: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        transfer: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        transferFrom: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
         burn: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
-        burnFrom:
-          "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
+        burnFrom: "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol",
         owner: "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
-        renounceOwnership:
-          "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
-        transferOwnership:
-          "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        renounceOwnership: "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        transferOwnership: "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
       },
     },
     Marketplace: {
@@ -1947,10 +1946,8 @@ const deployedContracts = {
       ],
       inheritedFunctions: {
         owner: "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
-        renounceOwnership:
-          "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
-        transferOwnership:
-          "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        renounceOwnership: "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
+        transferOwnership: "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
       },
     },
   },

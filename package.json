@@ -9,6 +9,7 @@
   },
   "scripts": {
     "account": "yarn workspace @se-2/foundry account",
+    "backend": "yarn workspace @se-2/local_db backend",
     "chain": "yarn workspace @se-2/foundry chain",
     "compile": "yarn workspace @se-2/foundry compile",
     "deploy": "yarn workspace @se-2/foundry deploy",
