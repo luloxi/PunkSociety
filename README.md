@@ -94,9 +94,11 @@ This repo was started with `npx create-eth@latest` with Foundry and integrated w
 - **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
 - **Add a page for the collector** with their NFTs and info about them
 - **Add a page for the artist** with their NFTs and info about them
-- **Add a way for artists (and collectors) to register their info (ideally with a signature)**
+- **Add a page for starting a collection** with the same fields as the Simple Mint page, but with a mint button that pays the gas costs and deploys the contract
 
 ## Phase 2
+
+- **Add a way for artists (and collectors) to register their info (ideally with a signature)**
 
 ### Simple Mint
 
@@ -105,6 +107,7 @@ This repo was started with `npx create-eth@latest` with Foundry and integrated w
 - **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
 - **Periodically airdrop dividends** in USDC for creators (and first minters if appliable) (may not even be necessary if royalties pay redirect funds to the creators directly)
+- **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
 
 ### Marketplace
 

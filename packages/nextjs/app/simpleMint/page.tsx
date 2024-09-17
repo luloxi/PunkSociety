@@ -136,9 +136,9 @@ const SimpleMint: NextPage = () => {
   return (
     <>
       <SimpleMintDescription />
-      <div className="flex flex-col md:flex-row items-center flex-grow pt-10">
+      <div className="flex flex-col md:flex-row items-start flex-grow pt-10">
         {/* Input Fields Section */}
-        <div className="w-full md:w-1/2 px-4">
+        <div className="w-full md:w-1/2 px-4 sticky top-0 h-screen">
           <span className="font-bold p-3">Collection name:</span>
           <InputBase placeholder="Piccawho?" value={collectionName} onChange={setCollectionName} />
           <span className="font-bold p-3">Collection symbol:</span>
@@ -149,6 +149,7 @@ const SimpleMint: NextPage = () => {
           <InputBase placeholder="https:// or ipfs://" value={image} onChange={setImage} />
           <span className="font-bold p-3">Audio/Video URL (can be IPFS):</span>
           <InputBase placeholder="https:// or ipfs://" value={animationUrl} onChange={setAnimationUrl} />
+
           {attributes.map((attr, index) => (
             <div key={index} className="flex space-x-2">
               <div>
@@ -169,29 +170,87 @@ const SimpleMint: NextPage = () => {
               </div>
             </div>
           ))}
+
           <button onClick={addAttribute} className="mt-2 bg-blue-500 text-white p-2 rounded">
             Add Attribute
           </button>
         </div>
 
         {/* JSON Display Section */}
-        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0">
-          <LazyReactJson
-            style={{ padding: "1rem", borderRadius: "0.75rem" }}
-            src={yourJSON}
-            theme="solarized"
-            enableClipboard={false}
-            onEdit={edit => setYourJSON(edit.updated_src)}
-            onAdd={add => setYourJSON(add.updated_src)}
-            onDelete={del => setYourJSON(del.updated_src)}
-          />
+        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 bg-base-100 py-6 rounded-lg">
+          <h3 className="text-2xl font-bold mb-4 text-center">NFT Preview</h3>
+
+          {/* Flex container for media and text */}
+          <div className="flex flex-row items-start space-x-4 mb-4">
+            {/* Media Section */}
+            <div className="flex flex-col items-start w-44 h-auto">
+              {image ? (
+                <img src={image} alt="NFT Preview" className="w-full h-auto rounded-lg shadow-lg mb-2" />
+              ) : (
+                <div className="w-full h-auto bg-gray-200 text-gray-500 text-center flex items-center justify-center rounded-lg shadow-lg mb-2">
+                  No image provided
+                </div>
+              )}
+
+              {animationUrl && (
+                <video controls className="w-full h-auto m-2">
+                  <source src={animationUrl} type="audio/mpeg" />
+                </video>
+              )}
+            </div>
+
+            {/* Text Section */}
+            <div className="text-left flex-1 lg:pl-3">
+              <p>
+                <strong>Collection Name:</strong> {collectionName || "Not provided"}
+              </p>
+              <p>
+                <strong>Symbol:</strong> {collectionSymbol || "Not provided"}
+              </p>
+              <p className="break-words">
+                <strong>Description:</strong> {description || "Not provided"}
+              </p>
+              <p>
+                <strong>Attributes:</strong>
+              </p>
+              <ul className="list-disc ml-4">
+                {attributes.length > 0 && attributes[0].traitType && attributes[0].value ? (
+                  attributes.map((attr, index) => (
+                    <li key={index}>
+                      {attr.traitType ? `${attr.traitType}: ${attr.value}` : "No attributes provided"}
+                    </li>
+                  ))
+                ) : (
+                  <li>No attributes provided</li>
+                )}
+              </ul>
+            </div>
+          </div>
+
+          <div className="self-center w-full collapse bg-base-300">
+            <input type="checkbox" />
+            <div className="collapse-title text-center text-xl font-medium ">
+              View <strong className="text-green-500">raw metadata</strong>
+            </div>
+            <div className="collapse-content">
+              <LazyReactJson
+                style={{ padding: "1rem", borderRadius: "0.75rem" }}
+                src={yourJSON}
+                theme="solarized"
+                enableClipboard={false}
+                onEdit={edit => setYourJSON(edit.updated_src)}
+                onAdd={add => setYourJSON(add.updated_src)}
+                onDelete={del => setYourJSON(del.updated_src)}
+              />
+            </div>
+          </div>
 
           <button
-            className={`btn btn-secondary mt-4 ${loading ? "loading" : ""}`}
+            className={`btn btn-secondary bg-green-600 mt-4 ${loading ? "loading" : ""}`}
             disabled={loading}
             onClick={handleSignAndUpload}
           >
-            Upload metadata & Sign
+            Propose collection
           </button>
           {uploadedIpfsPath && (
             <div className="mt-4">
