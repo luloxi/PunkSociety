@@ -50,26 +50,19 @@ const SimpleMint: NextPage = () => {
     setAttributes(newAttributes);
   };
 
-  // const [mounted, setMounted] = useState(false);
-
-  // Check if this is working properly
+  // Used for database: Check if this is working properly
   // const { trigger: postCollectionData } = useSWRMutation("/api/collections/new", postMutationFetcher); // SWR for API call
 
   // Automatically update the JSON whenever the fields change
   useEffect(() => {
+    // Function that generates the token URI and updates the JSON
+    const generateTokenURIString = () => {
+      const tokenURI = generateTokenURI(collectionName, description, image, animationUrl, attributes);
+      setYourJSON(JSON.parse(atob(tokenURI.split(",")[1])));
+    };
+
     generateTokenURIString();
   }, [collectionName, description, image, animationUrl, attributes]);
-
-  // Function that generates the token URI and updates the JSON
-  const generateTokenURIString = () => {
-    const tokenURI = generateTokenURI(collectionName, description, image, animationUrl, attributes);
-    setYourJSON(JSON.parse(atob(tokenURI.split(",")[1])));
-  };
-
-  // Is this necessary?
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
 
   const handleSignAndUpload = async () => {
     if (!connectedAddress) {
