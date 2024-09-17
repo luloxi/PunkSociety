@@ -102,11 +102,11 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Simple Mint
 
-- ✅ **Simple minting function** for artists to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction. (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
+- ✅ **Simple minting function** for artists to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
 - ✅ **Add music to NFTs metadata** and **integrate with frontend** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
 - ✅ **Create a contract for SimpleMint and SimpleMintNFT**
 - ✅ **Page for minting** that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
-- **Implement a database to store the signatures** that allows first minters to start a collection,
+- **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Add a page for first minters** reading from the database with NFTs available to complete the Simple Mint process
 
 ### Marketplace
