@@ -1,6 +1,7 @@
 "use client";
 
 import { lazy, useEffect, useState } from "react";
+import { TextAreaBase } from "./_components/TextAreaBase";
 import generateTokenURI from "./generateTokenURI";
 import { SimpleMintDescription } from "./simpleMintDescription";
 import type { NextPage } from "next";
@@ -25,11 +26,30 @@ const SimpleMint: NextPage = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [animationUrl, setAnimationUrl] = useState("");
-  const [attributes, setAttributes] = useState([{ traitType: "", value: "" }]);
+  const [attributes, setAttributes] = useState<{ traitType: string; value: string }[]>([]);
 
   const [yourJSON, setYourJSON] = useState<object>({});
   const [loading, setLoading] = useState(false);
   const [uploadedIpfsPath, setUploadedIpfsPath] = useState("");
+
+  // Function to handle changes in the input fields for trait type and value
+  const handleAttributeChange = (index: number, field: "traitType" | "value", value: string) => {
+    const newAttributes = [...attributes];
+    newAttributes[index][field] = value;
+    setAttributes(newAttributes);
+  };
+
+  // Function to add a new attribute field
+  const addAttribute = () => {
+    setAttributes([...attributes, { traitType: "", value: "" }]);
+  };
+
+  // Function to remove an attribute by index
+  const removeAttribute = (index: number) => {
+    const newAttributes = attributes.filter((_, i) => i !== index);
+    setAttributes(newAttributes);
+  };
+
   // const [mounted, setMounted] = useState(false);
 
   // Check if this is working properly
@@ -50,19 +70,6 @@ const SimpleMint: NextPage = () => {
   // useEffect(() => {
   //   setMounted(true);
   // }, []);
-
-  // Attributes handling
-  type AttributeField = "traitType" | "value";
-
-  const handleAttributeChange = (index: number, field: AttributeField, value: string) => {
-    const newAttributes = [...attributes];
-    newAttributes[index][field] = value;
-    setAttributes(newAttributes);
-  };
-
-  const addAttribute = () => {
-    setAttributes([...attributes, { traitType: "", value: "" }]);
-  };
 
   const handleSignAndUpload = async () => {
     if (!connectedAddress) {
@@ -134,50 +141,116 @@ const SimpleMint: NextPage = () => {
   };
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col justify-between">
       <SimpleMintDescription />
-      <div className="flex flex-col md:flex-row items-start flex-grow pt-10">
+
+      {/* <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 bg-base-100 py-6 rounded-lg">
+        <h3 className="text-2xl font-bold mb-4 text-center">NFT Preview</h3>
+      </div> */}
+
+      <div className="flex flex-col md:flex-row items-start flex-grow">
         {/* Input Fields Section */}
-        <div className="w-full md:w-1/2 px-4 sticky top-0 h-screen">
-          <span className="font-bold p-3">Collection name:</span>
-          <InputBase placeholder="Piccawho?" value={collectionName} onChange={setCollectionName} />
-          <span className="font-bold p-3">Collection symbol:</span>
-          <InputBase placeholder="PW" value={collectionSymbol} onChange={setCollectionSymbol} />
-          <span className="font-bold p-3">Description:</span>
-          <InputBase placeholder="House music for the soul" value={description} onChange={setDescription} />
-          <span className="font-bold p-3">Image URL (can be IPFS):</span>
-          <InputBase placeholder="https:// or ipfs://" value={image} onChange={setImage} />
-          <span className="font-bold p-3">Audio/Video URL (can be IPFS):</span>
-          <InputBase placeholder="https:// or ipfs://" value={animationUrl} onChange={setAnimationUrl} />
-
-          {attributes.map((attr, index) => (
-            <div key={index} className="flex space-x-2">
-              <div>
-                <span className="font-bold p-3">Trait type:</span>
-                <InputBase
-                  placeholder="Trait type:"
-                  value={attr.traitType}
-                  onChange={value => handleAttributeChange(index, "traitType", value)}
-                />
-              </div>
-              <div>
-                <span className="font-bold p-3">Trait value:</span>
-                <InputBase
-                  placeholder="Value for trait"
-                  value={attr.value}
-                  onChange={value => handleAttributeChange(index, "value", value)}
-                />
-              </div>
+        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 py-6 sticky top-0">
+          <div className="flex flex-col items-center">
+            <h3 className="text-2xl font-bold mb-2">Enter your NFT details here</h3>
+            <span className="text-red-500">* are required fields</span>
+          </div>
+          <div className="flex flex-row items-center justify-evenly">
+            <div className="py-2 w-full pr-4">
+              <span className="font-bold p-3 mt-64">
+                Collection name <span className="text-red-500">*</span>
+              </span>
+              <InputBase placeholder="Picca Who?" value={collectionName} onChange={setCollectionName} />
             </div>
-          ))}
+            <div className="py-2">
+              <span className="font-bold p-3">
+                Symbol <span className="text-red-500">*</span>
+              </span>
+              <InputBase placeholder="PW" value={collectionSymbol} onChange={setCollectionSymbol} />
+            </div>
+          </div>
+          <div className="py-2">
+            <span className="font-bold p-3">
+              Description <span className="text-red-500">*</span>
+            </span>
 
-          <button onClick={addAttribute} className="mt-2 bg-blue-500 text-white p-2 rounded">
-            Add Attribute
-          </button>
+            <TextAreaBase
+              name="description"
+              value={description}
+              onChange={setDescription}
+              placeholder="Enter description"
+            />
+          </div>
+
+          <div className="py-2">
+            <span className="font-bold p-3">
+              Image URL <span className="text-red-500">*</span>
+            </span>
+            <InputBase placeholder="https:// or ipfs://" value={image} onChange={setImage} />
+          </div>
+          <div className="py-2">
+            <span className="font-bold p-3">Audio/Video URL</span>
+            <InputBase placeholder="https:// or ipfs://" value={animationUrl} onChange={setAnimationUrl} />
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-bold mb-4">Attributes</h3>
+
+            {/* Button to add a new attribute */}
+            <button onClick={addAttribute} className="mb-4 flex items-center bg-green-600 text-white p-2 rounded">
+              <span className="mr-2">Add Attribute</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="w-5 h-5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+            </button>
+
+            {attributes.map((attr, index) => (
+              <div key={index} className="flex items-center space-x-2 mb-2">
+                <div>
+                  <span className="font-bold p-3">Trait Type:</span>
+                  <InputBase
+                    placeholder="Trait type"
+                    value={attr.traitType}
+                    onChange={value => handleAttributeChange(index, "traitType", value)}
+                  />
+                </div>
+
+                <div>
+                  <span className="font-bold p-3">Trait Value:</span>
+                  <InputBase
+                    placeholder="Value for trait"
+                    value={attr.value}
+                    onChange={value => handleAttributeChange(index, "value", value)}
+                  />
+                </div>
+
+                {/* Button to remove the attribute */}
+                <button onClick={() => removeAttribute(index)} className="ml-2 bg-red-500 text-white p-2 rounded">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* JSON Display Section */}
-        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 bg-base-100 py-6 rounded-lg">
+        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 bg-base-100 py-6 rounded-lg mb-10">
           <h3 className="text-2xl font-bold mb-4 text-center">NFT Preview</h3>
 
           {/* Flex container for media and text */}
@@ -245,13 +318,16 @@ const SimpleMint: NextPage = () => {
             </div>
           </div>
 
-          <button
-            className={`btn btn-secondary bg-green-600 mt-4 ${loading ? "loading" : ""}`}
-            disabled={loading}
-            onClick={handleSignAndUpload}
-          >
-            Propose collection
-          </button>
+          <div className="flex justify-center items-center mt-6">
+            <button
+              className={` btn btn-primary hover:bg-green-500 py-3 px-6 bg-green-600 ${loading ? "loading" : ""}`}
+              disabled={loading}
+              onClick={handleSignAndUpload}
+            >
+              Propose NFT
+            </button>
+          </div>
+
           {uploadedIpfsPath && (
             <div className="mt-4">
               <a href={`https://ipfs.io/ipfs/${uploadedIpfsPath}`} target="_blank" rel="noreferrer">
@@ -261,7 +337,7 @@ const SimpleMint: NextPage = () => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

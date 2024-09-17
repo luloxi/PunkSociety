@@ -32,7 +32,8 @@
     "test": "yarn foundry:test",
     "vercel": "yarn workspace @se-2/nextjs vercel",
     "vercel:yolo": "yarn workspace @se-2/nextjs vercel:yolo",
-    "verify": "yarn workspace @se-2/foundry verify"
+    "verify": "yarn workspace @se-2/foundry verify",
+    "seed": "yarn workspace @se-2/local_db seed"
   },
   "devDependencies": {
     "husky": "~8.0.3",

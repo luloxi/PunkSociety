@@ -5,16 +5,26 @@ const generateTokenURI = (
   animationUrl: string,
   attributes: { traitType: string; value: string }[],
 ) => {
-  const metadata = {
+  // Base metadata object
+  const metadata: any = {
     name,
     description,
     image,
-    animation_url: animationUrl,
-    attributes: attributes.map(attr => ({
+  };
+
+  // Add `animation_url` only if it's filled
+  if (animationUrl) {
+    metadata.animation_url = animationUrl;
+  }
+
+  // Add `attributes` only if at least one attribute has a non-empty trait and value
+  const filteredAttributes = attributes.filter(attr => attr.traitType && attr.value);
+  if (filteredAttributes.length > 0) {
+    metadata.attributes = filteredAttributes.map(attr => ({
       trait_type: attr.traitType,
       value: attr.value,
-    })),
-  };
+    }));
+  }
 
   // Convert the metadata object to a JSON string
   const jsonString = JSON.stringify(metadata);

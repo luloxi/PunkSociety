@@ -1,9 +1,9 @@
 export const SimpleMintDescription = () => {
   return (
-    <div className="self-center w-1/2 collapse bg-base-300">
+    <div className="self-center  md:w-full collapse bg-base-300">
       <input type="checkbox" />
       <div className="collapse-title text-center text-xl font-medium ">
-        ↓↓ New to Simple Mint? <strong className="text-green-500">Click here!</strong> ↓↓
+        New to Simple Mint? <strong className="text-green-500">Click here!</strong>
       </div>
       <div className="collapse-content">
         <p className="text-center">

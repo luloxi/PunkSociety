@@ -19,3 +19,6 @@
 
 # seed 
 seed.json
+
+# ui-debug
+ui-debug.log

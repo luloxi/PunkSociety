@@ -1,14 +1,14 @@
 import { ChangeEvent, FocusEvent, ReactNode, useCallback, useEffect, useRef } from "react";
 import { CommonInputProps } from "~~/components/scaffold-eth";
 
-type InputBaseProps<T> = CommonInputProps<T> & {
+type TextAreaBaseProps<T> = CommonInputProps<T> & {
   error?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
   reFocus?: boolean;
 };
 
-export const InputBase = <T extends { toString: () => string } | undefined = string>({
+export const TextAreaBase = <T extends { toString: () => string } | undefined = string>({
   name,
   value,
   onChange,
@@ -18,8 +18,8 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   prefix,
   suffix,
   reFocus,
-}: InputBaseProps<T>) => {
-  const inputReft = useRef<HTMLInputElement>(null);
+}: TextAreaBaseProps<T>) => {
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   let modifier = "";
   if (error) {
@@ -29,36 +29,36 @@ export const InputBase = <T extends { toString: () => string } | undefined = str
   }
 
   const handleChange = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => {
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
       onChange(e.target.value as unknown as T);
     },
     [onChange],
   );
 
-  // Runs only when reFocus prop is passed, useful for setting the cursor
-  // at the end of the input. Example AddressInput
-  const onFocus = (e: FocusEvent<HTMLInputElement, Element>) => {
+  const onFocus = (e: FocusEvent<HTMLTextAreaElement, Element>) => {
     if (reFocus !== undefined) {
       e.currentTarget.setSelectionRange(e.currentTarget.value.length, e.currentTarget.value.length);
     }
   };
+
   useEffect(() => {
-    if (reFocus !== undefined && reFocus === true) inputReft.current?.focus();
+    if (reFocus !== undefined && reFocus === true) textAreaRef.current?.focus();
   }, [reFocus]);
 
   return (
-    <div className={`flex border-2 border-base-300 bg-base-200 rounded-full text-accent ${modifier}`}>
+    <div className={`flex border-2 border-base-300 bg-base-200 rounded-lg text-accent ${modifier}`}>
       {prefix}
-      <input
-        className="input input-ghost focus-within:border-transparent focus:outline-green-500 focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] px-4 border w-full font-medium placeholder:text-accent/50 text-green-500"
+      <textarea
+        className="textarea textarea-ghost focus-within:border-transparent focus:outline-none focus:bg-transparent focus:text-gray-400 h-auto min-h-[3rem] px-4 border w-full font-medium placeholder:text-accent/50 text-green-500 resize-none"
         placeholder={placeholder}
         name={name}
         value={value?.toString()}
         onChange={handleChange}
         disabled={disabled}
         autoComplete="off"
-        ref={inputReft}
+        ref={textAreaRef}
         onFocus={onFocus}
+        rows={3} // You can adjust the initial height as needed
       />
       {suffix}
     </div>

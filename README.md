@@ -19,6 +19,12 @@
 - [Here are the files that interact with backend](https://lulox.notion.site/Database-files-04686fe4dfde4025a7939a3a9a5caca8?pvs=4)
 - [Here's how I configured the local backend](https://lulox.notion.site/Firebase-10213362a574808a80f6c0bd8f890db2?pvs=4) (good to debug if it doesn't work out of the box)
 
+## Prerequisites
+
+[Node (>= v18.17)](https://nodejs.org/en/download/package-manager)
+Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/#windows-stable) or [v2+](https://yarnpkg.com/getting-started/install))
+[Git](https://git-scm.com/downloads)
+
 ## Quickstart
 
 To get started follow the steps below:
@@ -47,6 +53,27 @@ yarn deploy
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
+2. Set up your environment variables (and optionally, a local Firebase instance):
+   Copy the `packages/nextjs/.env.example` file to `packages/nextjs/.env.local` and fill in the required environment variables.
+   _When going online, fill in the commented out environment variables._
+
+   (Optional) Start the firebase emulators (vs set up a live Firebase instance). You will need to install the [firebase CLI](https://firebase.google.com/docs/cli#install_the_firebase_cli) on macOS, Linux, or use [WSL on Windows](https://learn.microsoft.com/en-us/windows/wsl/install) and run the following command:
+
+   ```bash
+   # You might need to add a real "--project <projectName>" (run firebase projects:list)
+   firebase emulators:start
+   ```
+
+3. Seed data in your local Firebase instance:
+
+   Copy the `packages/local_db/seed.sample.json` to `packages/local_db/seed.json` and tweak the data as you see fit. Then run the following command:
+
+   ```bash
+   yarn seed
+   ```
+
+   To seed it to empty _*live*_ firestore instance you can use `yarn seed --force-prod`. If there is data in the live instance, it will not seed it again to bypass it use `yarn seed --reset --force-prod`
+
 4. Open a third terminal, and run this command to start your Firebase backend:
 
 ```
@@ -74,8 +101,10 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Phase 1
 
-Project started on [Aleph Hackathon](https://www.aleph.crecimiento.build/es-aleph-hackathon)
-This repo was started with `npx create-eth@latest` with Foundry and integrated with the contracts and frontend from [github.com/luloxi/technai-marketplace](https://github.com/luloxi/technai-marketplace)
+- Project started on [Aleph Hackathon](https://www.aleph.crecimiento.build/es-aleph-hackathon)
+- This repo was started with `npx create-eth@latest` with Foundry and integrated with the contracts and frontend from [github.com/luloxi/technai-marketplace](https://github.com/luloxi/technai-marketplace)
+
+- To see current development info, [see here](https://lulox.notion.site/TECHNAI-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ### Simple Mint
 
