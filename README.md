@@ -53,7 +53,7 @@ yarn deploy
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
-2. Set up your environment variables (and optionally, a local Firebase instance):
+4. Set up your environment variables (and optionally, a local Firebase instance):
    Copy the `packages/nextjs/.env.example` file to `packages/nextjs/.env.local` and fill in the required environment variables.
    _When going online, fill in the commented out environment variables._
 
@@ -64,7 +64,7 @@ This command deploys a test smart contract to the local network. The contract is
    firebase emulators:start
    ```
 
-3. Seed data in your local Firebase instance:
+5. Seed data in your local Firebase instance:
 
    Copy the `packages/local_db/seed.sample.json` to `packages/local_db/seed.json` and tweak the data as you see fit. Then run the following command:
 
@@ -74,15 +74,9 @@ This command deploys a test smart contract to the local network. The contract is
 
    To seed it to empty _*live*_ firestore instance you can use `yarn seed --force-prod`. If there is data in the live instance, it will not seed it again to bypass it use `yarn seed --reset --force-prod`
 
-4. Open a third terminal, and run this command to start your Firebase backend:
-
-```
-yarn backend
-```
-
 Visit your backend on: `http://localhost:4000/`. You can see what data is being stored in your Firebase database.
 
-5. Open a fourth terminal, and run this command to start your NextJS app:
+6. Open a fourth terminal, and run this command to start your NextJS app:
 
 ```
 yarn start
