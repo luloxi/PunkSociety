@@ -12,3 +12,5 @@ If you are running a Firestore in Datastore Mode project, run:
 Note: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.
 Dev App Server is now running.
 
+*** shutting down gRPC server since JVM is shutting down
+*** server shut down
