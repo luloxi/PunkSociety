@@ -10,15 +10,6 @@
 
 🔗 To be deployed on Polygon and Avalanche (or other EVM compatible chains)
 
-## Development notes
-
-- Update `eip712.ts` info with the deployed contract info (address and chain) when deploying to a live chain or when deploying a second version on the local chaion
-
-### (Backend is currently not implemented)
-
-- [Here are the files that interact with backend](https://lulox.notion.site/Database-files-04686fe4dfde4025a7939a3a9a5caca8?pvs=4)
-- [Here's how I configured the local backend](https://lulox.notion.site/Firebase-10213362a574808a80f6c0bd8f890db2?pvs=4) (good to debug if it doesn't work out of the box)
-
 ## Prerequisites
 
 [Node (>= v18.17)](https://nodejs.org/en/download/package-manager)
@@ -53,30 +44,7 @@ yarn deploy
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
-4. Set up your environment variables (and optionally, a local Firebase instance):
-   Copy the `packages/nextjs/.env.example` file to `packages/nextjs/.env.local` and fill in the required environment variables.
-   _When going online, fill in the commented out environment variables._
-
-   (Optional) Start the firebase emulators (vs set up a live Firebase instance). You will need to install the [firebase CLI](https://firebase.google.com/docs/cli#install_the_firebase_cli) on macOS, Linux, or use [WSL on Windows](https://learn.microsoft.com/en-us/windows/wsl/install) and run the following command:
-
-   ```bash
-   # You might need to add a real "--project <projectName>" (run firebase projects:list)
-   firebase emulators:start
-   ```
-
-5. Seed data in your local Firebase instance:
-
-   Copy the `packages/local_db/seed.sample.json` to `packages/local_db/seed.json` and tweak the data as you see fit. Then run the following command:
-
-   ```bash
-   yarn seed
-   ```
-
-   To seed it to empty _*live*_ firestore instance you can use `yarn seed --force-prod`. If there is data in the live instance, it will not seed it again to bypass it use `yarn seed --reset --force-prod`
-
-Visit your backend on: `http://localhost:4000/`. You can see what data is being stored in your Firebase database.
-
-6. Open a fourth terminal, and run this command to start your NextJS app:
+4. Open a third terminal, and run this command to start your NextJS app:
 
 ```
 yarn start
@@ -109,7 +77,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - ✅ **Display NFT being built as a preview** before minting (display the NFT and the metadata)
 - ✅ **Add an option to start a collection paying gas** on the Simple Mint page, with a toggle to switch between gasless and paying gas
 - ✅ **Allow setting max tokenId and price**
-- ✅ **Display Simple Minted NFTs in the marketplace**
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Add a page for first minters** reading from the database with NFTs available to complete the Simple Mint process
 
@@ -117,6 +84,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - ✅ **Page for interacting with the marketplace** buy and sell functions (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - ✅ **Payment in native gas token** and USDC token
+- ✅ **Display Simple Minted NFTs in the marketplace**
 - **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 
 ## Phase 2
@@ -132,6 +100,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Display auction info and interactions**
 - **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
+- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
 ### Social
 
@@ -152,6 +121,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Music player
 
+- **Upload the NFT Metadata to Filecoin** instead of IPFS, and use it with a EIP-712 signature for Simple Mint. (Reference: [Viem recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
 - **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
 - **Tip for artists**: Enable or require tipping with tokens, and if you don’t have $ to pay, you can watch an ad as payment (i.e: for every 6 songs, 1 ad that gets distributed among the 6 artists reproduced for free).
 
@@ -160,24 +130,48 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Marketplace
 
 - Consider transitioning ownership of the marketplace to a DAO
+- **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 - **Support for ERC1155** in the marketplace, Simple Mint (rethink) and music player
 - Go through [Artion Contracts](https://github.com/Fantom-foundation/Artion-Contracts) and see what **improvements can be made to the marketplace**
 
 ### Social
 
-- **Remixing feature for NFTs**, where the creator receives 30% of the royalties of the remix
+- **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
+- **Remixing feature for NFTs**, where the creator receives a % of the royalties of the remix
 - **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
 - **Direct Messaging system** for artists and collectors
 - Ability to **make your own group/community**
 - **Guided Onboarding**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with blockchain or Web3 concepts.
 - **Educational Content**: Tutorials or content to explain Web3 concepts, NFT minting, and royalties can improve user adoption.
 
-### Performance improvements
+### (Backend is currently not implemented)
 
-- **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
-- **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
-- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
-- **Upload the NFT Metadata to Filecoin** instead of IPFS, and use it with a EIP-712 signature for Simple Mint. (Reference: [Viem recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
+- [Here are the files that interact with backend](https://lulox.notion.site/Database-files-04686fe4dfde4025a7939a3a9a5caca8?pvs=4)
+- [Here's how I configured the local backend](https://lulox.notion.site/Firebase-10213362a574808a80f6c0bd8f890db2?pvs=4) (good to debug if it doesn't work out of the box)
+- Update `eip712.ts` info with the deployed contract info (address and chain) when deploying to a live chain or when deploying a second version on the local chaion
+
+1. Set up your environment variables (and optionally, a local Firebase instance):
+   Copy the `packages/nextjs/.env.example` file to `packages/nextjs/.env.local` and fill in the required environment variables.
+   _When going online, fill in the commented out environment variables._
+
+   (Optional) Start the firebase emulators (vs set up a live Firebase instance). You will need to install the [firebase CLI](https://firebase.google.com/docs/cli#install_the_firebase_cli) on macOS, Linux, or use [WSL on Windows](https://learn.microsoft.com/en-us/windows/wsl/install) and run the following command:
+
+   ```bash
+   # You might need to add a real "--project <projectName>" (run firebase projects:list)
+   firebase emulators:start
+   ```
+
+2. Seed data in your local Firebase instance:
+
+   Copy the `packages/local_db/seed.sample.json` to `packages/local_db/seed.json` and tweak the data as you see fit. Then run the following command:
+
+   ```bash
+   yarn seed
+   ```
+
+   To seed it to empty _*live*_ firestore instance you can use `yarn seed --force-prod`. If there is data in the live instance, it will not seed it again to bypass it use `yarn seed --reset --force-prod`
+
+Visit your backend on: `http://localhost:4000/`. You can see what data is being stored in your Firebase database.
 
 # Completed product description
 
