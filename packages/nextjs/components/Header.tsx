@@ -10,8 +10,7 @@ import {
   ArrowUpTrayIcon,
   Bars3Icon,
   BugAntIcon,
-  PhotoIcon,
-  StarIcon,
+  PhotoIcon, // StarIcon,
 } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
@@ -24,7 +23,7 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "See collection",
+    label: "My NFTs",
     href: "/",
     icon: <PhotoIcon className="h-4 w-4" />,
   },

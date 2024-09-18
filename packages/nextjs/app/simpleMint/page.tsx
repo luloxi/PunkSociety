@@ -78,17 +78,20 @@ const SimpleMint: NextPage = () => {
 
   const handleMPaidMint = async () => {
     const notificationId = notification.loading("Uploading to IPFS");
+
     try {
       const uploadedItem = await addToIPFS(yourJSON);
-
       notification.remove(notificationId);
       notification.success("Metadata uploaded to IPFS");
 
       // Log IPFS path before sending to contract
       console.log("IPFS Path:", uploadedItem.path);
 
-      // Mint the NFT
-      await writeContractAsync({
+      if (!connectedAddress) {
+        throw new Error("No connected address found.");
+      }
+
+      const contractResponse = await writeContractAsync({
         functionName: "startCollection",
         args: [
           collectionName,
@@ -100,13 +103,28 @@ const SimpleMint: NextPage = () => {
         ],
       });
 
+      if (!contractResponse) {
+        throw new Error("Contract response is null or undefined.");
+      }
+
+      console.log("Contract Response:", contractResponse);
       notification.success("Collection started successfully!");
     } catch (error) {
       notification.remove(notificationId);
-      console.error("Error during minting:", error);
 
-      // Log the error and notify the user
-      notification.error("Minting failed, please try again.");
+      // Type guard to narrow the type of 'error'
+      if (error instanceof Error) {
+        console.error("Error during minting:", error);
+
+        if (error.message.includes("gasLimit")) {
+          notification.error("Minting failed due to gas limit issue, please check your network and wallet setup.");
+        } else {
+          notification.error("Minting failed, please try again.");
+        }
+      } else {
+        console.error("An unknown error occurred:", error);
+        notification.error("An unknown error occurred.");
+      }
     }
   };
 
@@ -398,7 +416,7 @@ const SimpleMint: NextPage = () => {
           <div className="flex justify-center items-center mt-6 gap-3">
             {isGaslessMinting ? (
               <button
-                className={`btn btn-primary hover:bg-green-500 py-3 px-6 bg-green-600 ${loading ? "loading" : ""}`}
+                className={`btn btn-primary hover:bg-yellow-500 py-3 px-6 bg-yellow-600 ${loading ? "loading" : ""}`}
                 disabled={loading}
                 onClick={handleSimpleMint}
               >
@@ -406,7 +424,7 @@ const SimpleMint: NextPage = () => {
               </button>
             ) : (
               <button
-                className={`btn btn-primary hover:bg-yellow-500 py-3 px-6 bg-yellow-600 ${loading ? "loading" : ""}`}
+                className={`btn btn-primary hover:bg-green-500 py-3 px-6 bg-green-600 ${loading ? "loading" : ""}`}
                 disabled={loading}
                 onClick={handleMPaidMint}
               >
@@ -419,13 +437,13 @@ const SimpleMint: NextPage = () => {
               <input
                 type="checkbox"
                 className={`toggle toggle-primary ${
-                  isGaslessMinting ? "checked:bg-green-600 hover:bg-yellow-600" : "bg-yellow-600 hover:bg-green-600"
+                  isGaslessMinting ? "checked:bg-yellow-600 hover:bg-green-600" : "bg-green-600 hover:bg-yellow-600"
                 }`}
                 // className="toggle toggle-primary bg-red-500"
                 checked={isGaslessMinting}
                 onChange={handleToggle}
               />
-              <span className={`ml-2 ${isGaslessMinting ? "text-green-600" : "text-yellow-600"}`}>
+              <span className={`ml-2 ${isGaslessMinting ? "text-yellow-600" : "text-green-600"}`}>
                 {isGaslessMinting ? "Gasless Minting" : "Paid Minting"}
               </span>
             </label>
