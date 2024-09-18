@@ -9,6 +9,7 @@ import type { NextPage } from "next";
 // import useSWRMutation from "swr/mutation";
 import { useAccount, useSignTypedData } from "wagmi";
 import { InputBase } from "~~/components/scaffold-eth";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { EIP_712_DOMAIN, EIP_712_TYPES__START_COLLECTION } from "~~/utils/eip712";
 import { notification } from "~~/utils/scaffold-eth";
 import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
@@ -28,10 +29,20 @@ const SimpleMint: NextPage = () => {
   const [image, setImage] = useState("");
   const [animationUrl, setAnimationUrl] = useState("");
   const [attributes, setAttributes] = useState<{ traitType: string; value: string }[]>([]);
+  const [usdPrice, setUsdPrice] = useState("");
+  const [maxSupply, setMaxSupply] = useState("");
 
   const [yourJSON, setYourJSON] = useState<object>({});
   const [loading, setLoading] = useState(false);
   const [uploadedIpfsPath, setUploadedIpfsPath] = useState("");
+
+  const [isGaslessMinting, setIsGaslessMinting] = useState(false); // New toggle state
+
+  const { writeContractAsync } = useScaffoldWriteContract("SimpleMint");
+
+  const handleToggle = () => {
+    setIsGaslessMinting(!isGaslessMinting); // Toggle between gasless and paid
+  };
 
   // Function to handle changes in the input fields for trait type and value
   const handleAttributeChange = (index: number, field: "traitType" | "value", value: string) => {
@@ -65,7 +76,41 @@ const SimpleMint: NextPage = () => {
     generateTokenURIString();
   }, [collectionName, description, image, animationUrl, attributes]);
 
-  const handleSignAndUpload = async () => {
+  const handleMPaidMint = async () => {
+    const notificationId = notification.loading("Uploading to IPFS");
+    try {
+      const uploadedItem = await addToIPFS(yourJSON);
+
+      notification.remove(notificationId);
+      notification.success("Metadata uploaded to IPFS");
+
+      // Log IPFS path before sending to contract
+      console.log("IPFS Path:", uploadedItem.path);
+
+      // Mint the NFT
+      await writeContractAsync({
+        functionName: "startCollection",
+        args: [
+          collectionName,
+          collectionSymbol,
+          uploadedItem.path,
+          connectedAddress,
+          BigInt(Math.floor(parseInt(usdPrice) * 1e6).toString()),
+          BigInt(maxSupply),
+        ],
+      });
+
+      notification.success("Collection started successfully!");
+    } catch (error) {
+      notification.remove(notificationId);
+      console.error("Error during minting:", error);
+
+      // Log the error and notify the user
+      notification.error("Minting failed, please try again.");
+    }
+  };
+
+  const handleSimpleMint = async () => {
     if (!connectedAddress) {
       notification.error("Please connect your wallet");
       return;
@@ -335,14 +380,55 @@ const SimpleMint: NextPage = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center mt-6">
-            <button
-              className={` btn btn-primary hover:bg-green-500 py-3 px-6 bg-green-600 ${loading ? "loading" : ""}`}
-              disabled={loading}
-              onClick={handleSignAndUpload}
-            >
-              Propose NFT collection
-            </button>
+          <div className="flex flex-row justify-evenly">
+            <div className="py-2">
+              <span className="font-bold p-3">
+                USD Price <span className="text-red-500">*</span>
+              </span>
+              <InputBase placeholder="10" value={usdPrice} onChange={setUsdPrice} />
+            </div>
+            <div className="py-2">
+              <span className="font-bold p-3">
+                Max Supply <span className="text-red-500">*</span>
+              </span>
+              <InputBase placeholder="25" value={maxSupply} onChange={setMaxSupply} />
+            </div>
+          </div>
+
+          <div className="flex justify-center items-center mt-6 gap-3">
+            {isGaslessMinting ? (
+              <button
+                className={`btn btn-primary hover:bg-green-500 py-3 px-6 bg-green-600 ${loading ? "loading" : ""}`}
+                disabled={loading}
+                onClick={handleSimpleMint}
+              >
+                Propose NFT collection
+              </button>
+            ) : (
+              <button
+                className={`btn btn-primary hover:bg-yellow-500 py-3 px-6 bg-yellow-600 ${loading ? "loading" : ""}`}
+                disabled={loading}
+                onClick={handleMPaidMint}
+              >
+                Start NFT collection
+              </button>
+            )}
+
+            {/* Toggle Button for Gasless Mint */}
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                className={`toggle toggle-primary ${
+                  isGaslessMinting ? "checked:bg-green-600 hover:bg-yellow-600" : "bg-yellow-600 hover:bg-green-600"
+                }`}
+                // className="toggle toggle-primary bg-red-500"
+                checked={isGaslessMinting}
+                onChange={handleToggle}
+              />
+              <span className={`ml-2 ${isGaslessMinting ? "text-green-600" : "text-yellow-600"}`}>
+                {isGaslessMinting ? "Gasless Minting" : "Paid Minting"}
+              </span>
+            </label>
           </div>
 
           {uploadedIpfsPath && (

@@ -15,6 +15,8 @@ contract SimpleMintTest is Test {
   string NAME = "Song Number Two";
   string SYMBOL = "SONG2";
   string TOKEN_URI = "QmTokenUri";
+  uint256 USD_PRICE = 10;
+  uint256 MAX_TOKEN_ID = 10;
 
   // Variables for testing the EIP-712 signature
   address ARTIST_ADDRESS;
@@ -32,8 +34,9 @@ contract SimpleMintTest is Test {
 
   function testStartCollection() public {
     // Start a collection
-    address newCollection =
-      simpleMint.startCollection(NAME, SYMBOL, TOKEN_URI, ARTIST_ADDRESS);
+    address newCollection = simpleMint.startCollection(
+      NAME, SYMBOL, TOKEN_URI, ARTIST_ADDRESS, USD_PRICE, MAX_TOKEN_ID
+    );
     // Check that the collection was started
     SimpleMintNFT newCollectionInstance = SimpleMintNFT(newCollection);
     string memory completeTokenURI =
@@ -55,7 +58,13 @@ contract SimpleMintTest is Test {
     vm.prank(gasPayer);
     bytes memory signature = abi.encodePacked(r, s, v);
     address newCollection = simpleMint.startCollectionBySig(
-      NAME, SYMBOL, TOKEN_URI, ARTIST_ADDRESS, signature
+      NAME,
+      SYMBOL,
+      TOKEN_URI,
+      ARTIST_ADDRESS,
+      USD_PRICE,
+      MAX_TOKEN_ID,
+      signature
     );
 
     // Assert the collection has been correctly initialized

@@ -18,7 +18,9 @@ contract SimpleMint is EIP712 {
     address artist,
     string name,
     string symbol,
-    string tokenURI
+    string tokenURI,
+    uint256 usdPrice,
+    uint256 maxTokenId
   );
 
   bytes32 public constant TYPEHASH =
@@ -31,11 +33,17 @@ contract SimpleMint is EIP712 {
     string memory _name,
     string memory _symbol,
     string memory _tokenURI,
-    address _artist
+    address _artist,
+    uint256 _usdPrice,
+    uint256 _maxTokenId
   ) public returns (address) {
-    SimpleMintNFT nft = new SimpleMintNFT(_name, _symbol, _tokenURI, _artist);
+    SimpleMintNFT nft = new SimpleMintNFT(
+      _name, _symbol, _tokenURI, _artist, _usdPrice, _maxTokenId
+    );
     collections.push(address(nft));
-    emit CollectionStarted(address(nft), _artist, _name, _symbol, _tokenURI);
+    emit CollectionStarted(
+      address(nft), _artist, _name, _symbol, _tokenURI, _usdPrice, _maxTokenId
+    );
     return address(nft);
   }
 
@@ -45,6 +53,8 @@ contract SimpleMint is EIP712 {
     string memory _symbol,
     string memory _tokenURI,
     address _artist,
+    uint256 _usdPrice,
+    uint256 _maxTokenId,
     bytes memory signature
   ) external returns (address) {
     // 1. Create a hash of the input data using the provided type hash
@@ -61,8 +71,9 @@ contract SimpleMint is EIP712 {
     );
 
     // 4. Start the collection using the verified artist's address
-    address collectionInstanceAddress =
-      startCollection(_name, _symbol, _tokenURI, _artist);
+    address collectionInstanceAddress = startCollection(
+      _name, _symbol, _tokenURI, _artist, _usdPrice, _maxTokenId
+    );
 
     return collectionInstanceAddress;
   }

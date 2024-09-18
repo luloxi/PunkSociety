@@ -10,6 +10,8 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 
 contract SimpleMintNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
   uint256 private _tokenIds; // Replaces the Counters.Counter
+  uint256 public maxTokenId;
+  uint256 public usdPrice;
   string public collectionTokenURI;
   address public artist;
 
@@ -17,14 +19,20 @@ contract SimpleMintNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
     string memory _name,
     string memory _symbol,
     string memory _tokenURI,
-    address _artist
+    address _artist,
+    uint256 _usdPrice,
+    uint256 _maxTokenId
   ) ERC721(_name, _symbol) {
     collectionTokenURI = _tokenURI;
     artist = _artist;
+    usdPrice = _usdPrice;
+    maxTokenId = _maxTokenId;
   }
 
   // Mint an NFT
   function mintItem() public returns (bool) {
+    require(_tokenIds < maxTokenId, "Max token limit reached");
+    // Add a way of checking if enough USDC has been received or it's ETH equivalent
     _tokenIds++; // Increment the token ID manually
     uint256 id = _tokenIds;
 
@@ -34,9 +42,12 @@ contract SimpleMintNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
     return true;
   }
 
-  function tokenURI(
-    uint256 /* tokenId */
-  ) public view override(ERC721, ERC721URIStorage) returns (string memory) {
+  function tokenURI(uint256 /* tokenId */ )
+    public
+    view
+    override(ERC721, ERC721URIStorage)
+    returns (string memory)
+  {
     // return super.tokenURI(tokenId);
     // This should be the IPFS URI when contract is live
     return string(abi.encodePacked("https://ipfs.io/ipfs/", collectionTokenURI));
@@ -49,9 +60,7 @@ contract SimpleMintNFT is ERC721, ERC721Enumerable, ERC721URIStorage {
 
   // The following functions are overrides required by Solidity.
 
-  function supportsInterface(
-    bytes4 interfaceId
-  )
+  function supportsInterface(bytes4 interfaceId)
     public
     view
     override(ERC721, ERC721Enumerable, ERC721URIStorage)
