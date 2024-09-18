@@ -12,9 +12,9 @@
 
 ## Prerequisites
 
-[Node (>= v18.17)](https://nodejs.org/en/download/package-manager)
-Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/#windows-stable) or [v2+](https://yarnpkg.com/getting-started/install))
-[Git](https://git-scm.com/downloads)
+- [Node (>= v18.17)](https://nodejs.org/en/download/package-manager)
+- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/#windows-stable) or [v2+](https://yarnpkg.com/getting-started/install))
+- [Git](https://git-scm.com/downloads)
 
 ## Quickstart
 
@@ -34,7 +34,7 @@ yarn install
 yarn chain
 ```
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/hardhat/hardhat.config.ts`.
+This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development. 
 
 3. Open a second terminal, navigate to `Technai-foundry` and run this command to deploy the test contract:
 
@@ -44,7 +44,7 @@ yarn deploy
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
-4. Open a third terminal, and run this command to start your NextJS app:
+4. Open a third terminal, navigate to `Technai-foundry` and run this command to start your NextJS app:
 
 ```
 yarn start
@@ -98,7 +98,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Marketplace
 
 - **Display auction info and interactions**
-- **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
 - **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
