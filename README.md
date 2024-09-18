@@ -107,7 +107,9 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - ✅ **Create a contract for SimpleMint and SimpleMintNFT**
 - ✅ **Page for minting** that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
 - ✅ **Display NFT being built as a preview** before minting (display the NFT and the metadata)
-- **Add an option to start a collection paying gas** on the Simple Mint page, with a toggle to switch between gasless and paying gas
+- ✅ **Add an option to start a collection paying gas** on the Simple Mint page, with a toggle to switch between gasless and paying gas
+- ✅ **Allow setting max tokenId and price**
+- ✅ **Display Simple Minted NFTs in the marketplace**
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Add a page for first minters** reading from the database with NFTs available to complete the Simple Mint process
 
@@ -115,19 +117,18 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - ✅ **Page for interacting with the marketplace** buy and sell functions (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - ✅ **Payment in native gas token** and USDC token
+- **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 
 ## Phase 2
 
 ### Simple Mint
 
-- **Allow setting max tokenId and price**
 - **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
 - **Periodically airdrop dividends** in USDC for creators (and first minters if appliable) (may not even be necessary if royalties pay redirect funds to the creators directly)
 
 ### Marketplace
 
-- **Display Simple Minted NFTs in the marketplace**
 - **Display auction info and interactions**
 - **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
