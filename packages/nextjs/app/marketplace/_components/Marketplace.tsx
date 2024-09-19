@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { NFTCard } from "./NFTCard";
+import { MarketplaceDescription } from "./marketplaceDescription";
+import { useAccount } from "wagmi";
+import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useScaffoldContract, useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
@@ -20,6 +23,8 @@ export interface Collectible extends Partial<NFTMetaData> {
 }
 
 export const Marketplace = () => {
+  const { address: isConnected, isConnecting } = useAccount();
+
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
 
   // Fetch the collectible contract
@@ -150,6 +155,8 @@ export const Marketplace = () => {
 
   return (
     <>
+      <MarketplaceDescription />
+      <div className="flex justify-center">{!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}</div>
       {listedCollectibles.length === 0 ? (
         <div className="flex justify-center items-center mt-10">
           <div className="text-2xl text-primary-content">No NFTs found</div>

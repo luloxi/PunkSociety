@@ -77,7 +77,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
           </a>
         )}
         <a
-          className={`tab tab-bordered ${activeTab === "info" ? "bg-yellow-600" : ""}`}
+          className={`tab tab-bordered ${activeTab === "info" ? "bg-blue-600" : ""}`}
           onClick={() => setActiveTab("info")}
         >
           Info
@@ -131,10 +131,6 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
         <div>
           <figure className="relative">
             <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
-            <figcaption className="glass absolute bottom-4 left-4 p-4 w-25 rounded-xl">
-              <span className="text-white "># {nft.listingId ?? "N/A"}</span>{" "}
-              {/* Display 'N/A' if listingId is missing */}
-            </figcaption>
           </figure>
           <div className="card-body space-y-3">
             {nft.animation_url && (
@@ -184,9 +180,22 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
             {/* Handle missing description */}
           </div>
           <div className="flex space-x-3 mt-1 items-center">
-            <span className="text-lg font-semibold">Owner : </span>
-            <Address address={nft.owner} />
+            {nft.listingId ? (
+              <>
+                <span className="text-lg font-semibold">Owner: </span>
+                <Address address={nft.owner} />
+              </>
+            ) : (
+              <>
+                <span className="text-lg font-semibold">Artist: </span>
+                <Address address={nft.owner} />
+              </>
+            )}
           </div>
+          {/* <div className="flex space-x-3 mt-1 items-center">
+            <span className="text-lg font-semibold">Listing ID : </span>
+            <span className="text-lg  ">{nft.listingId ?? "N/A"}</span>{" "}
+          </div> */}
         </div>
       )}
     </div>

@@ -1,26 +1,63 @@
 export const SimpleMintDescription = () => {
   return (
-    <div className="self-center  md:w-full collapse bg-base-300">
+    <div className="self-center md:w-full collapse bg-base-300">
       <input type="checkbox" />
-      <div className="collapse-title text-center text-xl font-medium ">
+      <div className="collapse-title text-center text-xl font-medium">
         New to Simple Mint? <strong className="text-green-500">Click here!</strong>
       </div>
       <div className="collapse-content">
-        <p className="text-center">
-          Simple Mint allows you to upload your art <strong className="text-green-500">without needing to pay</strong>.
-          <br />
-          <span className="py-2">
-            {" "}
-            Instead, you upload it and sign a message to <strong className="text-green-500">prove you own it</strong>.
-          </span>
-          <br />
-          <br />
-          When someone decides to first buy it, they pay for the price{" "}
-          <strong className="text-green-500">plus the minting costs.</strong>
-          <br />
-          First minters <strong className="text-green-500">get a share of the royalties</strong> of all the NFTs minted
-          in that collection.
-        </p>
+        {/* Responsive 2-column layout, becomes 1 column on small screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-center">
+          {/* Left column: Green highlights */}
+          <div className="flex flex-col">
+            <p>
+              Simple Mint allows you to <strong className="text-green-600">upload your art and create an NFT</strong> on
+              a blockchain.
+              <br />
+              NFTs, or Non-Fungible Tokens,{" "}
+              <strong className="text-green-600">represent ownership of a piece of content or art</strong>.
+            </p>
+            <p>
+              Collectors can <strong className="text-green-600">mint or trade each piece</strong> of a NFT collection.
+              <br />
+              Minting means <strong className="text-green-600">creating a new NFT or NFT collection</strong> and adding
+              it to the blochchain.
+            </p>
+            <p>
+              By minting an NFT of an artist collection,{" "}
+              <strong className="text-green-600">you ensure it is part of a limited collection</strong>.
+              <br />
+              This adds value and provides collectors with proof of authenticity.
+            </p>
+          </div>
+
+          {/* Right column: Yellow highlights */}
+          <div className="flex flex-col">
+            <p>
+              NFTs allow artists to <strong className="text-green-600">earn royalties</strong> each time their work is
+              resold.
+              <br />
+              This gives artists continuous <strong className="text-green-600">income beyond the first sale</strong>.
+            </p>
+            <p>
+              If you choose <strong className="text-yellow-600">gasless minting</strong>, you can start an NFT
+              collection <strong className="text-yellow-600">without needing to pay</strong>
+              <br />
+              <span>
+                {" "}
+                You upload your NFT info and{" "}
+                <strong className="text-yellow-600">sign a message to prove you own it</strong>.
+              </span>
+            </p>
+            <p>
+              When someone first mints it, they pay the{" "}
+              <strong className="text-yellow-600">NFT price plus the collection minting costs.</strong>
+              <br />
+              First minters <strong className="text-yellow-600">get a share of the royalties</strong> of all the NFTs
+              minted in that collection.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

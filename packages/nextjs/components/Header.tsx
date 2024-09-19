@@ -5,12 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  // ArrowDownTrayIcon,
-  ArrowPathIcon,
-  ArrowUpTrayIcon,
-  Bars3Icon,
-  BugAntIcon,
-  PhotoIcon, // StarIcon,
+  // ArrowUpTrayIcon,
+  Bars3Icon, // BugAntIcon,
+  PhotoIcon,
+  ShoppingBagIcon, // StarIcon, // ArrowDownTrayIcon,
+  // ArrowPathIcon,
+  UserIcon,
 } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
@@ -23,39 +23,14 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "My NFTs",
-    href: "/",
-    icon: <PhotoIcon className="h-4 w-4" />,
-  },
-  {
     label: "Marketplace",
-    href: "/marketplace",
-    icon: <BugAntIcon className="h-4 w-4" />,
+    href: "/",
+    icon: <ShoppingBagIcon className="h-4 w-4" />,
   },
   {
     label: "Simple Mint",
     href: "/simpleMint",
-    icon: <ArrowUpTrayIcon className="h-4 w-4" />,
-  },
-  // {
-  //   label: "Featured",
-  //   href: "/featured",
-  //   icon: <StarIcon className="h-4 w-4" />,
-  // },
-  {
-    label: "Transfers",
-    href: "/transfers",
-    icon: <ArrowPathIcon className="h-4 w-4" />,
-  },
-  // {
-  //   label: "IPFS Download",
-  //   href: "/ipfsDownload",
-  //   icon: <ArrowDownTrayIcon className="h-4 w-4" />,
-  // },
-  {
-    label: "Debug Contracts",
-    href: "/debug",
-    icon: <BugAntIcon className="h-4 w-4" />,
+    icon: <PhotoIcon className="h-4 w-4" />,
   },
 ];
 
@@ -138,16 +113,21 @@ export const Header = () => {
               src="/logo.png"
             />
           </div>
-          {/* <div className="flex flex-col">
-            <span className="font-bold leading-tight">TECHNAI</span>
-            <span className="text-xs">Music NFT Marketplace</span>
-          </div> */}
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
           <HeaderMenuLinks />
         </ul>
       </div>
-      <div className="navbar-end flex-grow mr-4">
+      <div className="navbar-end flex-grow mr-4 flex gap-2 items-center">
+        {/* My Profile link */}
+        <Link
+          href="/myProfile"
+          className="hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col"
+        >
+          <UserIcon className="h-4 w-4" />
+          <span>My Profile</span>
+        </Link>
+
         <RainbowKitCustomConnectButton />
         <FaucetButton />
       </div>

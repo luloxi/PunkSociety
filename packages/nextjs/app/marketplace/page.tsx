@@ -1,17 +1,15 @@
-"use client";
-
 import { Marketplace } from "./_components/Marketplace";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
-import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
+
+export const metadata = getMetadata({
+  title: "Marketplace",
+  description: "Built with 🏗 Scaffold-ETH 2",
+});
 
 const MarketplacePage: NextPage = () => {
-  const { address: isConnected, isConnecting } = useAccount();
-  // const { address: connectedAddress, isConnected, isConnecting } = useAccount();
-
   return (
     <>
-      <div className="flex justify-center">{!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}</div>
       <Marketplace />
     </>
   );

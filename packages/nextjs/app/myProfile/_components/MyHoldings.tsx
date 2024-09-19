@@ -18,7 +18,7 @@ export const MyHoldings = () => {
   const { address: connectedAddress } = useAccount();
   const [myAllCollectibles, setMyAllCollectibles] = useState<Collectible[]>([]);
   const [allCollectiblesLoading, setAllCollectiblesLoading] = useState(false);
-  const [showOnlyMyNFTs, setShowOnlyMyNFTs] = useState(false);
+  // const [showOnlyMyNFTs, setShowOnlyMyNFTs] = useState(true); // When false, displays all NFTs of the MockNFT collection
 
   const { data: yourCollectibleContract } = useScaffoldContract({
     contractName: "MockNFT",
@@ -46,9 +46,9 @@ export const MyHoldings = () => {
           const tokenURI = await yourCollectibleContract.read.tokenURI([tokenId]);
           const owner = await yourCollectibleContract.read.ownerOf([tokenId]);
 
-          if (showOnlyMyNFTs && owner.toLowerCase() !== connectedAddress.toLowerCase()) {
-            continue;
-          }
+          // if (showOnlyMyNFTs && owner.toLowerCase() !== connectedAddress.toLowerCase()) {
+          //   continue;
+          // }
 
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
 
@@ -73,7 +73,8 @@ export const MyHoldings = () => {
     };
 
     updateMyCollectibles();
-  }, [connectedAddress, showOnlyMyNFTs, myTotalBalance]); // Watching balance to update NFTs
+    // }, [connectedAddress, showOnlyMyNFTs, myTotalBalance]); // Watching balance to update NFTs
+  }, [connectedAddress, myTotalBalance]); // Watching balance to update NFTs
 
   if (allCollectiblesLoading)
     return (
@@ -84,7 +85,7 @@ export const MyHoldings = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center mt-4">
+      {/* <div className="flex justify-center items-center mt-4">
         <label className="text-primary-content text-xl">
           <input
             type="checkbox"
@@ -94,7 +95,7 @@ export const MyHoldings = () => {
           />
           Show only my NFTs
         </label>
-      </div>
+      </div> */}
       {myAllCollectibles.length === 0 ? (
         <div className="flex justify-center items-center mt-10">
           <div className="text-2xl text-primary-content">No NFTs found</div>
