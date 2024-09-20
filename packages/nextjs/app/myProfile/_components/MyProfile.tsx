@@ -123,19 +123,19 @@ export const MyProfile: NextPage = () => {
       <div className="mt-2 bg-base-300 w-full rounded-lg">
         <div className="tabs justify-center">
           <a
-            className={`tab tab-lifted ${activeTab === "your-nfts" ? "bg-blue-500" : ""}`}
+            className={`tab tab-lifted ${activeTab === "your-nfts" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
             onClick={() => setActiveTab("your-nfts")}
           >
             Your NFTs
           </a>
           <a
-            className={`tab tab-lifted ${activeTab === "nfts-on-sale" ? "bg-blue-500" : ""}`}
+            className={`tab tab-lifted ${activeTab === "nfts-on-sale" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
             onClick={() => setActiveTab("nfts-on-sale")}
           >
             NFTs on Sale
           </a>
           <a
-            className={`tab tab-lifted ${activeTab === "past-sales" ? "bg-blue-500" : ""}`}
+            className={`tab tab-lifted ${activeTab === "past-sales" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
             onClick={() => setActiveTab("past-sales")}
           >
             Past Sales

@@ -141,10 +141,10 @@ export const Marketplace = () => {
       }
 
       // Debugging: Log the Purchase Events
-      console.log("Purchase Events:", purchaseEvents);
+      // console.log("Purchase Events:", purchaseEvents);
 
       // Debugging: Log the listed collectibles before filtering
-      console.log("Listed Collectibles before filtering:", collectiblesUpdate);
+      // console.log("Listed Collectibles before filtering:", collectiblesUpdate);
 
       // Filter out NFTs that have been purchased
       const updatedCollectibles = collectiblesUpdate.filter(collectible => {
@@ -152,12 +152,12 @@ export const Marketplace = () => {
           const purchaseItemId = Number(purchase.args.itemId); // Convert itemId from Purchase to number
           return purchaseItemId === collectible.listingId; // Ensure both are numbers for comparison
         });
-        console.log(`Collectible ${collectible.listingId} has been purchased:`, hasBeenPurchased);
+        // console.log(`Collectible ${collectible.listingId} has been purchased:`, hasBeenPurchased);
         return !hasBeenPurchased;
       });
 
       // Debugging: Log the filtered collectibles
-      console.log("Filtered Collectibles:", updatedCollectibles);
+      // console.log("Filtered Collectibles:", updatedCollectibles);
 
       // Update state with filtered collectibles
       setListedCollectibles(updatedCollectibles);
@@ -187,7 +187,7 @@ export const Marketplace = () => {
           <div className="text-2xl text-primary-content">No NFTs found</div>
         </div>
       ) : (
-        <div className="flex flex-wrap gap-4 my-8 px-5 justify-center">
+        <div className="flex flex-wrap gap-6 my-4 px-5 justify-center">
           {listedCollectibles.map(item => (
             <NFTCard nft={item} key={item.uri} />
           ))}

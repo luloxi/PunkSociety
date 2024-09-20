@@ -91,15 +91,21 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
     <div className="card card-compact bg-base-100  w-[300px] ">
       {/* Tabs navigation */}
       <div className="tabs flex justify-center gap-3">
-        <a className={`tab ${activeTab === "artwork" ? "bg-blue-500" : ""}`} onClick={() => setActiveTab("artwork")}>
+        <a
+          className={`tab ${activeTab === "artwork" ? "bg-blue-300 dark:bg-blue-900" : ""}`}
+          onClick={() => setActiveTab("artwork")}
+        >
           Artwork
         </a>
-        <a className={`tab  ${activeTab === "details" ? "bg-blue-500" : ""}`} onClick={() => setActiveTab("details")}>
+        <a
+          className={`tab  ${activeTab === "details" ? "bg-blue-300 dark:bg-blue-900" : ""}`}
+          onClick={() => setActiveTab("details")}
+        >
           Details
         </a>
         {connectedAddress === nft.owner && (
           <a
-            className={`tab  ${activeTab === "sellNFT" ? "tab-active border-0" : ""}`}
+            className={`tab  ${activeTab === "sellNFT" ? "bg-red-300 dark:bg-red-800" : ""}`}
             onClick={() => setActiveTab("sellNFT")}
           >
             Sell NFT
@@ -158,7 +164,10 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
               />
             </div>
             <div className="card-actions justify-end">
-              <button className="btn btn-secondary btn-md px-8 tracking-wide function-button" onClick={handleTransfer}>
+              <button
+                className="btn btn-secondary btn-md px-8 tracking-wide bg-blue-300 hover:bg-blue-200 dark:bg-blue-900 dark:hover:bg-blue-800 border-0"
+                onClick={handleTransfer}
+              >
                 Transfer
               </button>
             </div>
@@ -171,7 +180,6 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
         <div className="card-body">
           {/* Payable Currency Toggle */}
           <div className="form-control">
-            <p className="text-lg font-semibold">List NFT for sale</p>
             <span className="label-text font-semibold">Currency</span>
             <label className="label cursor-pointer items-center flex flex-row">
               <span>{payableCurrency === "0" ? "ETH" : "USDC"}</span>
@@ -261,14 +269,14 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
           <div className="card-actions justify-end">
             {marketplaceData && isApproved && isApproved.toLowerCase() == marketplaceData.address ? (
               <button
-                className="btn btn-primary btn-md px-8 tracking-wide function-button"
+                className="btn btn-primary btn-md px-8 tracking-wide bg-red-300 hover:bg-red-200 dark:bg-red-800 dark:hover:bg-red-700 border-0"
                 onClick={handleCreateListing}
               >
-                Create Listing
+                List NFT for sale
               </button>
             ) : (
               <button
-                className="btn btn-primary bg btn-md px-8 tracking-wide bg-yellow-600 border-0"
+                className="btn btn-primary btn-md px-8 tracking-wide bg-yellow-200 hover:bg-yellow-300 dark:bg-yellow-800 dark:hover:bg-yellow-700 border-0"
                 onClick={handleApprove}
               >
                 Approve this NFT

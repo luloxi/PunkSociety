@@ -40,7 +40,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
     watch: true,
   });
 
-  console.log("usdcAllowance", usdcAllowance);
+  // console.log("usdcAllowance", usdcAllowance);
 
   const handleBuyNFT = async () => {
     if (!nft.listingId || !nft.price || !nft.payableCurrency) return; // Skip if required data is missing
@@ -65,7 +65,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
   };
 
   const handleApproveUSDC = async () => {
-    if (!nft.listingId || !nft.price || !nft.payableCurrency) return; // Skip if required data is missing
+    if (!nft.price || !nft.payableCurrency) return; // Skip if required data is missing
 
     try {
       // let value;
@@ -101,21 +101,21 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
       <div className="tabs flex justify-center gap-3">
         {nft.listingId ? (
           <a
-            className={`tab tab-bordered ${activeTab === "buyNFT" ? "bg-red-600" : ""}`}
+            className={`tab ${activeTab === "buyNFT" ? "bg-red-200 dark:bg-red-800" : ""}`}
             onClick={() => setActiveTab("buyNFT")}
           >
             Buy NFT
           </a>
         ) : (
           <a
-            className={`tab tab-bordered ${activeTab === "mintNFT" ? " bg-green-600" : ""}`}
+            className={`tab ${activeTab === "mintNFT" ? "bg-green-200 dark:bg-green-800" : ""}`}
             onClick={() => setActiveTab("mintNFT")}
           >
             Mint NFT
           </a>
         )}
         <a
-          className={`tab tab-bordered ${activeTab === "info" ? "bg-blue-600" : ""}`}
+          className={`tab ${activeTab === "info" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
           onClick={() => setActiveTab("info")}
         >
           Info
@@ -154,7 +154,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                 {requiresApproval ? (
                   <div className="card-actions justify-end">
                     <button
-                      className="btn btn-warning btn-md px-8 tracking-wide function-button"
+                      className="btn btn-primary btn-md px-8 tracking-wide bg-yellow-200 hover:bg-yellow-300 dark:bg-yellow-800 dark:hover:bg-yellow-700 border-0"
                       onClick={handleApproveUSDC}
                     >
                       Allow USDC
@@ -163,7 +163,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                 ) : (
                   <div className="card-actions justify-end">
                     <button
-                      className="btn btn-secondary btn-md px-8 tracking-wide function-button"
+                      className="btn btn-primary btn-md px-8 tracking-wide bg-green-200 hover:bg-green-300 dark:bg-green-800 dark:hover:bg-green-700  border-0"
                       onClick={handleBuyNFT}
                     >
                       Mint NFT
@@ -190,13 +190,9 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
             {/* Display price and buy button only if price is available */}
             {nft.price && nft.payableCurrency && (
-              <div className="flex flex-row justify-around my-2 space-y-1">
+              <div className="flex flex-row items-center justify-around my-2 space-y-1">
                 <div>
-                  <div className="flex space-x-3 mt-1 items-center">
-                    <span className="font-semibold">Max Supply: </span>
-                    <span>{nft.maxTokenId}</span>
-                  </div>
-                  <div className="flex flex-row items-center gap-2">
+                  <div className="flex flex-row justify-center  gap-2">
                     <span className="text-lg">
                       <b>{formattedPrice}</b> {nft.payableCurrency}
                     </span>
@@ -207,7 +203,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                 {requiresApproval ? (
                   <div className="card-actions justify-end">
                     <button
-                      className="btn btn-warning btn-md px-8 tracking-wide bg-yellow-600 border-0"
+                      className="btn btn-primary btn-md px-8 tracking-wide bg-yellow-200 hover:bg-yellow-300 dark:bg-yellow-800 dark:hover:bg-yellow-700 border-0"
                       onClick={handleApproveUSDC}
                     >
                       Allow USDC
@@ -216,7 +212,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                 ) : (
                   <div className="card-actions justify-end">
                     <button
-                      className="btn btn-secondary btn-md px-8 tracking-wide function-button"
+                      className="btn btn-primary btn-md px-8 tracking-wide bg-red-200 hover:bg-red-300 dark:bg-red-800 dark:hover:bg-red-700 border-0"
                       onClick={handleBuyNFT}
                     >
                       Buy NFT

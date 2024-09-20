@@ -413,25 +413,7 @@ export const SimpleMint: NextPage = () => {
             </div>
           </div>
 
-          <div className="flex justify-center items-center mt-6 gap-3">
-            {isGaslessMinting ? (
-              <button
-                className={`btn btn-primary hover:bg-yellow-500 py-3 px-6 bg-yellow-600 ${loading ? "loading" : ""}`}
-                disabled={loading}
-                onClick={handleSimpleMint}
-              >
-                Propose NFT collection
-              </button>
-            ) : (
-              <button
-                className={`btn btn-primary hover:bg-green-500 py-3 px-6 bg-green-600 ${loading ? "loading" : ""}`}
-                disabled={loading}
-                onClick={handleMPaidMint}
-              >
-                Start NFT collection
-              </button>
-            )}
-
+          <div className="flex flex-col justify-center items-center mt-6 gap-3">
             {/* Toggle Button for Gasless Mint */}
             <label className="flex items-center cursor-pointer">
               <input
@@ -447,6 +429,28 @@ export const SimpleMint: NextPage = () => {
                 {isGaslessMinting ? "Gasless Minting" : "Paid Minting"}
               </span>
             </label>
+
+            {isGaslessMinting ? (
+              <button
+                className={`btn btn-primary hover:bg-yellow-500 py-3 px-6 bg-yellow-200 dark:bg-yellow-800 border-0 ${
+                  loading ? "loading" : ""
+                }`}
+                disabled={loading}
+                onClick={handleSimpleMint}
+              >
+                Propose NFT collection
+              </button>
+            ) : (
+              <button
+                className={`btn btn-primary py-3 px-6 bg-green-200 dark:bg-green-800 hover:bg-green-500 border-0 ${
+                  loading ? "loading" : ""
+                }`}
+                disabled={loading}
+                onClick={handleMPaidMint}
+              >
+                Start NFT collection
+              </button>
+            )}
           </div>
 
           {uploadedIpfsPath && (

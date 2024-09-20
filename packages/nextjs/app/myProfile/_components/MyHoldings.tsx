@@ -100,7 +100,7 @@ export const MyHoldings = () => {
           <div className="text-2xl text-primary-content">No NFTs found</div>
         </div>
       ) : (
-        <div className="flex flex-wrap gap-4 my-4 px-5 justify-center">
+        <div className="flex flex-wrap gap-6 my-4 px-5 justify-center">
           {myAllCollectibles.map(item => (
             <NFTCard nft={item} key={item.id} />
           ))}
