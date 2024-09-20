@@ -112,8 +112,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Add a way for artists (and collectors) to register their info (ideally with a signature)**
 - **Allow seeing other collectors profiles** and their NFTs
 - **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
-- **Add a page for the artist** with their NFTs and info about them
-- Make MyNFTs read all the NFTs owned by the user, and **not just the ones minted through the website**
+- **Add a page for the artist** with their NFTs and info about them (or just integrate created NFT on collectors profiles)
+- **Remixing feature for NFTs**, where the creator receives a % of the royalties of the remix
 
 ## Phase 3
 
@@ -125,6 +125,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Social
 
+- Make Profile read all the NFTs owned by the user, and **not just the ones minted through the website**
 - **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
 - **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc
 - **Token gated content**: Holders of song NFTs get access to special content for holders
@@ -149,12 +150,10 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Social
 
 - **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
-- **Remixing feature for NFTs**, where the creator receives a % of the royalties of the remix
 - **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
 - **Direct Messaging system** for artists and collectors
 - Ability to **make your own group/community**
-- **Guided Onboarding**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with blockchain or Web3 concepts.
-- **Educational Content**: Tutorials or content to explain Web3 concepts, NFT minting, and royalties can improve user adoption.
+- **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with Web3 concepts, NFT minting, and/or royalties to improve user adoption.
 
 # Completed product description
 
