@@ -126,7 +126,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
       {activeTab === "mintNFT" && (
         <div>
           <figure className="relative">
-            <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
+            <img src={nft.image} alt="NFT Image" className="w-full h-auto object-cover" />
           </figure>
           <div className="card-body space-y-3">
             {nft.animation_url && (

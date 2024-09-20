@@ -1,14 +1,4 @@
-<div style="text-align: center;">
-  <img src="packages/nextjs/public/logo.png" alt="Alt text" style="max-width: 100%; height: auto;">
-</div>
-
-# About
-
-🧪 This dApp is meant to facilitate art tokenization for artists, and listening, watching and trading NFTs
-
-⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
-
-🔗 To be deployed on Polygon and Avalanche (or other EVM compatible chains)
+- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/TECHNAI-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## Prerequisites
 
@@ -56,8 +46,6 @@ yarn start
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page.
 
 # Roadmap
-
-- To see detailed development info, [see here](https://lulox.notion.site/TECHNAI-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## Phase 1 ✅
 
@@ -150,14 +138,23 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 # Completed product description
 
+<div style="text-align: center;">
+  <img src="packages/nextjs/public/logo.png" alt="Alt text" style="max-width: 100%; height: auto;">
+</div>
+
 Technai is a Web3-based marketplace that empowers artists to mint and monetize their work as NFTs while providing collectors with unique investment opportunities.
 
 Our mission is to break down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
 
-## Background
+## About
 
-- Project started on [Aleph Hackathon](https://www.aleph.crecimiento.build/es-aleph-hackathon)
 - This repo was started with `npx create-eth@latest` with Foundry and integrated with the contracts and frontend from [github.com/luloxi/technai-marketplace](https://github.com/luloxi/technai-marketplace)
+
+🧪 Project started on [Aleph Hackathon](https://www.aleph.crecimiento.build/es-aleph-hackathon)
+
+⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
+
+🔗 To be deployed on Polygon and Avalanche (or other EVM compatible chains)
 
 ## Roles within the platform
 
