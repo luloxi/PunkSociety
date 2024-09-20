@@ -55,13 +55,6 @@ yarn start
 
 Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page.
 
-# Roles within the platform
-
-- Artists
-- NFT collectors (buy, sell, auction, collect)
-- Marketplace owner (one address, could be a DAO in the future)
-- Free users (watch, listen, in the future may consume ads)
-
 # Roadmap
 
 - To see detailed development info, [see here](https://lulox.notion.site/TECHNAI-3458ad216e8c40a9b4489fe026146552?pvs=74)
@@ -157,35 +150,52 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 # Completed product description
 
+Technai is a Web3-based marketplace that empowers artists to mint and monetize their work as NFTs while providing collectors with unique investment opportunities.
+
+Our mission is to break down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
+
+## Background
+
 - Project started on [Aleph Hackathon](https://www.aleph.crecimiento.build/es-aleph-hackathon)
 - This repo was started with `npx create-eth@latest` with Foundry and integrated with the contracts and frontend from [github.com/luloxi/technai-marketplace](https://github.com/luloxi/technai-marketplace)
+
+## Roles within the platform
+
+- Artists: Mint, remix, and earn royalties from NFTs.
+- NFT Collectors: Buy, sell, auction, and collect NFTs while benefiting from features like batch buying and cross-chain transfers.
+- Marketplace Owner: A central entity (or DAO) that manages marketplace fees and operations.
+- Free Users: Explore, watch, and listen to content, with future plans to include ad-supported music streaming.
+
+## Features
+
+🎨 **Simple Mint**: A cost-free minting solution for artists where the first minter sponsors the collection’s minting costs. The sponsor receives a share of royalties on all future sales, creating opportunities for art investors. The marketplace takes a 5% fee on first mint transactions.
+
+🔄 **Remixing Feature**: Allows artists to remix existing art and share royalties with the original artist. This promotes creative collaboration, where both the remixer and the original creator benefit from the sales of the remix.
+
+✅ **Royalties**: Artists can set royalties on their NFTs, earning passive income on future sales. In the case of Simple Mint, first minters also earn a percentage of royalties on all sales within the collection.
+
+🎶 **Music Player**: A full-featured on-chain music player that supports playlists, song likes, and playback on mobile and desktop via our PWA. Ads play for users streaming music they don’t own, providing additional income for artists.
+
+🌐 **Cross-Chain NFTs**: Seamless cross-chain NFT transfers using Chainlink's CCIP, allowing artists to extend their reach and access new markets.
+
+🪄 **Token Gated Content**: NFT holders get exclusive access to perks like backstage passes, special events, and live event rewards.
+
+📦 **Batch Buying**: A cost-saving feature that allows users to purchase multiple NFTs in a single transaction, reducing gas fees.
+
+🔒 **Web 2.5 Login**: Users can create profiles using familiar Web2 accounts like Twitter, Google, or Instagram, making onboarding easier. This auto-generates a crypto wallet for seamless interaction with the marketplace.
+
+🤝 **Social Features**: Build a personal profile, like NFTs, follow artists, message collectors, comment on pieces, and receive notifications about new drops from your favorite creators.
+
+👩‍🎤 **Artist NFTs (Limited Edition)**: Special artist NFTs that grant holders VIP experiences like backstage access, event invites, and more.
+
+🎓 **Educational Content**: A comprehensive onboarding experience, including video tutorials and step-by-step guides, to help users unfamiliar with NFTs, minting, or Web3 get started.
+
+📊 **Artist Dashboards**: Artists can view real-time insights into their NFTs' performance, including views, likes, and plays (for music), giving them deeper analytics into their work.
+
+📈 **Royalty and Revenue Tracking**: A simplified interface for artists to monitor royalties, sales, and overall revenue, providing a clear view of their earnings and growth trajectory.
 
 ## Deployed artifacts
 
 ### Frontend
 
 ### Contracts
-
-## Features
-
-🎶 **Music player**: This music player allows listening to onchain music, creating playlists, liking songs, all from your desktop or your mobile with our PWA.
-
-TBD -> If you listen to music you don't own, an ad will play once in a while to pay to the artists.
-
-📊 **Artist Dashboards**: Provide real-time insights for artists, such as statistics on how many times their NFTs have been viewed, liked, played (for music), etc.
-
-🎨 **Simple Mint**: A way for artists to upload and mint their collections for free, where a first minter sponsors the collection minting costs and gets a share of the royalties of all the NFTs minted in that collection. This creates a market for art investors being eager to first mint a piece of art they like.
-
-The complete cost for first minters consists in the price of 1 NFT plus the gas costs of the deployment transaction. The marketplace collects 5% of each first mint price.
-
-✅ **Royalties**: Artists have an option to set a royalty. This royalty is paid to the artist every time the NFT is sold through a market that supports the royalty standard, creating a passive income stream for artists.
-
-In the case of Simple Mint, the first minter of a collection gets a share of the royalties of all the NFTs minted in that collection.
-
-📈 **Royalty and Revenue Tracking**: Let artists track their royalties, sales, and revenue in an easy-to-understand interface.
-
-🌐 **Cross-Chain NFTs**: We allow artists and collectors to easily bridge their NFTs between blockchains, and thus access other marketplaces. We offer this functionality for NFTs minted on our marketplace by leveraging the Chainlink CCIP (Cross-Chain Interoperability Protocol).
-
-🔄 **Remixing Feature**: Take another artists piece and remix it. Then upload specifying what piece you remixed, and you can be displayed as a remixer artist on the art piece you remixed. The creator of the original piece will receive a percent of the royalties of the remix.
-
-🤝 **Social Features**: You can create your own profile, like NFTs, get notifications on your favorite artists, message with other collectors and artists, comment on NFTs, and much more!

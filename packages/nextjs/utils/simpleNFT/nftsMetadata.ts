@@ -6,10 +6,10 @@ const nftsMetadata = [
     image: "https://ipfs.io/ipfs/QmdsAeLoVrhu9APcXZuTGfnptgSrty2rfUULr5bqEEotLK",
     animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
     attributes: [
-      // {
-      //   trait_type: "Artwork",
-      //   value: "abstract",
-      // },
+      {
+        trait_type: "Artwork",
+        value: "abstract",
+      },
       {
         trait_type: "Reproduction Type",
         value: "mp3",
@@ -85,9 +85,9 @@ const nftsMetadata = [
   },
   // {
   //   description: "So delicate.",
-  //   external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
+  //   // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
   //   image: "https://austingriffith.com/images/paintings/flamingo.jpg",
-  //    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+  //   animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
   //   name: "Flamingo",
   //   attributes: [
   //     {
@@ -106,9 +106,9 @@ const nftsMetadata = [
   // },
   // {
   //   description: "Raaaar!",
-  //   external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
+  //   // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
   //   image: "https://austingriffith.com/images/paintings/godzilla.jpg",
-  //    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+  //   animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
   //   name: "Godzilla",
   //   attributes: [
   //     {

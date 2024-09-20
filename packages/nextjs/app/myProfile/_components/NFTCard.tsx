@@ -115,11 +115,20 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
       {/* Tab Content */}
       {activeTab === "artwork" && (
-        // Render all combined content (artwork, info, actions) here
         <div>
           <figure className="relative">
-            {/* eslint-disable-next-line */}
-            <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
+            {/* Check if image is IPFS or external URL */}
+            <img
+              src={
+                nft.image
+                  ? nft.image.startsWith("ipfs://")
+                    ? nft.image.replace("ipfs://", "https://ipfs.io/ipfs/")
+                    : nft.image
+                  : "https://via.placeholder.com/300" // Fallback image
+              }
+              alt="NFT Image"
+              className="h-60 min-w-full"
+            />
           </figure>
           <div className="card-body space-y-3">
             {nft.animation_url && (
