@@ -85,6 +85,9 @@ export const MyProfile: NextPage = () => {
     <div className="flex flex-col items-center p-6">
       {/* User Profile Section */}
       <div className="relative flex flex-col items-center bg-base-100 p-6 rounded-lg shadow-md w-full max-w-lg">
+        {/* Edit Profile Button */}
+        <button className="absolute top-4 right-4 btn btn-primary btn-sm">Edit Profile</button>
+
         {/* Profile Picture */}
         <div className="avatar">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">

@@ -242,6 +242,8 @@ contract Marketplace is ReentrancyGuard, Ownable {
       IERC20(USDC).transfer(nftSeller, sellerAmount);
       IERC20(USDC).transfer(royaltyReceiver, royaltyRecAmount);
     } else {
+      // WARNING: THIS IS A PLACEHOLDER, LEAVING IT LIKE THIS IS A VULNERABILITY
+
       // Implement AggregatorV3Interface to convert the USD value to the native token equivalent value
     }
 
@@ -274,6 +276,7 @@ contract Marketplace is ReentrancyGuard, Ownable {
     require(!listing.isAuction, "You cannot remove an active auction");
 
     delete listings[listingId];
+    // Add an event for when a listing is removed
   }
 
   // ============ UTILITIES ==============
