@@ -95,6 +95,18 @@ export const Header = () => {
               }}
             >
               <HeaderMenuLinks />
+              {/* Add My Profile to mobile dropdown */}
+              <li>
+                <Link
+                  href="/myProfile"
+                  className={`${
+                    pathname === "/myProfile" ? "bg-secondary shadow-md" : ""
+                  } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+                >
+                  <UserIcon className="h-4 w-4" />
+                  <span>My Profile</span>
+                </Link>
+              </li>
             </ul>
           )}
         </div>
@@ -113,16 +125,18 @@ export const Header = () => {
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4 flex gap-2 items-center">
-        {/* My Profile link with active style */}
-        <Link
-          href="/myProfile"
-          className={`${
-            pathname === "/myProfile" ? "bg-secondary shadow-md" : ""
-          } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
-        >
-          <UserIcon className="h-4 w-4" />
-          <span>My Profile</span>
-        </Link>
+        {/* My Profile link on desktop */}
+        <div className="hidden lg:flex items-center">
+          <Link
+            href="/myProfile"
+            className={`${
+              pathname === "/myProfile" ? "bg-secondary shadow-md" : ""
+            } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+          >
+            <UserIcon className="h-4 w-4" />
+            <span>My Profile</span>
+          </Link>
+        </div>
 
         <RainbowKitCustomConnectButton />
         <FaucetButton />

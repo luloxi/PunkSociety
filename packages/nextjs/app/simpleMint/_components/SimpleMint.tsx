@@ -207,7 +207,7 @@ export const SimpleMint: NextPage = () => {
 
       <div className="flex flex-col md:flex-row items-start flex-grow">
         {/* Input Fields Section */}
-        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 py-6 sticky top-0">
+        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 py-6 top-0">
           <div className="flex flex-col items-center">
             <h3 className="text-2xl font-bold mb-2">Enter your NFT details here</h3>
             <span className="text-red-500">* required fields</span>
