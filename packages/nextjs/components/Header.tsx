@@ -4,14 +4,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  // ArrowUpTrayIcon,
-  Bars3Icon, // BugAntIcon,
-  PhotoIcon,
-  ShoppingBagIcon, // StarIcon, // ArrowDownTrayIcon,
-  // ArrowPathIcon,
-  UserIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3Icon, PhotoIcon, ShoppingBagIcon, UserIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 
@@ -67,8 +60,9 @@ export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [theme, setTheme] = useState("light");
 
+  const pathname = usePathname(); // Add this line to track the active route
+
   useEffect(() => {
-    // Example: Detect the current theme from the 'data-theme' attribute
     const currentTheme = document.documentElement.getAttribute("data-theme");
     setTheme(currentTheme || "light");
   }, []);
@@ -119,10 +113,12 @@ export const Header = () => {
         </ul>
       </div>
       <div className="navbar-end flex-grow mr-4 flex gap-2 items-center">
-        {/* My Profile link */}
+        {/* My Profile link with active style */}
         <Link
           href="/myProfile"
-          className="hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col"
+          className={`${
+            pathname === "/myProfile" ? "bg-secondary shadow-md" : ""
+          } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
         >
           <UserIcon className="h-4 w-4" />
           <span>My Profile</span>

@@ -2,14 +2,14 @@ import { useState } from "react";
 import { Collectible } from "./MyHoldings";
 import { parseEther } from "viem";
 import { useAccount } from "wagmi";
-import { Address, AddressInput, InputBase } from "~~/components/scaffold-eth";
-import { useDeployedContractInfo, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { AddressInput, InputBase } from "~~/components/scaffold-eth";
+import { useDeployedContractInfo, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 // For ETH conversion
 
 export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const [transferToAddress, setTransferToAddress] = useState("");
-  const [activeTab, setActiveTab] = useState("details");
+  const [activeTab, setActiveTab] = useState("artwork");
   const [NFTPrice, setNFTPrice] = useState(0);
   const [payableCurrency, setPayableCurrency] = useState("0"); // "0" for ETH, "1" for USDC
   const [isAuction, setIsAuction] = useState(false);
@@ -23,7 +23,24 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const { writeContractAsync: MockERC721WriteContractAsync } = useScaffoldWriteContract("MockNFT");
   const { writeContractAsync: MarketplaceWriteContractAsync } = useScaffoldWriteContract("Marketplace");
   const { data: mockERC721Data } = useDeployedContractInfo("MockNFT");
-  // const { data: marketplaceData } = useDeployedContractInfo("Marketplace");
+  const { data: marketplaceData } = useDeployedContractInfo("Marketplace");
+
+  const { data: isApproved } = useScaffoldReadContract({
+    contractName: "MockNFT",
+    functionName: "getApproved",
+    args: [BigInt(nft.id.toString())],
+  });
+
+  const handleApprove = async () => {
+    try {
+      await MockERC721WriteContractAsync({
+        functionName: "approve",
+        args: [marketplaceData?.address, BigInt(nft.id.toString())],
+      });
+    } catch (err) {
+      console.error("Error calling transferFrom function", err);
+    }
+  };
 
   const handleTransfer = async () => {
     try {
@@ -75,6 +92,12 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
       {/* Tabs navigation */}
       <div className="tabs flex justify-center gap-3">
         <a
+          className={`tab tab-bordered ${activeTab === "artwork" ? "tab-active" : ""}`}
+          onClick={() => setActiveTab("artwork")}
+        >
+          Artwork
+        </a>
+        <a
           className={`tab tab-bordered ${activeTab === "details" ? "tab-active" : ""}`}
           onClick={() => setActiveTab("details")}
         >
@@ -91,16 +114,26 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
       </div>
 
       {/* Tab Content */}
-      {activeTab === "details" && (
+      {activeTab === "artwork" && (
         // Render all combined content (artwork, info, actions) here
         <div>
           <figure className="relative">
             {/* eslint-disable-next-line */}
             <img src={nft.image} alt="NFT Image" className="h-60 min-w-full" />
-            <figcaption className="glass absolute bottom-4 left-4 p-4 w-25 rounded-xl">
-              <span className="text-white "># {nft.id}</span>
-            </figcaption>
           </figure>
+          <div className="card-body space-y-3">
+            {nft.animation_url && (
+              <video controls className="w-full h-14">
+                <source src={nft.animation_url} type="audio/mpeg" />
+              </video>
+            )}
+          </div>
+        </div>
+      )}
+
+      {activeTab === "details" && (
+        // Render all combined content (artwork, info, actions) here
+        <div>
           <div className="card-body space-y-3">
             <div className="flex items-center justify-center">
               <p className="text-xl p-0 m-0 font-semibold">{nft.name}</p>
@@ -112,18 +145,16 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                 ))}
               </div>
             </div>
+
             <div className="flex flex-col justify-center mt-1">
               <p className="my-0 text-lg">{nft.description}</p>
             </div>
-            {nft.animation_url && (
-              <video controls className="w-full h-14">
-                <source src={nft.animation_url} type="audio/mpeg" />
-              </video>
-            )}
-            <div className="flex space-x-3 mt-1 items-center">
-              <span className="text-lg font-semibold">Owner : </span>
-              <Address address={nft.owner} />
+            <div className="flex flex-col justify-center mt-1">
+              <span className="text-white text-lg">
+                <strong>Id:</strong> {nft.id}
+              </span>
             </div>
+
             <div className="flex flex-col my-2 space-y-1">
               <span className="text-lg font-semibold mb-1">Transfer To: </span>
               <AddressInput
@@ -146,7 +177,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
         <div className="card-body space-y-3">
           {/* Payable Currency Toggle */}
           <div className="form-control">
-            <p className="text-lg font-semibold">Create Listing</p>
+            <p className="text-lg font-semibold">List NFT for sale</p>
             <span className="label-text font-semibold">Currency</span>
             <label className="label cursor-pointer items-center flex flex-row">
               <span>{payableCurrency === "0" ? "ETH" : "USDC"}</span>
@@ -232,10 +263,23 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
           )}
 
           {/* Create Listing Button */}
+
           <div className="card-actions justify-end">
-            <button className="btn btn-primary btn-md px-8 tracking-wide function-button" onClick={handleCreateListing}>
-              Create Listing
-            </button>
+            {marketplaceData && isApproved && isApproved.toLowerCase() == marketplaceData.address ? (
+              <button
+                className="btn btn-primary btn-md px-8 tracking-wide function-button"
+                onClick={handleCreateListing}
+              >
+                Create Listing
+              </button>
+            ) : (
+              <button
+                className="btn btn-primary bg btn-md px-8 tracking-wide bg-yellow-600 border-0"
+                onClick={handleApprove}
+              >
+                Approve this NFT
+              </button>
+            )}
           </div>
         </div>
       )}

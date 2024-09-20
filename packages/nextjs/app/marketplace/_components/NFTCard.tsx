@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { formatEther } from "viem";
+import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
-import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useDeployedContractInfo, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Collectible extends Partial<NFTMetaData> {
@@ -25,7 +26,21 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
   }
   const [activeTab, setActiveTab] = useState(initialActiveTab);
 
+  const { address: connectedAddress } = useAccount();
+
   const { writeContractAsync: MarketplaceWriteContractAsync } = useScaffoldWriteContract("Marketplace");
+  const { writeContractAsync: USDCWriteContractAsync } = useScaffoldWriteContract("MockUSDC");
+
+  const { data: marketplaceData } = useDeployedContractInfo("Marketplace");
+
+  const { data: usdcAllowance } = useScaffoldReadContract({
+    contractName: "MockUSDC",
+    functionName: "allowance",
+    args: [connectedAddress, marketplaceData?.address],
+    watch: true,
+  });
+
+  console.log("usdcAllowance", usdcAllowance);
 
   const handleBuyNFT = async () => {
     if (!nft.listingId || !nft.price || !nft.payableCurrency) return; // Skip if required data is missing
@@ -49,13 +64,36 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
     }
   };
 
-  // Convert and format price for display (handle if price is undefined)
+  const handleApproveUSDC = async () => {
+    if (!nft.listingId || !nft.price || !nft.payableCurrency) return; // Skip if required data is missing
+
+    try {
+      // let value;
+
+      await USDCWriteContractAsync({
+        functionName: "approve",
+        args: [marketplaceData?.address, BigInt(nft.price)],
+      });
+    } catch (err) {
+      console.error("Error calling buy function", err);
+    }
+  };
+
+  // Convert and format price for display
   const formattedPrice =
     nft.price && nft.payableCurrency === "ETH"
       ? formatEther(BigInt(nft.price)) // Format from wei to ETH
       : nft.price
       ? (parseInt(nft.price) / 1e6).toFixed(2) // Format USDC (assuming 6 decimal places)
       : "N/A"; // If price is undefined
+
+  const usdcPriceInUnits = nft.price ? BigInt(nft.price) : BigInt(0); // Ensure USDC price is handled as BigInt
+
+  // Check if approval is required (USDC)
+  const requiresApproval =
+    nft.payableCurrency === "USDC" &&
+    usdcAllowance !== undefined && // Ensure that allowance is defined
+    usdcPriceInUnits > BigInt(usdcAllowance.toString()); // Ensure comparison is accurate
 
   return (
     <div className="card card-compact bg-base-100 w-[300px]">
@@ -112,15 +150,26 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                   </div>
                 </div>
 
-                <div className="card-actions justify-end">
-                  <button
-                    // className="btn btn-secondary bg-green-600 btn-md px-8 tracking-wide function-button"
-                    className={`btn btn-primary hover:bg-green-500 py-3 px-6 bg-green-600 `}
-                    onClick={handleBuyNFT}
-                  >
-                    Mint
-                  </button>
-                </div>
+                {/* Conditionally render the Allow button */}
+                {requiresApproval ? (
+                  <div className="card-actions justify-end">
+                    <button
+                      className="btn btn-warning btn-md px-8 tracking-wide function-button"
+                      onClick={handleApproveUSDC}
+                    >
+                      Allow USDC
+                    </button>
+                  </div>
+                ) : (
+                  <div className="card-actions justify-end">
+                    <button
+                      className="btn btn-secondary btn-md px-8 tracking-wide function-button"
+                      onClick={handleBuyNFT}
+                    >
+                      Mint NFT
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -141,22 +190,39 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
             {/* Display price and buy button only if price is available */}
             {nft.price && nft.payableCurrency && (
-              <div className="flex flex-row justify-around items-center my-2 space-y-1">
+              <div className="flex flex-row justify-around my-2 space-y-1">
                 <div>
+                  <div className="flex space-x-3 mt-1 items-center">
+                    <span className="font-semibold">Max Supply: </span>
+                    <span>{nft.maxTokenId}</span>
+                  </div>
                   <div className="flex flex-row items-center gap-2">
                     <span className="text-lg">
                       <b>{formattedPrice}</b> {nft.payableCurrency}
                     </span>
                   </div>
                 </div>
-                <div className="card-actions justify-end">
-                  <button
-                    className="btn btn-secondary btn-md px-8 tracking-wide function-button"
-                    onClick={handleBuyNFT}
-                  >
-                    Buy
-                  </button>
-                </div>
+
+                {/* Conditionally render the Allow button */}
+                {requiresApproval ? (
+                  <div className="card-actions justify-end">
+                    <button
+                      className="btn btn-warning btn-md px-8 tracking-wide bg-yellow-600 border-0"
+                      onClick={handleApproveUSDC}
+                    >
+                      Allow USDC
+                    </button>
+                  </div>
+                ) : (
+                  <div className="card-actions justify-end">
+                    <button
+                      className="btn btn-secondary btn-md px-8 tracking-wide function-button"
+                      onClick={handleBuyNFT}
+                    >
+                      Buy NFT
+                    </button>
+                  </div>
+                )}
               </div>
             )}
           </div>

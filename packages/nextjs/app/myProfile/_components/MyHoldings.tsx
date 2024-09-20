@@ -46,9 +46,9 @@ export const MyHoldings = () => {
           const tokenURI = await yourCollectibleContract.read.tokenURI([tokenId]);
           const owner = await yourCollectibleContract.read.ownerOf([tokenId]);
 
-          // if (showOnlyMyNFTs && owner.toLowerCase() !== connectedAddress.toLowerCase()) {
-          //   continue;
-          // }
+          if (owner.toLowerCase() !== connectedAddress.toLowerCase()) {
+            continue;
+          }
 
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
 
@@ -73,7 +73,6 @@ export const MyHoldings = () => {
     };
 
     updateMyCollectibles();
-    // }, [connectedAddress, showOnlyMyNFTs, myTotalBalance]); // Watching balance to update NFTs
   }, [connectedAddress, myTotalBalance]); // Watching balance to update NFTs
 
   if (allCollectiblesLoading)
