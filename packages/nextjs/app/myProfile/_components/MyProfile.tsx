@@ -83,6 +83,20 @@ export const MyProfile: NextPage = () => {
 
   return (
     <div className="flex flex-col items-center p-6">
+      <div className="flex justify-center mb-4">
+        {!isConnected || isConnecting ? (
+          <RainbowKitCustomConnectButton />
+        ) : (
+          <div className="flex flex-row gap-3">
+            <button className="btn btn-secondary" onClick={handleMintItem}>
+              Mint test NFT
+            </button>
+            <button className="btn btn-secondary" onClick={handleMintUSDC}>
+              Mint test USDC
+            </button>
+          </div>
+        )}
+      </div>
       {/* User Profile Section */}
       <div className="relative flex flex-col items-center bg-base-100 p-6 rounded-lg shadow-md w-full max-w-lg">
         {/* Edit Profile Button */}
@@ -138,23 +152,9 @@ export const MyProfile: NextPage = () => {
         </div>
       </div>
       {/* Content Based on Active Tab */}
-      <div className="bg-base-200 p-6 rounded-lg shadow-md">
+      <div className="bg-base-200 rounded-lg">
         {activeTab === "your-nfts" && (
           <>
-            <div className="flex justify-center mb-4">
-              {!isConnected || isConnecting ? (
-                <RainbowKitCustomConnectButton />
-              ) : (
-                <div className="flex flex-row gap-3">
-                  <button className="btn btn-secondary" onClick={handleMintItem}>
-                    Mint test NFT
-                  </button>
-                  <button className="btn btn-secondary" onClick={handleMintUSDC}>
-                    Mint test USDC
-                  </button>
-                </div>
-              )}
-            </div>
             <MyHoldings />
           </>
         )}
