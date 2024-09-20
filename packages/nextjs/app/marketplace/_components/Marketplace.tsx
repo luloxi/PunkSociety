@@ -26,6 +26,9 @@ export const Marketplace = () => {
   const { address: isConnected, isConnecting } = useAccount();
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
 
+  // Tab management state
+  const [activeTab, setActiveTab] = useState("newest");
+
   // Fetch the collectible contract
   const { data: yourCollectibleContract } = useScaffoldContract({
     contractName: "MockNFT",
@@ -181,6 +184,35 @@ export const Marketplace = () => {
   return (
     <>
       <MarketplaceDescription />
+      {/* Tabs Section */}
+      <div className="mt-2 bg-base-100 w-full rounded-lg">
+        <div className="tabs justify-center">
+          <a
+            className={`tab tab-lifted ${activeTab === "newest" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            onClick={() => setActiveTab("newest")}
+          >
+            Newest
+          </a>
+          <a
+            className={`tab tab-lifted ${activeTab === "on-sale" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            onClick={() => setActiveTab("on-sale")}
+          >
+            On Sale
+          </a>
+          <a
+            className={`tab tab-lifted ${activeTab === "mintables" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            onClick={() => setActiveTab("mintables")}
+          >
+            Mintables
+          </a>
+          <a
+            className={`tab tab-lifted ${activeTab === "first-mints" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            onClick={() => setActiveTab("first-mints")}
+          >
+            First mints
+          </a>
+        </div>
+      </div>
       <div className="flex justify-center">{!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}</div>
       {listedCollectibles.length === 0 ? (
         <div className="flex justify-center items-center mt-10">
