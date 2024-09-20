@@ -15,6 +15,10 @@ contract DeployScript is ScaffoldETHDeploy {
   address usdcOnAvalancheFuji = 0x5425890298aed601595a70AB815c96711a31Bc65;
   address usdcOnPolygonAmoy = 0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582;
 
+  SimpleMint simpleMint;
+  MockNFT mockNFT;
+  Marketplace marketplace;
+
   error InvalidPrivateKey(string);
 
   function run() external {
@@ -26,27 +30,27 @@ contract DeployScript is ScaffoldETHDeploy {
     }
     vm.startBroadcast(deployerPrivateKey);
 
-    SimpleMint simpleMint = new SimpleMint();
+    simpleMint = new SimpleMint();
     console.logString(
       string.concat(
         "SimpleMint deployed at: ", vm.toString(address(simpleMint))
       )
     );
 
-    MockNFT mockNFT = new MockNFT();
+    mockNFT = new MockNFT();
     console.logString(
       string.concat("MockNFT deployed at: ", vm.toString(address(mockNFT)))
     );
 
     if (block.chainid == AVALANCHE_FUJI_CHAIN_ID) {
-      Marketplace marketplace = new Marketplace(usdcOnAvalancheFuji);
+      marketplace = new Marketplace(usdcOnAvalancheFuji);
       console.logString(
         string.concat(
           "Marketplace deployed at: ", vm.toString(address(marketplace))
         )
       );
     } else if (block.chainid == POLYGON_AMOY_CHAIN_ID) {
-      Marketplace marketplace = new Marketplace(usdcOnPolygonAmoy);
+      marketplace = new Marketplace(usdcOnPolygonAmoy);
       console.logString(
         string.concat(
           "Marketplace deployed at: ", vm.toString(address(marketplace))
@@ -59,12 +63,14 @@ contract DeployScript is ScaffoldETHDeploy {
           "Local USDC (MockUSDC) deployed at: ", vm.toString(address(localUSDC))
         )
       );
-      Marketplace marketplace = new Marketplace(address(localUSDC));
+      marketplace = new Marketplace(address(localUSDC));
       console.logString(
         string.concat(
           "Marketplace deployed at: ", vm.toString(address(marketplace))
         )
       );
+      // Populate the marketplace with some initial NFTs
+      mintInitialMarketplaceNFTs();
     }
 
     vm.stopBroadcast();
@@ -75,6 +81,49 @@ contract DeployScript is ScaffoldETHDeploy {
      * This function should be called last.
      */
     exportDeployments();
+  }
+
+  function mintInitialMarketplaceNFTs() internal {
+    mockNFT.mintItem(
+      "https://ipfs.io/ipfs/Qmeh4aKV1DVBm324MFnKzUgmz74ZYFJPj77bZzsGoLjBaj"
+    );
+    mockNFT.approve(address(marketplace), 1);
+    mockNFT.mintItem(
+      "https://ipfs.io/ipfs/QmWgTmATX7weXVyimHkjaY7MJJro8ZM2mU6n4KrGt1yQgE"
+    );
+    mockNFT.approve(address(marketplace), 2);
+    mockNFT.mintItem(
+      "https://ipfs.io/ipfs/QmTy34vycaA6by2D5VadtqTazhg9pKa5ZAwpnnX7ust4qs"
+    );
+    mockNFT.approve(address(marketplace), 3);
+    mockNFT.mintItem(
+      "https://ipfs.io/ipfs/QmVxLz4mmP9uY4P3fbi88mpemWcAvnZYX8sbqKGk88x5YP"
+    );
+    mockNFT.approve(address(marketplace), 4);
+    simpleMint.startCollection(
+      "Vaquita en el Monte",
+      "VM",
+      "https://ipfs.io/ipfs/QmWRssgjvrkyoSwWspzxrHfU6DTMbdVY2oR6zKgzvtnts2",
+      msg.sender,
+      3 * 1e6,
+      30
+    );
+
+    // mockNFT.mintItem(
+    //   "https://ipfs.io/ipfs/QmWRssgjvrkyoSwWspzxrHfU6DTMbdVY2oR6zKgzvtnts2"
+    // );
+    marketplace.createListing(
+      address(mockNFT), 1, 15 * 1e6, Marketplace.Currency.USDCToken, false, 0
+    );
+    marketplace.createListing(
+      address(mockNFT), 2, 15 * 1e16, Marketplace.Currency.NativeToken, false, 0
+    );
+    marketplace.createListing(
+      address(mockNFT), 3, 5 * 1e6, Marketplace.Currency.USDCToken, false, 0
+    );
+    marketplace.createListing(
+      address(mockNFT), 4, 5 * 1e16, Marketplace.Currency.NativeToken, false, 0
+    );
   }
 
   function test() public { }

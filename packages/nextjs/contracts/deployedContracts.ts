@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     SimpleMint: {
-      address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      address: "0xca8c8688914e0f7096c920146cd0ad85cd7ae8b9",
       abi: [
         {
           type: "constructor",
@@ -320,7 +320,7 @@ const deployedContracts = {
       },
     },
     MockNFT: {
-      address: "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
+      address: "0xb0f05d25e41fbc2b52013099ed9616f1206ae21b",
       abi: [
         {
           type: "constructor",
@@ -940,7 +940,7 @@ const deployedContracts = {
       },
     },
     MockUSDC: {
-      address: "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
+      address: "0x5feaebfb4439f3516c74939a9d04e95afe82c4ae",
       abi: [
         {
           type: "constructor",
@@ -1397,7 +1397,7 @@ const deployedContracts = {
       },
     },
     Marketplace: {
-      address: "0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9",
+      address: "0x976fcd02f7c4773dd89c309fbf55d5923b4c98a1",
       abi: [
         {
           type: "constructor",
