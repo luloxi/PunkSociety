@@ -91,21 +91,15 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
     <div className="card card-compact bg-base-100  w-[300px] ">
       {/* Tabs navigation */}
       <div className="tabs flex justify-center gap-3">
-        <a
-          className={`tab tab-bordered ${activeTab === "artwork" ? "tab-active" : ""}`}
-          onClick={() => setActiveTab("artwork")}
-        >
+        <a className={`tab ${activeTab === "artwork" ? "bg-blue-500" : ""}`} onClick={() => setActiveTab("artwork")}>
           Artwork
         </a>
-        <a
-          className={`tab tab-bordered ${activeTab === "details" ? "tab-active" : ""}`}
-          onClick={() => setActiveTab("details")}
-        >
+        <a className={`tab  ${activeTab === "details" ? "bg-blue-500" : ""}`} onClick={() => setActiveTab("details")}>
           Details
         </a>
         {connectedAddress === nft.owner && (
           <a
-            className={`tab tab-bordered ${activeTab === "sellNFT" ? "tab-active" : ""}`}
+            className={`tab  ${activeTab === "sellNFT" ? "tab-active border-0" : ""}`}
             onClick={() => setActiveTab("sellNFT")}
           >
             Sell NFT
@@ -174,7 +168,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
       {activeTab === "sellNFT" && (
         // Render Marketplace content here
-        <div className="card-body space-y-3">
+        <div className="card-body">
           {/* Payable Currency Toggle */}
           <div className="form-control">
             <p className="text-lg font-semibold">List NFT for sale</p>

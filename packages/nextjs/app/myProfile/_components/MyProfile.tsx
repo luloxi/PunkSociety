@@ -82,69 +82,60 @@ export const MyProfile: NextPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center p-6">
-      <div className="flex justify-center mb-4">
-        {!isConnected || isConnecting ? (
-          <RainbowKitCustomConnectButton />
-        ) : (
-          <div className="flex flex-row gap-3">
-            <button className="btn btn-secondary" onClick={handleMintItem}>
-              Mint test NFT
-            </button>
-            <button className="btn btn-secondary" onClick={handleMintUSDC}>
-              Mint test USDC
-            </button>
-          </div>
-        )}
-      </div>
+    <div className="flex flex-col items-center p-2">
       {/* User Profile Section */}
-      <div className="relative flex flex-col items-center bg-base-100 p-6 rounded-lg shadow-md w-full max-w-lg">
-        {/* Edit Profile Button */}
-        <button className="absolute top-4 right-4 btn btn-primary btn-sm">Edit Profile</button>
-
-        {/* Profile Picture */}
-        <div className="avatar">
+      <div className="relative flex flex-col md:flex-row items-start bg-base-100 p-6 rounded-lg shadow-md w-full">
+        {/* Profile Picture at the Top Left */}
+        <div className="avatar mr-4 md:mr-8">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <img src="https://via.placeholder.com/150" alt="Profile" />
           </div>
         </div>
 
-        {/* User Bio */}
-        <div className="flex flex-col justify-center items-center mt-4">
+        {/* User Info Section */}
+        <div className="flex flex-col justify-start">
           <h2 className="text-2xl font-bold">-unregistered user-</h2>
-          <Address address={connectedAddress} />
-
-          <p className="text-base-content mt-2">-no bio available-</p>
+          <div className="text-base-content">
+            <Address address={connectedAddress} />
+          </div>
         </div>
 
-        {/* USDC Balance and Logo */}
-        <div className="absolute bottom-2 right-2 flex items-center gap-2 mr-3">
-          <img
-            src="usdc-logo.png"
-            alt="USDC Logo"
-            className="w-6 h-6 object-contain" // Set width and height, use object-contain to maintain aspect ratio
-          />
-          <p className="text-sm text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
+        {/* User Bio (centered) */}
+        <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
+          <p className="text-base-content">-no bio available-</p>
+          <p className="text-base-content">-no URL provided-</p>
+        </div>
+
+        {/* Edit Profile Button at the Top Right */}
+        <button className="absolute top-4 right-4 btn btn-primary btn-sm">Edit Profile</button>
+
+        {/* USDC Balance and Logo at the Bottom Right */}
+        <div className="absolute bottom-2 right-4 flex items-center gap-2">
+          <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
+            Mint test USDC
+          </button>
+          <img src="usdc-logo.png" alt="USDC Logo" className="w-7 h-7 object-contain" />
+          <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
         </div>
       </div>
 
       {/* Tabs Section */}
-      <div className="mt-8 w-full max-w-3xl">
+      <div className="mt-2 bg-base-300 w-full rounded-lg">
         <div className="tabs justify-center">
           <a
-            className={`tab tab-lifted ${activeTab === "your-nfts" ? "tab-active" : ""}`}
+            className={`tab tab-lifted ${activeTab === "your-nfts" ? "bg-blue-500" : ""}`}
             onClick={() => setActiveTab("your-nfts")}
           >
             Your NFTs
           </a>
           <a
-            className={`tab tab-lifted ${activeTab === "nfts-on-sale" ? "tab-active" : ""}`}
+            className={`tab tab-lifted ${activeTab === "nfts-on-sale" ? "bg-blue-500" : ""}`}
             onClick={() => setActiveTab("nfts-on-sale")}
           >
             NFTs on Sale
           </a>
           <a
-            className={`tab tab-lifted ${activeTab === "past-sales" ? "tab-active" : ""}`}
+            className={`tab tab-lifted ${activeTab === "past-sales" ? "bg-blue-500" : ""}`}
             onClick={() => setActiveTab("past-sales")}
           >
             Past Sales
@@ -152,10 +143,21 @@ export const MyProfile: NextPage = () => {
         </div>
       </div>
       {/* Content Based on Active Tab */}
-      <div className="bg-base-200 rounded-lg">
+      <div>
         {activeTab === "your-nfts" && (
           <>
             <MyHoldings />
+            <div className="flex justify-center mb-4">
+              {!isConnected || isConnecting ? (
+                <RainbowKitCustomConnectButton />
+              ) : (
+                <div className="flex flex-row gap-3">
+                  <button className="btn btn-secondary" onClick={handleMintItem}>
+                    Mint test NFT
+                  </button>
+                </div>
+              )}
+            </div>
           </>
         )}
 
