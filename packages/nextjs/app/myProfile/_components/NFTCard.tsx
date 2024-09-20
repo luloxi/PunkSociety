@@ -10,7 +10,7 @@ import { useDeployedContractInfo, useScaffoldReadContract, useScaffoldWriteContr
 export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const [transferToAddress, setTransferToAddress] = useState("");
   const [activeTab, setActiveTab] = useState("artwork");
-  const [NFTPrice, setNFTPrice] = useState(0);
+  const [NFTPrice, setNFTPrice] = useState("");
   const [payableCurrency, setPayableCurrency] = useState("0"); // "0" for ETH, "1" for USDC
   const [isAuction, setIsAuction] = useState(false);
   const [biddingTimeDays, setBiddingTimeDays] = useState(0);
@@ -68,7 +68,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
         priceInSmallestUnit = parseEther(NFTPrice.toString());
       } else {
         // USDC: Convert to smallest unit by multiplying by 10^6 (for 6 decimals)
-        priceInSmallestUnit = BigInt(Math.floor(NFTPrice * 1e6).toString());
+        priceInSmallestUnit = BigInt(Math.floor(parseInt(NFTPrice) * 1e6).toString());
       }
 
       await MarketplaceWriteContractAsync({

@@ -66,7 +66,9 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - To see detailed development info, [see here](https://lulox.notion.site/TECHNAI-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
-## Phase 1
+## Phase 1 ✅
+
+<details><summary>See completed tasks</summary>
 
 ### Simple Mint
 
@@ -87,37 +89,43 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - ✅ **Add a profile for the collector** with their NFTs and info about them
 
+</details>
+
 ## Phase 2
+
+- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
 ### Simple Mint
 
 - ✅ **Simple minting function** for artists to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
-- **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
+- **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
 
 ### Marketplace
 
 - **Display auction info and interactions**
-- **Add NFTs available for first minting** reading from the database with NFTs available to complete the Simple Mint process
-- **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
-- **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
-- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
+- **Add NFTs available for first minting** reading from the database with signatures collected through the Simple Mint process
 
 ### Social
 
+- **Add a way for artists (and collectors) to register their info (ideally with a signature)**
 - **Allow seeing other collectors profiles** and their NFTs
 - **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
 - **Add a page for the artist** with their NFTs and info about them
-- **Add a way for artists (and collectors) to register their info (ideally with a signature)**
-- **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
+- Make MyNFTs read all the NFTs owned by the user, and **not just the ones minted through the website**
 
 ## Phase 3
 
+### Marketplace
+
+- **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
+- **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 - **Periodically airdrop dividends** in USDC for creators (and first minters if appliable) (may not even be necessary if royalties pay redirect funds to the creators directly)
 
 ### Social
 
+- **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
 - **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc
 - **Token gated content**: Holders of song NFTs get access to special content for holders
 - Introduce **web2 social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
@@ -147,35 +155,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - Ability to **make your own group/community**
 - **Guided Onboarding**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with blockchain or Web3 concepts.
 - **Educational Content**: Tutorials or content to explain Web3 concepts, NFT minting, and royalties can improve user adoption.
-
-### (Backend is currently not implemented)
-
-- [Here are the files that interact with backend](https://lulox.notion.site/Database-files-04686fe4dfde4025a7939a3a9a5caca8?pvs=4)
-- [Here's how I configured the local backend](https://lulox.notion.site/Firebase-10213362a574808a80f6c0bd8f890db2?pvs=4) (good to debug if it doesn't work out of the box)
-- Update `eip712.ts` info with the deployed contract info (address and chain) when deploying to a live chain or when deploying a second version on the local chaion
-
-1. Set up your environment variables (and optionally, a local Firebase instance):
-   Copy the `packages/nextjs/.env.example` file to `packages/nextjs/.env.local` and fill in the required environment variables.
-   _When going online, fill in the commented out environment variables._
-
-   (Optional) Start the firebase emulators (vs set up a live Firebase instance). You will need to install the [firebase CLI](https://firebase.google.com/docs/cli#install_the_firebase_cli) on macOS, Linux, or use [WSL on Windows](https://learn.microsoft.com/en-us/windows/wsl/install) and run the following command:
-
-   ```bash
-   # You might need to add a real "--project <projectName>" (run firebase projects:list)
-   firebase emulators:start
-   ```
-
-2. Seed data in your local Firebase instance:
-
-   Copy the `packages/local_db/seed.sample.json` to `packages/local_db/seed.json` and tweak the data as you see fit. Then run the following command:
-
-   ```bash
-   yarn seed
-   ```
-
-   To seed it to empty _*live*_ firestore instance you can use `yarn seed --force-prod`. If there is data in the live instance, it will not seed it again to bypass it use `yarn seed --reset --force-prod`
-
-Visit your backend on: `http://localhost:4000/`. You can see what data is being stored in your Firebase database.
 
 # Completed product description
 
