@@ -1,14 +1,14 @@
 import { ChangeEvent, FocusEvent, ReactNode, useCallback, useEffect, useRef } from "react";
 import { CommonInputProps } from "~~/components/scaffold-eth";
 
-type TextAreaBaseProps<T> = CommonInputProps<T> & {
+type DescriptionInputProps<T> = CommonInputProps<T> & {
   error?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
   reFocus?: boolean;
 };
 
-export const TextAreaBase = <T extends { toString: () => string } | undefined = string>({
+export const DescriptionInput = <T extends { toString: () => string } | undefined = string>({
   name,
   value,
   onChange,
@@ -18,7 +18,7 @@ export const TextAreaBase = <T extends { toString: () => string } | undefined = 
   prefix,
   suffix,
   reFocus,
-}: TextAreaBaseProps<T>) => {
+}: DescriptionInputProps<T>) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   let modifier = "";

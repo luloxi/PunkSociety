@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import { TextAreaBase } from "./TextAreaBase";
+import Image from "next/image";
+import { DescriptionInput } from "./DescriptionInput";
 import generateTokenURI from "./generateTokenURI";
 import { SimpleMintDescription } from "./simpleMintDescription";
 import type { NextPage } from "next";
@@ -198,271 +199,243 @@ export const SimpleMint: NextPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-between">
+    <>
       <SimpleMintDescription />
+      <div className="w-full md:w-2/3 md:mx-auto px-0">
+        {/* <SimpleMintDescription /> */}
 
-      {/* <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 bg-base-100 py-6 rounded-lg">
+        {/* <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 bg-base-100 py-6 rounded-lg">
         <h3 className="text-2xl font-bold mb-4 text-center">NFT Preview</h3>
       </div> */}
 
-      <div className="flex flex-col md:flex-row items-start flex-grow">
-        {/* Input Fields Section */}
-        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 py-6 top-0">
-          <div className="flex flex-col items-center">
-            <h3 className="text-2xl font-bold mb-2">Enter your NFT details here</h3>
-            <span className="text-red-500">* required fields</span>
-          </div>
-          <div className="flex flex-row items-center justify-evenly">
-            <div className="py-2 w-full pr-4">
-              <span className="font-bold p-3 mt-64">
-                Collection name <span className="text-red-500">*</span>
-              </span>
-              <InputBase placeholder="Picca Who?" value={collectionName} onChange={setCollectionName} />
+        <div className="flex flex-col md:flex-row items-start flex-grow">
+          {/* JSON Display Section */}
+          <div className="w-full px-4 mt-4 bg-base-100 py-6 rounded-lg mb-10">
+            <div className="flex flex-col justify-center items-center mb-4">
+              <h3 className="text-2xl font-bold mb-2">Enter your NFT details here</h3>
+              <span className="text-red-500">* required fields</span>
             </div>
-            <div className="py-2">
-              <span className="font-bold p-3">
-                Symbol <span className="text-red-500">*</span>
-              </span>
-              <InputBase placeholder="PW" value={collectionSymbol} onChange={setCollectionSymbol} />
-            </div>
-          </div>
-          <div className="py-2">
-            <span className="font-bold p-3">
-              Description <span className="text-red-500">*</span>
-            </span>
 
-            <TextAreaBase
-              name="description"
-              value={description}
-              onChange={setDescription}
-              placeholder="Enter description"
-            />
-          </div>
+            {/* Flex container for media and text */}
+            <div className="flex flex-row items-start space-x-4 mb-4">
+              {/* Media Section */}
 
-          <div className="py-2">
-            <span className="font-bold p-3">
-              Image URL <span className="text-red-500">*</span>
-            </span>
-            <InputBase placeholder="https:// or ipfs://" value={image} onChange={setImage} />
-          </div>
-          <div className="py-2">
-            <span className="font-bold p-3">Audio/Video URL</span>
-            <InputBase placeholder="https:// or ipfs://" value={animationUrl} onChange={setAnimationUrl} />
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-bold mb-4">Attributes</h3>
-
-            {/* Button to add a new attribute */}
-            <button onClick={addAttribute} className="mb-4 flex items-center bg-green-600 text-white p-2 rounded">
-              <span className="mr-2">Add Attribute</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                className="w-5 h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-              </svg>
-            </button>
-
-            {attributes.map((attr, index) => (
-              <div key={index} className="flex items-center space-x-2 mb-2">
-                {/* Button to remove the attribute */}
-                <button onClick={() => removeAttribute(index)} className="ml-2 bg-red-500 text-white p-2 rounded">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-
-                <div>
-                  <span className="font-bold p-3">Trait Type:</span>
-                  <InputBase
-                    placeholder="Trait type"
-                    value={attr.traitType}
-                    onChange={value => handleAttributeChange(index, "traitType", value)}
+              <div className="flex items-center justify-center w-60 h-60 bg-gray-200 rounded-lg shadow-lg relative">
+                {image ? (
+                  <Image
+                    src={image}
+                    alt="NFT Image"
+                    className="w-full h-auto rounded-lg object-cover"
+                    layout="responsive" // Ensures responsiveness like the original img
+                    width={300} // Same as the original container width
+                    height={300} // Adjust this to maintain the aspect ratio of the image
                   />
-                </div>
-
-                <div>
-                  <span className="font-bold p-3">Trait Value:</span>
-                  <InputBase
-                    placeholder="Value for trait"
-                    value={attr.value}
-                    onChange={value => handleAttributeChange(index, "value", value)}
-                  />
-                </div>
+                ) : (
+                  // <img src={image} alt="NFT Preview" className="w-full h-auto rounded-lg" />
+                  <div className="absolute inset-0 flex items-center justify-center bg-red-500 text-white font-bold text-center p-2 rounded-lg">
+                    No image provided
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* JSON Display Section */}
-        <div className="w-full md:w-1/2 px-4 mt-8 md:mt-0 bg-base-100 py-6 rounded-lg mb-10">
-          <h3 className="text-2xl font-bold mb-4 text-center">NFT Preview</h3>
+              {/* Text Section */}
+              <div className="text-left flex-1 lg:pl-3">
+                <div className="py-2">
+                  <strong>
+                    Collection Name <span className="text-red-500">*</span>
+                  </strong>{" "}
+                  <InputBase placeholder="Picca Who?" value={collectionName} onChange={setCollectionName} />
+                </div>
 
-          {/* Flex container for media and text */}
-          <div className="flex flex-row items-start space-x-4 mb-4">
-            {/* Media Section */}
-            {/* Media Section */}
-            <div className="flex items-center justify-center w-44 h-44 bg-gray-200 rounded-lg shadow-lg relative">
-              {image ? (
-                <img src={image} alt="NFT Preview" className="w-full h-auto rounded-lg" />
+                <div className="flex flex-row gap-2 my-4 items-center">
+                  <strong>
+                    Symbol <span className="text-red-500">*</span>
+                  </strong>{" "}
+                  <InputBase placeholder="PW" value={collectionSymbol} onChange={setCollectionSymbol} />
+                </div>
+
+                <div className="break-words">
+                  <strong>
+                    Description <span className="text-red-500">*</span>
+                  </strong>{" "}
+                  <DescriptionInput
+                    name="description"
+                    value={description}
+                    onChange={setDescription}
+                    placeholder="Enter description"
+                  />
+                </div>
+                <div className="py-2">
+                  <span className="font-bold p-3">
+                    Image URL <span className="text-red-500">*</span>
+                  </span>
+                  <InputBase placeholder="https:// or ipfs://" value={image} onChange={setImage} />
+                </div>
+                <div className="py-2">
+                  <span className="font-bold p-3">Audio/Video URL</span>
+                  <InputBase placeholder="https:// or ipfs://" value={animationUrl} onChange={setAnimationUrl} />
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold mb-4">Attributes</h3>
+
+                  {/* Button to add a new attribute */}
+                  <button onClick={addAttribute} className="mb-4 flex items-center bg-green-600 text-white p-2 rounded">
+                    <span className="mr-2">Add Attribute</span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                  </button>
+
+                  {attributes.map((attr, index) => (
+                    <div key={index} className="flex items-center space-x-2 mb-2">
+                      {/* Button to remove the attribute */}
+                      <button onClick={() => removeAttribute(index)} className="ml-2 bg-red-500 text-white p-2 rounded">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="2"
+                          stroke="currentColor"
+                          className="w-5 h-5"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+
+                      <div>
+                        <span className="font-bold p-3">Trait Type:</span>
+                        <InputBase
+                          placeholder="Trait type"
+                          value={attr.traitType}
+                          onChange={value => handleAttributeChange(index, "traitType", value)}
+                        />
+                      </div>
+
+                      <div>
+                        <span className="font-bold p-3">Trait Value:</span>
+                        <InputBase
+                          placeholder="Value for trait"
+                          value={attr.value}
+                          onChange={value => handleAttributeChange(index, "value", value)}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Conditionally render the attributes section only if there are valid attributes */}
+                {attributes.length > 0 && attributes.some(attr => attr.traitType && attr.value) && (
+                  <>
+                    <p>
+                      <strong>Attributes:</strong>
+                    </p>
+                    <ul className="list-disc ml-4">
+                      {attributes.map(
+                        (attr, index) =>
+                          attr.traitType &&
+                          attr.value && (
+                            <li key={index} className="text-green-600">
+                              {attr.traitType}: {attr.value}
+                            </li>
+                          ),
+                      )}
+                    </ul>
+                  </>
+                )}
+
+                {/* Conditionally render a music player if there is an animationUrl */}
+                {animationUrl && (
+                  <video controls className="w-full h-12 my-2">
+                    <source src={animationUrl} type="audio/mpeg" />
+                  </video>
+                )}
+              </div>
+            </div>
+
+            <div className="self-center w-full collapse bg-base-300">
+              <input type="checkbox" />
+              <div className="collapse-title text-center text-xl font-medium ">
+                View <strong className="text-green-500">raw metadata</strong>
+              </div>
+              <div className="collapse-content">
+                <LazyReactJson
+                  style={{ padding: "1rem", borderRadius: "0.75rem" }}
+                  src={yourJSON}
+                  theme="solarized"
+                  enableClipboard={false}
+                  onEdit={edit => setYourJSON(edit.updated_src)}
+                  onAdd={add => setYourJSON(add.updated_src)}
+                  onDelete={del => setYourJSON(del.updated_src)}
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-row justify-evenly">
+              <div className="py-2">
+                <span className="font-bold p-3">
+                  USD Price <span className="text-red-500">*</span>
+                </span>
+                <InputBase placeholder="10" value={usdPrice} onChange={setUsdPrice} />
+              </div>
+              <div className="py-2">
+                <span className="font-bold p-3">
+                  Max Supply <span className="text-red-500">*</span>
+                </span>
+                <InputBase placeholder="25" value={maxSupply} onChange={setMaxSupply} />
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center items-center mt-6 gap-3">
+              {/* Toggle Button for Gasless Mint */}
+              <label className="flex items-center cursor-pointer">
+                <input
+                  type="checkbox"
+                  className={`toggle toggle-primary ${
+                    isGaslessMinting ? "checked:bg-yellow-600 hover:bg-green-600" : "bg-green-600 hover:bg-yellow-600"
+                  }`}
+                  // className="toggle toggle-primary bg-red-500"
+                  checked={isGaslessMinting}
+                  onChange={handleToggle}
+                />
+                <span className={`ml-2 ${isGaslessMinting ? "text-yellow-600" : "text-green-600"}`}>
+                  {isGaslessMinting ? "Gasless Minting" : "Paid Minting"}
+                </span>
+              </label>
+
+              {isGaslessMinting ? (
+                <div className="flex items-center ">
+                  <button className="cool-button" disabled={loading} onClick={handleSimpleMint}>
+                    Propose NFT collection
+                  </button>
+                </div>
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-red-500 text-white font-bold text-center p-2 rounded-lg">
-                  No image provided
+                <div className="flex items-center ">
+                  <button className="cool-button" disabled={loading} onClick={handleMPaidMint}>
+                    Start NFT collection
+                  </button>
                 </div>
               )}
             </div>
 
-            {/* Text Section */}
-            <div className="text-left flex-1 lg:pl-3">
-              <p>
-                <strong>Collection Name:</strong>{" "}
-                {collectionName ? (
-                  <span className="text-green-600">{collectionName}</span>
-                ) : (
-                  <span className="text-red-500">Not provided</span>
-                )}
-              </p>
-              <p>
-                <strong>Symbol:</strong>{" "}
-                {collectionSymbol ? (
-                  <span className="text-green-600">{collectionSymbol}</span>
-                ) : (
-                  <span className="text-red-500">Not provided</span>
-                )}
-              </p>
-              <p className="break-words">
-                <strong>Description:</strong>{" "}
-                {description ? (
-                  <span className="text-green-600">{description}</span>
-                ) : (
-                  <span className="text-red-500">Not provided</span>
-                )}
-              </p>
-
-              {/* Conditionally render the attributes section only if there are valid attributes */}
-              {attributes.length > 0 && attributes.some(attr => attr.traitType && attr.value) && (
-                <>
-                  <p>
-                    <strong>Attributes:</strong>
-                  </p>
-                  <ul className="list-disc ml-4">
-                    {attributes.map(
-                      (attr, index) =>
-                        attr.traitType &&
-                        attr.value && (
-                          <li key={index} className="text-green-600">
-                            {attr.traitType}: {attr.value}
-                          </li>
-                        ),
-                    )}
-                  </ul>
-                </>
-              )}
-
-              {/* Conditionally render a music player if there is an animationUrl */}
-              {animationUrl && (
-                <video controls className="w-full h-12 my-2">
-                  <source src={animationUrl} type="audio/mpeg" />
-                </video>
-              )}
-            </div>
-          </div>
-
-          <div className="self-center w-full collapse bg-base-300">
-            <input type="checkbox" />
-            <div className="collapse-title text-center text-xl font-medium ">
-              View <strong className="text-green-500">raw metadata</strong>
-            </div>
-            <div className="collapse-content">
-              <LazyReactJson
-                style={{ padding: "1rem", borderRadius: "0.75rem" }}
-                src={yourJSON}
-                theme="solarized"
-                enableClipboard={false}
-                onEdit={edit => setYourJSON(edit.updated_src)}
-                onAdd={add => setYourJSON(add.updated_src)}
-                onDelete={del => setYourJSON(del.updated_src)}
-              />
-            </div>
-          </div>
-
-          <div className="flex flex-row justify-evenly">
-            <div className="py-2">
-              <span className="font-bold p-3">
-                USD Price <span className="text-red-500">*</span>
-              </span>
-              <InputBase placeholder="10" value={usdPrice} onChange={setUsdPrice} />
-            </div>
-            <div className="py-2">
-              <span className="font-bold p-3">
-                Max Supply <span className="text-red-500">*</span>
-              </span>
-              <InputBase placeholder="25" value={maxSupply} onChange={setMaxSupply} />
-            </div>
-          </div>
-
-          <div className="flex flex-col justify-center items-center mt-6 gap-3">
-            {/* Toggle Button for Gasless Mint */}
-            <label className="flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                className={`toggle toggle-primary ${
-                  isGaslessMinting ? "checked:bg-yellow-600 hover:bg-green-600" : "bg-green-600 hover:bg-yellow-600"
-                }`}
-                // className="toggle toggle-primary bg-red-500"
-                checked={isGaslessMinting}
-                onChange={handleToggle}
-              />
-              <span className={`ml-2 ${isGaslessMinting ? "text-yellow-600" : "text-green-600"}`}>
-                {isGaslessMinting ? "Gasless Minting" : "Paid Minting"}
-              </span>
-            </label>
-
-            {isGaslessMinting ? (
-              <button
-                className={`btn btn-primary hover:bg-yellow-500 py-3 px-6 bg-yellow-200 dark:bg-yellow-800 border-0 ${
-                  loading ? "loading" : ""
-                }`}
-                disabled={loading}
-                onClick={handleSimpleMint}
-              >
-                Propose NFT collection
-              </button>
-            ) : (
-              <button
-                className={`btn btn-primary py-3 px-6 bg-green-200 dark:bg-green-800 hover:bg-green-500 border-0 ${
-                  loading ? "loading" : ""
-                }`}
-                disabled={loading}
-                onClick={handleMPaidMint}
-              >
-                Start NFT collection
-              </button>
+            {uploadedIpfsPath && (
+              <div className="mt-4">
+                <a href={`https://ipfs.io/ipfs/${uploadedIpfsPath}`} target="_blank" rel="noreferrer">
+                  {`https://ipfs.io/ipfs/${uploadedIpfsPath}`}
+                </a>
+              </div>
             )}
           </div>
-
-          {uploadedIpfsPath && (
-            <div className="mt-4">
-              <a href={`https://ipfs.io/ipfs/${uploadedIpfsPath}`} target="_blank" rel="noreferrer">
-                {`https://ipfs.io/ipfs/${uploadedIpfsPath}`}
-              </a>
-            </div>
-          )}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

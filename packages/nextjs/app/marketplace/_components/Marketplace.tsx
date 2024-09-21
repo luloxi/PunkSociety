@@ -185,34 +185,35 @@ export const Marketplace = () => {
     <>
       <MarketplaceDescription />
       {/* Tabs Section */}
-      <div className="mt-2 bg-base-100 w-full rounded-lg">
-        <div className="tabs justify-center">
+      <div className="mt-2 md:px-4 w-full rounded-lg">
+        <div className="tabs justify-start flex-wrap border-b-2 border-base-300">
           <a
-            className={`tab tab-lifted ${activeTab === "newest" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            className={`tab tab-lifted text-lg whitespace-nowrap ${
+              activeTab === "newest" ? "border-blue-500 font-bold text-blue-500" : ""
+            }`}
             onClick={() => setActiveTab("newest")}
           >
             Newest
           </a>
           <a
-            className={`tab tab-lifted ${activeTab === "on-sale" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            className={`tab tab-lifted text-lg whitespace-nowrap ${
+              activeTab === "on-sale" ? "border-blue-500 font-bold text-blue-500" : ""
+            }`}
             onClick={() => setActiveTab("on-sale")}
           >
             On Sale
           </a>
           <a
-            className={`tab tab-lifted ${activeTab === "mintables" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            className={`tab tab-lifted text-lg whitespace-nowrap ${
+              activeTab === "mintables" ? "border-blue-500 font-bold text-blue-500" : ""
+            }`}
             onClick={() => setActiveTab("mintables")}
           >
             Mintables
           </a>
-          <a
-            className={`tab tab-lifted ${activeTab === "first-mints" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
-            onClick={() => setActiveTab("first-mints")}
-          >
-            First mints
-          </a>
         </div>
       </div>
+
       <div className="flex justify-center">{!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}</div>
       {listedCollectibles.length === 0 ? (
         <div className="flex justify-center items-center mt-10">

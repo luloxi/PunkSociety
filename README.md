@@ -76,6 +76,20 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
+### Marketplace
+
+- **Display auction info and interactions**
+- **Add NFTs available for first minting** reading from the database with signatures collected through the Simple Mint process
+
+### Social
+
+- ✅ **Add a way for users to register their info**
+- **Allow seeing other collectors profiles** and their NFTs
+- **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
+- **Remixing feature for NFTs**, where the creator receives a % of the royalties of the remix
+
+## Phase 3
+
 ### Simple Mint
 
 - ✅ **Simple minting function** for artists to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
@@ -85,27 +99,11 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Marketplace
 
-- **Display auction info and interactions**
 - **Add NFTs available for first minting** reading from the database with signatures collected through the Simple Mint process
 
 ### Social
 
-- **Add a way for artists (and collectors) to register their info (ideally with a signature)**
-- **Allow seeing other collectors profiles** and their NFTs
-- **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
-- **Add a page for the artist** with their NFTs and info about them (or just integrate created NFT on collectors profiles)
-- **Remixing feature for NFTs**, where the creator receives a % of the royalties of the remix
-
-## Phase 3
-
-### Marketplace
-
-- **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
-- **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
-- **Periodically airdrop dividends** in USDC for creators (and first minters if appliable) (may not even be necessary if royalties pay redirect funds to the creators directly)
-
-### Social
-
+- **Add a way for users to register their info with a signature**
 - Make Profile read all the NFTs owned by the user, and **not just the ones minted through the website**
 - **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
 - **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc
@@ -123,6 +121,9 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Marketplace
 
+- **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
+- **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
+- **Periodically airdrop dividends** in USDC for creators (and first minters if appliable) (may not even be necessary if royalties pay redirect funds to the creators directly)
 - Consider transitioning ownership of the marketplace to a DAO
 - **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 - **Support for ERC1155** in the marketplace, Simple Mint (rethink) and music player

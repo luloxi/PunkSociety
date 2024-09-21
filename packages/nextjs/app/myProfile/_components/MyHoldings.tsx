@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 import { NFTCard } from "./NFTCard";
 import { useAccount } from "wagmi";
 import { useScaffoldContract, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
@@ -31,27 +32,29 @@ export const MyHoldings = () => {
     watch: true,
   });
 
+  // Inside the component
+  const collectibleContractRef = useRef(yourCollectibleContract);
+
   useEffect(() => {
     const updateMyCollectibles = async (): Promise<void> => {
-      if (yourCollectibleContract === undefined || connectedAddress === undefined) return;
+      if (collectibleContractRef.current === undefined || connectedAddress === undefined) return;
 
       setAllCollectiblesLoading(true);
       const collectibleUpdate: Collectible[] = [];
 
-      const totalSupply = await yourCollectibleContract.read.totalSupply();
+      const totalSupply = await collectibleContractRef.current.read.totalSupply();
 
       for (let tokenIndex = 0; tokenIndex < totalSupply; tokenIndex++) {
         try {
-          const tokenId = await yourCollectibleContract.read.tokenByIndex([BigInt(tokenIndex)]);
-          const tokenURI = await yourCollectibleContract.read.tokenURI([tokenId]);
-          const owner = await yourCollectibleContract.read.ownerOf([tokenId]);
+          const tokenId = await collectibleContractRef.current.read.tokenByIndex([BigInt(tokenIndex)]);
+          const tokenURI = await collectibleContractRef.current.read.tokenURI([tokenId]);
+          const owner = await collectibleContractRef.current.read.ownerOf([tokenId]);
 
           if (owner.toLowerCase() !== connectedAddress.toLowerCase()) {
             continue;
           }
 
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
-
           const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
 
           collectibleUpdate.push({
@@ -73,7 +76,14 @@ export const MyHoldings = () => {
     };
 
     updateMyCollectibles();
-  }, [connectedAddress, myTotalBalance]); // Watching balance to update NFTs
+  }, [connectedAddress, myTotalBalance]); // Remove `yourCollectibleContract` from the dependencies
+
+  useEffect(() => {
+    // Update the ref when yourCollectibleContract changes
+    if (yourCollectibleContract) {
+      collectibleContractRef.current = yourCollectibleContract;
+    }
+  }, [yourCollectibleContract]);
 
   if (allCollectiblesLoading)
     return (

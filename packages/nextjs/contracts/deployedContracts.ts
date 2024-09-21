@@ -6,8 +6,76 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
   31337: {
+    ProfileInfo: {
+      address: "0x5fbdb2315678afecb367f032d93f642f64180aa3",
+      abi: [
+        {
+          type: "function",
+          name: "profiles",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "bio",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "imageURL",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "website",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "setProfile",
+          inputs: [
+            {
+              name: "_name",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_bio",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_imageURL",
+              type: "string",
+              internalType: "string",
+            },
+            {
+              name: "_website",
+              type: "string",
+              internalType: "string",
+            },
+          ],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+      ],
+      inheritedFunctions: {},
+    },
     SimpleMint: {
-      address: "0x70bda08dbe07363968e9ee53d899dfe48560605b",
+      address: "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512",
       abi: [
         {
           type: "constructor",
@@ -320,7 +388,7 @@ const deployedContracts = {
       },
     },
     MockNFT: {
-      address: "0x26b862f640357268bd2d9e95bc81553a2aa81d7e",
+      address: "0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0",
       abi: [
         {
           type: "constructor",
@@ -940,7 +1008,7 @@ const deployedContracts = {
       },
     },
     MockUSDC: {
-      address: "0xa56f946d6398dd7d9d4d9b337cf9e0f68982ca5b",
+      address: "0xcf7ed3acca5a467e9e704c703e8d87f634fb0fc9",
       abi: [
         {
           type: "constructor",
@@ -1397,7 +1465,7 @@ const deployedContracts = {
       },
     },
     Marketplace: {
-      address: "0x5d42ebdbba61412295d7b0302d6f50ac449ddb4f",
+      address: "0xdc64a140aa3e981100a9beca4e685f962f0cf6c9",
       abi: [
         {
           type: "constructor",

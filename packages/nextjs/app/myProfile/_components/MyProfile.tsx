@@ -1,19 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { MyHoldings } from "./";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import nftsMetadata from "~~/utils/simpleNFT/nftsMetadata";
 
 export const MyProfile: NextPage = () => {
+  const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [website, setWebsite] = useState("");
+  const [isEditing, setIsEditing] = useState(false); // New state for edit mode
+
   const { address: connectedAddress, isConnected, isConnecting } = useAccount();
   const { writeContractAsync: nftWriteAsync } = useScaffoldWriteContract("MockNFT");
   const { writeContractAsync: usdcWriteAsync } = useScaffoldWriteContract("MockUSDC");
+  const { writeContractAsync: profileInfoWriteAsync } = useScaffoldWriteContract("ProfileInfo");
 
   const { data: tokenIdCounter } = useScaffoldReadContract({
     contractName: "MockNFT",
@@ -30,6 +39,23 @@ export const MyProfile: NextPage = () => {
 
   // Tab management state
   const [activeTab, setActiveTab] = useState("your-nfts");
+
+  const handleEditProfile = async () => {
+    try {
+      await profileInfoWriteAsync({
+        functionName: "setProfile",
+        args: [name, bio, imageURL, website], // Mint 1 USDC
+      });
+
+      notification.success("Profile Edited Successfully");
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error during editing profile:", error);
+
+      // Log the error and notify the user
+      notification.error("Editing profile, please try again.");
+    }
+  };
 
   const handleMintUSDC = async () => {
     try {
@@ -85,63 +111,139 @@ export const MyProfile: NextPage = () => {
     <div className="flex flex-col items-center p-2">
       {/* User Profile Section */}
       <div className="relative flex flex-col md:flex-row items-start bg-base-100 p-6 rounded-lg shadow-md w-full">
-        {/* Profile Picture at the Top Left */}
+        {/* Profile Picture */}
         <div className="avatar mr-4 md:mr-8">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <img src="https://via.placeholder.com/150" alt="Profile" />
+            {isEditing ? (
+              <div className="flex flex-col">
+                <Image
+                  src={imageURL || "https://ipfs.io/ipfs/QmSUzqAbhU2HYfD5j9kdhFS92rUh1j84hMAgPizvGAHBbZ"} // Ensure you use the correct path for Next.js
+                  alt="Profile Picture"
+                  width={150} // 7 * 4px = 28px
+                  height={150} // 7 * 4px = 28px
+                  style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+                />
+              </div>
+            ) : (
+              <Image
+                src={imageURL || "https://ipfs.io/ipfs/QmSUzqAbhU2HYfD5j9kdhFS92rUh1j84hMAgPizvGAHBbZ"} // Ensure you use the correct path for Next.js
+                alt="Profile Picture"
+                width={150} // 7 * 4px = 28px
+                height={150} // 7 * 4px = 28px
+                style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+              />
+            )}
           </div>
         </div>
 
         {/* User Info Section */}
         <div className="flex flex-col justify-start">
-          <h2 className="text-2xl font-bold">-unregistered user-</h2>
-          <div className="text-base-content">
-            <Address address={connectedAddress} />
-          </div>
+          {isEditing ? (
+            <InputBase placeholder="Your Name" value={name} onChange={setName} />
+          ) : (
+            <>
+              <h2 className="text-2xl font-bold">{name || "-unregistered user-"}</h2>
+              <div className="text-base-content">
+                <Address address={connectedAddress} />
+              </div>
+            </>
+          )}
         </div>
 
-        {/* User Bio (centered) */}
+        {/* User Bio */}
         <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
-          <p className="text-base-content">-no bio available-</p>
-          <p className="text-base-content">-no URL provided-</p>
+          {isEditing ? (
+            <>
+              <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
+              <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
+              <InputBase placeholder="Image URL" value={imageURL} onChange={setImageURL} />
+            </>
+          ) : (
+            <>
+              <p className="text-base-content">{bio || "-no bio available-"}</p>
+              <p className="text-base-content">{website || "-no URL provided-"}</p>
+            </>
+          )}
         </div>
 
-        {/* Edit Profile Button at the Top Right */}
-        <button className="absolute top-4 right-4 btn btn-primary btn-sm">Edit Profile</button>
+        {/* Edit/Cancel Button */}
+        {isEditing ? (
+          <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
+            Cancel Edition
+          </button>
+        ) : (
+          <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
+            Edit Profile
+          </button>
+        )}
 
         {/* USDC Balance and Logo at the Bottom Right */}
-        <div className="absolute bottom-2 right-4 flex items-center gap-2">
-          <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
-            Mint test USDC
-          </button>
-          <img src="usdc-logo.png" alt="USDC Logo" className="w-7 h-7 object-contain" />
-          <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
-        </div>
+        {isEditing ? (
+          <div className="absolute bottom-2 right-4 flex items-center gap-2">
+            <button className="cool-button" onClick={handleEditProfile}>
+              Save changes
+            </button>
+          </div>
+        ) : (
+          <div className="absolute bottom-2 right-4 flex items-center gap-2">
+            <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
+              Mint test USDC
+            </button>
+
+            {/* Wrap Image in a div and set explicit width/height */}
+            <div className="w-7 h-7 relative">
+              <Image
+                src="/usdc-logo.png" // Ensure you use the correct path for Next.js
+                alt="USDC Logo"
+                width={28} // 7 * 4px = 28px
+                height={28} // 7 * 4px = 28px
+                style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+              />
+            </div>
+
+            <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
+          </div>
+        )}
       </div>
 
       {/* Tabs Section */}
-      <div className="mt-2 bg-base-300 w-full rounded-lg">
-        <div className="tabs justify-center">
+      <div className="mt-2 md:px-4 w-full rounded-lg">
+        <div className="tabs justify-start flex-wrap border-b-2 border-base-300">
           <a
-            className={`tab tab-lifted ${activeTab === "your-nfts" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            className={`tab tab-lifted text-lg whitespace-nowrap ${
+              activeTab === "your-nfts" ? "border-blue-500 font-bold text-blue-500" : ""
+            }`}
             onClick={() => setActiveTab("your-nfts")}
           >
             Your NFTs
           </a>
           <a
-            className={`tab tab-lifted ${activeTab === "nfts-on-sale" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            className={`tab tab-lifted text-lg whitespace-nowrap ${
+              activeTab === "nfts-created" ? "border-blue-500 font-bold text-blue-500" : ""
+            }`}
+            onClick={() => setActiveTab("nfts-created")}
+          >
+            NFTs created
+          </a>
+          <a
+            className={`tab tab-lifted text-lg whitespace-nowrap ${
+              activeTab === "nfts-on-sale" ? "border-blue-500 font-bold text-blue-500" : ""
+            }`}
             onClick={() => setActiveTab("nfts-on-sale")}
           >
             NFTs on Sale
           </a>
           <a
-            className={`tab tab-lifted ${activeTab === "past-sales" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            className={`tab tab-lifted text-lg whitespace-nowrap ${
+              activeTab === "past-sales" ? "border-blue-500 font-bold text-blue-500" : ""
+            }`}
             onClick={() => setActiveTab("past-sales")}
           >
             Past Sales
           </a>
         </div>
       </div>
+
       {/* Content Based on Active Tab */}
       <div>
         {activeTab === "your-nfts" && (
@@ -159,6 +261,12 @@ export const MyProfile: NextPage = () => {
               )}
             </div>
           </>
+        )}
+
+        {activeTab === "nfts-created" && (
+          <div className="text-center">
+            <p className="text-lg">You have created 0 NFTs so far.</p>
+          </div>
         )}
 
         {activeTab === "nfts-on-sale" && (

@@ -6,6 +6,7 @@ import { MockNFT } from "../contracts/MockNFT.sol";
 import { SimpleMint } from "../contracts/SimpleMint.sol";
 import { SimpleMintNFT } from "../contracts/SimpleMintNFT.sol";
 import { Marketplace } from "../contracts/Marketplace.sol";
+import { ProfileInfo } from "../contracts/ProfileInfo.sol";
 import "./DeployHelpers.s.sol";
 
 contract DeployScript is ScaffoldETHDeploy {
@@ -18,6 +19,7 @@ contract DeployScript is ScaffoldETHDeploy {
   SimpleMint simpleMint;
   MockNFT mockNFT;
   Marketplace marketplace;
+  ProfileInfo profileInfo;
 
   error InvalidPrivateKey(string);
 
@@ -29,6 +31,13 @@ contract DeployScript is ScaffoldETHDeploy {
       );
     }
     vm.startBroadcast(deployerPrivateKey);
+
+    profileInfo = new ProfileInfo();
+    console.logString(
+      string.concat(
+        "ProfileInfo deployed at: ", vm.toString(address(profileInfo))
+      )
+    );
 
     simpleMint = new SimpleMint();
     console.logString(

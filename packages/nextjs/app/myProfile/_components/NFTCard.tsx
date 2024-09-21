@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import { Collectible } from "./MyHoldings";
 import { parseEther } from "viem";
 import { useAccount } from "wagmi";
@@ -9,7 +10,8 @@ import { useDeployedContractInfo, useScaffoldReadContract, useScaffoldWriteContr
 
 export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const [transferToAddress, setTransferToAddress] = useState("");
-  const [activeTab, setActiveTab] = useState("artwork");
+  const [isCollapsed, setIsCollapsed] = useState(true); // Added collapsing behavior
+  const [activeTab, setActiveTab] = useState("details");
   const [NFTPrice, setNFTPrice] = useState("");
   const [payableCurrency, setPayableCurrency] = useState("0"); // "0" for ETH, "1" for USDC
   const [isAuction, setIsAuction] = useState(false);
@@ -88,59 +90,50 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
   };
 
   return (
-    <div className="card card-compact bg-base-100  w-[300px] ">
-      {/* Tabs navigation */}
-      <div className="tabs flex justify-center gap-3">
-        <a
-          className={`tab ${activeTab === "artwork" ? "bg-blue-300 dark:bg-blue-900" : ""}`}
-          onClick={() => setActiveTab("artwork")}
-        >
-          Artwork
-        </a>
-        <a
-          className={`tab  ${activeTab === "details" ? "bg-blue-300 dark:bg-blue-900" : ""}`}
-          onClick={() => setActiveTab("details")}
-        >
-          Details
-        </a>
-        {connectedAddress === nft.owner && (
-          <a
-            className={`tab  ${activeTab === "sellNFT" ? "bg-red-300 dark:bg-red-800" : ""}`}
-            onClick={() => setActiveTab("sellNFT")}
-          >
-            Sell NFT
-          </a>
-        )}
+    <div className={`card-compact w-[300px] relative group ${isCollapsed ? "" : "bg-base-100"}`}>
+      {/* Image Section */}
+      <figure className="relative">
+        <Image
+          src={nft.image || "/path/to/default/image.png"}
+          alt="NFT Image"
+          className="w-full h-auto rounded-lg object-cover"
+          layout="responsive" // Ensures responsiveness like the original img
+          width={300} // Same as the original container width
+          height={300} // Adjust this to maintain the aspect ratio of the image
+        />
+      </figure>
+
+      {/* Hover-triggered collapse section */}
+      <div
+        className="absolute top-0 left-0 right-0 h-8 flex justify-center items-center bg-base-100 cursor-pointer transition-opacity opacity-0 group-hover:opacity-100"
+        onClick={() => setIsCollapsed(!isCollapsed)}
+      >
+        <div className={`transition-transform ${isCollapsed ? "" : ""}`}>
+          {isCollapsed ? "▼ Expand" : "▲ Collapse"} {/* Arrow toggles up/down */}
+        </div>
       </div>
 
-      {/* Tab Content */}
-      {activeTab === "artwork" && (
-        <div>
-          <figure className="relative">
-            {/* Check if image is IPFS or external URL */}
-            <img
-              src={
-                nft.image
-                  ? nft.image.startsWith("ipfs://")
-                    ? nft.image.replace("ipfs://", "https://ipfs.io/ipfs/")
-                    : nft.image
-                  : "https://via.placeholder.com/300" // Fallback image
-              }
-              alt="NFT Image"
-              className="h-60 min-w-full"
-            />
-          </figure>
-          <div className="card-body space-y-3">
-            {nft.animation_url && (
-              <video controls className="w-full h-14">
-                <source src={nft.animation_url} type="audio/mpeg" />
-              </video>
-            )}
-          </div>
+      {/* Tabs navigation */}
+      {!isCollapsed && (
+        <div className="tabs flex justify-center gap-3">
+          <a
+            className={`tab  ${activeTab === "details" ? "bg-blue-300 dark:bg-blue-900" : ""}`}
+            onClick={() => setActiveTab("details")}
+          >
+            Details
+          </a>
+          {connectedAddress === nft.owner && (
+            <a
+              className={`tab  ${activeTab === "sellNFT" ? "bg-red-300 dark:bg-red-800" : ""}`}
+              onClick={() => setActiveTab("sellNFT")}
+            >
+              Sell NFT
+            </a>
+          )}
         </div>
       )}
 
-      {activeTab === "details" && (
+      {!isCollapsed && activeTab === "details" && (
         // Render all combined content (artwork, info, actions) here
         <div>
           <div className="card-body space-y-3">
@@ -158,6 +151,11 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
             <div className="flex flex-col justify-center mt-1">
               <p className="my-0 text-lg">{nft.description}</p>
             </div>
+            {nft.animation_url && (
+              <video controls className="w-full h-14">
+                <source src={nft.animation_url} type="audio/mpeg" />
+              </video>
+            )}
             <div className="flex flex-col justify-center mt-1">
               <span className="text-white text-lg">
                 <strong>Id:</strong> {nft.id}
@@ -173,10 +171,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
               />
             </div>
             <div className="card-actions justify-end">
-              <button
-                className="btn btn-secondary btn-md px-8 tracking-wide bg-blue-300 hover:bg-blue-200 dark:bg-blue-900 dark:hover:bg-blue-800 border-0"
-                onClick={handleTransfer}
-              >
+              <button className="cool-button" onClick={handleTransfer}>
                 Transfer
               </button>
             </div>
@@ -184,7 +179,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
         </div>
       )}
 
-      {activeTab === "sellNFT" && (
+      {!isCollapsed && activeTab === "sellNFT" && (
         // Render Marketplace content here
         <div className="card-body">
           {/* Payable Currency Toggle */}
@@ -277,18 +272,12 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
           <div className="card-actions justify-end">
             {marketplaceData && isApproved && isApproved.toLowerCase() == marketplaceData.address ? (
-              <button
-                className="btn btn-primary btn-md px-8 tracking-wide bg-red-300 hover:bg-red-200 dark:bg-red-800 dark:hover:bg-red-700 border-0"
-                onClick={handleCreateListing}
-              >
+              <button className="cool-button" onClick={handleCreateListing}>
                 List NFT for sale
               </button>
             ) : (
-              <button
-                className="btn btn-primary btn-md px-8 tracking-wide bg-yellow-200 hover:bg-yellow-300 dark:bg-yellow-800 dark:hover:bg-yellow-700 border-0"
-                onClick={handleApprove}
-              >
-                Approve this NFT
+              <button className="cool-button" onClick={handleApprove}>
+                Approve NFT
               </button>
             )}
           </div>
