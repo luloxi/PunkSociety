@@ -84,8 +84,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Social
 
 - ✅ **Add a way for users to register their info**
-- **Allow seeing other collectors profiles** and their NFTs
 - **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
+- **Allow seeing other collectors profiles** and their NFTs
 - **Remixing feature for NFTs**, where the creator receives a % of the royalties of the remix
 
 ## Phase 3
@@ -104,20 +104,24 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Social
 
 - **Add a way for users to register their info with a signature**
+- Introduce **web2 social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
+
+## Phase 4
+
+### Social
+
 - Make Profile read all the NFTs owned by the user, and **not just the ones minted through the website**
 - **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
 - **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc
 - **Token gated content**: Holders of song NFTs get access to special content for holders
-- Introduce **web2 social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
 - **Feature for creating collections** of NFTs and displaying them in a gallery
 
 ### Music player
 
-- **Upload the NFT Metadata to Filecoin** instead of IPFS, and use it with a EIP-712 signature for Simple Mint. (Reference: [Viem recoverTypedDataAddress](https://viem.sh/docs/utilities/recoverTypedDataAddress))
 - **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
-- **Tip for artists**: Enable or require tipping with tokens, and if you don’t have $ to pay, you can watch an ad as payment (i.e: for every 6 songs, 1 ad that gets distributed among the 6 artists reproduced for free).
+- **Upload the NFT Metadata to Filecoin** instead of IPFS (Reference: [Filecoin NFT Storage](https://docs.filecoin.io/))
 
-## Phase 4
+## Phase 5
 
 ### Marketplace
 
@@ -136,6 +140,10 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Direct Messaging system** for artists and collectors
 - Ability to **make your own group/community**
 - **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with Web3 concepts, NFT minting, and/or royalties to improve user adoption.
+
+### Music player
+
+- **Tip for artists**: Enable or require tipping with tokens, and if you don’t have $ to pay, you can watch an ad as payment (i.e: for every 6 songs, 1 ad that gets distributed among the 6 artists reproduced for free).
 
 # Completed product description
 
