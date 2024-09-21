@@ -1,4 +1,4 @@
-import { SimpleMint } from "./_components/SimpleMint";
+import { SimpleMint } from "./SimpleMint";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 

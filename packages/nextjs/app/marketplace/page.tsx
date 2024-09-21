@@ -1,4 +1,4 @@
-import { Marketplace } from "./_components/Marketplace";
+import { Marketplace } from "./Marketplace";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 

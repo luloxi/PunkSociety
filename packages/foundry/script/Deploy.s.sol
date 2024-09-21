@@ -105,10 +105,6 @@ contract DeployScript is ScaffoldETHDeploy {
       "https://ipfs.io/ipfs/QmTy34vycaA6by2D5VadtqTazhg9pKa5ZAwpnnX7ust4qs"
     );
     mockNFT.approve(address(marketplace), 3);
-    mockNFT.mintItem(
-      "https://ipfs.io/ipfs/QmVxLz4mmP9uY4P3fbi88mpemWcAvnZYX8sbqKGk88x5YP"
-    );
-    mockNFT.approve(address(marketplace), 4);
     simpleMint.startCollection(
       "Vaquita en el Monte",
       "VM",
@@ -117,10 +113,15 @@ contract DeployScript is ScaffoldETHDeploy {
       3 * 1e6,
       30
     );
+    simpleMint.startCollection(
+      "Astral Aznar",
+      "AA",
+      "https://ipfs.io/ipfs/QmVxLz4mmP9uY4P3fbi88mpemWcAvnZYX8sbqKGk88x5YP",
+      msg.sender,
+      12 * 1e6,
+      10
+    );
 
-    // mockNFT.mintItem(
-    //   "https://ipfs.io/ipfs/QmWRssgjvrkyoSwWspzxrHfU6DTMbdVY2oR6zKgzvtnts2"
-    // );
     marketplace.createListing(
       address(mockNFT), 1, 15 * 1e6, Marketplace.Currency.USDCToken, false, 0
     );
@@ -129,9 +130,6 @@ contract DeployScript is ScaffoldETHDeploy {
     );
     marketplace.createListing(
       address(mockNFT), 3, 5 * 1e6, Marketplace.Currency.USDCToken, false, 0
-    );
-    marketplace.createListing(
-      address(mockNFT), 4, 5 * 1e16, Marketplace.Currency.NativeToken, false, 0
     );
   }
 

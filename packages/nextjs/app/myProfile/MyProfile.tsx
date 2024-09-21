@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { MyHoldings } from "./";
+import { MyHoldings } from "./_components";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
@@ -115,15 +115,13 @@ export const MyProfile: NextPage = () => {
         <div className="avatar mr-4 md:mr-8">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             {isEditing ? (
-              <div className="flex flex-col">
-                <Image
-                  src={imageURL || "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY"} // Ensure you use the correct path for Next.js
-                  alt="Profile Picture"
-                  width={150} // 7 * 4px = 28px
-                  height={150} // 7 * 4px = 28px
-                  // style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-                />
-              </div>
+              <Image
+                src={imageURL || "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY"} // Ensure you use the correct path for Next.js
+                alt="Profile Picture"
+                width={150} // 7 * 4px = 28px
+                height={150} // 7 * 4px = 28px
+                // style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+              />
             ) : (
               <Image
                 src={imageURL || "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY"} // Ensure you use the correct path for Next.js
@@ -156,7 +154,11 @@ export const MyProfile: NextPage = () => {
             <>
               <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
               <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
-              <InputBase placeholder="Image URL" value={imageURL} onChange={setImageURL} />
+              <InputBase
+                placeholder="Profile pic: Only accepting ipfs:// or ipfs.io URLs"
+                value={imageURL}
+                onChange={setImageURL}
+              />
             </>
           ) : (
             <>

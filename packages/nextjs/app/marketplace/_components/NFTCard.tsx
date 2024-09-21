@@ -98,7 +98,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
     usdcPriceInUnits > BigInt(usdcAllowance.toString()); // Ensure comparison is accurate
 
   return (
-    <div className={`card-compact w-[300px] relative group ${isCollapsed ? "" : "bg-base-100"}`}>
+    <div className={`card-compact w-[300px] relative group ${isCollapsed ? "" : "bg-base-100 rounded-lg"}`}>
       {/* Image Section */}
       <figure className="relative">
         <Image
@@ -125,21 +125,21 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
         <div className="tabs flex justify-center gap-3">
           {nft.listingId ? (
             <a
-              className={`tab ${activeTab === "buyNFT" ? "bg-red-200 dark:bg-red-800" : ""}`}
+              className={`tab ${activeTab === "buyNFT" ? "bg-red-300 dark:bg-red-800" : ""}`}
               onClick={() => setActiveTab("buyNFT")}
             >
               Buy NFT
             </a>
           ) : (
             <a
-              className={`tab ${activeTab === "mintNFT" ? "bg-green-200 dark:bg-green-800" : ""}`}
+              className={`tab ${activeTab === "mintNFT" ? "bg-green-300 dark:bg-green-800" : ""}`}
               onClick={() => setActiveTab("mintNFT")}
             >
               Mint NFT
             </a>
           )}
           <a
-            className={`tab ${activeTab === "info" ? "bg-blue-200 dark:bg-blue-900" : ""}`}
+            className={`tab ${activeTab === "info" ? "bg-blue-300 dark:bg-blue-900" : ""}`}
             onClick={() => setActiveTab("info")}
           >
             Info

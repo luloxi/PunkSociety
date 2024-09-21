@@ -1,8 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { NFTCard } from "./NFTCard";
-import { MarketplaceDescription } from "./marketplaceDescription";
+import { CollectiblesList } from "./_components/CollectiblesList";
+import { ErrorComponent } from "./_components/ErrorComponent";
+import { LoadingSpinner } from "./_components/LoadingSpinner";
+import { RestoreDescriptionButton } from "./_components/RestoreDescriptionButton";
+import { Tabs } from "./_components/Tabs";
+import { MarketplaceDescription } from "./_components/marketplaceDescription";
 import { useAccount } from "wagmi";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useScaffoldContract, useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
@@ -25,14 +29,21 @@ export interface Collectible extends Partial<NFTMetaData> {
 export const Marketplace = () => {
   const { address: isConnected, isConnecting } = useAccount();
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
-
-  // Tab management state
   const [activeTab, setActiveTab] = useState("newest");
+  const [loading, setLoading] = useState(false);
+  const [descriptionVisible, setDescriptionVisible] = useState(true);
 
-  const { data: yourCollectibleContract } = useScaffoldContract({
-    contractName: "MockNFT",
-  });
+  useEffect(() => {
+    const savedVisibility = localStorage.getItem("marketplaceDescriptionVisible");
+    setDescriptionVisible(savedVisibility !== "false");
+  }, []);
 
+  const handleRestore = () => {
+    setDescriptionVisible(true);
+    localStorage.setItem("marketplaceDescriptionVisible", "true");
+  };
+
+  const { data: yourCollectibleContract } = useScaffoldContract({ contractName: "MockNFT" });
   const {
     data: events,
     isLoading: isLoadingEvents,
@@ -65,6 +76,10 @@ export const Marketplace = () => {
     fromBlock: 0n,
     watch: true,
   });
+
+  useEffect(() => {
+    setLoading(false); // Stop loading after collectibles are updated
+  }, [listedCollectibles]);
 
   useEffect(() => {
     const fetchListedNFTs = async () => {
@@ -158,47 +173,22 @@ export const Marketplace = () => {
   });
 
   if (isLoadingEvents || simpleMintIsLoadingEvents || purchaseIsLoadingEvents) {
-    return (
-      <div className="flex justify-center items-center mt-10">
-        <span className="loading loading-spinner loading-lg"></span>
-      </div>
-    );
+    return <LoadingSpinner />;
   }
 
   if (errorReadingEvents || simpleMintErrorReadingEvents || purchaseErrorReadingEvents) {
-    return <div>Error fetching events: {errorReadingEvents?.message || purchaseErrorReadingEvents?.message}</div>;
+    return (
+      <ErrorComponent
+        message={errorReadingEvents?.message || purchaseErrorReadingEvents?.message || "Error loading events"}
+      />
+    );
   }
 
   return (
     <>
-      <MarketplaceDescription />
+      {descriptionVisible && <MarketplaceDescription />}
       <div className="mt-2 md:px-4 w-full rounded-lg">
-        <div className="tabs justify-start flex-wrap border-b-2 border-base-300">
-          <a
-            className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "newest" ? "border-blue-500 font-bold text-blue-500" : ""
-            }`}
-            onClick={() => setActiveTab("newest")}
-          >
-            Newest
-          </a>
-          <a
-            className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "on-sale" ? "border-blue-500 font-bold text-blue-500" : ""
-            }`}
-            onClick={() => setActiveTab("on-sale")}
-          >
-            On Sale
-          </a>
-          <a
-            className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "mintables" ? "border-blue-500 font-bold text-blue-500" : ""
-            }`}
-            onClick={() => setActiveTab("mintables")}
-          >
-            Mintables
-          </a>
-        </div>
+        <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
 
       <div className="flex justify-center">{!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}</div>
@@ -206,13 +196,13 @@ export const Marketplace = () => {
         <div className="flex justify-center items-center mt-10">
           <div className="text-2xl text-primary-content">No NFTs found</div>
         </div>
+      ) : loading ? (
+        <LoadingSpinner />
       ) : (
-        <div className="flex flex-wrap gap-6 my-4 px-5 justify-center">
-          {filteredCollectibles.map(item => (
-            <NFTCard nft={item} key={item.uri} />
-          ))}
-        </div>
+        <CollectiblesList filteredCollectibles={filteredCollectibles} />
       )}
+
+      {!descriptionVisible && <RestoreDescriptionButton handleRestore={handleRestore} />}
     </>
   );
 };

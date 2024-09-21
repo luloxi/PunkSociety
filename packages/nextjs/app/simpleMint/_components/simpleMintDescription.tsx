@@ -1,14 +1,30 @@
+import { useEffect, useState } from "react";
+
 export const SimpleMintDescription = () => {
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    const savedVisibility = localStorage.getItem("simpleMintDescriptionVisible");
+    if (savedVisibility === "false") {
+      setIsVisible(false);
+    }
+  }, []);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    localStorage.setItem("simpleMintDescriptionVisible", "false");
+  };
+
+  if (!isVisible) return null;
+
   return (
-    <div className="self-center md:w-full collapse bg-base-300">
-      <input type="checkbox" />
-      <div className="collapse-title text-center text-xl font-medium">
+    <div className="relative self-center md:w-full collapse bg-base-300">
+      <input type="checkbox" className="collapse-checkbox" />
+      <div className="collapse-title text-center text-xl font-medium pointer-events-auto">
         New to Simple Mint? <strong className="text-green-500">Click here!</strong>
       </div>
       <div className="collapse-content">
-        {/* Responsive 2-column layout, becomes 1 column on small screens */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-center">
-          {/* Left column: Green highlights */}
           <div className="flex flex-col">
             <p>
               Simple Mint allows you to <strong className="text-green-600">upload your art and create an NFT</strong> on
@@ -31,7 +47,6 @@ export const SimpleMintDescription = () => {
             </p>
           </div>
 
-          {/* Right column: Yellow highlights */}
           <div className="flex flex-col">
             <p>
               NFTs allow artists to <strong className="text-green-600">earn royalties</strong> each time their work is
@@ -59,6 +74,15 @@ export const SimpleMintDescription = () => {
           </div>
         </div>
       </div>
+
+      {/* Close button */}
+      <button
+        onClick={handleClose}
+        className="absolute top-2 right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center z-10 pointer-events-auto"
+        aria-label="Close"
+      >
+        X
+      </button>
     </div>
   );
 };
