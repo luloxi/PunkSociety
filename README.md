@@ -79,7 +79,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Marketplace
 
 - **Display auction info and interactions**
-- **Add NFTs available for first minting** reading from the database with signatures collected through the Simple Mint process
 
 ### Social
 
