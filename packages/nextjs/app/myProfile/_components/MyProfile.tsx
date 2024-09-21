@@ -117,20 +117,20 @@ export const MyProfile: NextPage = () => {
             {isEditing ? (
               <div className="flex flex-col">
                 <Image
-                  src={imageURL || "https://ipfs.io/ipfs/QmSUzqAbhU2HYfD5j9kdhFS92rUh1j84hMAgPizvGAHBbZ"} // Ensure you use the correct path for Next.js
+                  src={imageURL || "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY"} // Ensure you use the correct path for Next.js
                   alt="Profile Picture"
                   width={150} // 7 * 4px = 28px
                   height={150} // 7 * 4px = 28px
-                  style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+                  // style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
                 />
               </div>
             ) : (
               <Image
-                src={imageURL || "https://ipfs.io/ipfs/QmSUzqAbhU2HYfD5j9kdhFS92rUh1j84hMAgPizvGAHBbZ"} // Ensure you use the correct path for Next.js
+                src={imageURL || "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY"} // Ensure you use the correct path for Next.js
                 alt="Profile Picture"
                 width={150} // 7 * 4px = 28px
                 height={150} // 7 * 4px = 28px
-                style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+                // style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
               />
             )}
           </div>
@@ -142,7 +142,7 @@ export const MyProfile: NextPage = () => {
             <InputBase placeholder="Your Name" value={name} onChange={setName} />
           ) : (
             <>
-              <h2 className="text-2xl font-bold">{name || "-unregistered user-"}</h2>
+              <h2 className="text-2xl font-bold">{name || "no name"}</h2>
               <div className="text-base-content">
                 <Address address={connectedAddress} />
               </div>
@@ -160,8 +160,8 @@ export const MyProfile: NextPage = () => {
             </>
           ) : (
             <>
-              <p className="text-base-content">{bio || "-no bio available-"}</p>
-              <p className="text-base-content">{website || "-no URL provided-"}</p>
+              <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
+              <p className={`text-base-content ${website ? "" : "text-red-600"}`}>{website || "no link available"}</p>
             </>
           )}
         </div>

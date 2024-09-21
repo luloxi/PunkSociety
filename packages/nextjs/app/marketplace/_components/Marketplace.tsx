@@ -11,7 +11,7 @@ import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Collectible extends Partial<NFTMetaData> {
-  listingId?: number; // For listed collectibles, optional
+  listingId?: number;
   uri: string;
   owner: string;
   price?: string;
@@ -19,7 +19,7 @@ export interface Collectible extends Partial<NFTMetaData> {
   isAuction?: boolean;
   date?: string;
   highestBidder?: string;
-  maxTokenId?: number; // New field for the maximum token ID (from CollectionStarted event)
+  maxTokenId?: number;
 }
 
 export const Marketplace = () => {
@@ -29,12 +29,10 @@ export const Marketplace = () => {
   // Tab management state
   const [activeTab, setActiveTab] = useState("newest");
 
-  // Fetch the collectible contract
   const { data: yourCollectibleContract } = useScaffoldContract({
     contractName: "MockNFT",
   });
 
-  // Fetch Marketplace ListingCreated events
   const {
     data: events,
     isLoading: isLoadingEvents,
@@ -46,7 +44,6 @@ export const Marketplace = () => {
     watch: true,
   });
 
-  // Fetch Marketplace Purchase events
   const {
     data: purchaseEvents,
     isLoading: purchaseIsLoadingEvents,
@@ -58,7 +55,6 @@ export const Marketplace = () => {
     watch: true,
   });
 
-  // Fetch SimpleMint CollectionStarted events
   const {
     data: simpleMintEvents,
     isLoading: simpleMintIsLoadingEvents,
@@ -76,7 +72,6 @@ export const Marketplace = () => {
 
       const collectiblesUpdate: Collectible[] = [];
 
-      // Process Marketplace ListingCreated events
       for (const event of events) {
         try {
           const { args } = event;
@@ -84,19 +79,17 @@ export const Marketplace = () => {
           const nftId = args?.nftId;
           const seller = args?.seller;
           const price = args?.price;
-          const payableCurrency = args?.payableCurrency === 0 ? "ETH" : "USDC"; // USDC for non-ETH
+          const payableCurrency = args?.payableCurrency === 0 ? "ETH" : "USDC";
           const isAuction = args?.isAuction;
           const date = new Date(Number(args?.date) * 1000).toLocaleDateString();
           const highestBidder = args?.highestBidder;
 
-          // Fetch the tokenURI for the NFT
           const tokenURI = await yourCollectibleContract.read.tokenURI([nftId ? BigInt(nftId) : 0n]);
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
           const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
 
-          // Add the NFT to the collectibles array
           collectiblesUpdate.push({
-            listingId: listingId !== undefined ? parseInt(listingId.toString()) : 0, // Default to 0 or any other value
+            listingId: listingId !== undefined ? parseInt(listingId.toString()) : 0,
             uri: tokenURI,
             owner: seller || "",
             price: price?.toString(),
@@ -112,7 +105,6 @@ export const Marketplace = () => {
         }
       }
 
-      // Process SimpleMint CollectionStarted events
       for (const event of simpleMintEvents || []) {
         try {
           const { args } = event;
@@ -121,13 +113,11 @@ export const Marketplace = () => {
           const usdPrice = args?.usdPrice;
           const maxTokenId = args?.maxTokenId;
 
-          // Ensure tokenURI is defined
           if (!tokenURI) continue;
 
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
           const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
 
-          // Add the NFT collection to the collectibles array
           collectiblesUpdate.push({
             listingId: undefined,
             uri: tokenURI,
@@ -143,31 +133,29 @@ export const Marketplace = () => {
         }
       }
 
-      // Debugging: Log the Purchase Events
-      // console.log("Purchase Events:", purchaseEvents);
-
-      // Debugging: Log the listed collectibles before filtering
-      // console.log("Listed Collectibles before filtering:", collectiblesUpdate);
-
-      // Filter out NFTs that have been purchased
       const updatedCollectibles = collectiblesUpdate.filter(collectible => {
         const hasBeenPurchased = purchaseEvents?.some(purchase => {
-          const purchaseItemId = Number(purchase.args.itemId); // Convert itemId from Purchase to number
-          return purchaseItemId === collectible.listingId; // Ensure both are numbers for comparison
+          const purchaseItemId = Number(purchase.args.itemId);
+          return purchaseItemId === collectible.listingId;
         });
-        // console.log(`Collectible ${collectible.listingId} has been purchased:`, hasBeenPurchased);
         return !hasBeenPurchased;
       });
 
-      // Debugging: Log the filtered collectibles
-      // console.log("Filtered Collectibles:", updatedCollectibles);
-
-      // Update state with filtered collectibles
       setListedCollectibles(updatedCollectibles);
     };
 
     fetchListedNFTs();
   }, [events, simpleMintEvents, purchaseEvents, yourCollectibleContract]);
+
+  const filteredCollectibles = listedCollectibles.filter(collectible => {
+    if (activeTab === "on-sale") {
+      return collectible.listingId && collectible.price;
+    }
+    if (activeTab === "mintables") {
+      return collectible.maxTokenId;
+    }
+    return true;
+  });
 
   if (isLoadingEvents || simpleMintIsLoadingEvents || purchaseIsLoadingEvents) {
     return (
@@ -184,7 +172,6 @@ export const Marketplace = () => {
   return (
     <>
       <MarketplaceDescription />
-      {/* Tabs Section */}
       <div className="mt-2 md:px-4 w-full rounded-lg">
         <div className="tabs justify-start flex-wrap border-b-2 border-base-300">
           <a
@@ -215,13 +202,13 @@ export const Marketplace = () => {
       </div>
 
       <div className="flex justify-center">{!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}</div>
-      {listedCollectibles.length === 0 ? (
+      {filteredCollectibles.length === 0 ? (
         <div className="flex justify-center items-center mt-10">
           <div className="text-2xl text-primary-content">No NFTs found</div>
         </div>
       ) : (
         <div className="flex flex-wrap gap-6 my-4 px-5 justify-center">
-          {listedCollectibles.map(item => (
+          {filteredCollectibles.map(item => (
             <NFTCard nft={item} key={item.uri} />
           ))}
         </div>
