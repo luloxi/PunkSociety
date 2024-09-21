@@ -8,8 +8,6 @@ interface MetadataFormProps {
   setCollectionSymbol: (symbol: string) => void;
   description: string;
   setDescription: (desc: string) => void;
-  image: string;
-  setImage: (img: string) => void;
   animationUrl: string;
   setAnimationUrl: (url: string) => void;
 }
@@ -21,8 +19,6 @@ export const MetadataForm: React.FC<MetadataFormProps> = ({
   setCollectionSymbol,
   description,
   setDescription,
-  image,
-  setImage,
   animationUrl,
   setAnimationUrl,
 }) => {
@@ -52,13 +48,6 @@ export const MetadataForm: React.FC<MetadataFormProps> = ({
           onChange={setDescription}
           placeholder="Enter description"
         />
-      </div>
-
-      <div className="py-2">
-        <span className="font-bold p-3">
-          Image URL <span className="text-red-500">*</span>
-        </span>
-        <InputBase placeholder="ipfs:// or ipfs.io URLs" value={image} onChange={setImage} />
       </div>
 
       <div className="py-2">

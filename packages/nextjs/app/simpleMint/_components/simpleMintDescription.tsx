@@ -78,7 +78,7 @@ export const SimpleMintDescription = () => {
       {/* Close button */}
       <button
         onClick={handleClose}
-        className="absolute top-2 right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center z-10 pointer-events-auto"
+        className="absolute top-4 right-4 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center z-10 pointer-events-auto"
         aria-label="Close"
       >
         X

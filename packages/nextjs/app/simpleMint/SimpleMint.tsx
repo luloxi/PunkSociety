@@ -5,7 +5,7 @@ import { AttributesForm } from "./_components/AttributesForm";
 import { JSONViewer } from "./_components/JSONViewer";
 import { MediaPreview } from "./_components/MediaPreview";
 import { MetadataForm } from "./_components/MetadataForm";
-import { MintingForm } from "./_components/MintingForm";
+import { MintingForm } from "./_components/MintingButtons";
 import { RestoreDescriptionButton } from "./_components/RestoreDescriptionButton";
 import generateTokenURI from "./_components/generateTokenURI";
 import { SimpleMintDescription } from "./_components/simpleMintDescription";
@@ -16,14 +16,15 @@ export const SimpleMint: NextPage = () => {
   const [collectionName, setCollectionName] = useState("");
   const [collectionSymbol, setCollectionSymbol] = useState("");
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("");
   const [animationUrl, setAnimationUrl] = useState("");
   const [attributes, setAttributes] = useState<{ traitType: string; value: string }[]>([]);
   const [usdPrice, setUsdPrice] = useState("");
   const [maxSupply, setMaxSupply] = useState("");
   const [yourJSON, setYourJSON] = useState<object>({});
-  const [uploadedIpfsPath, setUploadedIpfsPath] = useState("");
+  const [uploadedIpfsPath, setUploadedIpfsPath] = useState(""); // For minting JSON IPFS path
+  const [uploadedImageIpfsPath, setUploadedImageIpfsPath] = useState(""); // NEW: For image IPFS path
   const [descriptionVisible, setDescriptionVisible] = useState(true);
+  const [enableDebug, setEnableDebug] = useState(false);
 
   useEffect(() => {
     const savedVisibility = localStorage.getItem("simpleMintDescriptionVisible");
@@ -35,14 +36,29 @@ export const SimpleMint: NextPage = () => {
     localStorage.setItem("simpleMintDescriptionVisible", "true");
   };
 
+  const resetForm = () => {
+    setYourJSON({});
+    setUploadedIpfsPath("");
+    setUploadedImageIpfsPath(""); // Ensure this is reset
+    // reset all state except the description
+    setCollectionName("");
+    setCollectionSymbol("");
+    setDescription("");
+    setAnimationUrl("");
+    setAttributes([]);
+    setUsdPrice("");
+    setMaxSupply("");
+  };
+
   useEffect(() => {
     const generateTokenURIString = () => {
-      const tokenURI = generateTokenURI(collectionName, description, image, animationUrl, attributes);
+      const fullImageUrl = `https://ipfs.io/ipfs/${uploadedImageIpfsPath}`;
+      const tokenURI = generateTokenURI(collectionName, description, fullImageUrl, animationUrl, attributes);
       setYourJSON(JSON.parse(atob(tokenURI.split(",")[1])));
     };
 
     generateTokenURIString();
-  }, [collectionName, description, image, animationUrl, attributes]);
+  }, [collectionName, description, uploadedImageIpfsPath, animationUrl, attributes]);
 
   return (
     <>
@@ -65,8 +81,6 @@ export const SimpleMint: NextPage = () => {
                   setCollectionSymbol={setCollectionSymbol}
                   description={description}
                   setDescription={setDescription}
-                  image={image}
-                  setImage={setImage}
                   animationUrl={animationUrl}
                   setAnimationUrl={setAnimationUrl}
                 />
@@ -74,7 +88,11 @@ export const SimpleMint: NextPage = () => {
               </div>
 
               {/* Media Preview */}
-              <MediaPreview image={image} animationUrl={animationUrl} />
+              <MediaPreview
+                image={uploadedImageIpfsPath}
+                animationUrl={animationUrl}
+                setUploadedImageIpfsPath={setUploadedImageIpfsPath} // NEW: Set the uploaded image IPFS path here
+              />
             </div>
 
             {/* JSON Viewer */}
@@ -99,22 +117,38 @@ export const SimpleMint: NextPage = () => {
               collectionName={collectionName}
               collectionSymbol={collectionSymbol}
               description={description}
-              image={image}
+              image={uploadedImageIpfsPath} // Pass the uploaded image IPFS path to MintingForm
               animationUrl={animationUrl}
               attributes={attributes}
               usdPrice={usdPrice}
               maxSupply={maxSupply}
               yourJSON={yourJSON}
-              setUploadedIpfsPath={setUploadedIpfsPath}
+              setUploadedIpfsPath={setUploadedIpfsPath} // This manages the metadata IPFS path
+              resetForm={resetForm}
             />
 
-            {uploadedIpfsPath && (
+            {uploadedIpfsPath && enableDebug && (
               <div className="mt-4">
                 <a href={`https://ipfs.io/ipfs/${uploadedIpfsPath}`} target="_blank" rel="noreferrer">
                   {`https://ipfs.io/ipfs/${uploadedIpfsPath}`}
                 </a>
               </div>
             )}
+
+            {uploadedImageIpfsPath && enableDebug && (
+              <div className="mt-4">
+                <a href={`https://ipfs.io/ipfs/${uploadedImageIpfsPath}`} target="_blank" rel="noreferrer">
+                  {`https://ipfs.io/ipfs/${uploadedImageIpfsPath}`}
+                </a>
+              </div>
+            )}
+            <div className="flex flex-col justify-center items-center mt-6 gap-3">
+              <div className="flex items-center">
+                <button className="cool-button mt-4" onClick={() => setEnableDebug(!enableDebug)}>
+                  Debug IPFS uploads
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

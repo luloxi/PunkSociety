@@ -16,6 +16,7 @@ interface MintingFormProps {
   maxSupply: string;
   yourJSON: object;
   setUploadedIpfsPath: (path: string) => void;
+  resetForm: () => void;
 }
 
 export const MintingForm: React.FC<MintingFormProps> = ({
@@ -29,6 +30,7 @@ export const MintingForm: React.FC<MintingFormProps> = ({
   maxSupply,
   yourJSON,
   setUploadedIpfsPath,
+  resetForm,
 }) => {
   const { address: connectedAddress } = useAccount();
   const { signTypedDataAsync } = useSignTypedData();
@@ -56,7 +58,7 @@ export const MintingForm: React.FC<MintingFormProps> = ({
     }
   };
 
-  const handleMPaidMint = async () => {
+  const handlePaidMint = async () => {
     if (!connectedAddress) {
       notification.error("Please connect your wallet");
       return;
@@ -83,6 +85,7 @@ export const MintingForm: React.FC<MintingFormProps> = ({
       if (contractResponse) {
         notification.success("Collection started successfully!");
       }
+      resetForm();
     } catch (error) {
       console.error("Error during minting:", error);
       notification.error("Minting failed, please try again.");
@@ -160,7 +163,7 @@ export const MintingForm: React.FC<MintingFormProps> = ({
         </div>
       ) : (
         <div className="flex items-center">
-          <button className="cool-button" disabled={loading} onClick={handleMPaidMint}>
+          <button className="cool-button" disabled={loading} onClick={handlePaidMint}>
             Start NFT Collection
           </button>
         </div>

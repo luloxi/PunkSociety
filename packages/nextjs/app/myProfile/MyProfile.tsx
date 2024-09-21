@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { MyHoldings } from "./_components";
+import { MyHoldings } from "./_components/MyHoldings";
+import { ProfilePictureUpload } from "./_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
@@ -15,7 +16,7 @@ import nftsMetadata from "~~/utils/simpleNFT/nftsMetadata";
 export const MyProfile: NextPage = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
-  const [imageURL, setImageURL] = useState("");
+  const [profilePicture, setProfilePicture] = useState<string>("");
   const [website, setWebsite] = useState("");
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
 
@@ -44,7 +45,7 @@ export const MyProfile: NextPage = () => {
     try {
       await profileInfoWriteAsync({
         functionName: "setProfile",
-        args: [name, bio, imageURL, website], // Mint 1 USDC
+        args: [name, bio, profilePicture, website], // Mint 1 USDC
       });
 
       notification.success("Profile Edited Successfully");
@@ -71,6 +72,13 @@ export const MyProfile: NextPage = () => {
       // Log the error and notify the user
       notification.error("Minting failed, please try again.");
     }
+  };
+
+  const ensureHttps = (url: string) => {
+    if (!/^https?:\/\//i.test(url)) {
+      return `https://${url}`;
+    }
+    return url;
   };
 
   const handleMintItem = async () => {
@@ -113,26 +121,17 @@ export const MyProfile: NextPage = () => {
       <div className="relative flex flex-col md:flex-row items-start bg-base-100 p-6 rounded-lg shadow-md w-full">
         {/* Profile Picture */}
         <div className="avatar mr-4 md:mr-8">
-          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            {isEditing ? (
-              <Image
-                src={imageURL || "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY"} // Ensure you use the correct path for Next.js
-                alt="Profile Picture"
-                width={150} // 7 * 4px = 28px
-                height={150} // 7 * 4px = 28px
-                // style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-              />
-            ) : (
-              <Image
-                src={imageURL || "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY"} // Ensure you use the correct path for Next.js
-                alt="Profile Picture"
-                width={150} // 7 * 4px = 28px
-                height={150} // 7 * 4px = 28px
-                // style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-              />
-            )}
-          </div>
+          <ProfilePictureUpload
+            isEditing={isEditing}
+            profilePicture={profilePicture}
+            setProfilePicture={setProfilePicture}
+          />
         </div>
+        {/* <div className="avatar mr-4 md:mr-8">
+          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+            <ProfilePictureUpload profilePicture={profilePicture} setProfilePicture={setProfilePicture} />
+          </div>
+        </div> */}
 
         {/* User Info Section */}
         <div className="flex flex-col justify-start">
@@ -154,16 +153,22 @@ export const MyProfile: NextPage = () => {
             <>
               <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
               <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
-              <InputBase
-                placeholder="Profile pic: Only accepting ipfs:// or ipfs.io URLs"
-                value={imageURL}
-                onChange={setImageURL}
-              />
             </>
           ) : (
             <>
               <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
-              <p className={`text-base-content ${website ? "" : "text-red-600"}`}>{website || "no link available"}</p>
+              {website ? (
+                <a
+                  href={ensureHttps(website)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 underline"
+                >
+                  {website}
+                </a>
+              ) : (
+                <p className="text-red-600">no link available</p>
+              )}
             </>
           )}
         </div>
@@ -286,5 +291,3 @@ export const MyProfile: NextPage = () => {
     </div>
   );
 };
-
-// export default MyNFTs;
