@@ -1,130 +1,85 @@
 const nftsMetadata = [
   {
-    name: "PiccaWho?",
-    description: "House music for the soul.",
+    name: "Microworld",
+    description: "Plants are magical.",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-    image: "https://ipfs.io/ipfs/QmdsAeLoVrhu9APcXZuTGfnptgSrty2rfUULr5bqEEotLK",
+    image: "https://ipfs.io/ipfs/QmSUzqAbhU2HYfD5j9kdhFS92rUh1j84hMAgPizvGAHBbZ",
     animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
     attributes: [
       {
-        trait_type: "Artwork",
-        value: "abstract",
+        trait_type: "Greenness",
+        value: "Lovely",
       },
       {
-        trait_type: "Reproduction Type",
-        value: "mp3",
-      },
-      {
-        trait_type: "Track Length",
-        value: "4:20",
+        trait_type: "Feeling",
+        value: "Sunny and peaceful",
       },
     ],
   },
   {
-    description: "Reproduce and repeat.",
+    name: "Dog in a bike",
+    description: "Just as expected",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-    image: "https://ipfs.io/ipfs/Qmf5UMKoWMEmza91tYT9UPx5PeSaburp9VeeN5w6NUFVG8",
+    image: "https://ipfs.io/ipfs/QmccnSeQc9ND2pUfEkFhQWxyU3Gu4WDRv4J11QgUtpkU3H",
     animation_url: "https://ipfs.io/ipfs/QmT4RaimopnKHxAF81ut9MBFLGqun1CyTM39ZEmKxDxkoL",
-    name: "Mitosis 42",
+
     attributes: [
       {
-        trait_type: "Artwork",
-        value: "nebula",
+        trait_type: "Dogs",
+        value: "U can",
       },
       {
-        trait_type: "Reproduction Type",
-        value: "mp3",
-      },
-      {
-        trait_type: "Track Length",
-        value: "3:39",
+        trait_type: "Moto",
+        value: "Cool",
       },
     ],
   },
   {
-    description: "Ambient music for blobs.",
+    name: "Colorful Car",
+    description: "You wouldn't drive this car, but you'd definitely look at it.",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-    image: "https://ipfs.io/ipfs/QmZzYevVxn2bLwFWBpM67k74htu6m2pidsFnGcJebgtCA1",
+    image: "https://ipfs.io/ipfs/QmYQRbB6knc9FqNV6X8p49tKNg6e3Rh9hWXcJEf3hTvKfn",
     animation_url: "https://ipfs.io/ipfs/QmU7yNcUHCg2XuszsZKcmo113oKdXf6jfNJUF6odNdFoaK",
-    name: "Blob miniworld",
+
     attributes: [
       {
-        trait_type: "Artwork",
-        value: "miniworld",
-      },
-      {
-        trait_type: "Reproduction Type",
-        value: "mp3",
-      },
-      {
-        trait_type: "Track Length",
-        value: "2:31",
+        trait_type: "Colors",
+        value: "All colors",
       },
     ],
   },
   {
-    description: "Fly away with us.",
+    name: "Fork cemetery",
+    description: "R.I.P.",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-    image: "https://ipfs.io/ipfs/QmchotzQo58tXY6Qd8foo4bdVaCzUSyqZEabn4no5r8KrX",
+    image: "https://ipfs.io/ipfs/QmZhs1eddBRFLtZ6enF7mzk4n5trE1WyLAgtWeWNHGAigX",
     animation_url: "https://ipfs.io/ipfs/QmTMwY2gRBoY2auvJZTRMtw7N4ZiPzPMqMBiRbQN5358tk",
-    name: "Butterfly 3D",
+
     attributes: [
       {
-        trait_type: "Artwork",
-        value: "3D world",
-      },
-      {
-        trait_type: "Reproduction Type",
-        value: "mp3",
-      },
-      {
-        trait_type: "Track Length",
-        value: "4:15",
+        trait_type: "Deaths",
+        value: "3 deaths",
       },
     ],
   },
-  // {
-  //   description: "So delicate.",
-  //   // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-  //   image: "https://austingriffith.com/images/paintings/flamingo.jpg",
-  //   animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
-  //   name: "Flamingo",
-  //   attributes: [
-  //     {
-  //       trait_type: "BackgroundColor",
-  //       value: "black",
-  //     },
-  //     {
-  //       trait_type: "Eyes",
-  //       value: "googly",
-  //     },
-  //     {
-  //       trait_type: "Stamina",
-  //       value: 6,
-  //     },
-  //   ],
-  // },
-  // {
-  //   description: "Raaaar!",
-  //   // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
-  //   image: "https://austingriffith.com/images/paintings/godzilla.jpg",
-  //   animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
-  //   name: "Godzilla",
-  //   attributes: [
-  //     {
-  //       trait_type: "BackgroundColor",
-  //       value: "orange",
-  //     },
-  //     {
-  //       trait_type: "Eyes",
-  //       value: "googly",
-  //     },
-  //     {
-  //       trait_type: "Stamina",
-  //       value: 99,
-  //     },
-  //   ],
-  // },
+  {
+    name: "Desolated rails",
+    description: "Sometimes the shortest way is to follow the rails.",
+    // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
+    image: "https://ipfs.io/ipfs/Qmdw6ujzDhn6GEcXgJbQ8KWDuFyTDD7xpMcepcqTERKgCK",
+    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+
+    attributes: [],
+  },
+  {
+    name: "Strange Lights",
+    description: "They look cool tho",
+    // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
+    image: "https://ipfs.io/ipfs/QmQKQ86SaENES9j494UGwitP1d1F2Cxg52KFF1W6Kv5NQ2",
+    animation_url: "https://ipfs.io/ipfs/QmfF1jkVp339GXh5VtuYF3Kj4wLfKfYieQ8zp47LQWM8RP",
+
+    attributes: [],
+  },
 ];
 
 export type NFTMetaData = (typeof nftsMetadata)[number];

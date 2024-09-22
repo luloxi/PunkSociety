@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
+import React, { useCallback, useRef, useState } from "react";
+// import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Bars3Icon, PhotoIcon, ShoppingBagIcon, UserIcon } from "@heroicons/react/24/outline";
@@ -58,14 +58,8 @@ export const HeaderMenuLinks = () => {
  */
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [theme, setTheme] = useState("light");
 
   const pathname = usePathname(); // Add this line to track the active route
-
-  useEffect(() => {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    setTheme(currentTheme || "light");
-  }, []);
 
   const burgerMenuRef = useRef<HTMLDivElement>(null);
   useOutsideClick(
@@ -112,12 +106,7 @@ export const Header = () => {
         </div>
         <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
           <div className="flex relative w-24 h-10">
-            <Image
-              alt="SE2 logo"
-              className={`cursor-pointer ${theme === "light" ? "invert-colors" : ""}`}
-              fill
-              src="/logo.png"
-            />
+            <span className="text-3xl font-bold">DARTE</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">

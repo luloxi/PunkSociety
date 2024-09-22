@@ -1,4 +1,4 @@
-- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/TECHNAI-3458ad216e8c40a9b4489fe026146552?pvs=74)
+- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/DARTE-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## Prerequisites
 
@@ -14,8 +14,8 @@ To get started follow the steps below:
 1. Open a terminal and run this commands to clone this repo and install dependencies:
 
 ```
-git clone https://github.com/luloxi/Technai-foundry.git
-cd Technai-foundry
+git clone https://github.com/luloxi/DARTE.git
+cd DARTE
 yarn install
 ```
 
@@ -29,7 +29,7 @@ This command starts a local Ethereum network using Foundry. The network runs on 
 
 3. Duplicate and rename `packages/foundry/.env.example` to `packages/foundry/.env` (you don't need to fill it out until deploying to a live network)
 
-4. Open a second terminal, navigate to `Technai-foundry` and run this command to deploy the test contract:
+4. Open a second terminal, navigate to `DARTE` and run this command to deploy the test contract:
 
 ```
 yarn deploy
@@ -37,7 +37,7 @@ yarn deploy
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script/Deploy.s.sol` to deploy the contract to the network. You can also customize the deploy script.
 
-5. Open a third terminal, navigate to `Technai-foundry` and run this command to start your NextJS app:
+5. Open a third terminal, navigate to `DARTE` and run this command to start your NextJS app:
 
 ```
 yarn start
@@ -144,25 +144,17 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - **Tip for artists**: Enable or require tipping with tokens, and if you don’t have $ to pay, you can watch an ad as payment (i.e: for every 6 songs, 1 ad that gets distributed among the 6 artists reproduced for free).
 
-# Completed product description
+# Product description
 
-<div style="text-align: center;">
-  <img src="packages/nextjs/public/logo.png" alt="Alt text" style="max-width: 100%; height: auto;">
-</div>
+DARTE is a Web3-based marketplace that empowers artists to mint and monetize their work as NFTs while providing collectors with unique investment opportunities.
 
-Technai is a Web3-based marketplace that empowers artists to mint and monetize their work as NFTs while providing collectors with unique investment opportunities.
-
-Our mission is to break down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
+Its goal is to break down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
 
 ## About
 
-- This repo was started with `npx create-eth@latest` with Foundry and integrated with the contracts and frontend from [github.com/luloxi/technai-marketplace](https://github.com/luloxi/technai-marketplace)
-
-🧪 Project started on [Aleph Hackathon](https://www.aleph.crecimiento.build/es-aleph-hackathon)
-
 ⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
 
-🔗 To be deployed on Polygon and Avalanche (or other EVM compatible chains)
+🔗 To be deployed on EVM compatible chains
 
 ## Roles within the platform
 

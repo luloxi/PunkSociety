@@ -38,9 +38,10 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
     const notificationId = notification.loading("Uploading image to IPFS...");
 
     try {
-      const uploadedImage = await addToIPFS(file, true); // Upload image to IPFS
+      const ipfsId = await addToIPFS(file, true);
+      const ipfsUrl = `https://ipfs.io/ipfs/${ipfsId.path}`;
       notification.success("Image uploaded to IPFS!");
-      setProfilePicture(uploadedImage.path); // Store IPFS path for later use
+      setProfilePicture(ipfsUrl); // Store IPFS path for later use
       setLoading(false);
       notification.remove(notificationId);
     } catch (error) {
@@ -124,7 +125,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
         </div>
       ) : (
         <Image
-          src={"https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY"}
+          src={profilePicture}
           alt="Profile Picture Preview"
           className="rounded-full object-cover"
           width={128}

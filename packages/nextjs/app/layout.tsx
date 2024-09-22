@@ -5,7 +5,7 @@ import "~~/styles/globals.css";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "Technai",
+  title: "DARTE",
   description: "Built with 🏗 Scaffold-ETH 2",
 });
 

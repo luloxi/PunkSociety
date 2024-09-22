@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { MyHoldings } from "./_components/MyHoldings";
 import { ProfilePictureUpload } from "./_components/ProfilePictureUpload";
@@ -19,6 +19,7 @@ export const MyProfile: NextPage = () => {
   const [profilePicture, setProfilePicture] = useState<string>("");
   const [website, setWebsite] = useState("");
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
+  const [activeTab, setActiveTab] = useState("your-nfts");
 
   const { address: connectedAddress, isConnected, isConnecting } = useAccount();
   const { writeContractAsync: nftWriteAsync } = useScaffoldWriteContract("MockNFT");
@@ -38,8 +39,24 @@ export const MyProfile: NextPage = () => {
     watch: true,
   });
 
-  // Tab management state
-  const [activeTab, setActiveTab] = useState("your-nfts");
+  const { data: profileInfo } = useScaffoldReadContract({
+    contractName: "ProfileInfo",
+    functionName: "profiles",
+    args: [connectedAddress],
+    watch: true,
+  });
+
+  const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
+
+  // Update state when profileInfo changes and isEditing is false
+  useEffect(() => {
+    if (!isEditing && profileInfo) {
+      setName(profileInfo[0] || "");
+      setBio(profileInfo[1] || "");
+      setProfilePicture(profileInfo[2] ? profileInfo[2] : defaultProfilePicture);
+      setWebsite(profileInfo[3] || "");
+    }
+  }, [profileInfo, isEditing]);
 
   const handleEditProfile = async () => {
     try {
