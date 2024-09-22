@@ -114,16 +114,16 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
       {/* Tabs navigation */}
       {!isCollapsed && (
-        <div className="tabs flex justify-center gap-3">
+        <div className="tabs flex justify-center gap-3 border-b-4 border-base-200">
           <a
-            className={`tab  ${activeTab === "details" ? "bg-blue-300 dark:bg-blue-900" : ""}`}
+            className={`tab  ${activeTab === "details" ? "bg-blue-900 text-white" : ""}`}
             onClick={() => setActiveTab("details")}
           >
             Details
           </a>
           {connectedAddress === nft.owner && (
             <a
-              className={`tab  ${activeTab === "sellNFT" ? "bg-red-300 dark:bg-red-800" : ""}`}
+              className={`tab  ${activeTab === "sellNFT" ? "bg-red-800 text-white" : ""}`}
               onClick={() => setActiveTab("sellNFT")}
             >
               Sell NFT
