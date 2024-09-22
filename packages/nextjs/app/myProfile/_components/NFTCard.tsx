@@ -156,7 +156,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
               </video>
             )}
             <div className="flex flex-col justify-center mt-1">
-              <span className="text-white text-lg">
+              <span className="text-lg">
                 <strong>Id:</strong> {nft.id}
               </span>
             </div>

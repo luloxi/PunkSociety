@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     ProfileInfo: {
-      address: "0x1613beb3b2c4f22ee086b2b38c1476a3ce7f78e8",
+      address: "0x82e01223d51eb87e16a03e24687edf0f294da6f1",
       abi: [
         {
           type: "function",
@@ -75,7 +75,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SimpleMint: {
-      address: "0x851356ae760d987e095750cceb3bc6014560891c",
+      address: "0x2bdcc0de6be1f7d2ee689a0342d76f52e8efaba3",
       abi: [
         {
           type: "constructor",
@@ -388,7 +388,7 @@ const deployedContracts = {
       },
     },
     MockNFT: {
-      address: "0xf5059a5d33d5853360d16c683c16e67980206f36",
+      address: "0x7969c5ed335650692bc04293b07f5bf2e7a673c0",
       abi: [
         {
           type: "constructor",
@@ -1008,7 +1008,7 @@ const deployedContracts = {
       },
     },
     MockUSDC: {
-      address: "0x95401dc811bb5740090279ba06cfa8fcf6113778",
+      address: "0x7bc06c482dead17c0e297afbc32f6e63d3846650",
       abi: [
         {
           type: "constructor",
@@ -1465,7 +1465,7 @@ const deployedContracts = {
       },
     },
     Marketplace: {
-      address: "0x998abeb3e57409262ae5b751f60747921b33613e",
+      address: "0xc351628eb244ec633d5f21fbd6621e1a683b1181",
       abi: [
         {
           type: "constructor",
