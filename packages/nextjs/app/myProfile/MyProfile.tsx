@@ -235,7 +235,7 @@ export const MyProfile: NextPage = () => {
         <div className="tabs justify-start flex-wrap border-b-2 border-base-300">
           <a
             className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "your-nfts" ? "border-blue-500 font-bold text-blue-500" : ""
+              activeTab === "your-nfts" ? "border-blue-600 font-bold text-blue-600" : ""
             }`}
             onClick={() => setActiveTab("your-nfts")}
           >
@@ -243,23 +243,23 @@ export const MyProfile: NextPage = () => {
           </a>
           <a
             className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "nfts-created" ? "border-blue-500 font-bold text-blue-500" : ""
+              activeTab === "created" ? "border-blue-600 font-bold text-blue-600" : ""
             }`}
-            onClick={() => setActiveTab("nfts-created")}
+            onClick={() => setActiveTab("created")}
           >
-            NFTs created
+            Created
           </a>
           <a
             className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "nfts-on-sale" ? "border-blue-500 font-bold text-blue-500" : ""
+              activeTab === "on-sale" ? "border-blue-600 font-bold text-blue-600" : ""
             }`}
-            onClick={() => setActiveTab("nfts-on-sale")}
+            onClick={() => setActiveTab("on-sale")}
           >
-            NFTs on Sale
+            On Sale
           </a>
           <a
             className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "past-sales" ? "border-blue-500 font-bold text-blue-500" : ""
+              activeTab === "past-sales" ? "border-blue-600 font-bold text-blue-600" : ""
             }`}
             onClick={() => setActiveTab("past-sales")}
           >
@@ -287,13 +287,13 @@ export const MyProfile: NextPage = () => {
           </>
         )}
 
-        {activeTab === "nfts-created" && (
+        {activeTab === "created" && (
           <div className="text-center">
             <p className="text-lg">You have created 0 NFTs so far.</p>
           </div>
         )}
 
-        {activeTab === "nfts-on-sale" && (
+        {activeTab === "on-sale" && (
           <div className="text-center">
             <p className="text-lg">You currently have no NFTs listed for sale.</p>
           </div>

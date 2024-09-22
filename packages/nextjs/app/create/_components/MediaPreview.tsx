@@ -77,8 +77,8 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({ image, animationUrl,
 
   return (
     <div
-      className={`relative flex items-center justify-center w-60 h-60 rounded-lg shadow-lg ${
-        dragActive ? "bg-blue-100 border-2 border-blue-500" : "bg-gray-200"
+      className={`relative flex items-center justify-center w-60 h-72 rounded-lg shadow-lg ${
+        dragActive ? "bg-blue-100 border-2 border-blue-600" : "bg-gray-200"
       } ${previewImage ? "" : "bg-gray-200"}`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}

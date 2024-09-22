@@ -15,7 +15,6 @@ interface MintingFormProps {
   usdPrice: string;
   maxSupply: string;
   yourJSON: object;
-  setUploadedIpfsPath: (path: string) => void;
   resetForm: () => void;
 }
 
@@ -29,7 +28,6 @@ export const MintingForm: React.FC<MintingFormProps> = ({
   usdPrice,
   maxSupply,
   yourJSON,
-  setUploadedIpfsPath,
   resetForm,
 }) => {
   const { address: connectedAddress } = useAccount();
@@ -68,7 +66,6 @@ export const MintingForm: React.FC<MintingFormProps> = ({
 
     try {
       const ipfsPath = await uploadToIPFS();
-      setUploadedIpfsPath(ipfsPath);
 
       const contractResponse = await writeContractAsync({
         functionName: "startCollection",
@@ -110,7 +107,6 @@ export const MintingForm: React.FC<MintingFormProps> = ({
 
     try {
       const ipfsPath = await uploadToIPFS();
-      setUploadedIpfsPath(ipfsPath);
 
       const signature = await signTypedDataAsync({
         domain: EIP_712_DOMAIN,

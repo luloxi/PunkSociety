@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-export const SimpleMintDescription = () => {
+export const Description = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    const savedVisibility = localStorage.getItem("simpleMintDescriptionVisible");
+    const savedVisibility = localStorage.getItem("CreateDescriptionVisible");
     if (savedVisibility === "false") {
       setIsVisible(false);
     }
@@ -12,7 +12,7 @@ export const SimpleMintDescription = () => {
 
   const handleClose = () => {
     setIsVisible(false);
-    localStorage.setItem("simpleMintDescriptionVisible", "false");
+    localStorage.setItem("CreateDescriptionVisible", "false");
   };
 
   if (!isVisible) return null;
@@ -21,14 +21,14 @@ export const SimpleMintDescription = () => {
     <div className="relative self-center md:w-full collapse bg-base-300">
       <input type="checkbox" className="collapse-checkbox" />
       <div className="collapse-title text-center text-xl font-medium pointer-events-auto">
-        New to Simple Mint? <strong className="text-green-500">Click here!</strong>
+        New to NFT creation? <strong className="text-green-500">Click here!</strong>
       </div>
       <div className="collapse-content">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-center">
           <div className="flex flex-col">
             <p>
-              Simple Mint allows you to <strong className="text-green-600">upload your art and create an NFT</strong> on
-              a blockchain.
+              This tool allows you to <strong className="text-green-600">upload your art and create an NFT</strong> on a
+              blockchain.
               <br />
               NFTs, or Non-Fungible Tokens,{" "}
               <strong className="text-green-600">represent ownership of a piece of content or art</strong>.

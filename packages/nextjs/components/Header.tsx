@@ -21,8 +21,8 @@ export const menuLinks: HeaderMenuLink[] = [
     icon: <ShoppingBagIcon className="h-4 w-4" />,
   },
   {
-    label: "Simple Mint",
-    href: "/simpleMint",
+    label: "Create",
+    href: "/create",
     icon: <PhotoIcon className="h-4 w-4" />,
   },
 ];
@@ -40,8 +40,8 @@ export const HeaderMenuLinks = () => {
               href={href}
               passHref
               className={`${
-                isActive ? "bg-secondary shadow-md" : ""
-              } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+                isActive ? "text-blue-600 font-bold" : ""
+              } hover:text-blue-600 font-bold py-0 px-3 text-sm rounded-full gap-2 grid grid-flow-col no-bg no-shadow`}
             >
               {icon}
               <span>{label}</span>
@@ -68,7 +68,7 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:static top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
+    <div className="sticky lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start w-auto lg:w-1/2">
         <div className="lg:hidden dropdown" ref={burgerMenuRef}>
           <label
@@ -94,8 +94,8 @@ export const Header = () => {
                 <Link
                   href="/myProfile"
                   className={`${
-                    pathname === "/myProfile" ? "bg-secondary shadow-md" : ""
-                  } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+                    pathname === "/myProfile" ? "text-blue-600 font-bold" : ""
+                  } hover:text-blue-600 font-bold  active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
                 >
                   <UserIcon className="h-4 w-4" />
                   <span>My Profile</span>
@@ -109,7 +109,7 @@ export const Header = () => {
             <span className="text-3xl font-bold">DARTE</span>
           </div>
         </Link>
-        <ul className="hidden lg:flex lg:flex-nowrap menu menu-horizontal px-1 gap-2">
+        <ul className="hidden lg:flex lg:flex-nowrap menu-horizontal px-1 gap-2">
           <HeaderMenuLinks />
         </ul>
       </div>
@@ -119,8 +119,8 @@ export const Header = () => {
           <Link
             href="/myProfile"
             className={`${
-              pathname === "/myProfile" ? "bg-secondary shadow-md" : ""
-            } hover:bg-secondary hover:shadow-md focus:!bg-secondary active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+              pathname === "/myProfile" ? "text-blue-600 font-bold" : ""
+            } hover:text-blue-600 font-bold  active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
           >
             <UserIcon className="h-4 w-4" />
             <span>My Profile</span>

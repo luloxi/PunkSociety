@@ -1,18 +1,18 @@
-import { SimpleMint } from "./SimpleMint";
+import { Create } from "./Create";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "Simple Mint",
+  title: "Create",
   description: "Built with 🏗 Scaffold-ETH 2",
 });
 
-const SimpleMintPage: NextPage = () => {
+const CreatePage: NextPage = () => {
   return (
     <>
-      <SimpleMint />
+      <Create />
     </>
   );
 };
 
-export default SimpleMintPage;
+export default CreatePage;

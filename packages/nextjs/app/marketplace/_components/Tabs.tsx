@@ -4,7 +4,7 @@ export const Tabs = ({ activeTab, setActiveTab }: { activeTab: string; setActive
     <div className="tabs justify-start flex-wrap border-b-2 border-base-300">
       <a
         className={`tab tab-lifted text-lg whitespace-nowrap ${
-          activeTab === "newest" ? "border-blue-500 font-bold text-blue-500" : ""
+          activeTab === "newest" ? "border-blue-600 font-bold text-blue-600" : ""
         }`}
         onClick={() => setActiveTab("newest")}
       >
@@ -12,7 +12,7 @@ export const Tabs = ({ activeTab, setActiveTab }: { activeTab: string; setActive
       </a>
       <a
         className={`tab tab-lifted text-lg whitespace-nowrap ${
-          activeTab === "on-sale" ? "border-blue-500 font-bold text-blue-500" : ""
+          activeTab === "on-sale" ? "border-blue-600 font-bold text-blue-600" : ""
         }`}
         onClick={() => setActiveTab("on-sale")}
       >
@@ -20,7 +20,7 @@ export const Tabs = ({ activeTab, setActiveTab }: { activeTab: string; setActive
       </a>
       <a
         className={`tab tab-lifted text-lg whitespace-nowrap ${
-          activeTab === "mintables" ? "border-blue-500 font-bold text-blue-500" : ""
+          activeTab === "mintables" ? "border-blue-600 font-bold text-blue-600" : ""
         }`}
         onClick={() => setActiveTab("mintables")}
       >

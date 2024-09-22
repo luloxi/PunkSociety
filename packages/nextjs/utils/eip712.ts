@@ -1,5 +1,5 @@
 export const EIP_712_DOMAIN = {
-  name: "Simple Mint",
+  name: "Create",
   version: "1.0.0",
 } as const;
 

@@ -109,37 +109,36 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
           width={300} // Same as the original container width
           height={300} // Adjust this to maintain the aspect ratio of the image
         />
+        {/* Hover-triggered collapse section */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-8 flex justify-center items-center bg-base-100 cursor-pointer transition-opacity opacity-0 group-hover:opacity-100"
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
+          <div className={`transition-transform ${isCollapsed ? "" : ""}`}>
+            {isCollapsed ? "▼ Expand" : "▲ Collapse"} {/* Arrow toggles up/down */}
+          </div>
+        </div>
       </figure>
 
-      {/* Hover-triggered collapse section */}
-      <div
-        className="absolute top-0 left-0 right-0 h-8 flex justify-center items-center bg-base-100 cursor-pointer transition-opacity opacity-0 group-hover:opacity-100"
-        onClick={() => setIsCollapsed(!isCollapsed)}
-      >
-        <div className={`transition-transform ${isCollapsed ? "" : ""}`}>
-          {isCollapsed ? "▼ Expand" : "▲ Collapse"} {/* Arrow toggles up/down */}
-        </div>
-      </div>
-
       {!isCollapsed && (
-        <div className="tabs flex justify-center gap-3">
+        <div className="tabs flex justify-center gap-3 border-b-4 border-base-200">
           {nft.listingId ? (
             <a
-              className={`tab ${activeTab === "buyNFT" ? "bg-red-300 dark:bg-red-800" : ""}`}
+              className={`tab ${activeTab === "buyNFT" ? "bg-red-800 text-white" : ""}`}
               onClick={() => setActiveTab("buyNFT")}
             >
               Buy NFT
             </a>
           ) : (
             <a
-              className={`tab ${activeTab === "mintNFT" ? "bg-green-300 dark:bg-green-800" : ""}`}
+              className={`tab ${activeTab === "mintNFT" ? "bg-green-800 text-white" : ""}`}
               onClick={() => setActiveTab("mintNFT")}
             >
               Mint NFT
             </a>
           )}
           <a
-            className={`tab ${activeTab === "info" ? "bg-blue-300 dark:bg-blue-900" : ""}`}
+            className={`tab ${activeTab === "info" ? "bg-blue-900 text-white" : ""}`}
             onClick={() => setActiveTab("info")}
           >
             Info
@@ -149,40 +148,38 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
       {/* Tab Content */}
       {!isCollapsed && activeTab === "mintNFT" && (
-        <div>
-          <div className="card-body space-y-3">
-            {/* Display price and buy button only if price is available */}
-            {nft.price && nft.payableCurrency && (
-              <div className="flex flex-row justify-around my-2 space-y-1">
-                <div>
-                  <div className="flex space-x-3 mt-1 items-center">
-                    <span className="font-semibold">Max Supply: </span>
-                    <span>{nft.maxTokenId}</span>
-                  </div>
-                  <div className="flex flex-row items-center gap-2">
-                    <span className="text-lg">
-                      <b>{formattedPrice}</b> {nft.payableCurrency}
-                    </span>
-                  </div>
+        <div className="card-body space-y-3">
+          {/* Display price and buy button only if price is available */}
+          {nft.price && nft.payableCurrency && (
+            <div className="flex flex-row justify-around my-2 space-y-1">
+              <div>
+                <div className="flex space-x-3 mt-1 items-center">
+                  <span className="font-semibold">Max Supply: </span>
+                  <span>{nft.maxTokenId}</span>
                 </div>
-
-                {/* Conditionally render the Allow button */}
-                {requiresApproval ? (
-                  <div className="card-actions justify-end">
-                    <button className="cool-button" onClick={handleApproveUSDC}>
-                      Allow USDC
-                    </button>
-                  </div>
-                ) : (
-                  <div className="card-actions justify-end">
-                    <button className="cool-button" onClick={handleBuyNFT}>
-                      Buy NFT
-                    </button>
-                  </div>
-                )}
+                <div className="flex flex-row items-center gap-2">
+                  <span className="text-lg">
+                    <b>{formattedPrice}</b> {nft.payableCurrency}
+                  </span>
+                </div>
               </div>
-            )}
-          </div>
+
+              {/* Conditionally render the Allow button */}
+              {requiresApproval ? (
+                <div className="card-actions justify-end">
+                  <button className="cool-button" onClick={handleApproveUSDC}>
+                    Allow USDC
+                  </button>
+                </div>
+              ) : (
+                <div className="card-actions justify-end">
+                  <button className="cool-button" onClick={handleBuyNFT}>
+                    Mint
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
 
@@ -210,7 +207,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                 ) : (
                   <div className="card-actions justify-end">
                     <button className="cool-button" onClick={handleBuyNFT}>
-                      Buy NFT
+                      Buy
                     </button>
                   </div>
                 )}

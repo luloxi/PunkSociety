@@ -2,17 +2,17 @@
 
 import { useEffect, useState } from "react";
 import { AttributesForm } from "./_components/AttributesForm";
+import { Description } from "./_components/Description";
 import { JSONViewer } from "./_components/JSONViewer";
 import { MediaPreview } from "./_components/MediaPreview";
 import { MetadataForm } from "./_components/MetadataForm";
 import { MintingForm } from "./_components/MintingButtons";
 import { RestoreDescriptionButton } from "./_components/RestoreDescriptionButton";
 import generateTokenURI from "./_components/generateTokenURI";
-import { SimpleMintDescription } from "./_components/simpleMintDescription";
 import type { NextPage } from "next";
 import { InputBase } from "~~/components/scaffold-eth";
 
-export const SimpleMint: NextPage = () => {
+export const Create: NextPage = () => {
   const [collectionName, setCollectionName] = useState("");
   const [collectionSymbol, setCollectionSymbol] = useState("");
   const [description, setDescription] = useState("");
@@ -21,26 +21,23 @@ export const SimpleMint: NextPage = () => {
   const [usdPrice, setUsdPrice] = useState("");
   const [maxSupply, setMaxSupply] = useState("");
   const [yourJSON, setYourJSON] = useState<object>({});
-  const [uploadedIpfsPath, setUploadedIpfsPath] = useState(""); // For minting JSON IPFS path
   const [uploadedImageIpfsPath, setUploadedImageIpfsPath] = useState(""); // NEW: For image IPFS path
   const [descriptionVisible, setDescriptionVisible] = useState(true);
-  const [enableDebug, setEnableDebug] = useState(false);
+  // const [enableDebug, setEnableDebug] = useState(false);
 
   useEffect(() => {
-    const savedVisibility = localStorage.getItem("simpleMintDescriptionVisible");
+    const savedVisibility = localStorage.getItem("CreateDescriptionVisible");
     setDescriptionVisible(savedVisibility !== "false");
   }, []);
 
   const handleRestore = () => {
     setDescriptionVisible(true);
-    localStorage.setItem("simpleMintDescriptionVisible", "true");
+    localStorage.setItem("CreateDescriptionVisible", "true");
   };
 
   const resetForm = () => {
     setYourJSON({});
-    setUploadedIpfsPath("");
-    setUploadedImageIpfsPath(""); // Ensure this is reset
-    // reset all state except the description
+    setUploadedImageIpfsPath("");
     setCollectionName("");
     setCollectionSymbol("");
     setDescription("");
@@ -62,7 +59,7 @@ export const SimpleMint: NextPage = () => {
 
   return (
     <>
-      {descriptionVisible && <SimpleMintDescription />}
+      {descriptionVisible && <Description />}
       <div className="w-full md:w-2/3 md:mx-auto px-0">
         <div className="flex flex-col md:flex-row items-start flex-grow">
           <div className="w-full px-8 mt-4 bg-base-100 py-6 rounded-lg ">
@@ -72,7 +69,7 @@ export const SimpleMint: NextPage = () => {
             </div>
 
             {/* Metadata and Attributes Forms */}
-            <div className="flex flex-col gap-3 md:flex-row items-start space-x-4 mb-4">
+            <div className="flex flex-col gap-3 md:flex-row items-center justify-center space-x-4 mb-4">
               <div className="text-left flex-1">
                 <MetadataForm
                   collectionName={collectionName}
@@ -123,11 +120,10 @@ export const SimpleMint: NextPage = () => {
               usdPrice={usdPrice}
               maxSupply={maxSupply}
               yourJSON={yourJSON}
-              setUploadedIpfsPath={setUploadedIpfsPath} // This manages the metadata IPFS path
               resetForm={resetForm}
             />
 
-            {uploadedIpfsPath && enableDebug && (
+            {/* {uploadedIpfsPath && enableDebug && (
               <div className="mt-4">
                 <a href={`https://ipfs.io/ipfs/${uploadedIpfsPath}`} target="_blank" rel="noreferrer">
                   {`https://ipfs.io/ipfs/${uploadedIpfsPath}`}
@@ -141,14 +137,14 @@ export const SimpleMint: NextPage = () => {
                   {`https://ipfs.io/ipfs/${uploadedImageIpfsPath}`}
                 </a>
               </div>
-            )}
-            <div className="flex flex-col justify-center items-center mt-6 gap-3">
+            )} */}
+            {/* <div className="flex flex-col justify-center items-center mt-6 gap-3">
               <div className="flex items-center">
                 <button className="cool-button mt-4" onClick={() => setEnableDebug(!enableDebug)}>
                   Debug IPFS uploads
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

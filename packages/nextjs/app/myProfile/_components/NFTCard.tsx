@@ -101,17 +101,16 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
           width={300} // Same as the original container width
           height={300} // Adjust this to maintain the aspect ratio of the image
         />
-      </figure>
-
-      {/* Hover-triggered collapse section */}
-      <div
-        className="absolute top-0 left-0 right-0 h-8 flex justify-center items-center bg-base-100 cursor-pointer transition-opacity opacity-0 group-hover:opacity-100"
-        onClick={() => setIsCollapsed(!isCollapsed)}
-      >
-        <div className={`transition-transform ${isCollapsed ? "" : ""}`}>
-          {isCollapsed ? "▼ Expand" : "▲ Collapse"} {/* Arrow toggles up/down */}
+        {/* Hover-triggered collapse section */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-8 flex justify-center items-center bg-base-100 cursor-pointer transition-opacity opacity-0 group-hover:opacity-100"
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
+          <div className={`transition-transform ${isCollapsed ? "" : ""}`}>
+            {isCollapsed ? "▼ Expand" : "▲ Collapse"} {/* Arrow toggles up/down */}
+          </div>
         </div>
-      </div>
+      </figure>
 
       {/* Tabs navigation */}
       {!isCollapsed && (
@@ -273,7 +272,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
           <div className="card-actions justify-end">
             {marketplaceData && isApproved && isApproved.toLowerCase() == marketplaceData.address ? (
               <button className="cool-button" onClick={handleCreateListing}>
-                List NFT for sale
+                List for sale
               </button>
             ) : (
               <button className="cool-button" onClick={handleApprove}>

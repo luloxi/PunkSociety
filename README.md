@@ -51,10 +51,10 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 <details><summary>See completed tasks</summary>
 
-### Simple Mint
+### NFT Creation
 
 - ✅ **Add music to NFTs metadata** and **integrate with frontend** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
-- ✅ **Create a contract for SimpleMint and SimpleMintNFT**
+- ✅ **Create NFT factory and NFT contract**
 - ✅ **Page for minting** that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
 - ✅ **Display NFT being built as a preview** before minting (display the NFT and the metadata)
 - ✅ **Add an option to start a collection paying gas** on the Simple Mint page, with a toggle to switch between gasless and paying gas
@@ -88,7 +88,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Phase 3
 
-### Simple Mint
+### NFT Creation
 
 - ✅ **Simple minting function** for artists to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
