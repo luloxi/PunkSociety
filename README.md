@@ -101,7 +101,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
-- **Remixing feature for NFTs**, where the creator receives a percentage of the royalties of the remix
+- **"Inspired by" feature for NFTs**, meaning that a new NFT can use other NFTs validated to be used as an inspiration for their creation (text, video, image, audio) and all featured NFTs show the pieces that were created in their page, and their artists earn a percentag of the royalties.
 
 ### Marketplace
 
@@ -128,6 +128,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Phase 4
 
+- Add support for other languages (Spanish, etc)
+
 ### Marketplace
 
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
@@ -140,6 +142,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Social
 
 - Make Profile read all the NFTs owned by the user, and **not just the ones minted through the website**
+- Option to customize profile appearance (colors, shape of profile picture, etc)
 - **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
 - **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
 - **Direct Messaging system** for artists and collectors
