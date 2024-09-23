@@ -110,7 +110,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Social
 
 - **Add a way for users to register their info with a signature**
-- Introduce **social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
+- Introduce **social features** (following artists, liking NFTs, and commenting on NFTs)
 
 ## Phase 3
 
