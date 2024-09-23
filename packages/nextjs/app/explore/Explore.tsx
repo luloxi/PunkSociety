@@ -27,7 +27,7 @@ export interface Collectible extends Partial<NFTMetaData> {
   maxTokenId?: number;
 }
 
-export const Marketplace = () => {
+export const Explore = () => {
   const { address: isConnected, isConnecting } = useAccount();
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
   const [activeTab, setActiveTab] = useState("newest");

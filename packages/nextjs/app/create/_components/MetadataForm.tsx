@@ -32,9 +32,8 @@ export const MetadataForm: React.FC<MetadataFormProps> = ({
       </div>
 
       <div className="flex flex-row gap-2 my-4 items-center">
-        <strong>
-          Symbol <span className="text-red-500">*</span>
-        </strong>{" "}
+        <strong>Symbol</strong>
+        <span className="text-red-500">*</span>
         <InputBase placeholder="PW" value={collectionSymbol} onChange={setCollectionSymbol} />
       </div>
 

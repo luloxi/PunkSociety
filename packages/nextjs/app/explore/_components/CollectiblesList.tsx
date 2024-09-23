@@ -1,5 +1,5 @@
 // CollectiblesList.tsx
-import { Collectible } from "../Marketplace";
+import { Collectible } from "../Explore";
 import { NFTCard } from "./NFTCard";
 
 export const CollectiblesList = ({ filteredCollectibles }: { filteredCollectibles: Collectible[] }) => {

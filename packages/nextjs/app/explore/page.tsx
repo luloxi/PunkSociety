@@ -1,18 +1,18 @@
-import { Marketplace } from "./Marketplace";
+import { Explore } from "./Explore";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "Marketplace",
+  title: "Explore",
   description: "Built with 🏗 Scaffold-ETH 2",
 });
 
-const MarketplacePage: NextPage = () => {
+const ExplorePage: NextPage = () => {
   return (
     <>
-      <Marketplace />
+      <Explore />
     </>
   );
 };
 
-export default MarketplacePage;
+export default ExplorePage;

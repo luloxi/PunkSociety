@@ -1,16 +1,16 @@
-import Marketplace from "./marketplace/page";
+import Explore from "./explore/page";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "Marketplace | DARTE",
+  title: "Explore | DARTE",
   description: "Built with 🏗 Scaffold-ETH 2",
 });
 
 const Home: NextPage = () => {
   return (
     <>
-      <Marketplace />
+      <Explore />
     </>
   );
 };
