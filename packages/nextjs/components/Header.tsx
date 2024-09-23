@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useCallback, useRef, useState } from "react";
-// import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+// import Image from "next/image";
+import { useAccount } from "wagmi";
 import { Bars3Icon, PhotoIcon, ShoppingBagIcon, UserIcon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick } from "~~/hooks/scaffold-eth";
+import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 type HeaderMenuLink = {
   label: string;
@@ -58,13 +59,34 @@ export const HeaderMenuLinks = () => {
  */
 export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname(); // Add this line to track the active route
+
+  const { address: connectedAddress, isConnected } = useAccount();
+
+  const { data: profileInfo } = useScaffoldReadContract({
+    contractName: "ProfileInfo",
+    functionName: "profiles",
+    args: [connectedAddress],
+    watch: true,
+  });
+
+  const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
+
+  const profilePicture = profileInfo ? profileInfo[2] : defaultProfilePicture;
 
   const burgerMenuRef = useRef<HTMLDivElement>(null);
   useOutsideClick(
     burgerMenuRef,
     useCallback(() => setIsDrawerOpen(false), []),
+  );
+
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useOutsideClick(
+    menuRef,
+    useCallback(() => setIsMenuOpen(false), []),
   );
 
   return (
@@ -113,22 +135,38 @@ export const Header = () => {
           <HeaderMenuLinks />
         </ul>
       </div>
-      <div className="navbar-end flex-grow mr-4 flex gap-2 items-center">
-        {/* My Profile link on desktop */}
-        <div className="hidden lg:flex items-center">
-          <Link
-            href="/myProfile"
-            className={`${
-              pathname === "/myProfile" ? "text-blue-600 font-bold" : ""
-            } hover:text-blue-600 font-bold  active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
-          >
-            <UserIcon className="h-4 w-4" />
-            <span>My Profile</span>
-          </Link>
-        </div>
 
-        <RainbowKitCustomConnectButton />
-        <FaucetButton />
+      <div className="navbar-end relative" ref={menuRef}>
+        {isConnected ? (
+          <div
+            className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            style={{
+              backgroundImage: `url(${profilePicture})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          ></div>
+        ) : (
+          <RainbowKitCustomConnectButton />
+        )}
+        {isMenuOpen && isConnected && (
+          <div className="absolute right-0 top-10 mt-2 w-48 bg-base-100 shadow-lg rounded-lg">
+            <ul className="menu p-2">
+              <li>
+                <RainbowKitCustomConnectButton />
+              </li>
+              <li>
+                <div className="flex flex-row gap-2">
+                  <Link href="/myProfile" passHref>
+                    <span className="btn btn-secondary">My Profile</span>
+                  </Link>
+                  <FaucetButton />
+                </div>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

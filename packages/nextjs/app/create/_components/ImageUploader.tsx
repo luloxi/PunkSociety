@@ -111,7 +111,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
           <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer">
             <span className="text-5xl h-auto rounded-full ">+</span>
             <span className="font-bold">Upload image</span>
-            <span className="">Max filesize: 2 MB</span>
+            <span className="">Max filesize: 5 MB</span>
             <input
               type="file"
               accept="image/*"

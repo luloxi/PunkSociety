@@ -118,7 +118,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
           <label className="w-full h-full flex flex-col cursor-pointer text-xs m-0">
             <span className="text-5xl h-auto rounded-full ">+</span>
             <span className="font-bold">Upload image</span>
-            <span className="">Max filesize: 2 MB</span>
+            <span className="">Max filesize: 5 MB</span>
             <input
               type="file"
               accept="image/*"
@@ -129,7 +129,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
         </div>
       ) : (
         <Image
-          src={defaultProfilePicture}
+          src={profilePicture ? profilePicture : defaultProfilePicture}
           alt="Profile Picture Preview"
           className="rounded-full object-cover"
           width={128}
