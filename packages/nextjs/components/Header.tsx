@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import Image from "next/image";
 import { useAccount } from "wagmi";
-import { Bars3Icon, PhotoIcon, ShoppingBagIcon, UserIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
@@ -17,14 +17,12 @@ type HeaderMenuLink = {
 
 export const menuLinks: HeaderMenuLink[] = [
   {
-    label: "Marketplace",
+    label: "Explore",
     href: "/",
-    icon: <ShoppingBagIcon className="h-4 w-4" />,
   },
   {
     label: "Create",
     href: "/create",
-    icon: <PhotoIcon className="h-4 w-4" />,
   },
 ];
 
@@ -42,7 +40,7 @@ export const HeaderMenuLinks = () => {
               passHref
               className={`${
                 isActive ? "text-blue-600 font-bold" : ""
-              } hover:text-blue-600 font-bold py-0 px-3 text-sm rounded-full gap-2 grid grid-flow-col no-bg no-shadow`}
+              } hover:text-blue-600 font-bold py-3 px-3 text-sm rounded-full gap-2 grid grid-flow-col no-bg no-shadow`}
             >
               {icon}
               <span>{label}</span>
@@ -61,7 +59,7 @@ export const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const pathname = usePathname(); // Add this line to track the active route
+  // const pathname = usePathname(); // Add this line to track the active route
 
   const { address: connectedAddress, isConnected } = useAccount();
 
@@ -74,7 +72,7 @@ export const Header = () => {
 
   const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
 
-  const profilePicture = profileInfo ? profileInfo[2] : defaultProfilePicture;
+  const profilePicture = profileInfo && profileInfo[2] ? profileInfo[2] : defaultProfilePicture;
 
   const burgerMenuRef = useRef<HTMLDivElement>(null);
   useOutsideClick(
@@ -111,18 +109,6 @@ export const Header = () => {
               }}
             >
               <HeaderMenuLinks />
-              {/* Add My Profile to mobile dropdown */}
-              <li>
-                <Link
-                  href="/myProfile"
-                  className={`${
-                    pathname === "/myProfile" ? "text-blue-600 font-bold" : ""
-                  } hover:text-blue-600 font-bold  active:!text-neutral py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
-                >
-                  <UserIcon className="h-4 w-4" />
-                  <span>My Profile</span>
-                </Link>
-              </li>
             </ul>
           )}
         </div>
@@ -136,7 +122,7 @@ export const Header = () => {
         </ul>
       </div>
 
-      <div className="navbar-end relative" ref={menuRef}>
+      <div className="navbar-end pr-2 relative" ref={menuRef}>
         {isConnected ? (
           <div
             className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
