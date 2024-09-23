@@ -19,8 +19,10 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   const [loading, setLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  // File size validation (2MB)
-  const MAX_FILE_SIZE_MB = 2 * 1024 * 1024; // 2 MB in bytes
+  // File size validation (5MB)
+  const MAX_FILE_SIZE_MB = 5 * 1024 * 1024; // 5 MB in bytes
+
+  const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
 
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {
@@ -127,7 +129,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
         </div>
       ) : (
         <Image
-          src={profilePicture}
+          src={defaultProfilePicture}
           alt="Profile Picture Preview"
           className="rounded-full object-cover"
           width={128}

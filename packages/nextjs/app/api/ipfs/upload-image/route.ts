@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ipfsClient } from "~~/utils/simpleNFT/ipfs";
 
-const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2 MB in bytes (2 * 1024 * 1024 = 2,097,152 bytes)
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes (2 * 1024 * 1024 = 2,097,152 bytes)
 
 export async function POST(request: NextRequest) {
   try {

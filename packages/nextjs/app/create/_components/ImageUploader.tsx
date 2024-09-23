@@ -16,8 +16,8 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
   const [loading, setLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  // File size validation (2MB)
-  const MAX_FILE_SIZE_MB = 2 * 1024 * 1024; // 2 MB in bytes
+  // File size validation (5MB)
+  const MAX_FILE_SIZE_MB = 5 * 1024 * 1024; // 5 MB in bytes
 
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {
