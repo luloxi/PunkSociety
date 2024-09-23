@@ -49,7 +49,7 @@ export const DescriptionInput = <T extends { toString: () => string } | undefine
     <div className={`flex bg-base-200 rounded-lg text-accent ${modifier}`}>
       {prefix}
       <textarea
-        className="textarea textarea-ghost border-base-300 focus:border-green-600 focus:border-2 rounded-lg focus:outline-none focus:bg-transparent focus:text-gray-400 h-auto min-h-[3rem] px-4 border w-full font-medium placeholder:text-accent/50 text-green-500 resize-none"
+        className="textarea textarea-ghost border-base-300 focus:border-green-600 border-2 rounded-lg focus:outline-none focus:bg-transparent focus:text-gray-400 h-auto min-h-[3rem] px-4 border w-full font-medium placeholder:text-accent/50 text-green-500 resize-none"
         placeholder={placeholder}
         name={name}
         value={value?.toString()}
