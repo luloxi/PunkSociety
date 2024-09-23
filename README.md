@@ -2,18 +2,48 @@ DARTE is a Web3-based marketplace that empowers artists to mint and monetize the
 
 Its goal is to break down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
 
-# About
+# Technical details
 
 ⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
 
 🔗 To be deployed on EVM compatible chains
 
-## Roles within the platform
+# Roles within the Platform
 
-- Artists: Mint, remix, and earn royalties from NFTs.
-- NFT Collectors: Buy, sell, auction, and collect NFTs while benefiting from features like batch buying and cross-chain transfers.
-- Marketplace Owner: Collect fees from paid user operations.
-- Free Users: Explore, watch, and listen to content
+- Artists: Mint and earn royalties from NFTs being sold or featured in another artist work.
+- NFT Collectors: Buy, sell, auction, collect NFTs, and earn royalties from first minted collections.
+- Marketplace Owner: Collects fees from paid user operations.
+- Free Users: Explore, watch, and listen to content.
+
+# Features
+
+## Artist-Specific Features
+
+- Collaborative NFTs: NFTs can feature or be "inspired by" other NFTs, thus gaining visibility on those featured NFTs profiles, while sharing royalties with the original creator. This incentivizes collaboration and reposting other artists work.
+- Dashboards: Measure engagement (views, likes, shares) to track artist success and also track revenue with insights into sales and royalty earnings.
+- Media Player: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
+- Token Gated Content: Special artist NFTs (artist profile NFTs or specific NFTs) grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
+- Educational Content: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
+
+## Social Features
+
+- Customizable Collector Profiles: Each collector can showcase their NFTs however they like, in a featured or gallery section, and also change profile colors and appearance.
+- Follow, Like, and Comment: Users can interact with creators and their works through follows, likes, and comments, creating a vibrant social community around NFTs.
+- Notifications: Real-time alerts keep users updated on new drops, auction bids, and the activity of followed artists.
+- Direct Messaging: Collectors and artists can communicate directly via the platform, enhancing engagement and collaboration.
+- Web2.5 Social Login: Simplifies onboarding by allowing users to sign up with accounts like Twitter, Google, or Instagram. This process also auto-generates a crypto wallet for marketplace interaction.
+
+## NFT Creation and Minting
+
+- Gasless Minting: Artists can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of royalties on future sales.
+- First Minter Incentives: The first minter of a collection receives royalties on all future sales, incentivizing early investment in new collections.
+
+## Marketplace
+
+- Native and Stablecoin Payments: Buyers can pay with the blockchain's native gas token or stablecoins like USDC for flexibility in transactions.
+- Royalties: Artists (and first minters) automatically receive a share of royalties on every resale, providing a continuous stream of income.
+- Batch Buying: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
+- Cross-Chain Transfers: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
 
 # Quickstart
 
@@ -148,31 +178,3 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Direct Messaging system** for artists and collectors
 - Ability to **make your own group/community**
 - **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with Web3 concepts, NFT minting, and/or royalties to improve user adoption.
-
-## Finished product features
-
-🎨 **Gasless Mint**: A cost-free minting solution for artists where the first minter sponsors the collection’s minting costs. The sponsor receives a share of royalties on all future sales, creating opportunities for art investors. The marketplace takes a fee on first mint transactions.
-
-🔄 **Inspired by" Feature**: Allows artists to reference existing art and share royalties with the original artist/s. This promotes creative collaboration, where both the remixer and the original creator benefit from the sales of the new collectible.
-
-✅ **Royalties**: Artists can set royalties on their NFTs, earning passive income on future sales. In the case of a gasless mint, first minters also earn a percentage of royalties on all sales within the collection.
-
-🎶 **Music Player**: A full-featured on-chain music player that supports playlists, song likes, and playback on mobile and desktop via our PWA.
-
-🌐 **Cross-Chain NFTs**: Seamless cross-chain NFT transfers using Chainlink's CCIP, allowing artists to extend their reach and access new markets.
-
-🪄 **Token Gated Content**: NFT holders get exclusive access to perks like backstage passes, special events, and live event rewards.
-
-📦 **Batch Buying**: A cost-saving feature that allows users to purchase multiple NFTs in a single transaction, reducing gas fees.
-
-🔒 **Web 2.5 Login**: Users can create profiles using Twitter, Google, or Instagram, making onboarding easier. This auto-generates a crypto wallet for seamless interaction with the marketplace.
-
-🤝 **Social Features**: Build a personal profile, like NFTs, follow artists, message collectors, comment on pieces, and receive notifications about new drops from your favorite creators.
-
-👩‍🎤 **Artist NFTs (Limited Edition)**: Special artist NFTs that grant holders VIP experiences like backstage access, event invites, and more.
-
-🎓 **Educational Content**: A comprehensive onboarding experience, including video tutorials and step-by-step guides, to help users unfamiliar with NFTs, minting, or Web3 get started.
-
-📊 **Artist Dashboards**: Artists can view real-time insights into their NFTs' performance, including views, likes, and plays (for music), giving them deeper analytics into their work.
-
-📈 **Royalty and Revenue Tracking**: A simplified interface for artists to monitor royalties, sales, and overall revenue, providing a clear view of their earnings and growth trajectory.
