@@ -1,6 +1,7 @@
 // import { firestore } from "firebase-admin";
-// import { getFirestoreConnector } from "~~/services/database/firestoreDB";
-import getFirestoreConnector from "./firestoreDB.js";
+import getFirestoreConnector from "~~/services/database/firestoreDB";
+
+// import getFirestoreConnector from "./firestoreDB.js";
 
 // Firestore instance
 const firestoreDB = getFirestoreConnector();

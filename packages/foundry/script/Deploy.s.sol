@@ -74,7 +74,7 @@ contract DeployScript is ScaffoldETHDeploy {
           "Marketplace deployed at: ", vm.toString(address(marketplace))
         )
       );
-    } else if (block.chainid == LOCAL_CHAIN_ID) {
+    } else if (block.chainid == LOCAL_CHAIN_ID || block.chainid == 11155111) {
       MockUSDC localUSDC = new MockUSDC();
       console.logString(
         string.concat(
@@ -88,7 +88,7 @@ contract DeployScript is ScaffoldETHDeploy {
         )
       );
       // Populate the marketplace with some initial NFTs
-      mintInitialMarketplaceNFTs();
+      // mintInitialMarketplaceNFTs();
     }
 
     vm.stopBroadcast();
