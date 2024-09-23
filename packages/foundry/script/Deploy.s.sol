@@ -12,6 +12,7 @@ import "./DeployHelpers.s.sol";
 contract DeployScript is ScaffoldETHDeploy {
   uint256 AVALANCHE_FUJI_CHAIN_ID = 43113;
   uint256 POLYGON_AMOY_CHAIN_ID = 80002;
+  uint256 SEPOLIA_CHAIN_ID = 11155111;
   uint256 LOCAL_CHAIN_ID = 31337;
   address usdcOnAvalancheFuji = 0x5425890298aed601595a70AB815c96711a31Bc65;
   address usdcOnPolygonAmoy = 0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582;
@@ -74,7 +75,9 @@ contract DeployScript is ScaffoldETHDeploy {
           "Marketplace deployed at: ", vm.toString(address(marketplace))
         )
       );
-    } else if (block.chainid == LOCAL_CHAIN_ID || block.chainid == 11155111) {
+    } else if (
+      block.chainid == LOCAL_CHAIN_ID || block.chainid == SEPOLIA_CHAIN_ID
+    ) {
       MockUSDC localUSDC = new MockUSDC();
       console.logString(
         string.concat(
@@ -87,8 +90,10 @@ contract DeployScript is ScaffoldETHDeploy {
           "Marketplace deployed at: ", vm.toString(address(marketplace))
         )
       );
+    }
+    if (block.chainid == LOCAL_CHAIN_ID) {
       // Populate the marketplace with some initial NFTs
-      // mintInitialMarketplaceNFTs();
+      mintInitialMarketplaceNFTs();
     }
 
     vm.stopBroadcast();

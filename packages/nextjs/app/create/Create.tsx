@@ -70,6 +70,11 @@ export const Create: NextPage = () => {
 
             {/* Metadata and Attributes Forms */}
             <div className="flex flex-col gap-3 md:flex-row items-center justify-center space-x-4 mb-4">
+              {/* Media Preview */}
+              <ImageUploader
+                image={uploadedImageIpfsPath}
+                setUploadedImageIpfsPath={setUploadedImageIpfsPath} // NEW: Set the uploaded image IPFS path here
+              />
               <div className="text-left flex-1">
                 <MetadataForm
                   collectionName={collectionName}
@@ -88,12 +93,6 @@ export const Create: NextPage = () => {
                 )}
                 <AttributesForm attributes={attributes} setAttributes={setAttributes} />
               </div>
-
-              {/* Media Preview */}
-              <ImageUploader
-                image={uploadedImageIpfsPath}
-                setUploadedImageIpfsPath={setUploadedImageIpfsPath} // NEW: Set the uploaded image IPFS path here
-              />
             </div>
 
             {/* JSON Viewer */}
