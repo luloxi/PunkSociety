@@ -78,7 +78,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
     <div
       className={`relative flex items-center justify-center w-60 h-72 rounded-lg shadow-lg ${
         dragActive ? "bg-blue-400 border-2 border-blue-600" : ""
-      } ${previewImage ? "" : "bg-blue-50 dark:bg-blue-950"}`}
+      } ${previewImage ? "" : "bg-base-200"}`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -105,11 +105,13 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
           )}
         </div>
       ) : (
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500">
-          <p className="font-bold">Drag & Drop Image Here</p>
-          <p>or</p>
-          <label className="cursor-pointer text-blue-600 underline">
-            Click to Upload
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          {/* <p className="font-bold">Drag & Drop Image Here</p>
+          <p>or</p> */}
+          <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer">
+            <span className="text-5xl h-auto rounded-full ">+</span>
+            <span className="font-bold">Upload image</span>
+            <span className="">Max filesize: 2 MB</span>
             <input
               type="file"
               accept="image/*"

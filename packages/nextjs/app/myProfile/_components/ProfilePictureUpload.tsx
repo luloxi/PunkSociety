@@ -81,8 +81,8 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   return (
     <div
       className={`relative flex items-center justify-center w-32 h-32 rounded-full shadow-lg ${
-        dragActive ? "bg-blue-100 border-2 border-blue-600" : "bg-gray-200"
-      } ${previewImage ? "" : "bg-gray-200"}`}
+        dragActive ? "bg-blue-500 border-2 border-blue-600" : "bg-base-200"
+      } ${previewImage ? "" : "bg-base-200"} `}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
@@ -109,12 +109,14 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
           )}
         </div>
       ) : isEditing ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-gray-500 text-center p-2">
-          <p className="text-xs font-bold m-0">Drag & Drop</p>
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
+          {/* <p className="text-xs font-bold m-0">Drag & Drop</p>
           <p className="text-xs m-0">Image Here</p>
-          <p className="text-xs m-0">or</p>
-          <label className="cursor-pointer text-blue-600 underline text-xs m-0">
-            Click to Upload
+          <p className="text-xs m-0">or</p> */}
+          <label className="w-full h-full flex flex-col cursor-pointer text-xs m-0">
+            <span className="text-5xl h-auto rounded-full ">+</span>
+            <span className="font-bold">Upload image</span>
+            <span className="">Max filesize: 2 MB</span>
             <input
               type="file"
               accept="image/*"
