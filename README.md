@@ -118,7 +118,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - **System to validate artists and collectors (and maybe enable them to gasless mint and be able to disable them to prevent spam)**
 - **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc
-- **Token gated content**: Holders of song NFTs get access to special content for holders
+- **Token gated content**: Holders of an artist's NFTs get access to special content for holders
 - **Feature for creating collections** of NFTs and displaying them in a gallery
 
 ### Music player
