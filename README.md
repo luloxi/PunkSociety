@@ -1,4 +1,21 @@
-- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/DARTE-3458ad216e8c40a9b4489fe026146552?pvs=74)
+DARTE is a Web3-based marketplace that empowers artists to mint and monetize their work as NFTs while providing collectors with unique investment opportunities.
+
+Its goal is to break down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
+
+# About
+
+⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
+
+🔗 To be deployed on EVM compatible chains
+
+## Roles within the platform
+
+- Artists: Mint, remix, and earn royalties from NFTs.
+- NFT Collectors: Buy, sell, auction, and collect NFTs while benefiting from features like batch buying and cross-chain transfers.
+- Marketplace Owner: Collect fees from paid user operations.
+- Free Users: Explore, watch, and listen to content
+
+# Quickstart
 
 ## Prerequisites
 
@@ -47,6 +64,8 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 # Roadmap
 
+- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/DARTE-3458ad216e8c40a9b4489fe026146552?pvs=74)
+
 ## Phase 1 ✅
 
 - **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
@@ -82,7 +101,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
-- **Remixing feature for NFTs**, where the creator receives a % of the royalties of the remix
+- **Remixing feature for NFTs**, where the creator receives a percentage of the royalties of the remix
 
 ### Marketplace
 
@@ -91,7 +110,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Social
 
 - **Add a way for users to register their info with a signature**
-- Introduce **web2 social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
+- Introduce **social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
 
 ## Phase 3
 
@@ -113,7 +132,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
 - **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
-- **Periodically airdrop dividends** in USDC for creators (and first minters if appliable) (may not even be necessary if royalties pay redirect funds to the creators directly)
 - Consider transitioning ownership of the marketplace to a DAO
 - **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 - **Support for ERC1155** in the marketplace, gasless mint (rethink) and music player
@@ -128,34 +146,15 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - Ability to **make your own group/community**
 - **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with Web3 concepts, NFT minting, and/or royalties to improve user adoption.
 
-# Product description
+## Finished product features
 
-DARTE is a Web3-based marketplace that empowers artists to mint and monetize their work as NFTs while providing collectors with unique investment opportunities.
-
-Its goal is to break down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
-
-## About
-
-⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
-
-🔗 To be deployed on EVM compatible chains
-
-## Roles within the platform
-
-- Artists: Mint, remix, and earn royalties from NFTs.
-- NFT Collectors: Buy, sell, auction, and collect NFTs while benefiting from features like batch buying and cross-chain transfers.
-- Marketplace Owner: A central entity (or DAO) that manages marketplace fees and operations.
-- Free Users: Explore, watch, and listen to content, with future plans to include ad-supported music streaming.
-
-## Features
-
-🎨 **Gasless Mint**: A cost-free minting solution for artists where the first minter sponsors the collection’s minting costs. The sponsor receives a share of royalties on all future sales, creating opportunities for art investors. The marketplace takes a 5% fee on first mint transactions.
+🎨 **Gasless Mint**: A cost-free minting solution for artists where the first minter sponsors the collection’s minting costs. The sponsor receives a share of royalties on all future sales, creating opportunities for art investors. The marketplace takes a fee on first mint transactions.
 
 🔄 **Remixing Feature**: Allows artists to remix existing art and share royalties with the original artist. This promotes creative collaboration, where both the remixer and the original creator benefit from the sales of the remix.
 
 ✅ **Royalties**: Artists can set royalties on their NFTs, earning passive income on future sales. In the case of a gasless mint, first minters also earn a percentage of royalties on all sales within the collection.
 
-🎶 **Music Player**: A full-featured on-chain music player that supports playlists, song likes, and playback on mobile and desktop via our PWA. Ads play for users streaming music they don’t own, providing additional income for artists.
+🎶 **Music Player**: A full-featured on-chain music player that supports playlists, song likes, and playback on mobile and desktop via our PWA.
 
 🌐 **Cross-Chain NFTs**: Seamless cross-chain NFT transfers using Chainlink's CCIP, allowing artists to extend their reach and access new markets.
 
@@ -163,7 +162,7 @@ Its goal is to break down the barriers for artists and collectors by providing a
 
 📦 **Batch Buying**: A cost-saving feature that allows users to purchase multiple NFTs in a single transaction, reducing gas fees.
 
-🔒 **Web 2.5 Login**: Users can create profiles using familiar Web2 accounts like Twitter, Google, or Instagram, making onboarding easier. This auto-generates a crypto wallet for seamless interaction with the marketplace.
+🔒 **Web 2.5 Login**: Users can create profiles using Twitter, Google, or Instagram, making onboarding easier. This auto-generates a crypto wallet for seamless interaction with the marketplace.
 
 🤝 **Social Features**: Build a personal profile, like NFTs, follow artists, message collectors, comment on pieces, and receive notifications about new drops from your favorite creators.
 
@@ -174,9 +173,3 @@ Its goal is to break down the barriers for artists and collectors by providing a
 📊 **Artist Dashboards**: Artists can view real-time insights into their NFTs' performance, including views, likes, and plays (for music), giving them deeper analytics into their work.
 
 📈 **Royalty and Revenue Tracking**: A simplified interface for artists to monitor royalties, sales, and overall revenue, providing a clear view of their earnings and growth trajectory.
-
-## Deployed artifacts
-
-### Frontend
-
-### Contracts
