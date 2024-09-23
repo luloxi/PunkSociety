@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const MarketplaceDescription = () => {
+export const Description = () => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {

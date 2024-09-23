@@ -32,6 +32,15 @@ contract DeployScript is ScaffoldETHDeploy {
     }
     vm.startBroadcast(deployerPrivateKey);
 
+    // Deploying just to get the ABI from the frontend
+    SimpleMintNFT simpleMintNFT =
+      new SimpleMintNFT("Test", "TST", "test", msg.sender, 100, 10);
+    console.logString(
+      string.concat(
+        "SimpleMintNFT deployed at: ", vm.toString(address(simpleMintNFT))
+      )
+    );
+
     profileInfo = new ProfileInfo();
     console.logString(
       string.concat(

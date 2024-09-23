@@ -4,18 +4,20 @@ import { formatEther } from "viem";
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
 import { useDeployedContractInfo, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { notification } from "~~/utils/scaffold-eth";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Collectible extends Partial<NFTMetaData> {
-  listingId?: number; // Make optional
+  nftAddress?: string;
+  listingId?: number;
   uri: string;
   owner: string;
-  price?: string; // Make optional
-  payableCurrency?: string; // Make optional
-  isAuction?: boolean; // Make optional
-  date?: string; // Make optional
+  price?: string;
+  payableCurrency?: string;
+  isAuction?: boolean;
+  date?: string;
   highestBidder?: string;
-  maxTokenId?: number; // Include maxTokenId in the Collectible interface
+  maxTokenId?: number;
 }
 
 export const NFTCard = ({ nft }: { nft: Collectible }) => {
@@ -42,7 +44,28 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
     watch: true,
   });
 
-  // console.log("usdcAllowance", usdcAllowance);
+  const handleMintNFT = async () => {
+    if (!nft.price || !nft.payableCurrency) return; // Skip if required data is missing
+
+    try {
+      // let value;
+
+      notification.error("Minting is not yet supported");
+      // if (nft.payableCurrency === "ETH") {
+      //   value = BigInt(nft.price); // Price in wei
+      // } else if (nft.payableCurrency === "USDC") {
+      //   value = BigInt(0); // No ETH required for USDC
+      // }
+
+      // await MarketplaceWriteContractAsync({
+      //   functionName: "mint",
+      //   args: [BigInt(nft.price), BigInt(nft.maxTokenId)],
+      //   value,
+      // });
+    } catch (err) {
+      console.error("Error calling mint function", err);
+    }
+  };
 
   const handleBuyNFT = async () => {
     if (!nft.listingId || !nft.price || !nft.payableCurrency) return; // Skip if required data is missing
@@ -173,7 +196,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                 </div>
               ) : (
                 <div className="card-actions justify-end">
-                  <button className="cool-button" onClick={handleBuyNFT}>
+                  <button className="cool-button" onClick={handleMintNFT}>
                     Mint
                   </button>
                 </div>

@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { CollectiblesList } from "./_components/CollectiblesList";
+import { Description } from "./_components/Description";
 import { ErrorComponent } from "./_components/ErrorComponent";
 import { LoadingSpinner } from "./_components/LoadingSpinner";
 import { RestoreDescriptionButton } from "./_components/RestoreDescriptionButton";
 import { Tabs } from "./_components/Tabs";
-import { MarketplaceDescription } from "./_components/marketplaceDescription";
 import { useAccount } from "wagmi";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useScaffoldContract, useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
@@ -15,6 +15,7 @@ import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Collectible extends Partial<NFTMetaData> {
+  nftAddress?: string;
   listingId?: number;
   uri: string;
   owner: string;
@@ -67,9 +68,9 @@ export const Marketplace = () => {
   });
 
   const {
-    data: simpleMintEvents,
-    isLoading: simpleMintIsLoadingEvents,
-    error: simpleMintErrorReadingEvents,
+    data: createEvents,
+    isLoading: createIsLoadingEvents,
+    error: createErrorReadingEvents,
   } = useScaffoldEventHistory({
     contractName: "SimpleMint",
     eventName: "CollectionStarted",
@@ -120,9 +121,10 @@ export const Marketplace = () => {
         }
       }
 
-      for (const event of simpleMintEvents || []) {
+      for (const event of createEvents || []) {
         try {
           const { args } = event;
+          const nftAddress = args?.nft;
           const artist = args?.artist;
           const tokenURI = args?.tokenURI;
           const usdPrice = args?.usdPrice;
@@ -134,6 +136,7 @@ export const Marketplace = () => {
           const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
 
           collectiblesUpdate.push({
+            nftAddress,
             listingId: undefined,
             uri: tokenURI,
             owner: artist || "",
@@ -160,7 +163,7 @@ export const Marketplace = () => {
     };
 
     fetchListedNFTs();
-  }, [events, simpleMintEvents, purchaseEvents, yourCollectibleContract]);
+  }, [events, createEvents, purchaseEvents, yourCollectibleContract]);
 
   const filteredCollectibles = listedCollectibles.filter(collectible => {
     if (activeTab === "on-sale") {
@@ -172,11 +175,11 @@ export const Marketplace = () => {
     return true;
   });
 
-  if (isLoadingEvents || simpleMintIsLoadingEvents || purchaseIsLoadingEvents) {
+  if (isLoadingEvents || createIsLoadingEvents || purchaseIsLoadingEvents) {
     return <LoadingSpinner />;
   }
 
-  if (errorReadingEvents || simpleMintErrorReadingEvents || purchaseErrorReadingEvents) {
+  if (errorReadingEvents || createErrorReadingEvents || purchaseErrorReadingEvents) {
     return (
       <ErrorComponent
         message={errorReadingEvents?.message || purchaseErrorReadingEvents?.message || "Error loading events"}
@@ -186,7 +189,7 @@ export const Marketplace = () => {
 
   return (
     <>
-      {descriptionVisible && <MarketplaceDescription />}
+      {descriptionVisible && <Description />}
       <div className="mt-2 md:px-4 w-full rounded-lg">
         <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
