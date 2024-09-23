@@ -5,13 +5,12 @@ import Image from "next/image";
 import { notification } from "~~/utils/scaffold-eth";
 import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 
-interface MediaPreviewProps {
+interface ImageUploaderProps {
   image: string;
-  animationUrl?: string;
   setUploadedImageIpfsPath: (path: string) => void; // For handling IPFS upload
 }
 
-export const MediaPreview: React.FC<MediaPreviewProps> = ({ image, animationUrl, setUploadedImageIpfsPath }) => {
+export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploadedImageIpfsPath }) => {
   const [previewImage, setPreviewImage] = useState<string | null>(image || null);
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -124,11 +123,6 @@ export const MediaPreview: React.FC<MediaPreviewProps> = ({ image, animationUrl,
         <div className="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-75 text-white">
           Uploading...
         </div>
-      )}
-      {animationUrl && (
-        <video controls className="w-full h-12-2">
-          <source src={animationUrl} type="audio/mpeg" />
-        </video>
       )}
     </div>
   );

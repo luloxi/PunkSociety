@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { AttributesForm } from "./_components/AttributesForm";
 import { Description } from "./_components/Description";
+import { ImageUploader } from "./_components/ImageUploader";
 import { JSONViewer } from "./_components/JSONViewer";
-import { MediaPreview } from "./_components/MediaPreview";
 import { MetadataForm } from "./_components/MetadataForm";
 import { MintingForm } from "./_components/MintingButtons";
 import { RestoreDescriptionButton } from "./_components/RestoreDescriptionButton";
@@ -81,13 +81,17 @@ export const Create: NextPage = () => {
                   animationUrl={animationUrl}
                   setAnimationUrl={setAnimationUrl}
                 />
+                {animationUrl && (
+                  <video controls className="h-20 w-full pb-4">
+                    <source src={animationUrl} type="audio/mpeg" />
+                  </video>
+                )}
                 <AttributesForm attributes={attributes} setAttributes={setAttributes} />
               </div>
 
               {/* Media Preview */}
-              <MediaPreview
+              <ImageUploader
                 image={uploadedImageIpfsPath}
-                animationUrl={animationUrl}
                 setUploadedImageIpfsPath={setUploadedImageIpfsPath} // NEW: Set the uploaded image IPFS path here
               />
             </div>
