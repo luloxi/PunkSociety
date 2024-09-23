@@ -122,7 +122,7 @@ export const Header = () => {
         </ul>
       </div>
 
-      <div className="navbar-end pr-2 relative" ref={menuRef}>
+      <div className="navbar-end pr-4 relative" ref={menuRef}>
         {isConnected ? (
           <div
             className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
