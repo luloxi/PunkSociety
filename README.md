@@ -164,7 +164,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
 - **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
-- Consider transitioning ownership of the marketplace to a DAO
 - **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 - **Support for ERC1155** in the marketplace, gasless mint (rethink) and music player
 - Go through [Artion Contracts](https://github.com/Fantom-foundation/Artion-Contracts) and see what **improvements can be made to the marketplace**
