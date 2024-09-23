@@ -153,7 +153,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 🎨 **Gasless Mint**: A cost-free minting solution for artists where the first minter sponsors the collection’s minting costs. The sponsor receives a share of royalties on all future sales, creating opportunities for art investors. The marketplace takes a fee on first mint transactions.
 
-🔄 **Remixing Feature**: Allows artists to remix existing art and share royalties with the original artist. This promotes creative collaboration, where both the remixer and the original creator benefit from the sales of the remix.
+🔄 **Inspired by" Feature**: Allows artists to reference existing art and share royalties with the original artist/s. This promotes creative collaboration, where both the remixer and the original creator benefit from the sales of the new collectible.
 
 ✅ **Royalties**: Artists can set royalties on their NFTs, earning passive income on future sales. In the case of a gasless mint, first minters also earn a percentage of royalties on all sales within the collection.
 
