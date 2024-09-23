@@ -49,7 +49,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Phase 1 ✅
 
-<details><summary>See completed tasks</summary>
+- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
 ### NFT Creation
 
@@ -57,40 +57,28 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - ✅ **Create NFT factory and NFT contract**
 - ✅ **Page for minting** that takes inputs for the metadata of the NFT (Reference: [scaffold-class](https://github.com/luloxi/scaffold-class))
 - ✅ **Display NFT being built as a preview** before minting (display the NFT and the metadata)
-- ✅ **Add an option to start a collection paying gas** on the Simple Mint page, with a toggle to switch between gasless and paying gas
+- ✅ **Add an option to start a collection paying gas** on the Create page, with a toggle to switch between gasless and paying gas
 - ✅ **Allow setting max tokenId and price**
 
 ### Marketplace
 
 - ✅ **Page for interacting with the marketplace** buy and sell functions (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - ✅ Payment in native gas token **and USDC token**
-- ✅ **Display Simple Minted NFTs in the marketplace**
-
-### Social
-
-- ✅ **Add a profile for the collector** with their NFTs and info about them
-
-</details>
-
-## Phase 2
-
-- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
-
-### Marketplace
-
+- ✅ **Display created NFTs in the marketplace**
 - **Display auction info and interactions**
 
 ### Social
 
+- ✅ **Add a profile for the collector** with their NFTs and info about them
 - ✅ **Add a way for users to register their info**
 - **Add individual NFT pages** with more info about the NFT, if it's on sale, and the artist and bigger images
 - **Allow seeing other collectors profiles** and their NFTs
 
-## Phase 3
+## Phase 2
 
 ### NFT Creation
 
-- ✅ **Simple minting function** for artists to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
+- **Gasless minting function** for artists to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
@@ -98,19 +86,18 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Marketplace
 
-- **Add NFTs available for first minting** reading from the database with signatures collected through the Simple Mint process
+- **Add NFTs available for first minting** reading from the database with signatures collected through the gasless mint process
 
 ### Social
 
 - **Add a way for users to register their info with a signature**
 - Introduce **web2 social features** like creating profiles, following artists, liking NFTs, and commenting on NFTs
 
-## Phase 4
+## Phase 3
 
 ### Social
 
-- Make Profile read all the NFTs owned by the user, and **not just the ones minted through the website**
-- **System to validate artists and collectors (and maybe enable them to Simple Mint and be able to disable them to prevent spam)**
+- **System to validate artists and collectors (and maybe enable them to gasless mint and be able to disable them to prevent spam)**
 - **Artist NFT (limited edition)**: Holders of artists NFTs get access to backstage, events, a free drink on live events, etc
 - **Token gated content**: Holders of song NFTs get access to special content for holders
 - **Feature for creating collections** of NFTs and displaying them in a gallery
@@ -120,7 +107,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
 - **Upload the NFT Metadata to Filecoin** instead of IPFS (Reference: [Filecoin NFT Storage](https://docs.filecoin.io/))
 
-## Phase 5
+## Phase 4
 
 ### Marketplace
 
@@ -129,20 +116,17 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Periodically airdrop dividends** in USDC for creators (and first minters if appliable) (may not even be necessary if royalties pay redirect funds to the creators directly)
 - Consider transitioning ownership of the marketplace to a DAO
 - **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
-- **Support for ERC1155** in the marketplace, Simple Mint (rethink) and music player
+- **Support for ERC1155** in the marketplace, gasless mint (rethink) and music player
 - Go through [Artion Contracts](https://github.com/Fantom-foundation/Artion-Contracts) and see what **improvements can be made to the marketplace**
 
 ### Social
 
+- Make Profile read all the NFTs owned by the user, and **not just the ones minted through the website**
 - **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
 - **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
 - **Direct Messaging system** for artists and collectors
 - Ability to **make your own group/community**
 - **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for artists or collectors who may be unfamiliar with Web3 concepts, NFT minting, and/or royalties to improve user adoption.
-
-### Music player
-
-- **Tip for artists**: Enable or require tipping with tokens, and if you don’t have $ to pay, you can watch an ad as payment (i.e: for every 6 songs, 1 ad that gets distributed among the 6 artists reproduced for free).
 
 # Product description
 
@@ -165,11 +149,11 @@ Its goal is to break down the barriers for artists and collectors by providing a
 
 ## Features
 
-🎨 **Simple Mint**: A cost-free minting solution for artists where the first minter sponsors the collection’s minting costs. The sponsor receives a share of royalties on all future sales, creating opportunities for art investors. The marketplace takes a 5% fee on first mint transactions.
+🎨 **Gasless Mint**: A cost-free minting solution for artists where the first minter sponsors the collection’s minting costs. The sponsor receives a share of royalties on all future sales, creating opportunities for art investors. The marketplace takes a 5% fee on first mint transactions.
 
 🔄 **Remixing Feature**: Allows artists to remix existing art and share royalties with the original artist. This promotes creative collaboration, where both the remixer and the original creator benefit from the sales of the remix.
 
-✅ **Royalties**: Artists can set royalties on their NFTs, earning passive income on future sales. In the case of Simple Mint, first minters also earn a percentage of royalties on all sales within the collection.
+✅ **Royalties**: Artists can set royalties on their NFTs, earning passive income on future sales. In the case of a gasless mint, first minters also earn a percentage of royalties on all sales within the collection.
 
 🎶 **Music Player**: A full-featured on-chain music player that supports playlists, song likes, and playback on mobile and desktop via our PWA. Ads play for users streaming music they don’t own, providing additional income for artists.
 
