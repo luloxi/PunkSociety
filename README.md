@@ -19,8 +19,8 @@ By addressing challenges such as high minting costs, lack of continuous royaltie
 
 ## Royalty sharing NFTs
 
-- Royalties: Artists (and first minters) automatically receive a share of royalties on every resale and when being featured by other NFTs, providing a continuous stream of income.
 - Collaborative NFTs: NFTs can feature or be "inspired by" other NFTs, thus gaining visibility on those featured NFTs profiles, while sharing royalties with the original creator. This incentivizes collaboration and reposting other artists work.
+- Royalties: Artists (and first minters) automatically receive a share of royalties on every resale and when being featured by other NFTs, providing a continuous stream of income.
 - Gasless Minting: Artists can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of royalties on future sales.
 - First Minter Incentives: The first minter of a collection receives royalties on all future sales, incentivizing early investment in new collections.
 
