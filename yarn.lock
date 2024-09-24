@@ -995,6 +995,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fortawesome/fontawesome-svg-core@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "@fortawesome/fontawesome-svg-core@npm:6.6.0"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": 6.6.0
+  checksum: 3eaf5d3a2f9d6b362a2d01889eadecb7fe3d86a5ba7c29b5d9653a00206d329aae78e18160d46009955fa80e40ab523a3b35032d45a52014ced15b9510c264c9
+  languageName: node
+  linkType: hard
+
 "@fortawesome/free-solid-svg-icons@npm:^6.6.0":
   version: 6.6.0
   resolution: "@fortawesome/free-solid-svg-icons@npm:6.6.0"
@@ -2267,6 +2276,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@se-2/nextjs@workspace:packages/nextjs"
   dependencies:
+    "@fortawesome/fontawesome-svg-core": ^6.6.0
     "@fortawesome/free-solid-svg-icons": ^6.6.0
     "@fortawesome/react-fontawesome": ^0.2.2
     "@heroicons/react": ~2.0.11
