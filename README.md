@@ -1,6 +1,6 @@
-DARTE is a Web3-based marketplace that empowers artists to mint and monetize their work as NFTs while providing collectors with unique investment opportunities.
+DARTE is a Web3 marketplace designed to empower artists by allowing them to mint, monetize, and collaborate on NFTs. It goes beyond simple minting by fostering a culture of creativity and connection, where artists can feature each other's work within their own, earning royalties for both the creator and those they inspire. This new paradigm transforms the way artists engage with each other and their audiences, creating a dynamic, sustainable income model for digital creators.
 
-It breaks down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
+By addressing challenges such as high minting costs, lack of continuous royalties, and limited cross-chain accessibility, DARTE opens the door to a more inclusive and collaborative NFT ecosystem.
 
 # Technical details
 
