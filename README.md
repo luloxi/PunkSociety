@@ -17,33 +17,29 @@ It breaks down the barriers for artists and collectors by providing an easy-to-u
 
 # Features
 
-## Artist-Specific Features
-
-- Collaborative NFTs: NFTs can feature or be "inspired by" other NFTs, thus gaining visibility on those featured NFTs profiles, while sharing royalties with the original creator. This incentivizes collaboration and reposting other artists work.
-- Dashboards: Measure engagement (views, likes, shares) to track artist success and also track revenue with insights into sales and royalty earnings.
 - Media Player: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
-- Token Gated Content: Special artist NFTs (artist profile NFTs or specific NFTs) grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
 - Educational Content: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
 
-## Social Features
+## Royalty sharing NFTs
 
-- Customizable Collector Profiles: Each collector can showcase their NFTs however they like, in a featured or gallery section, and also change profile colors and appearance.
-- Follow, Like, and Comment: Users can interact with creators and their works through follows, likes, and comments, creating a vibrant social community around NFTs.
-- Notifications: Real-time alerts keep users updated on new drops, auction bids, and the activity of followed artists.
-- Direct Messaging: Collectors and artists can communicate directly via the platform, enhancing engagement and collaboration.
-- Web2.5 Social Login: Simplifies onboarding by allowing users to sign up with accounts like Twitter, Google, or Instagram. This process also auto-generates a crypto wallet for marketplace interaction.
-
-## NFT Creation and Minting
-
+- Royalties: Artists (and first minters) automatically receive a share of royalties on every resale and when being featured by other NFTs, providing a continuous stream of income.
+- Collaborative NFTs: NFTs can feature or be "inspired by" other NFTs, thus gaining visibility on those featured NFTs profiles, while sharing royalties with the original creator. This incentivizes collaboration and reposting other artists work.
 - Gasless Minting: Artists can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of royalties on future sales.
 - First Minter Incentives: The first minter of a collection receives royalties on all future sales, incentivizing early investment in new collections.
 
 ## Marketplace
 
 - Native and Stablecoin Payments: Buyers can pay with the blockchain's native gas token or stablecoins like USDC for flexibility in transactions.
-- Royalties: Artists (and first minters) automatically receive a share of royalties on every resale, providing a continuous stream of income.
 - Batch Buying: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
 - Cross-Chain Transfers: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
+
+## Social 
+
+- Create NFT galleries, follow and message other artists, like NFTs, comment on them, receive notifications on activity.
+- Dashboards: Measure engagement (views, likes, shares, being featured) and revenue with insights into sales and royalty earnings.
+- Customize profile colors and appearance
+- Token Gated Content: Artist profile NFTs or specific NFTs grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
+- Web2.5 Social Login: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
 
 # Quickstart
 
@@ -54,7 +50,7 @@ It breaks down the barriers for artists and collectors by providing an easy-to-u
 - [Git](https://git-scm.com/downloads)
 - [Foundry](https://book.getfoundry.sh/getting-started/installation)
 
-## Quickstart
+## Instructions
 
 To get started follow the steps below:
 
