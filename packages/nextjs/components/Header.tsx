@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useRef, useState } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import Image from "next/image";
@@ -9,8 +9,9 @@ import { useAccount } from "wagmi";
 import { PlusIcon } from "@heroicons/react/24/solid";
 // import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
-import { notification } from "~~/utils/scaffold-eth";
+import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+
+// import { notification } from "~~/utils/scaffold-eth";
 
 type HeaderMenuLink = {
   label: string;
@@ -65,7 +66,7 @@ export const Header = () => {
   // const pathname = usePathname(); // Add this line to track the active route
 
   const { address: connectedAddress, isConnected } = useAccount();
-  const { writeContractAsync: usdcWriteAsync } = useScaffoldWriteContract("MockUSDC");
+  // const { writeContractAsync: usdcWriteAsync } = useScaffoldWriteContract("MockUSDC");
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "ProfileInfo",
@@ -74,12 +75,28 @@ export const Header = () => {
     watch: true,
   });
 
-  const { data: usdcBalance } = useScaffoldReadContract({
-    contractName: "MockUSDC",
-    functionName: "balanceOf",
-    args: [connectedAddress],
-    watch: true,
-  });
+  // const { data: usdcBalance } = useScaffoldReadContract({
+  //   contractName: "MockUSDC",
+  //   functionName: "balanceOf",
+  //   args: [connectedAddress],
+  //   watch: true,
+  // });
+
+  // const handleMintUSDC = async () => {
+  //   try {
+  //     await usdcWriteAsync({
+  //       functionName: "mint",
+  //       args: [connectedAddress, BigInt(100e6)], // Mint 1 USDC
+  //     });
+
+  //     notification.success("USDC Minted Successfully");
+  //   } catch (error) {
+  //     console.error("Error during minting:", error);
+
+  //     // Log the error and notify the user
+  //     notification.error("Minting failed, please try again.");
+  //   }
+  // };
 
   const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
 
@@ -100,36 +117,20 @@ export const Header = () => {
     useCallback(() => setIsMenuOpen(false), []),
   );
 
-  const handleMintUSDC = async () => {
-    try {
-      await usdcWriteAsync({
-        functionName: "mint",
-        args: [connectedAddress, BigInt(100e6)], // Mint 1 USDC
-      });
-
-      notification.success("USDC Minted Successfully");
-    } catch (error) {
-      console.error("Error during minting:", error);
-
-      // Log the error and notify the user
-      notification.error("Minting failed, please try again.");
-    }
-  };
-
   return (
     <div className="sticky lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ml-2 lg:ml-0">
         <Link href="/create" passHref>
           <button
             className={`btn btn-ghost hidden lg:flex flex-col items-center justify-center text-3xl ${
-              pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"
+              pathname === "/create" ? "text-blue-600" : ""
             }`}
           >
             <PlusIcon className="h-6 w-6" />
           </button>
           <button
             className={`font-bold ml-2 lg:hidden flex items-center justify-center text-3xl ${
-              pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"
+              pathname === "/create" ? "text-blue-600" : ""
             }`}
           >
             <PlusIcon className="h-6 w-6" />
@@ -147,22 +148,23 @@ export const Header = () => {
 
       <div className="navbar-end pr-4 relative" ref={menuRef}>
         {isConnected ? (
+          // <>
+
+          //   <div className="hidden lg:flex items-center gap-2 pr-4 cursor-pointer" onClick={handleMintUSDC}>
+          //     {/* Wrap Image in a div and set explicit width/height */}
+          //     <div className="w-7 h-7 relative">
+          //       <Image
+          //         src="/usdc-logo.png" // Ensure you use the correct path for Next.js
+          //         alt="USDC Logo"
+          //         width={28} // 7 * 4px = 28px
+          //         height={28} // 7 * 4px = 28px
+          //         style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+          //       />
+          //     </div>
+
+          //     <span className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</span>
+          //   </div>
           <>
-            <div className="hidden lg:flex items-center gap-2 pr-4 cursor-pointer" onClick={handleMintUSDC}>
-              {/* Wrap Image in a div and set explicit width/height */}
-              <div className="w-7 h-7 relative">
-                <Image
-                  src="/usdc-logo.png" // Ensure you use the correct path for Next.js
-                  alt="USDC Logo"
-                  width={28} // 7 * 4px = 28px
-                  height={28} // 7 * 4px = 28px
-                  style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-                />
-              </div>
-
-              <span className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</span>
-            </div>
-
             <div
               className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
