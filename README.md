@@ -17,9 +17,6 @@ By addressing challenges such as high minting costs, lack of continuous royaltie
 
 # Features
 
-- Media Player: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
-- Educational Content: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
-
 ## Royalty sharing NFTs
 
 - Royalties: Artists (and first minters) automatically receive a share of royalties on every resale and when being featured by other NFTs, providing a continuous stream of income.
@@ -39,7 +36,12 @@ By addressing challenges such as high minting costs, lack of continuous royaltie
 - Dashboards: Measure engagement (views, likes, shares, being featured) and revenue with insights into sales and royalty earnings.
 - Customize profile colors and appearance
 - Token Gated Content: Artist profile NFTs or specific NFTs grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
+
+## Other features
+
+- Media Player: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
 - Web2.5 Social Login: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
+- Educational Content: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
 
 # Quickstart
 
