@@ -6,6 +6,7 @@ import { MyHoldings } from "./_components/MyHoldings";
 import { ProfilePictureUpload } from "./_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
+import { PencilIcon } from "@heroicons/react/24/outline";
 import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
@@ -135,7 +136,7 @@ export const MyProfile: NextPage = () => {
   return (
     <div className="flex flex-col items-center p-2">
       {/* User Profile Section */}
-      <div className="relative flex flex-col md:flex-row items-start bg-base-100 p-6 rounded-lg shadow-md w-full">
+      <div className="relative flex flex-col md:flex-row items-center bg-base-100 p-6 rounded-lg shadow-md w-full">
         {/* Profile Picture */}
         <div className="avatar mr-4 md:mr-8">
           <ProfilePictureUpload
@@ -151,7 +152,7 @@ export const MyProfile: NextPage = () => {
         </div> */}
 
         {/* User Info Section */}
-        <div className="flex flex-col justify-start">
+        <div className="flex flex-col justify-center items-center">
           {isEditing ? (
             <InputBase placeholder="Your Name" value={name} onChange={setName} />
           ) : (
@@ -193,11 +194,12 @@ export const MyProfile: NextPage = () => {
         {/* Edit/Cancel Button */}
         {isEditing ? (
           <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
-            Cancel Edition
+            X Cancel
           </button>
         ) : (
           <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
-            Edit Profile
+            <PencilIcon className="h-5 w-5" />
+            Edit
           </button>
         )}
 
@@ -211,7 +213,7 @@ export const MyProfile: NextPage = () => {
         ) : (
           <div className="absolute bottom-2 right-4 flex items-center gap-2">
             <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
-              Mint test USDC
+              +
             </button>
 
             {/* Wrap Image in a div and set explicit width/height */}
@@ -232,7 +234,7 @@ export const MyProfile: NextPage = () => {
 
       {/* Tabs Section */}
       <div className="mt-2 md:px-4 w-full rounded-lg">
-        <div className="tabs justify-start flex-wrap border-b-2 border-base-300">
+        <div className="tabs justify-start flex-wrap border-b-2 border-base-300 overflow-x-auto">
           <a
             className={`tab tab-lifted text-lg whitespace-nowrap ${
               activeTab === "your-nfts" ? "border-blue-600 font-bold text-blue-600" : ""

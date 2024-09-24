@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useCallback, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import Image from "next/image";
 import { useAccount } from "wagmi";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+// import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useOutsideClick, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { notification } from "~~/utils/scaffold-eth";
 
 type HeaderMenuLink = {
   label: string;
@@ -56,12 +58,13 @@ export const HeaderMenuLinks = () => {
  * Site header
  */
 export const Header = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  // const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // const pathname = usePathname(); // Add this line to track the active route
 
   const { address: connectedAddress, isConnected } = useAccount();
+  const { writeContractAsync: usdcWriteAsync } = useScaffoldWriteContract("MockUSDC");
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "ProfileInfo",
@@ -70,69 +73,97 @@ export const Header = () => {
     watch: true,
   });
 
+  const { data: usdcBalance } = useScaffoldReadContract({
+    contractName: "MockUSDC",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+    watch: true,
+  });
+
   const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
 
   const profilePicture = profileInfo && profileInfo[2] ? profileInfo[2] : defaultProfilePicture;
 
-  const burgerMenuRef = useRef<HTMLDivElement>(null);
-  useOutsideClick(
-    burgerMenuRef,
-    useCallback(() => setIsDrawerOpen(false), []),
-  );
+  // const burgerMenuRef = useRef<HTMLDivElement>(null);
+  // useOutsideClick(
+  //   burgerMenuRef,
+  //   useCallback(() => setIsDrawerOpen(false), []),
+  // );
 
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const pathname = usePathname();
 
   useOutsideClick(
     menuRef,
     useCallback(() => setIsMenuOpen(false), []),
   );
 
+  const handleMintUSDC = async () => {
+    try {
+      await usdcWriteAsync({
+        functionName: "mint",
+        args: [connectedAddress, BigInt(100e6)], // Mint 1 USDC
+      });
+
+      notification.success("USDC Minted Successfully");
+    } catch (error) {
+      console.error("Error during minting:", error);
+
+      // Log the error and notify the user
+      notification.error("Minting failed, please try again.");
+    }
+  };
+
   return (
     <div className="sticky lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start w-auto lg:w-1/2">
-        <div className="lg:hidden dropdown" ref={burgerMenuRef}>
-          <label
-            tabIndex={0}
-            className={`ml-1 btn btn-ghost ${isDrawerOpen ? "hover:bg-secondary" : "hover:bg-transparent"}`}
-            onClick={() => {
-              setIsDrawerOpen(prevIsOpenState => !prevIsOpenState);
-            }}
-          >
-            <Bars3Icon className="h-1/2" />
-          </label>
-          {isDrawerOpen && (
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-              onClick={() => {
-                setIsDrawerOpen(false);
-              }}
-            >
-              <HeaderMenuLinks />
-            </ul>
-          )}
-        </div>
-        <Link href="/" passHref className="hidden lg:flex items-center gap-2 ml-4 mr-6 shrink-0">
-          <div className="flex relative w-24 h-10">
-            <span className="text-3xl font-bold">DARTE</span>
-          </div>
+      <div className="navbar-start ml-2">
+        <Link href="/create" passHref>
+          <button className={`btn  text-3xl ${pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"}`}>
+            +
+          </button>
         </Link>
-        <ul className="hidden lg:flex lg:flex-nowrap menu-horizontal px-1 gap-2">
-          <HeaderMenuLinks />
-        </ul>
+      </div>
+
+      <div className="navbar-center flex-1 flex justify-center items-center">
+        <Link href="/" passHref>
+          <span className={`text-3xl font-bold ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`}>
+            DARTE
+          </span>
+        </Link>
       </div>
 
       <div className="navbar-end pr-4 relative" ref={menuRef}>
         {isConnected ? (
-          <div
-            className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            style={{
-              backgroundImage: `url(${profilePicture})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          ></div>
+          <>
+            <div className="hidden lg:flex items-center gap-2 pr-4 cursor-pointer" onClick={handleMintUSDC}>
+              {/* <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
+                +
+              </button> */}
+
+              {/* Wrap Image in a div and set explicit width/height */}
+              <div className="w-7 h-7 relative">
+                <Image
+                  src="/usdc-logo.png" // Ensure you use the correct path for Next.js
+                  alt="USDC Logo"
+                  width={28} // 7 * 4px = 28px
+                  height={28} // 7 * 4px = 28px
+                  style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+                />
+              </div>
+
+              <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
+            </div>
+            <div
+              className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              style={{
+                backgroundImage: `url(${profilePicture})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></div>
+          </>
         ) : (
           <RainbowKitCustomConnectButton />
         )}
