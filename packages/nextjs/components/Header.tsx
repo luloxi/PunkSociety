@@ -4,9 +4,11 @@ import React, { useCallback, useRef, useState } from "react";
 // import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Image from "next/image";
 import { useAccount } from "wagmi";
-import { PlusIcon } from "@heroicons/react/24/solid";
+// import { PlusIcon } from "@heroicons/react/24/solid";
 // import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
@@ -119,26 +121,7 @@ export const Header = () => {
 
   return (
     <div className="sticky lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ml-2 lg:ml-0">
-        <Link href="/create" passHref>
-          <button
-            className={`btn btn-ghost hidden lg:flex flex-col items-center justify-center text-3xl ${
-              pathname === "/create" ? "text-blue-600" : ""
-            }`}
-          >
-            <PlusIcon className="h-6 w-6" />
-          </button>
-          <button
-            className={`font-bold ml-2 lg:hidden flex items-center justify-center text-3xl ${
-              pathname === "/create" ? "text-blue-600" : ""
-            }`}
-          >
-            <PlusIcon className="h-6 w-6" />
-          </button>
-        </Link>
-      </div>
-
-      <div className="navbar-center flex-1 flex justify-center items-center">
+      <div className="navbar-start ml-4 ">
         <Link href="/" passHref>
           <span className={`text-3xl font-bold ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`}>
             DARTE
@@ -146,7 +129,29 @@ export const Header = () => {
         </Link>
       </div>
 
-      <div className="navbar-end pr-4 relative" ref={menuRef}>
+      <div className="navbar-center flex-1 flex justify-center items-center">
+        <Link href="/create" passHref>
+          <button
+            className={`btn btn-ghost hidden lg:flex flex-row items-center justify-center text-2xl ${
+              pathname === "/create" ? "text-blue-600" : ""
+            }`}
+          >
+            <div className="flex flex-row items-center justify-center gap-2">
+              <FontAwesomeIcon icon={faPlus} className="h-6 w-6" />
+              <span>Create</span>
+            </div>
+          </button>
+          <button
+            className={`font-bold lg:hidden flex items-center justify-center text-3xl ${
+              pathname === "/create" ? "text-blue-600" : ""
+            }`}
+          >
+            <FontAwesomeIcon icon={faPlus} className="h-6 w-6" />
+          </button>
+        </Link>
+      </div>
+
+      <div className="navbar-end mr-4 relative" ref={menuRef}>
         {isConnected ? (
           // <>
 
