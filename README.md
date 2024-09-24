@@ -24,18 +24,18 @@ By addressing challenges such as high minting costs, lack of continuous royaltie
 - Gasless Minting: Artists can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of royalties on future sales.
 - First Minter Incentives: The first minter of a collection receives royalties on all future sales, incentivizing early investment in new collections.
 
-## Marketplace
-
-- Native and Stablecoin Payments: Buyers can pay with the blockchain's native gas token or stablecoins like USDC for flexibility in transactions.
-- Batch Buying: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
-- Cross-Chain Transfers: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
-
 ## Social 
 
 - Create NFT galleries, follow and message other artists, like NFTs, comment on them, receive notifications on activity.
 - Dashboards: Measure engagement (views, likes, shares, being featured) and revenue with insights into sales and royalty earnings.
 - Customize profile colors and appearance
 - Token Gated Content: Artist profile NFTs or specific NFTs grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
+
+## Marketplace
+
+- Native and Stablecoin Payments: Buyers can pay with the blockchain's native gas token or stablecoins like USDC for flexibility in transactions.
+- Batch Buying: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
+- Cross-Chain Transfers: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
 
 ## Other features
 
