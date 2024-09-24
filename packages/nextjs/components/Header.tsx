@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import Image from "next/image";
 import { useAccount } from "wagmi";
+import { PlusIcon } from "@heroicons/react/24/solid";
 // import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
@@ -117,14 +118,21 @@ export const Header = () => {
 
   return (
     <div className="sticky lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ml-2">
+      <div className="navbar-start ml-2 lg:ml-0">
         <Link href="/create" passHref>
           <button
-            className={`btn flex items-center justify-center text-3xl ${
+            className={`btn btn-ghost hidden lg:flex flex-col items-center justify-center text-3xl ${
               pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"
             }`}
           >
-            +
+            <PlusIcon className="h-6 w-6" />
+          </button>
+          <button
+            className={`font-bold ml-2 lg:hidden flex items-center justify-center text-3xl ${
+              pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"
+            }`}
+          >
+            <PlusIcon className="h-6 w-6" />
           </button>
         </Link>
       </div>
