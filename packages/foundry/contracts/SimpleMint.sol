@@ -37,6 +37,10 @@ contract SimpleMint is EIP712 {
     uint256 _usdPrice,
     uint256 _maxTokenId
   ) public returns (address) {
+    // IMPORTANT CHANGE:
+    // Add a third function for starting collection from signature
+    // Remove artist from parameters and use msg.sender instead
+    // Add nonce to prevent replay
     SimpleMintNFT nft = new SimpleMintNFT(
       _name, _symbol, _tokenURI, _artist, _usdPrice, _maxTokenId
     );
