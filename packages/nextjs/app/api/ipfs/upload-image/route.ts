@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (file.size > MAX_FILE_SIZE) {
-      return new NextResponse(JSON.stringify({ error: "File size exceeds the maximum limit of 2 MB" }), {
+      return new NextResponse(JSON.stringify({ error: "File size exceeds the maximum limit of 5 MB" }), {
         status: 400,
       });
     }

@@ -22,7 +22,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {
     if (file.size > MAX_FILE_SIZE_MB) {
-      notification.error("File is too large. Max size is 2 MB.");
+      notification.error("File is too large. Max size is 5 MB.");
       return;
     }
 
