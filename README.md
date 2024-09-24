@@ -1,6 +1,6 @@
-DARTE is a Web3-based marketplace that empowers artists to mint and monetize their work as NFTs while providing collectors with unique investment opportunities.
+DARTE is a Web3 marketplace designed to empower artists by allowing them to mint, monetize, and collaborate on NFTs. It goes beyond simple minting by fostering a culture of creativity and connection, where artists can feature each other's work within their own, earning royalties for both the creator and those they inspire. This new paradigm transforms the way artists engage with each other and their audiences, creating a dynamic, sustainable income model for digital creators.
 
-It breaks down the barriers for artists and collectors by providing an easy-to-use platform that fosters creativity, collaboration, and sustainable income through digital art. The platform solves the problems of high minting costs for artists, lack of continuous royalties, and limited cross-chain interoperability, allowing for a more inclusive and connected NFT ecosystem.
+By addressing challenges such as high minting costs, lack of continuous royalties, and limited cross-chain accessibility, DARTE opens the door to a more inclusive and collaborative NFT ecosystem.
 
 # Technical details
 
@@ -17,33 +17,31 @@ It breaks down the barriers for artists and collectors by providing an easy-to-u
 
 # Features
 
-## Artist-Specific Features
+## Royalty sharing NFTs
 
 - Collaborative NFTs: NFTs can feature or be "inspired by" other NFTs, thus gaining visibility on those featured NFTs profiles, while sharing royalties with the original creator. This incentivizes collaboration and reposting other artists work.
-- Dashboards: Measure engagement (views, likes, shares) to track artist success and also track revenue with insights into sales and royalty earnings.
-- Media Player: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
-- Token Gated Content: Special artist NFTs (artist profile NFTs or specific NFTs) grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
-- Educational Content: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
-
-## Social Features
-
-- Customizable Collector Profiles: Each collector can showcase their NFTs however they like, in a featured or gallery section, and also change profile colors and appearance.
-- Follow, Like, and Comment: Users can interact with creators and their works through follows, likes, and comments, creating a vibrant social community around NFTs.
-- Notifications: Real-time alerts keep users updated on new drops, auction bids, and the activity of followed artists.
-- Direct Messaging: Collectors and artists can communicate directly via the platform, enhancing engagement and collaboration.
-- Web2.5 Social Login: Simplifies onboarding by allowing users to sign up with accounts like Twitter, Google, or Instagram. This process also auto-generates a crypto wallet for marketplace interaction.
-
-## NFT Creation and Minting
-
+- Royalties: Artists (and first minters) automatically receive a share of royalties on every resale and when being featured by other NFTs, providing a continuous stream of income.
 - Gasless Minting: Artists can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of royalties on future sales.
 - First Minter Incentives: The first minter of a collection receives royalties on all future sales, incentivizing early investment in new collections.
+
+## Social 
+
+- Create NFT galleries, follow and message other artists, like NFTs, comment on them, receive notifications on activity.
+- Dashboards: Measure engagement (views, likes, shares, being featured) and revenue with insights into sales and royalty earnings.
+- Customize profile colors and appearance
+- Token Gated Content: Artist profile NFTs or specific NFTs grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
 
 ## Marketplace
 
 - Native and Stablecoin Payments: Buyers can pay with the blockchain's native gas token or stablecoins like USDC for flexibility in transactions.
-- Royalties: Artists (and first minters) automatically receive a share of royalties on every resale, providing a continuous stream of income.
 - Batch Buying: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
 - Cross-Chain Transfers: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
+
+## Other features
+
+- Media Player: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
+- Web2.5 Social Login: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
+- Educational Content: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
 
 # Quickstart
 
@@ -54,7 +52,7 @@ It breaks down the barriers for artists and collectors by providing an easy-to-u
 - [Git](https://git-scm.com/downloads)
 - [Foundry](https://book.getfoundry.sh/getting-started/installation)
 
-## Quickstart
+## Instructions
 
 To get started follow the steps below:
 
@@ -108,6 +106,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - ✅ **Display NFT being built as a preview** before minting (display the NFT and the metadata)
 - ✅ **Add an option to start a collection paying gas** on the Create page, with a toggle to switch between gasless and paying gas
 - ✅ **Allow setting max tokenId and price**
+- **Usage of ERC1155** instead of ERC721
 
 ### Marketplace
 
@@ -131,7 +130,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
-- **"Inspired by" feature for NFTs**, meaning that a new NFT can use other NFTs validated to be used as an inspiration for their creation (text, video, image, audio) and all featured NFTs show the pieces that were created in their page, and their artists earn a percentag of the royalties.
 
 ### Marketplace
 
@@ -144,6 +142,10 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Phase 3
 
+- **"Inspired by" feature for NFTs**, meaning that a new NFT can use other NFTs validated to be used as an inspiration for their creation (text, video, image, audio) and all featured NFTs show the pieces that were created in their page, and their artists earn a percentage of the royalties.
+
+## Phase 4
+
 ### Social
 
 - **System to validate artists and collectors (and maybe enable them to gasless mint and be able to disable them to prevent spam)**
@@ -151,12 +153,12 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Token gated content**: Holders of an artist's NFTs get access to special content for holders
 - **Feature for creating collections** of NFTs and displaying them in a gallery
 
-### Music player
+## Phase 5
 
 - **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
 - **Upload the NFT Metadata to Filecoin** instead of IPFS (Reference: [Filecoin NFT Storage](https://docs.filecoin.io/))
 
-## Phase 4
+## Phase 6
 
 - Add support for other languages (Spanish, etc)
 
@@ -165,8 +167,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
 - **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 - **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
-- **Support for ERC1155** in the marketplace, gasless mint (rethink) and music player
-- Go through [Artion Contracts](https://github.com/Fantom-foundation/Artion-Contracts) and see what **improvements can be made to the marketplace**
 
 ### Social
 
