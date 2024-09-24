@@ -130,7 +130,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
 - **First minter gets a share of the royalties** of all the NFTs minted in that collection
-- **"Inspired by" feature for NFTs**, meaning that a new NFT can use other NFTs validated to be used as an inspiration for their creation (text, video, image, audio) and all featured NFTs show the pieces that were created in their page, and their artists earn a percentage of the royalties.
 
 ### Marketplace
 
@@ -143,6 +142,10 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ## Phase 3
 
+- **"Inspired by" feature for NFTs**, meaning that a new NFT can use other NFTs validated to be used as an inspiration for their creation (text, video, image, audio) and all featured NFTs show the pieces that were created in their page, and their artists earn a percentage of the royalties.
+
+## Phase 4
+
 ### Social
 
 - **System to validate artists and collectors (and maybe enable them to gasless mint and be able to disable them to prevent spam)**
@@ -150,12 +153,12 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Token gated content**: Holders of an artist's NFTs get access to special content for holders
 - **Feature for creating collections** of NFTs and displaying them in a gallery
 
-### Music player
+## Phase 5
 
 - **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
 - **Upload the NFT Metadata to Filecoin** instead of IPFS (Reference: [Filecoin NFT Storage](https://docs.filecoin.io/))
 
-## Phase 4
+## Phase 6
 
 - Add support for other languages (Spanish, etc)
 
@@ -164,7 +167,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Batch buying NFTs**, to reduce gas fees and the amount of transactions a user needs to make
 - **Mixed pay** that allows paying in USDC or native gas token for the same amount of USD, and/or maybe crosschain payments with USDC CCTP or Chainlink CCIP (integrate Chainlink Price Feeds with AggregatorV3Interface) (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
 - **Functionality to move NFTs between blockchains** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
-- Go through [Artion Contracts](https://github.com/Fantom-foundation/Artion-Contracts) and see what **improvements can be made to the marketplace**
 
 ### Social
 
