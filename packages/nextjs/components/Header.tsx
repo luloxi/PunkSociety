@@ -168,8 +168,11 @@ export const Header = () => {
           <RainbowKitCustomConnectButton />
         )}
         {isMenuOpen && isConnected && (
-          <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-100 shadow-lg rounded-lg">
-            <RainbowKitCustomConnectButton />
+          <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
+            <div className="pt-2">
+              <RainbowKitCustomConnectButton />
+            </div>
+
             <div className="pt-2 mb-2 flex flex-row items-center justify-center gap-2">
               <Link href="/myProfile" passHref>
                 <span className="btn btn-primary">My Profile</span>

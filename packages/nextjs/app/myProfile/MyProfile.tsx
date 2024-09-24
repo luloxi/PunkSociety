@@ -138,7 +138,7 @@ export const MyProfile: NextPage = () => {
       {/* User Profile Section */}
       <div className="relative flex flex-col md:flex-row items-center bg-base-100 p-6 rounded-lg shadow-md w-full">
         {/* Profile Picture */}
-        <div className="avatar mr-4 md:mr-8">
+        <div className="avatar ">
           <ProfilePictureUpload
             isEditing={isEditing}
             profilePicture={profilePicture}
@@ -205,7 +205,7 @@ export const MyProfile: NextPage = () => {
 
         {/* USDC Balance and Logo at the Bottom Right */}
         {isEditing ? (
-          <div className="absolute bottom-2 right-4 flex items-center gap-2">
+          <div className="mt-2 flex items-center gap-2">
             <button className="cool-button" onClick={handleEditProfile}>
               Save changes
             </button>
