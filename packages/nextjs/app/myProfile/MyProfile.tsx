@@ -92,12 +92,12 @@ export const MyProfile: NextPage = () => {
     }
   };
 
-  const ensureHttps = (url: string) => {
-    if (!/^https?:\/\//i.test(url)) {
-      return `https://${url}`;
-    }
-    return url;
-  };
+  // const ensureHttps = (url: string) => {
+  //   if (!/^https?:\/\//i.test(url)) {
+  //     return `https://${url}`;
+  //   }
+  //   return url;
+  // };
 
   const handleMintItem = async () => {
     if (tokenIdCounter === undefined) {
@@ -136,7 +136,7 @@ export const MyProfile: NextPage = () => {
   return (
     <div className="flex flex-col items-center p-2">
       {/* User Profile Section */}
-      <div className="relative flex flex-col md:flex-row items-center bg-base-100 p-6 rounded-lg shadow-md w-full">
+      <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full">
         {/* Profile Picture */}
         <div className="avatar ">
           <ProfilePictureUpload
@@ -150,7 +150,6 @@ export const MyProfile: NextPage = () => {
             <ProfilePictureUpload profilePicture={profilePicture} setProfilePicture={setProfilePicture} />
           </div>
         </div> */}
-
         {/* User Info Section */}
         <div className="flex flex-col justify-center items-center">
           {isEditing ? (
@@ -161,20 +160,48 @@ export const MyProfile: NextPage = () => {
               <div className="text-base-content">
                 <Address address={connectedAddress} />
               </div>
+              <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
+              {website && (
+                <a href={website} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                  {website}
+                </a>
+              )}
             </>
           )}
         </div>
-
-        {/* User Bio */}
-        <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
-          {isEditing ? (
+        {/* Div to align info in the center */}
+        <div></div>
+        {/* USDC Zone */}
+        {isEditing ? (
+          ""
+        ) : (
+          <div className=" flex justify-end items-center gap-2">
+            <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
+              +
+            </button>
+            <div className="w-7 h-7 relative">
+              <Image
+                src="/usdc-logo.png" // Ensure you use the correct path for Next.js
+                alt="USDC Logo"
+                width={28} // 7 * 4px = 28px
+                height={28} // 7 * 4px = 28px
+                style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+              />
+            </div>
+            <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
+          </div>
+        )}
+        {/* User Bio */}{" "}
+        {isEditing ? (
+          <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
             <>
               <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
               <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
             </>
-          ) : (
-            <>
-              <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
+          </div>
+        ) : (
+          <>
+            {/* <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
               {website ? (
                 <a
                   href={ensureHttps(website)}
@@ -186,11 +213,9 @@ export const MyProfile: NextPage = () => {
                 </a>
               ) : (
                 <p className="text-red-600">no link available</p>
-              )}
-            </>
-          )}
-        </div>
-
+              )} */}
+          </>
+        )}
         {/* Edit/Cancel Button */}
         {isEditing ? (
           <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
@@ -202,7 +227,6 @@ export const MyProfile: NextPage = () => {
             Edit
           </button>
         )}
-
         {/* USDC Balance and Logo at the Bottom Right */}
         {isEditing ? (
           <div className="mt-2 flex items-center gap-2">
@@ -211,24 +235,25 @@ export const MyProfile: NextPage = () => {
             </button>
           </div>
         ) : (
-          <div className="absolute bottom-2 right-4 flex items-center gap-2">
-            <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
-              +
-            </button>
+          // <div className="absolute bottom-2 right-4 flex items-center gap-2">
+          //   <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
+          //     +
+          //   </button>
 
-            {/* Wrap Image in a div and set explicit width/height */}
-            <div className="w-7 h-7 relative">
-              <Image
-                src="/usdc-logo.png" // Ensure you use the correct path for Next.js
-                alt="USDC Logo"
-                width={28} // 7 * 4px = 28px
-                height={28} // 7 * 4px = 28px
-                style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-              />
-            </div>
+          //   {/* Wrap Image in a div and set explicit width/height */}
+          //   <div className="w-7 h-7 relative">
+          //     <Image
+          //       src="/usdc-logo.png" // Ensure you use the correct path for Next.js
+          //       alt="USDC Logo"
+          //       width={28} // 7 * 4px = 28px
+          //       height={28} // 7 * 4px = 28px
+          //       style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+          //     />
+          //   </div>
 
-            <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
-          </div>
+          //   <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
+          // </div>
+          ""
         )}
       </div>
 

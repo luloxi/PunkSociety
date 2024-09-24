@@ -119,7 +119,11 @@ export const Header = () => {
     <div className="sticky lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ml-2">
         <Link href="/create" passHref>
-          <button className={`btn  text-3xl ${pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"}`}>
+          <button
+            className={`btn flex items-center justify-center text-3xl ${
+              pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"
+            }`}
+          >
             +
           </button>
         </Link>
@@ -137,10 +141,6 @@ export const Header = () => {
         {isConnected ? (
           <>
             <div className="hidden lg:flex items-center gap-2 pr-4 cursor-pointer" onClick={handleMintUSDC}>
-              {/* <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
-                +
-              </button> */}
-
               {/* Wrap Image in a div and set explicit width/height */}
               <div className="w-7 h-7 relative">
                 <Image
@@ -152,8 +152,9 @@ export const Header = () => {
                 />
               </div>
 
-              <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
+              <span className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</span>
             </div>
+
             <div
               className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
