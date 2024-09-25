@@ -1,4 +1,4 @@
-DARTE is an app for art collaboration and shared royalties, designed to foster creativity and connection. Artists can feature each other's work, allowing both creators and those they inspire to earn royalties.
+DARTE is an app for art collaboration and shared royalties, designed to foster creativity and connection. Artists can feature each other's work, allowing both creators and those they inspired from to earn royalties.
 
 The platform empowers artists to mint, monetize, and collaborate on NFTs, transforming how they engage with each other and their audiences while creating a sustainable income model.
 
