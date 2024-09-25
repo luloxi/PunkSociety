@@ -33,8 +33,8 @@ By addressing challenges such as high minting costs, lack of continuous royaltie
 
 ## Marketplace
 
-- Native and Stablecoin Payments: Buyers can pay with the blockchain's native gas token or stablecoins like USDC for flexibility in transactions.
-- Batch Buying: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
+- Native and Stablecoin Payments: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
+- Shopping cart: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
 - Cross-Chain Transfers: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
 
 ## Other features
@@ -164,7 +164,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Marketplace
 
-- **Shopping cart**: To reduce friction, gas fees and the amount of transactions a user needs to make
+- **Shopping cart**: To reduce gas fees and the amount of transactions a user needs to make
 - **Mixed pay**: Set a price in USD and pay in USDC or the equivalent amount of native gas token for the same amount of USD (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay) | Maybe add crosschain payments with USDC CCTP)
 - **Cross-chain NFTs** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 
