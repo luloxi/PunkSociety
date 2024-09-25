@@ -120,19 +120,11 @@ export const Header = () => {
   );
 
   return (
-    <div className="sticky lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ml-4 ">
-        <Link href="/" passHref>
-          <span className={`text-3xl font-bold ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`}>
-            DARTE
-          </span>
-        </Link>
-      </div>
-
-      <div className="navbar-center flex-1 flex justify-center items-center">
+    <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
+      <div className="navbar-start ">
         <Link href="/create" passHref>
           <button
-            className={`btn btn-ghost hidden lg:flex flex-row items-center justify-center text-2xl ${
+            className={`btn btn-primary bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
               pathname === "/create" ? "text-blue-600" : ""
             }`}
           >
@@ -141,62 +133,72 @@ export const Header = () => {
               <span>Create</span>
             </div>
           </button>
-          <button
+          {/* <button
             className={`font-bold lg:hidden flex items-center justify-center text-3xl ${
               pathname === "/create" ? "text-blue-600" : ""
             }`}
           >
             <FontAwesomeIcon icon={faPlus} className="h-6 w-6" />
-          </button>
+          </button> */}
+        </Link>
+      </div>
+
+      <div className="navbar-center flex-1 flex justify-center items-center">
+        <Link href="/" passHref>
+          <span className={`text-3xl font-bold ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`}>
+            DARTE
+          </span>
         </Link>
       </div>
 
       <div className="navbar-end mr-4 relative" ref={menuRef}>
-        {isConnected ? (
-          // <>
+        <div className="hidden lg:flex">
+          {isConnected ? (
+            // <>
 
-          //   <div className="hidden lg:flex items-center gap-2 pr-4 cursor-pointer" onClick={handleMintUSDC}>
-          //     {/* Wrap Image in a div and set explicit width/height */}
-          //     <div className="w-7 h-7 relative">
-          //       <Image
-          //         src="/usdc-logo.png" // Ensure you use the correct path for Next.js
-          //         alt="USDC Logo"
-          //         width={28} // 7 * 4px = 28px
-          //         height={28} // 7 * 4px = 28px
-          //         style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-          //       />
-          //     </div>
+            //   <div className="hidden lg:flex items-center gap-2 pr-4 cursor-pointer" onClick={handleMintUSDC}>
+            //     {/* Wrap Image in a div and set explicit width/height */}
+            //     <div className="w-7 h-7 relative">
+            //       <Image
+            //         src="/usdc-logo.png" // Ensure you use the correct path for Next.js
+            //         alt="USDC Logo"
+            //         width={28} // 7 * 4px = 28px
+            //         height={28} // 7 * 4px = 28px
+            //         style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+            //       />
+            //     </div>
 
-          //     <span className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</span>
-          //   </div>
-          <>
-            <div
-              className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              style={{
-                backgroundImage: `url(${profilePicture})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            ></div>
-          </>
-        ) : (
-          <RainbowKitCustomConnectButton />
-        )}
-        {isMenuOpen && isConnected && (
-          <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
-            <div className="pt-2">
-              <RainbowKitCustomConnectButton />
+            //     <span className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</span>
+            //   </div>
+            <>
+              <div
+                className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                style={{
+                  backgroundImage: `url(${profilePicture})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
+            </>
+          ) : (
+            <RainbowKitCustomConnectButton />
+          )}
+          {isMenuOpen && isConnected && (
+            <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
+              <div className="pt-2">
+                <RainbowKitCustomConnectButton />
+              </div>
+
+              <div className="pt-2 mb-2 flex flex-row items-center justify-center gap-2">
+                <Link href="/myProfile" passHref>
+                  <span className="btn btn-primary">My Profile</span>
+                </Link>
+                <FaucetButton />
+              </div>
             </div>
-
-            <div className="pt-2 mb-2 flex flex-row items-center justify-center gap-2">
-              <Link href="/myProfile" passHref>
-                <span className="btn btn-primary">My Profile</span>
-              </Link>
-              <FaucetButton />
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
