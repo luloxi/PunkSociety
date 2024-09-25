@@ -17,6 +17,8 @@ The platform empowers artists to mint, monetize, and collaborate on NFTs, transf
 
 # Features
 
+- **Media Player**: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
+
 ## Royalty sharing NFTs
 
 - **Collaborative NFTs**: NFTs can feature or be "inspired by" other NFTs, thus gaining visibility on those featured NFTs profiles, while sharing royalties with the original creator. This incentivizes collaboration and reposting other artists work.
@@ -39,7 +41,6 @@ The platform empowers artists to mint, monetize, and collaborate on NFTs, transf
 
 ## Other features
 
-- **Media Player**: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
 - **Web2.5 Social Login**: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
 - **Multi-language support**
 - **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
