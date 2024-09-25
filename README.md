@@ -10,38 +10,38 @@ By addressing challenges such as high minting costs, lack of continuous royaltie
 
 # Roles within the Platform
 
-- Artists: Mint and earn royalties from NFTs being sold or featured in another artist work.
-- NFT Collectors: Buy, sell, auction, collect NFTs, and earn royalties from first minted collections.
-- Marketplace Owner: Collects fees from paid user operations.
-- Free Users: Explore, watch, and listen to content.
+- **Artists**: Mint and earn royalties from NFTs being sold or featured in another artist work.
+- **NFT Collectors**: Buy, sell, auction, collect NFTs, and earn royalties from first minted collections.
+- **Marketplace Owner**: Collects fees from paid user operations.
+- **Free Users**: Explore, watch, and listen to content.
 
 # Features
 
 ## Royalty sharing NFTs
 
-- Collaborative NFTs: NFTs can feature or be "inspired by" other NFTs, thus gaining visibility on those featured NFTs profiles, while sharing royalties with the original creator. This incentivizes collaboration and reposting other artists work.
-- Royalties: Artists (and first minters) automatically receive a share of royalties on every resale and when being featured by other NFTs, providing a continuous stream of income.
-- Gasless Minting: Artists can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of royalties on future sales.
-- First Minter Incentives: The first minter of a collection receives royalties on all future sales, incentivizing early investment in new collections.
+- **Collaborative NFTs**: NFTs can feature or be "inspired by" other NFTs, thus gaining visibility on those featured NFTs profiles, while sharing royalties with the original creator. This incentivizes collaboration and reposting other artists work.
+- **Royalties**: Artists (and first minters) automatically receive a share of royalties on every resale and when being featured by other NFTs, providing a continuous stream of income.
+- **Gasless Minting**: Artists can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of royalties on future sales.
+- **First Minter Incentives**: The first minter of a collection receives royalties on all future sales, incentivizing early investment in new collections.
 
 ## Social 
 
 - Create NFT galleries, follow and message other artists, like NFTs, comment on them, receive notifications on activity.
-- Dashboards: Measure engagement (views, likes, shares, being featured) and revenue with insights into sales and royalty earnings.
 - Customize profile colors and appearance
-- Token Gated Content: Artist profile NFTs or specific NFTs grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
+- **Dashboards**: Measure engagement (views, likes, shares, being featured) and revenue with insights into sales and royalty earnings.
+- **Token Gated Content**: Artist profile NFTs or specific NFTs grant holders access to exclusive experiences like backstage events, early releases, or even VIP perks at live shows.
 
 ## Marketplace
 
-- Native and Stablecoin Payments: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
-- Shopping cart: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
-- Cross-Chain Transfers: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
+- **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
+- **Native and Stablecoin Payments**: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
+- **Cross-Chain Transfers**: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
 
 ## Other features
 
-- Media Player: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
-- Web2.5 Social Login: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
-- Educational Content: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
+- **Media Player**: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
+- **Web2.5 Social Login**: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
+- **Educational Content**: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
 
 # Quickstart
 
