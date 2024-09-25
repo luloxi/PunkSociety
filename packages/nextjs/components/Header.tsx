@@ -4,14 +4,16 @@ import React, { useCallback, useRef, useState } from "react";
 // import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { SwitchTheme } from "./SwitchTheme";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { hardhat } from "viem/chains";
 // import Image from "next/image";
 import { useAccount } from "wagmi";
 // import { PlusIcon } from "@heroicons/react/24/solid";
 // import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { useOutsideClick, useScaffoldReadContract, useTargetNetwork } from "~~/hooks/scaffold-eth";
 
 // import { notification } from "~~/utils/scaffold-eth";
 
@@ -119,6 +121,9 @@ export const Header = () => {
     useCallback(() => setIsMenuOpen(false), []),
   );
 
+  const { targetNetwork } = useTargetNetwork();
+  const isLocalNetwork = targetNetwork.id === hardhat.id;
+
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ">
@@ -199,6 +204,7 @@ export const Header = () => {
             </div>
           )}
         </div>
+        <SwitchTheme className={`ml-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
       </div>
     </div>
   );

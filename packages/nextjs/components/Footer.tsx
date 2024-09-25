@@ -6,18 +6,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { faHome, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { hardhat } from "viem/chains";
+// import { hardhat } from "viem/chains";
 // import Image from "next/image";
 import { useAccount } from "wagmi";
 // import { CurrencyDollarIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { HeartIcon } from "@heroicons/react/24/outline";
-import { SwitchTheme } from "~~/components/SwitchTheme";
+// import { SwitchTheme } from "~~/components/SwitchTheme";
 // import { PlusIcon } from "@heroicons/react/24/solid";
 // import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+
 // import { Faucet } from "~~/components/scaffold-eth";
-import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
+// import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 
 // import { useGlobalState } from "~~/services/store/store";
 
@@ -82,8 +83,8 @@ export const Footer = () => {
   );
 
   // const nativeCurrencyPrice = useGlobalState(state => state.nativeCurrency.price);
-  const { targetNetwork } = useTargetNetwork();
-  const isLocalNetwork = targetNetwork.id === hardhat.id;
+  // const { targetNetwork } = useTargetNetwork();
+  // const isLocalNetwork = targetNetwork.id === hardhat.id;
 
   return (
     <>
@@ -110,7 +111,7 @@ export const Footer = () => {
               </>
             )}
           </div> */}
-            <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+            {/* <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} /> */}
           </div>
         </div>
         <div className="w-full">
