@@ -127,6 +127,9 @@ export const Header = () => {
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ">
+        <div className="flex lg:hidden ml-4 items-center justify-center">
+          <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+        </div>
         <Link href="/" passHref>
           <button
             className={`btn btn-primary bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
@@ -160,27 +163,11 @@ export const Header = () => {
       </div>
 
       <div className="navbar-end mr-4 relative" ref={menuRef}>
-        <div className="hidden lg:flex">
+        <div className="">
           {isConnected ? (
-            // <>
-
-            //   <div className="hidden lg:flex items-center gap-2 pr-4 cursor-pointer" onClick={handleMintUSDC}>
-            //     {/* Wrap Image in a div and set explicit width/height */}
-            //     <div className="w-7 h-7 relative">
-            //       <Image
-            //         src="/usdc-logo.png" // Ensure you use the correct path for Next.js
-            //         alt="USDC Logo"
-            //         width={28} // 7 * 4px = 28px
-            //         height={28} // 7 * 4px = 28px
-            //         style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-            //       />
-            //     </div>
-
-            //     <span className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</span>
-            //   </div>
             <>
-              <div className="flex items-center justify-center">
-                <SwitchTheme className={`mr-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+              <div className="hidden lg:flex items-center justify-center">
+                {/* <SwitchTheme className={`mr-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} /> */}
               </div>
 
               <div
