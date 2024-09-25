@@ -41,6 +41,8 @@ By addressing challenges such as high minting costs, lack of continuous royaltie
 
 - **Media Player**: A native media player for music or videos that supports playlists, song likes, and playback across mobile and desktop devices via a Progressive Web App (PWA). This allows users to control music playback even from mobile notifications.
 - **Web2.5 Social Login**: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
+- **Multi-language support**
+- **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
 - **Educational Content**: The platform offers video tutorials and step-by-step guides to onboard artists and users who may be unfamiliar with NFTs, Web3, or minting processes.
 
 # Quickstart
@@ -161,6 +163,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ## Phase 6
 
 - Add support for other languages (Spanish, etc)
+- **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
 
 ### Marketplace
 
