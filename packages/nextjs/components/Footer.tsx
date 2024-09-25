@@ -51,10 +51,10 @@ export const Footer = () => {
           />
         </Link>
 
-        <Link href="/search" passHref>
+        <Link href="/not-found" passHref>
           <FontAwesomeIcon
             icon={faSearch}
-            className={`h-6 w-6 text-gray-500 ${pathname === "/profile" ? "text-blue-600" : "hover:text-blue-600"}`}
+            className={`h-6 w-6 text-red-500 ${pathname === "/profile" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
         <Link href="/create" passHref>
@@ -63,16 +63,16 @@ export const Footer = () => {
             className={`h-6 w-6 ${pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
-        <Link href="/notifications" passHref>
+        <Link href="/not-found" passHref>
           <FontAwesomeIcon
             icon={faBell}
-            className={`h-6 w-6 text-gray-500 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
+            className={`h-6 w-6 text-red-500 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
-        <Link href="/messages" passHref>
+        <Link href="/not-found" passHref>
           <FontAwesomeIcon
             icon={faEnvelope}
-            className={`h-6 w-6 text-gray-500 ${pathname === "/settings" ? "text-blue-600" : "hover:text-blue-600"}`}
+            className={`h-6 w-6 text-red-500 ${pathname === "/settings" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
       </footer>

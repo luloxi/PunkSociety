@@ -126,34 +126,36 @@ export const Header = () => {
 
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ">
-        <div className="flex lg:hidden ml-4 items-center justify-center">
+      <div className="navbar-start ml-2">
+        <div className="flex lg:hidden ml-2 items-center justify-center">
           <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
         </div>
-        <Link href="/" passHref>
-          <button
-            className={`btn btn-primary bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
-              pathname === "/" ? "text-blue-600" : ""
-            }`}
-          >
-            <div className="flex flex-row items-center justify-center gap-2">
-              <FontAwesomeIcon icon={faHome} className="h-6 w-6" />
-              <span>Home</span>
-            </div>
-          </button>
-        </Link>
-        <Link href="/create" passHref>
-          <button
-            className={`btn btn-primary bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
-              pathname === "/create" ? "text-blue-600" : ""
-            }`}
-          >
-            <div className="flex flex-row items-center justify-center gap-2">
-              <FontAwesomeIcon icon={faPlus} className="h-6 w-6" />
-              <span>Create</span>
-            </div>
-          </button>
-        </Link>
+        <div className="flex flex-row gap-3">
+          <Link href="/" passHref>
+            <button
+              className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
+                pathname === "/" ? "text-blue-600" : ""
+              }`}
+            >
+              <div className="flex flex-row items-center justify-center gap-2">
+                <FontAwesomeIcon icon={faHome} className="h-6 w-6" />
+                <span>Home</span>
+              </div>
+            </button>
+          </Link>
+          <Link href="/create" passHref>
+            <button
+              className={` bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
+                pathname === "/create" ? "text-blue-600" : ""
+              }`}
+            >
+              <div className="flex flex-row items-center justify-center gap-2">
+                <FontAwesomeIcon icon={faPlus} className="h-6 w-6" />
+                <span>Create</span>
+              </div>
+            </button>
+          </Link>
+        </div>
       </div>
 
       <div className="navbar-center flex-1 flex justify-center items-center">
@@ -163,13 +165,12 @@ export const Header = () => {
       </div>
 
       <div className="navbar-end mr-4 relative" ref={menuRef}>
-        <div className="">
+        <div className="flex flex-row items-center justify-center">
+          <SwitchTheme
+            className={`mr-4 hidden lg:flex pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`}
+          />
           {isConnected ? (
             <>
-              <div className="hidden lg:flex items-center justify-center">
-                {/* <SwitchTheme className={`mr-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} /> */}
-              </div>
-
               <div
                 className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -182,7 +183,7 @@ export const Header = () => {
             </>
           ) : (
             <>
-              <SwitchTheme className={`mr-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+              {/* <SwitchTheme className={`mr-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} /> */}
               <RainbowKitCustomConnectButton />
             </>
           )}
