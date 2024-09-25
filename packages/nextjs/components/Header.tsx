@@ -5,7 +5,7 @@ import React, { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { hardhat } from "viem/chains";
 // import Image from "next/image";
@@ -127,6 +127,18 @@ export const Header = () => {
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ">
+        <Link href="/" passHref>
+          <button
+            className={`btn btn-primary bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
+              pathname === "/" ? "text-blue-600" : ""
+            }`}
+          >
+            <div className="flex flex-row items-center justify-center gap-2">
+              <FontAwesomeIcon icon={faHome} className="h-6 w-6" />
+              <span>Home</span>
+            </div>
+          </button>
+        </Link>
         <Link href="/create" passHref>
           <button
             className={`btn btn-primary bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
@@ -138,21 +150,12 @@ export const Header = () => {
               <span>Create</span>
             </div>
           </button>
-          {/* <button
-            className={`font-bold lg:hidden flex items-center justify-center text-3xl ${
-              pathname === "/create" ? "text-blue-600" : ""
-            }`}
-          >
-            <FontAwesomeIcon icon={faPlus} className="h-6 w-6" />
-          </button> */}
         </Link>
       </div>
 
       <div className="navbar-center flex-1 flex justify-center items-center">
         <Link href="/" passHref>
-          <span className={`text-3xl font-bold ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`}>
-            DARTE
-          </span>
+          <span className={`text-3xl font-bold hover:text-blue-600 ${pathname === "/" ? "" : ""}`}>DARTE</span>
         </Link>
       </div>
 
@@ -176,6 +179,10 @@ export const Header = () => {
             //     <span className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</span>
             //   </div>
             <>
+              <div className="flex items-center justify-center">
+                <SwitchTheme className={`mr-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+              </div>
+
               <div
                 className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -187,7 +194,10 @@ export const Header = () => {
               ></div>
             </>
           ) : (
-            <RainbowKitCustomConnectButton />
+            <>
+              <SwitchTheme className={`mr-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+              <RainbowKitCustomConnectButton />
+            </>
           )}
           {isMenuOpen && isConnected && (
             <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
@@ -204,7 +214,6 @@ export const Header = () => {
             </div>
           )}
         </div>
-        <SwitchTheme className={`ml-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
       </div>
     </div>
   );
