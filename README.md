@@ -1,6 +1,6 @@
-🫂 DARTE is an social dapp that empowers users to monetize their posts.
+🫂 SocialBunny is an social dapp that empowers users to monetize their posts.
 
-- Posts tokenization on mainnet is optional. 
+- Posts tokenization on mainnet is optional.
 - Creators get royalties for sales of their tokenized posts
 - First minters of a post get a share of those royalties.
 
@@ -12,17 +12,20 @@
 
 # About the platform
 
-**Users**: 
+**Users**:
+
 - Explore, watch, and listen to content.
 - Follow other users, like, comment and share posts.
-- Optionally mint posts to mainnet. 
+- Optionally mint posts to mainnet.
 
 **Posts**:
+
 - Can have text, image, audio and video.
 - When minted to mainnet, resales pay royalties to the original posters.
 - First minters of a post get a share the income from sales and royalties from resales.
 
-**Platform owner**: 
+**Platform owner**:
+
 - Collects fees from mints.
 
 # Features
@@ -33,7 +36,7 @@
 - **Royalties**: Users (and first minters) automatically receive a share of royalties on every resale, providing a continuous stream of income.
 - **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of sales and royalties on future resales.
 
-## Social 
+## Social
 
 - Create NFT galleries, follow and message other users, like NFTs, comment on them, receive notifications on activity.
 - Customize profile colors and appearance
@@ -68,8 +71,8 @@ To get started follow the steps below:
 1. Open a terminal and run this commands to clone this repo and install dependencies:
 
 ```
-git clone https://github.com/luloxi/DARTE.git
-cd DARTE
+git clone https://github.com/luloxi/SocialBunny.git
+cd SocialBunny
 yarn install
 ```
 
@@ -83,7 +86,7 @@ This command starts a local Ethereum network using Foundry. The network runs on 
 
 3. Duplicate and rename `packages/foundry/.env.example` to `packages/foundry/.env` (you don't need to fill it out until deploying to a live network)
 
-4. Open a second terminal, navigate to `DARTE` and run this command to deploy the test contract:
+4. Open a second terminal, navigate to `SocialBunny` and run this command to deploy the test contract:
 
 ```
 yarn deploy
@@ -91,7 +94,7 @@ yarn deploy
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script/Deploy.s.sol` to deploy the contract to the network. You can also customize the deploy script.
 
-5. Open a third terminal, navigate to `DARTE` and run this command to start your NextJS app:
+5. Open a third terminal, navigate to `SocialBunny` and run this command to start your NextJS app:
 
 ```
 yarn start
@@ -101,7 +104,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 # Roadmap
 
-- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/DARTE-3458ad216e8c40a9b4489fe026146552?pvs=74)
+- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/SocialBunny-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## Phase 1 ✅
 

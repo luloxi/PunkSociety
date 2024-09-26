@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useCallback, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 // import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -102,7 +102,7 @@ export const Header = () => {
   //   }
   // };
 
-  const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
+  const defaultProfilePicture = "/guest-profile.png";
 
   const profilePicture = profileInfo && profileInfo[2] ? profileInfo[2] : defaultProfilePicture;
 
@@ -116,10 +116,15 @@ export const Header = () => {
 
   const pathname = usePathname();
 
-  useOutsideClick(
-    menuRef,
-    useCallback(() => setIsMenuOpen(false), []),
-  );
+  const handleMenuToggle = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuClose = () => {
+    setIsMenuOpen(false);
+  };
+
+  useOutsideClick(menuRef, handleMenuClose);
 
   const { targetNetwork } = useTargetNetwork();
   const isLocalNetwork = targetNetwork.id === hardhat.id;
@@ -160,7 +165,7 @@ export const Header = () => {
 
       <div className="navbar-center flex-1 flex justify-center items-center">
         <Link href="/" passHref>
-          <span className={`text-2xl font-bold hover:text-blue-600 ${pathname === "/" ? "" : ""}`}💙></span>
+          <span className={`text-2xl font-bold hover:text-blue-600 ${pathname === "/" ? "" : ""}`}>🐰</span>
         </Link>
       </div>
 
@@ -172,8 +177,8 @@ export const Header = () => {
           {isConnected ? (
             <>
               <div
-                className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
+                onClick={handleMenuToggle}
                 style={{
                   backgroundImage: `url(${profilePicture})`,
                   backgroundSize: "cover",
@@ -195,7 +200,9 @@ export const Header = () => {
 
               <div className="pt-2 mb-2 flex flex-row items-center justify-center gap-2">
                 <Link href="/myProfile" passHref>
-                  <span className="btn btn-primary">My Profile</span>
+                  <span className="btn btn-primary" onClick={handleMenuClose}>
+                    My Profile
+                  </span>
                 </Link>
                 <FaucetButton />
               </div>

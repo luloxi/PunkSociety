@@ -47,7 +47,7 @@ export const MyProfile: NextPage = () => {
     watch: true,
   });
 
-  const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
+  const defaultProfilePicture = "/guest-profile.png";
 
   // Update state when profileInfo changes and isEditing is false
   useEffect(() => {
@@ -156,7 +156,7 @@ export const MyProfile: NextPage = () => {
             <InputBase placeholder="Your Name" value={name} onChange={setName} />
           ) : (
             <>
-              <h2 className="text-2xl font-bold">{name || "no name"}</h2>
+              <h2 className="text-2xl font-bold">{name || "Guest user"}</h2>
               <div className="text-base-content">
                 <Address address={connectedAddress} />
               </div>

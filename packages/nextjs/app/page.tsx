@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
 export const metadata = getMetadata({
-  title: "DARTE",
+  title: "SocialBunny",
   description: "Built with 🏗 Scaffold-ETH 2",
 });
 
