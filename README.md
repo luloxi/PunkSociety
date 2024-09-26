@@ -1,8 +1,8 @@
 🐰 Bun3 is an social dapp 🫂 that empowers users to monetize 💰 their posts.
 
 - Posts tokenization on mainnet is optional.
-- Creators get royalties for sales of their tokenized posts
-- First minters of a post get a share of those royalties.
+- Creators get income for sales of their tokenized posts
+- First minters of a post get a share of those sales.
 
 # Technical details
 
@@ -21,8 +21,8 @@
 **Posts**:
 
 - Can have text, image, audio and video.
-- When minted to mainnet, resales pay royalties to the original posters.
-- First minters of a post get a share the income from sales and royalties from resales.
+- Can be minted to mainnet
+- First minters of a post get a share the income from sales.
 
 **Platform owner**:
 
@@ -33,14 +33,13 @@
 ## Posts
 
 - **Media Player**: Posts with audio or video can be played without leaving the platoform. Users can control media playback from mobile notifications.
-- **Royalties**: Users (and first minters) automatically receive a share of royalties on every resale, providing a continuous stream of income.
-- **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of sales and royalties on future resales.
+- **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of sales.
 
 ## Social
 
 - Create posts galleries, follow and message other users, like posts, comment on them, share them, and receive notifications on activity.
 - Customize profile colors and appearance
-- **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales and royalty earnings.
+- **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales.
 
 ## Marketplace
 
@@ -140,8 +139,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - **Gasless minting function** for users to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
-- **Determine which Royalty standard to implement**, and start implementing it (References: [ERC-2981](https://eips.ethereum.org/EIPS/eip-2981) | [ERC-4910](https://eips.ethereum.org/EIPS/eip-4910) | [ERC-721C compared to ERC-2981 and ERC-4910](https://blog.xp.network/the-battle-for-nft-royalties-meet-the-erc-2981-erc-4920-and-erc-721c-b71d6ba28acf)
-- **First minter gets a share of the royalties** of all the NFTs minted in that collection
+- **First minter gets a share of the sales** of all the NFTs minted in that collection
 
 ### Marketplace
 
@@ -184,4 +182,4 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
 - **Multi-language support**: (Spanish, etc)
 - **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
-- **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for users or collectors who may be unfamiliar with Web3 concepts, NFT minting, and/or royalties to improve user adoption.
+- **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for users or collectors who may be unfamiliar with Web3 concepts and NFT minting to improve user adoption.
