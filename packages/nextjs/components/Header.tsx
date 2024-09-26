@@ -83,7 +83,9 @@ export const Header = () => {
 
       <div className="navbar-center flex-1 flex justify-center items-center">
         <Link href="/" passHref>
-          <span className={`text-2xl font-bold hover:text-blue-600 ${pathname === "/" ? "" : ""}`}>🐰</span>
+          <div className="rounded-full bg-blue-900">
+            <span className={`text-xl font-bold hover:text-blue-600 ${pathname === "/" ? "" : ""}`}>🐰</span>
+          </div>
         </Link>
       </div>
 
