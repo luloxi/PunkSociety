@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
@@ -82,11 +83,18 @@ export const Header = () => {
       </div>
 
       <div className="navbar-center flex-1 flex justify-center items-center">
-        <Link href="/" passHref>
-          <div className="rounded-full bg-blue-900">
-            <span className={`text-xl font-bold hover:text-blue-600 ${pathname === "/" ? "" : ""}`}>🐰</span>
-          </div>
-        </Link>
+        <div className="w-7 h-7 relative">
+          <Link href="/" passHref>
+            <Image src="/logo.png" alt="Logo" width={50} height={50} style={{ objectFit: "contain" }} />
+          </Link>
+          {/* <Image
+            src="/usdc-logo.png" // Ensure you use the correct path for Next.js
+            alt="USDC Logo"
+            width={28} // 7 * 4px = 28px
+            height={28} // 7 * 4px = 28px
+            style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
+          /> */}
+        </div>
       </div>
 
       <div className="navbar-end mr-4 relative" ref={menuRef}>
