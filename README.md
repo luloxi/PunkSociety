@@ -38,15 +38,14 @@
 
 ## Social
 
-- Create NFT galleries, follow and message other users, like NFTs, comment on them, receive notifications on activity.
+- Create posts galleries, follow and message other users, like posts, comment on them, share them, and receive notifications on activity.
 - Customize profile colors and appearance
-- **Dashboards**: Measure engagement (views, likes, shares, being featured) and revenue with insights into sales and royalty earnings.
+- **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales and royalty earnings.
 
 ## Marketplace
 
 - **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
 - **Native and Stablecoin Payments**: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
-- **Cross-Chain Transfers**: NFTs can be moved seamlessly across EVM-compatible chains using Chainlink's CCIP technology, expanding the marketplace's reach.
 
 ## Other features
 
@@ -173,7 +172,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - **Shopping cart**: To reduce gas fees and the amount of transactions a user needs to make
 - **Mixed pay**: Set a price in USD and pay in USDC or the equivalent amount of native gas token for the same amount of USD (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay) | Maybe add crosschain payments with USDC CCTP)
-- **Cross-chain NFTs** with Chainlink CCIP token transfer (Reference: [Chainlink CCIP Cross-chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 
 ### Social
 
