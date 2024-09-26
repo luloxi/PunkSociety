@@ -1,4 +1,4 @@
-🐰 SocialBunny is an social dapp 🫂 that empowers users to monetize 💰 their posts.
+🐰 Bun is an social dapp 🫂 that empowers users to monetize 💰 their posts.
 
 - Posts tokenization on mainnet is optional.
 - Creators get royalties for sales of their tokenized posts
@@ -70,8 +70,8 @@ To get started follow the steps below:
 1. Open a terminal and run this commands to clone this repo and install dependencies:
 
 ```
-git clone https://github.com/luloxi/SocialBunny.git
-cd SocialBunny
+git clone https://github.com/luloxi/Bun.git
+cd Bun
 yarn install
 ```
 
@@ -85,7 +85,7 @@ This command starts a local Ethereum network using Foundry. The network runs on 
 
 3. Duplicate and rename `packages/foundry/.env.example` to `packages/foundry/.env` (you don't need to fill it out until deploying to a live network)
 
-4. Open a second terminal, navigate to `SocialBunny` and run this command to deploy the test contract:
+4. Open a second terminal, navigate to `Bun` and run this command to deploy the test contract:
 
 ```
 yarn deploy
@@ -95,7 +95,7 @@ This command deploys a test smart contract to the local network. The contract is
 
 5. Go to `packages/nextjs/scaffold.config.ts` and comment out `targetNetworks: [chains.sepolia]` and uncomment `targetNetworks: [chains.foundry]`
 
-6. Open a third terminal, navigate to `SocialBunny` and run this command to start your NextJS app:
+6. Open a third terminal, navigate to `Bun` and run this command to start your NextJS app:
 
 ```
 yarn start
@@ -105,7 +105,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 # Roadmap
 
-- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/SocialBunny-3458ad216e8c40a9b4489fe026146552?pvs=74)
+- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/Bun-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## Phase 1 (MVP)
 
