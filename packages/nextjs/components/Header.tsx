@@ -1,76 +1,23 @@
 "use client";
 
 import React, { useRef, useState } from "react";
-// import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
 import { faHome, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { hardhat } from "viem/chains";
-// import Image from "next/image";
 import { useAccount } from "wagmi";
-// import { PlusIcon } from "@heroicons/react/24/solid";
-// import { Bars3Icon } from "@heroicons/react/24/outline";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract, useTargetNetwork } from "~~/hooks/scaffold-eth";
-
-// import { notification } from "~~/utils/scaffold-eth";
-
-type HeaderMenuLink = {
-  label: string;
-  href: string;
-  icon?: React.ReactNode;
-};
-
-export const menuLinks: HeaderMenuLink[] = [
-  {
-    label: "Explore",
-    href: "/",
-  },
-  {
-    label: "Create",
-    href: "/create",
-  },
-];
-
-export const HeaderMenuLinks = () => {
-  const pathname = usePathname();
-
-  return (
-    <>
-      {menuLinks.map(({ label, href, icon }) => {
-        const isActive = pathname === href;
-        return (
-          <li key={href}>
-            <Link
-              href={href}
-              passHref
-              className={`${
-                isActive ? "text-blue-600 font-bold" : ""
-              } hover:text-blue-600 font-bold py-3 px-3 text-sm rounded-full gap-2 grid grid-flow-col no-bg no-shadow`}
-            >
-              {icon}
-              <span>{label}</span>
-            </Link>
-          </li>
-        );
-      })}
-    </>
-  );
-};
 
 /**
  * Site header
  */
 export const Header = () => {
-  // const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // const pathname = usePathname(); // Add this line to track the active route
-
   const { address: connectedAddress, isConnected } = useAccount();
-  // const { writeContractAsync: usdcWriteAsync } = useScaffoldWriteContract("MockUSDC");
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "ProfileInfo",
@@ -79,38 +26,9 @@ export const Header = () => {
     watch: true,
   });
 
-  // const { data: usdcBalance } = useScaffoldReadContract({
-  //   contractName: "MockUSDC",
-  //   functionName: "balanceOf",
-  //   args: [connectedAddress],
-  //   watch: true,
-  // });
-
-  // const handleMintUSDC = async () => {
-  //   try {
-  //     await usdcWriteAsync({
-  //       functionName: "mint",
-  //       args: [connectedAddress, BigInt(100e6)], // Mint 1 USDC
-  //     });
-
-  //     notification.success("USDC Minted Successfully");
-  //   } catch (error) {
-  //     console.error("Error during minting:", error);
-
-  //     // Log the error and notify the user
-  //     notification.error("Minting failed, please try again.");
-  //   }
-  // };
-
   const defaultProfilePicture = "/guest-profile.png";
 
   const profilePicture = profileInfo && profileInfo[2] ? profileInfo[2] : defaultProfilePicture;
-
-  // const burgerMenuRef = useRef<HTMLDivElement>(null);
-  // useOutsideClick(
-  //   burgerMenuRef,
-  //   useCallback(() => setIsDrawerOpen(false), []),
-  // );
 
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -177,7 +95,7 @@ export const Header = () => {
           {isConnected ? (
             <>
               <div
-                className="w-8 h-8 bg-white text-black rounded-full flex items-center justify-center cursor-pointer"
+                className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
                 onClick={handleMenuToggle}
                 style={{
                   backgroundImage: `url(${profilePicture})`,
@@ -188,7 +106,6 @@ export const Header = () => {
             </>
           ) : (
             <>
-              {/* <SwitchTheme className={`mr-4 pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} /> */}
               <RainbowKitCustomConnectButton />
             </>
           )}
@@ -200,7 +117,7 @@ export const Header = () => {
 
               <div className="pt-2 mb-2 flex flex-row items-center justify-center gap-2">
                 <Link href="/myProfile" passHref>
-                  <span className="btn btn-primary" onClick={handleMenuClose}>
+                  <span className="btn btn-primary bg-base-200 border-0" onClick={handleMenuClose}>
                     My Profile
                   </span>
                 </Link>

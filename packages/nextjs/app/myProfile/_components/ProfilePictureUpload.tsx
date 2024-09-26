@@ -22,7 +22,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   // File size validation (5MB)
   const MAX_FILE_SIZE_MB = 5 * 1024 * 1024; // 5 MB in bytes
 
-  const defaultProfilePicture = "https://ipfs.io/ipfs/QmVCvzEQHFKzAYSsou8jEJtWdFj31n2XgPpbLjbZqui4YY";
+  const defaultProfilePicture = "/guest-profile.png";
 
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {

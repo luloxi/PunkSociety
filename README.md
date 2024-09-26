@@ -1,4 +1,4 @@
-🫂 SocialBunny is an social dapp that empowers users to monetize their posts.
+🐰 SocialBunny is an social dapp 🫂 that empowers users to monetize 💰 their posts.
 
 - Posts tokenization on mainnet is optional.
 - Creators get royalties for sales of their tokenized posts
@@ -94,7 +94,9 @@ yarn deploy
 
 This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script/Deploy.s.sol` to deploy the contract to the network. You can also customize the deploy script.
 
-5. Open a third terminal, navigate to `SocialBunny` and run this command to start your NextJS app:
+5. Go to `packages/nextjs/scaffold.config.ts` and comment out `targetNetworks: [chains.sepolia]` and uncomment `targetNetworks: [chains.foundry]`
+
+6. Open a third terminal, navigate to `SocialBunny` and run this command to start your NextJS app:
 
 ```
 yarn start
