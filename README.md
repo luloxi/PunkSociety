@@ -108,9 +108,7 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 - To see current development tasks and other info about the project, [see here](https://lulox.notion.site/SocialBunny-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
-## Phase 1 ✅
-
-- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
+## Phase 1 (MVP)
 
 ### NFT Creation
 
@@ -127,7 +125,6 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - ✅ **Page for interacting with the marketplace** buy and sell functions (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - ✅ Payment in native gas token **and USDC token**
 - ✅ **Display created NFTs in the marketplace**
-- **Display auction info and interactions**
 
 ### Social
 
@@ -136,7 +133,9 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Add individual NFT pages** with more info about the NFT, if it's on sale, and the user and bigger images
 - **Allow seeing other collectors profiles** and their NFTs
 
-## Phase 2
+## Phase 2 (Indexing and Signatures)
+
+- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
 ### NFT Creation
 
@@ -152,29 +151,23 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 ### Social
 
 - **Add a way for users to register their info with a signature**
-- Introduce **social features** (following users, liking NFTs, and commenting on NFTs)
+- Introduce **social features** (following users, liking, commenting and sharing posts)
 
-## Phase 3
+## Phase 3 (Customization and User Experience)
 
-- **"Inspired by" feature for NFTs**, meaning that a new NFT can use other NFTs validated to be used as an inspiration for their creation (text, video, image, audio) and all featured NFTs show the pieces that were created in their page, and their users earn a percentage of the royalties.
+### Users
 
-## Phase 4
+- **System to validate users (and maybe enable them to gasless mint and be able to disable them to prevent spam)**
+- **Customize profile appearance** (colors, shape of profile picture, etc)
+- **View all the NFTs owned by the user**, and not just the ones minted through the platform
 
-### Social
-
-- **System to validate users and collectors (and maybe enable them to gasless mint and be able to disable them to prevent spam)**
-- **Token gated content**: Holders of an user's NFTs get access to special content for holders
-- **Feature for creating collections** of NFTs and displaying them in a gallery
-
-## Phase 5
+### Posts
 
 - **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
 - **Upload the NFT Metadata to Filecoin** instead of IPFS (Reference: [Filecoin NFT Storage](https://docs.filecoin.io/))
+- **Feature for creating collections** of posts such as playlists, galleries, etc and sharing them or featuring them on profile.
 
-## Phase 6
-
-- Add support for other languages (Spanish, etc)
-- **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
+## Phase 4 (Engagement)
 
 ### Marketplace
 
@@ -184,10 +177,13 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 
 ### Social
 
-- Make Profile read all the NFTs owned by the user, and **not just the ones minted through the website**
-- Option to customize profile appearance (colors, shape of profile picture, etc)
-- **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
 - **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
 - **Direct Messaging system** for users and collectors
-- Ability to **make your own group/community**
+- **Make your own group/community**
+
+## Phase 5 (Ease of use)
+
+- **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
+- **Multi-language support**: (Spanish, etc)
+- **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
 - **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for users or collectors who may be unfamiliar with Web3 concepts, NFT minting, and/or royalties to improve user adoption.
