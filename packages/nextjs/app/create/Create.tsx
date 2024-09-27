@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AttributesForm } from "./_components/AttributesForm";
 import { ImageUploader } from "./_components/ImageUploader";
-import { JSONViewer } from "./_components/JSONViewer";
+// import { JSONViewer } from "./_components/JSONViewer";
 import { MetadataForm } from "./_components/MetadataForm";
 import { MintingForm } from "./_components/MintingButtons";
 import generateTokenURI from "./_components/generateTokenURI";
@@ -67,7 +67,7 @@ export const Create: NextPage = () => {
             </div>
 
             {/* JSON Viewer */}
-            <JSONViewer yourJSON={yourJSON} setYourJSON={setYourJSON} />
+            {/* <JSONViewer yourJSON={yourJSON} setYourJSON={setYourJSON} /> */}
 
             <MintingForm
               description={description}

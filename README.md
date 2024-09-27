@@ -9,19 +9,13 @@
 
 ## 🐣 Phase 1 (MVP)
 
-### 🫂 Social
-
-- ✅ **Add a way for users to register their info**
-- ✅ **Add a user profile**
-- **Search for other users** by address and username
-- **Individual post pages** for displaying large descriptions, videos and big images
-
-### 💬 Posts (NFTs)
-
 - ✅ **Create PunkPosts contract**
-- ✅ **Add audio to NFTs metadata** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
-- ✅ **Page for creating posts** (ideally make it a modal on the homepage)
-- ✅ **Display metadata preview** before minting
+- ✅ **Create ProfileInfo contract for users to register their info**
+- ✅ **Post creation page**
+- ✅ **User profile page**
+- ✅ **Add audio/video to NFTs metadata** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
+- **Individual post pages** for displaying large descriptions, videos and big images
+- **Search and view other users profiles** by address and username
 
 ## 🌐 Phase 2 (Social Activity and Indexing)
 
@@ -47,7 +41,7 @@
 
 🔗 To be deployed on EVM compatible chains
 
-🐰 To see current development tasks, [see here](https://lulox.notion.site/PunkSociety-3458ad216e8c40a9b4489fe026146552?pvs=74)
+📥 To see current development tasks, [see here](https://lulox.notion.site/PunkSociety-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## 📚 Prerequisites
 
