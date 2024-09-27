@@ -6,7 +6,7 @@
 
 # 🐰 About the platform
 
-**😃 Users**:
+**🫂 Social**:
 
 - Explore, watch, and listen to content.
 - Follow other users, like, comment and share posts.
