@@ -1,9 +1,9 @@
-🤘 PunkSociety is a forkable social dapp 🫂 💬.
+🤘 PunkSociety is a forkable social dapp.
 
-# 🤘 About the platform
-
-**🫂 Social**: Follow and message other users. Like, comment and share posts. Receive notifications on activity.
-**💬 Posts**: Can have text, image, audio, video, and links with preview.
+- 🤹‍♂️ Posts can have text, image, audio, video, and links with preview.
+- 💬 Like, comment and share posts.
+- 🫂 Follow other users.
+- 🔔 Receive notifications on activity.
 
 # 🤘 Roadmap
 
@@ -20,17 +20,17 @@
 ## 🌐 Phase 2 (Social Activity and Indexing)
 
 - **Social features:** Following users, liking, commenting and sharing posts.
-- **Integrate The Graph to index posts** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
+- **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
+- **Notification system:** On web and optionally on mobile
 
 ## ✍️ Phase 3 (Gasless activity)
 
-- **Database:** To store the EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
+- **Signatures:** Allow users to interact with the platform without paying gas fees
+- **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 
 ## 🚀 Phase 4 (Scaling)
 
 - **Whitelist:** Optional system to validate users to prevent spam
-- **Notification system:** On web and optionally on mobile
-- **Direct Messaging system** for users and collectors
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
 # 🤘 Development
