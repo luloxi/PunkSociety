@@ -2,8 +2,6 @@ import { DescriptionInput } from "./DescriptionInput";
 import { InputBase } from "~~/components/scaffold-eth";
 
 interface MetadataFormProps {
-  collectionName: string;
-  setCollectionName: (name: string) => void;
   description: string;
   setDescription: (desc: string) => void;
   animationUrl: string;
@@ -11,8 +9,6 @@ interface MetadataFormProps {
 }
 
 export const MetadataForm: React.FC<MetadataFormProps> = ({
-  collectionName,
-  setCollectionName,
   description,
   setDescription,
   animationUrl,
@@ -20,19 +16,8 @@ export const MetadataForm: React.FC<MetadataFormProps> = ({
 }) => {
   return (
     <div className="text-left flex-1 ">
-      <div className="py-2">
-        <strong>
-          Collection Name <span className="text-red-500">*</span>
-        </strong>{" "}
-        <InputBase placeholder="Picca Who?" value={collectionName} onChange={setCollectionName} />
-      </div>
-
-      <div className="flex flex-row gap-2 my-4 items-center"></div>
-
       <div className="break-words">
-        <strong>
-          Description <span className="text-red-500">*</span>
-        </strong>{" "}
+        <strong>Description</strong>{" "}
         <DescriptionInput
           name="description"
           value={description}

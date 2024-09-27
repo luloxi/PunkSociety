@@ -10,7 +10,9 @@ export type ScaffoldConfig = {
 
 const scaffoldConfig = {
   // The networks on which your DApp is live
-  // For working locally, comment out chains.sepolia and uncomment chains.foundry
+
+  // For working locally, comment out chains.sepolia or chains.arbitrum
+  // and uncomment chains.foundry
   targetNetworks: [chains.arbitrum],
   // targetNetworks: [chains.foundry],
 

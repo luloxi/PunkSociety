@@ -18,6 +18,6 @@ export const EIP_712_TYPES__START_COLLECTION = {
     { name: "image", type: "string" },
     { name: "animationUrl", type: "string" },
     { name: "attributes", type: "string" }, // Make sure this matches
-    { name: "artist", type: "address" },
+    { name: "user", type: "address" },
   ],
 };

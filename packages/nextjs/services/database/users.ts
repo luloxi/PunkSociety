@@ -3,7 +3,7 @@ import getFirestoreConnector from "~~/services/database/firestoreDB";
 // Firestore instance
 const firestoreDB = getFirestoreConnector();
 
-// Find a user (or artist) by their wallet address
+// Find a user (or user) by their wallet address
 export async function findUserByAddress(address: string) {
   const userSnapshot = await firestoreDB.collection("users").where("walletAddress", "==", address).get();
 

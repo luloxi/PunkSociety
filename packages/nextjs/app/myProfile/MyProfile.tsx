@@ -45,7 +45,7 @@ export const MyProfile: NextPage = () => {
     try {
       await profileInfoWriteAsync({
         functionName: "setProfile",
-        args: [name, bio, profilePicture, website], // Mint 1 USDC
+        args: [name, bio, profilePicture, website],
       });
 
       notification.success("Profile Edited Successfully");
@@ -103,8 +103,6 @@ export const MyProfile: NextPage = () => {
         </div>
         {/* Div to align info in the center */}
         <div></div>
-        {/* USDC Zone */}
-        {isEditing ? "" : <div className=" flex justify-end items-center gap-2"></div>}
         {/* User Bio */}{" "}
         {isEditing ? (
           <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
@@ -127,7 +125,6 @@ export const MyProfile: NextPage = () => {
             Edit
           </button>
         )}
-        {/* USDC Balance and Logo at the Bottom Right */}
         {isEditing ? (
           <div className="mt-2 flex items-center gap-2">
             <button className="cool-button" onClick={handleEditProfile}>
@@ -135,24 +132,6 @@ export const MyProfile: NextPage = () => {
             </button>
           </div>
         ) : (
-          // <div className="absolute bottom-2 right-4 flex items-center gap-2">
-          //   <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
-          //     +
-          //   </button>
-
-          //   {/* Wrap Image in a div and set explicit width/height */}
-          //   <div className="w-7 h-7 relative">
-          //     <Image
-          //       src="/usdc-logo.png" // Ensure you use the correct path for Next.js
-          //       alt="USDC Logo"
-          //       width={28} // 7 * 4px = 28px
-          //       height={28} // 7 * 4px = 28px
-          //       style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-          //     />
-          //   </div>
-
-          //   <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
-          // </div>
           ""
         )}
       </div>

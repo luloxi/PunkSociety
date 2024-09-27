@@ -13,7 +13,7 @@ type ReqBody = {
   image: string;
   animationUrl: string;
   attributes: object[];
-  artist: string;
+  user: string;
   signature: `0x${string}`;
   signer: string;
 };
@@ -23,17 +23,8 @@ type ReqBody = {
 
 export async function POST(req: Request) {
   try {
-    const {
-      collectionName,
-      collectionSymbol,
-      description,
-      image,
-      animationUrl,
-      attributes,
-      artist,
-      signature,
-      signer,
-    } = (await req.json()) as ReqBody;
+    const { collectionName, collectionSymbol, description, image, animationUrl, attributes, user, signature, signer } =
+      (await req.json()) as ReqBody;
 
     console.log("Received request data:", {
       collectionName,
@@ -61,7 +52,7 @@ export async function POST(req: Request) {
         image,
         animationUrl,
         attributes: JSON.stringify(attributes),
-        artist,
+        user,
       },
       signature: signature,
     });
@@ -75,7 +66,7 @@ export async function POST(req: Request) {
       name: collectionName,
       symbol: collectionSymbol,
       tokenURI: image, // Assuming the image acts as tokenURI
-      artistAddress: artist,
+      userAddress: user,
     });
 
     // Store the signature with the collection in Firestore

@@ -11,21 +11,21 @@ export async function createCollection({
   name,
   symbol,
   tokenURI,
-  artistAddress,
+  userAddress,
 }: {
   name: string;
   symbol: string;
   tokenURI: string;
-  artistAddress: string;
+  userAddress: string;
 }) {
   try {
-    console.log("Creating collection with data:", { name, symbol, tokenURI, artistAddress });
+    console.log("Creating collection with data:", { name, symbol, tokenURI, userAddress });
 
     const collectionRef = await firestoreDB.collection("collections").add({
       name,
       symbol,
       tokenURI,
-      artistAddress,
+      userAddress,
       // createdAt: new Date().toISOString(),
     });
 
@@ -36,7 +36,7 @@ export async function createCollection({
       name,
       symbol,
       tokenURI,
-      artistAddress,
+      userAddress,
     };
   } catch (error) {
     console.error("Error creating collection:", error);

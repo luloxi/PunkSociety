@@ -84,15 +84,8 @@ export const Header = () => {
       <div className="navbar-center flex-1 flex justify-center items-center">
         <div className="w-7 h-7 relative">
           <Link href="/" passHref>
-            🃏
+            🤘
           </Link>
-          {/* <Image
-              src="/usdc-logo.png" // Ensure you use the correct path for Next.js
-              alt="USDC Logo"
-              width={28} // 7 * 4px = 28px
-              height={28} // 7 * 4px = 28px
-              style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-            /> */}
         </div>
       </div>
 

@@ -1,6 +1,5 @@
 const nftsMetadata = [
   {
-    name: "Microworld",
     description: "Plants are magical.",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmSUzqAbhU2HYfD5j9kdhFS92rUh1j84hMAgPizvGAHBbZ",
@@ -17,7 +16,6 @@ const nftsMetadata = [
     ],
   },
   {
-    name: "Desolated rails",
     description: "Sometimes the shortest way is to follow the rails.",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/Qmdw6ujzDhn6GEcXgJbQ8KWDuFyTDD7xpMcepcqTERKgCK",
@@ -26,7 +24,6 @@ const nftsMetadata = [
     attributes: [],
   },
   {
-    name: "Fork cemetery",
     description: "R.I.P.",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmZhs1eddBRFLtZ6enF7mzk4n5trE1WyLAgtWeWNHGAigX",
@@ -40,7 +37,6 @@ const nftsMetadata = [
     ],
   },
   {
-    name: "Colorful Car",
     description: "You wouldn't drive this car, but you'd definitely look at it.",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmYQRbB6knc9FqNV6X8p49tKNg6e3Rh9hWXcJEf3hTvKfn",
@@ -54,7 +50,6 @@ const nftsMetadata = [
     ],
   },
   {
-    name: "Dog in a bike",
     description: "Just as expected",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmccnSeQc9ND2pUfEkFhQWxyU3Gu4WDRv4J11QgUtpkU3H",
@@ -72,7 +67,6 @@ const nftsMetadata = [
     ],
   },
   {
-    name: "Strange Lights",
     description: "They look cool tho",
     // external_url: "https://austingriffith.com/portfolio/paintings/", // <-- this can link to a page for the specific file too
     image: "https://ipfs.io/ipfs/QmQKQ86SaENES9j494UGwitP1d1F2Cxg52KFF1W6Kv5NQ2",

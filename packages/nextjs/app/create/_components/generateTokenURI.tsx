@@ -1,5 +1,4 @@
 const generateTokenURI = (
-  name: string,
   description: string,
   image: string,
   animationUrl: string,
@@ -7,7 +6,6 @@ const generateTokenURI = (
 ) => {
   // Base metadata object
   const metadata: any = {
-    name,
     description,
     image,
   };
