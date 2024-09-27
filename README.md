@@ -1,8 +1,8 @@
 🐰 Bun3 is an multimedia social dapp 🫂 that allows users to monetize 🛒 their posts 💬.
 
 - Posts tokenization on mainnet is optional.
-- Creators get income for sales of their tokenized posts
-- First minters of a post get a share of those sales.
+- Creators get income for mints of their tokenized posts
+- First minters of a post get a share of income from succesive mints for minting the collection (TBD).
 
 # 🐰 About the platform
 
@@ -32,13 +32,13 @@
 
 - Can contain text, image, audio, video, external links with preview
 - **Media Player**: Posts with audio or video can be played without leaving the platoform. Users can control media playback from mobile notifications.
-- **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of sales.
+- **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share from succesive mintings.
 
 ## 🛒 Marketplace
 
 - **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
 - **Native and Stablecoin Payments**: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
-- **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales.
+- **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into minting income.
 
 ## 👨‍🦽 Ease of use
 
@@ -55,7 +55,7 @@
 
 - ✅ **Add a profile for the collector** with their NFTs and info about them
 - ✅ **Add a way for users to register their info**
-- **Add individual NFT pages** with more info about the NFT, if it's on sale, and the user and bigger images
+- **Add individual NFT pages** with more info about the NFT, if it's available for minting, and the user and bigger images
 - **Allow seeing other collectors profiles** and their NFTs
 
 ### 💬 Posts (NFTs)
@@ -86,7 +86,7 @@
 - **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 - **Gasless minting function** for users to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
-- **First minter gets a share of the sales** of all the NFTs minted in that collection
+- **First minter gets a share of succesive mints** of all the NFTs minted in that collection
 
 ### 🛒 Marketplace
 
