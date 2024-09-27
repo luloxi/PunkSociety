@@ -13,11 +13,11 @@
 - ✅ **Create ProfileInfo contract for users to register their info**
 - ✅ **Post creation page**
 - ✅ **User profile page**
-- **Individual post pages** for displaying long texts and big images
 - **Search and view other users profiles** by address and username
 
 ## 🌐 Phase 2 (Social Activity and Indexing)
 
+- **Individual post pages** for displaying long texts and big images
 - **Social features:** Following users, liking, commenting and sharing posts.
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 - **Notification system**
