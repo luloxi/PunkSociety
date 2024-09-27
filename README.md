@@ -8,18 +8,17 @@
 
 **🫂 Social**:
 
-- Explore, watch, and listen to content.
+- Explore, view and listen to content.
 - Follow other users, like, comment and share posts.
-- Optionally mint posts to mainnet.
 
 **💬 Posts**:
 
-- Can have text, image, audio and video.
-- Can be minted to mainnet
-- First minters of a post get a share the income from sales.
+- Can have text, image, audio, video, and links with preview.
 
 **🛒 Marketplace**:
 
+- Allow minting posts to mainnet
+- First minters of a post get a share the income from sales.
 - Collects fees from mints.
 
 # 🐰 Features
