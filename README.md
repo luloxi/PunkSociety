@@ -1,51 +1,9 @@
-🐰 Bun3 is an multimedia social dapp 🫂 that allows users to monetize 🛒 their posts 💬.
-
-- Posts tokenization on mainnet is optional.
-- Creators get income for mints of their tokenized posts
-- First minters of a post get a share of income from succesive mints for minting the collection (TBD).
+🐰 Bun3 is an web3 multimedia social dapp 🫂 💬.
 
 # 🐰 About the platform
 
-**🫂 Social**:
-
-- Explore, view and listen to content.
-- Follow other users, like, comment and share posts.
-
-**💬 Posts**:
-
-- Can have text, image, audio, video, and links with preview.
-
-**🛒 Marketplace**:
-
-- Allow minting posts to mainnet and give income to users
-- First minters of a post (if not the original creator) get a share the income from mints.
-- Bun3 collects fees from mints.
-
-# 🐰 Features
-
-## 🫂 Social
-
-- Create posts galleries, follow and message other users, like posts, comment on them, share them, and receive notifications on activity.
-- Customize profile colors and appearance
-
-## 💬 Posts
-
-- Can contain text, image, audio, video, external links with preview
-- **Media Player**: Posts with audio or video can be played without leaving the platoform. Users can control media playback from mobile notifications.
-- **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share from succesive mintings.
-
-## 🛒 Marketplace
-
-- **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
-- **Native and Stablecoin Payments**: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
-- **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into minting income.
-
-## 👨‍🦽 Ease of use
-
-- **Web2.5 Social Login**: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
-- **Multi-language support**
-- **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
-- **Educational Content**: The platform offers video tutorials and step-by-step guides to onboard users and users who may be unfamiliar with NFTs, Web3, or minting processes.
+**🫂 Social**: Follow and message other users, like, comment and share posts, and receive notifications on activity.
+**💬 Posts**: Can have text, image, audio, video, and links with preview.
 
 # 🐰 Roadmap
 
@@ -66,65 +24,24 @@
 - ✅ **Display NFT being built as a preview** before minting (display the NFT and the metadata)
 - ✅ **Add an option to start a collection paying gas** on the Create page, with a toggle to switch between gasless and paying gas
 - ✅ **Allow setting max tokenId and price**
-- **Usage of ERC1155** instead of ERC721
+- **Usage of ERC1155** instead of ERC721?
 
-### 🛒 Marketplace
+## 🌐 Phase 2 (Indexing)
 
-- ✅ **Page for interacting with the marketplace** buy and sell functions (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
-- ✅ Payment in native gas token **and USDC token**
-- ✅ **Display created NFTs in the marketplace**
+- **Social features:** Following users, liking, commenting and sharing posts.
+- **Integrate The Graph to index posts** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
-## 🌐 Phase 2 (Indexing and Signatures)
+## ✍️ Phase 3 (Signatures)
 
-### 🫂 Social
+- **Gasless activity:** Users to upload their metadata to IPFS and sign a EIP 712 message.
+- **Database:** To store the signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 
-- **Add a way for users to register their info with a signature**
-- Introduce **social features** (following users, liking, commenting and sharing posts)
+## 🚀 Phase 4 (Scaling)
 
-### 💬 Posts (NFTs)
-
-- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
-- **Gasless minting function** for users to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
-- **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
-- **First minter gets a share of succesive mints** of all the NFTs minted in that collection
-
-### 🛒 Marketplace
-
-- **Add NFTs available for first minting** reading from the database with signatures collected through the gasless mint process
-
-## 🎨 Phase 3 (Customization and User Experience)
-
-### 🫂 Social
-
-- **System to validate users (and maybe enable them to gasless mint and be able to disable them to prevent spam)**
-- **Customize profile appearance** (colors, shape of profile picture, etc)
-- **View all the NFTs owned by the user**, and not just the ones minted through the platform
-
-### 💬 Posts (NFTs)
-
-- **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
-- **Upload the NFT Metadata to Filecoin** instead of IPFS (Reference: [Filecoin NFT Storage](https://docs.filecoin.io/))
-- **Feature for creating collections** of posts such as playlists, galleries, etc and sharing them or featuring them on profile.
-
-## 🍭 Phase 4 (Engagement)
-
-### 🫂 Social
-
-- **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
+- **Whitelist:** Optional system to validate users to prevent spam
+- **Notification system:** On web and optionally on mobile
 - **Direct Messaging system** for users and collectors
-- **Make your own group/community**
-
-### 🛒 Marketplace
-
-- **Shopping cart**: To reduce gas fees and the amount of transactions a user needs to make
-- **Mixed pay**: Set a price in USD and pay in USDC or the equivalent amount of native gas token for the same amount of USD (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay) | Maybe add crosschain payments with USDC CCTP)
-
-## 👨‍🦽 Phase 5 (Ease of use)
-
-- **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
-- **Multi-language support**: (Spanish, etc)
-- **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
-- **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for users or collectors who may be unfamiliar with Web3 concepts and NFT minting to improve user adoption.
+- **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
 # 🐰 Development
 
