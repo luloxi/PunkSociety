@@ -24,7 +24,6 @@
 
 - **Individual post pages** for displaying long texts and big images
 - Search by address or username 
-- **Notification system**
 
 ## ✍️ Phase 4 (Gasless activity)
 
@@ -33,6 +32,7 @@
 
 ## 🚀 Phase 5 (Scaling)
 
+- **Notification system**
 - **Whitelist:** Optional system to validate users to prevent spam
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
