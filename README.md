@@ -13,21 +13,25 @@
 - ✅ **Create ProfileInfo contract for users to register their info**
 - ✅ **Post creation page**
 - ✅ **User profile page**
-- **Search and view other users profiles** by address and username
+- **View other users profiles**
 
 ## 🌐 Phase 2 (Social Activity and Indexing)
 
-- **Individual post pages** for displaying long texts and big images
 - **Social features:** Following users, liking, commenting and sharing posts.
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
+
+## 👥 Phase 3 (Social improvements)
+
+- **Individual post pages** for displaying long texts and big images
+- Search by address or username 
 - **Notification system**
 
-## ✍️ Phase 3 (Gasless activity)
+## ✍️ Phase 4 (Gasless activity)
 
 - **Signatures:** Allow users to interact with the platform without paying gas fees
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 
-## 🚀 Phase 4 (Scaling)
+## 🚀 Phase 5 (Scaling)
 
 - **Whitelist:** Optional system to validate users to prevent spam
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
