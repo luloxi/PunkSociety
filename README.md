@@ -17,9 +17,9 @@
 
 **🛒 Marketplace**:
 
-- Allow minting posts to mainnet
-- First minters of a post get a share the income from sales.
-- Collects fees from mints.
+- Allow minting posts to mainnet and give income to users
+- First minters of a post (if not the original creator) get a share the income from mints.
+- Bun3 collects fees from mints.
 
 # 🐰 Features
 
