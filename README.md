@@ -6,41 +6,41 @@
 
 # 🐰 About the platform
 
-**Users**:
+**😃 Users**:
 
 - Explore, watch, and listen to content.
 - Follow other users, like, comment and share posts.
 - Optionally mint posts to mainnet.
 
-**Posts**:
+**💬 Posts**:
 
 - Can have text, image, audio and video.
 - Can be minted to mainnet
 - First minters of a post get a share the income from sales.
 
-**Platform owner**:
+**🐇 Platform owner**:
 
 - Collects fees from mints.
 
 # 🐰 Features
 
-## Posts
+## 💬 Posts
 
 - **Media Player**: Posts with audio or video can be played without leaving the platoform. Users can control media playback from mobile notifications.
 - **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of sales.
 
-## Social
+## 🫂 Social
 
 - Create posts galleries, follow and message other users, like posts, comment on them, share them, and receive notifications on activity.
 - Customize profile colors and appearance
 - **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales.
 
-## Marketplace
+## 🛒 Marketplace
 
 - **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
 - **Native and Stablecoin Payments**: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
 
-## Other features
+## ✨ Other features
 
 - **Web2.5 Social Login**: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
 - **Multi-language support**
@@ -49,9 +49,9 @@
 
 # 🐰 Roadmap
 
-## Phase 1 (MVP)
+## 🐣 Phase 1 (MVP)
 
-### NFT Creation
+### 💬 Posts (NFTs)
 
 - ✅ **Add music to NFTs metadata** and **integrate with frontend** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
 - ✅ **Create NFT factory and NFT contract**
@@ -61,66 +61,66 @@
 - ✅ **Allow setting max tokenId and price**
 - **Usage of ERC1155** instead of ERC721
 
-### Marketplace
+### 🛒 Marketplace
 
 - ✅ **Page for interacting with the marketplace** buy and sell functions (Reference: [Simple Marketplace w/ Royalties)](https://app.buidlguidl.com/build/UxFNxy5XIMzz9mHKUxy5))
 - ✅ Payment in native gas token **and USDC token**
 - ✅ **Display created NFTs in the marketplace**
 
-### Social
+### 🫂 Social
 
 - ✅ **Add a profile for the collector** with their NFTs and info about them
 - ✅ **Add a way for users to register their info**
 - **Add individual NFT pages** with more info about the NFT, if it's on sale, and the user and bigger images
 - **Allow seeing other collectors profiles** and their NFTs
 
-## Phase 2 (Indexing and Signatures)
+## 🌐 Phase 2 (Indexing and Signatures)
 
 - **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
-### NFT Creation
+### 💬 Posts (NFTs)
 
 - **Gasless minting function** for users to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **First minter gets a share of the sales** of all the NFTs minted in that collection
 
-### Marketplace
+### 🛒 Marketplace
 
 - **Add NFTs available for first minting** reading from the database with signatures collected through the gasless mint process
 
-### Social
+### 🫂 Social
 
 - **Add a way for users to register their info with a signature**
 - Introduce **social features** (following users, liking, commenting and sharing posts)
 
-## Phase 3 (Customization and User Experience)
+## 🎨 Phase 3 (Customization and User Experience)
 
-### Users
+### 🫂 Social
 
 - **System to validate users (and maybe enable them to gasless mint and be able to disable them to prevent spam)**
 - **Customize profile appearance** (colors, shape of profile picture, etc)
 - **View all the NFTs owned by the user**, and not just the ones minted through the platform
 
-### Posts
+### 💬 Posts (NFTs)
 
 - **Music player as a PWA** that allows controlling the music from the notifications center on mobile devices (Reference: [React Player](https://www.npmjs.com/package/react-player))
 - **Upload the NFT Metadata to Filecoin** instead of IPFS (Reference: [Filecoin NFT Storage](https://docs.filecoin.io/))
 - **Feature for creating collections** of posts such as playlists, galleries, etc and sharing them or featuring them on profile.
 
-## Phase 4 (Engagement)
+## 🍭 Phase 4 (Engagement)
 
-### Marketplace
+### 🛒 Marketplace
 
 - **Shopping cart**: To reduce gas fees and the amount of transactions a user needs to make
 - **Mixed pay**: Set a price in USD and pay in USDC or the equivalent amount of native gas token for the same amount of USD (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay) | Maybe add crosschain payments with USDC CCTP)
 
-### Social
+### 🫂 Social
 
 - **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
 - **Direct Messaging system** for users and collectors
 - **Make your own group/community**
 
-## Phase 5 (Ease of use)
+## 👨‍🦽 Phase 5 (Ease of use)
 
 - **Profile creation with web2.5 login** (Twitter, Instagram, Google, etc). Linked wallet could be with account abstraction or creating a wallet from scratch, TBD
 - **Multi-language support**: (Spanish, etc)
@@ -129,7 +129,7 @@
 
 # 🐰 Development
 
-## Technical details
+## 🛠️ Technical details
 
 ⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
 
@@ -137,14 +137,14 @@
 
 🐰 To see current development tasks and other info about the project, [see here](https://lulox.notion.site/Bun3-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
-## Prerequisites
+## 📚 Prerequisites
 
 - [Node (>= v18.17)](https://nodejs.org/en/download/package-manager)
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/#windows-stable) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
 - [Foundry](https://book.getfoundry.sh/getting-started/installation)
 
-## Instructions
+## 👨‍🏫 Instructions
 
 To get started follow the steps below:
 
