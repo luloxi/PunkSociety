@@ -39,7 +39,7 @@
 
 - **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
 - **Native and Stablecoin Payments**: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
-- - **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales.
+- **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales.
 
 ## 👨‍🦽 Ease of use
 
