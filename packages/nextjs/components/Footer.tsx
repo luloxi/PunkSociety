@@ -21,8 +21,13 @@ export const Footer = () => {
           <ul className="menu menu-horizontal w-full">
             <div className="flex justify-center items-center gap-2 text-sm w-full">
               <div className="text-center">
-                <a href="https://github.com/luloxi/Bun3/blob/main/README.md" target="_blank" rel="noreferrer" className="link">
-                  About the project & Code
+                <a
+                  href="https://github.com/luloxi/Bun3/blob/main/README.md"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="link"
+                >
+                  About the project and Code
                 </a>
               </div>
               <span>·</span>
