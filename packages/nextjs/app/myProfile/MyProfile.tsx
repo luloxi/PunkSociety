@@ -29,7 +29,7 @@ export const MyProfile: NextPage = () => {
     watch: true,
   });
 
-  const defaultProfilePicture = "/guest-profile.png";
+  const defaultProfilePicture = "/guest-profile.jpg";
 
   // Update state when profileInfo changes and isEditing is false
   useEffect(() => {

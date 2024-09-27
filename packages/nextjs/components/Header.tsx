@@ -26,7 +26,7 @@ export const Header = () => {
     watch: true,
   });
 
-  const defaultProfilePicture = "/guest-profile.png";
+  const defaultProfilePicture = "/guest-profile.jpg";
 
   const profilePicture = profileInfo && profileInfo[2] ? profileInfo[2] : defaultProfilePicture;
 

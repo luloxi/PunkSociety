@@ -19,7 +19,7 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   const [loading, setLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
 
-  const defaultProfilePicture = "/guest-profile.png";
+  const defaultProfilePicture = "/guest-profile.jpg";
 
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {

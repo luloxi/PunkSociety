@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { faBell, faEnvelope, faHome, faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faHome, faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HeartIcon } from "@heroicons/react/24/outline";
 
@@ -51,28 +51,24 @@ export const Footer = () => {
           />
         </Link>
 
-        <Link href="/not-found" passHref>
-          <FontAwesomeIcon
-            icon={faSearch}
-            className={`h-6 w-6 text-red-500 ${pathname === "/profile" ? "text-blue-600" : "hover:text-blue-600"}`}
-          />
-        </Link>
         <Link href="/create" passHref>
           <FontAwesomeIcon
             icon={faPlus}
             className={`h-6 w-6 ${pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
+
+        <Link href="/not-found" passHref>
+          <FontAwesomeIcon
+            icon={faSearch}
+            className={`h-6 w-6 text-red-500 ${pathname === "/profile" ? "text-blue-600" : "hover:text-blue-600"}`}
+          />
+        </Link>
+
         <Link href="/not-found" passHref>
           <FontAwesomeIcon
             icon={faBell}
             className={`h-6 w-6 text-red-500 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
-          />
-        </Link>
-        <Link href="/not-found" passHref>
-          <FontAwesomeIcon
-            icon={faEnvelope}
-            className={`h-6 w-6 text-red-500 ${pathname === "/settings" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
       </footer>
