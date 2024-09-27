@@ -1,4 +1,4 @@
-🐰 Bun3 is an multimedia social dapp 🫂 that allows users to monetize 💰 their posts.
+🐰 Bun3 is an multimedia social dapp 🫂 that allows users to monetize 🛒 their posts 💬.
 
 - Posts tokenization on mainnet is optional.
 - Creators get income for sales of their tokenized posts
@@ -12,7 +12,7 @@
 - Follow other users, like, comment and share posts.
 - Optionally mint posts to mainnet.
 
-**💬 Posts**:
+**💬< Posts**:
 
 - Can have text, image, audio and video.
 - Can be minted to mainnet
