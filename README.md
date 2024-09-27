@@ -1,11 +1,11 @@
 🤘 PunkSociety is a forkable social dapp 🫂 💬.
 
-# 🐰 About the platform
+# 🤘 About the platform
 
 **🫂 Social**: Follow and message other users. Like, comment and share posts. Receive notifications on activity.
 **💬 Posts**: Can have text, image, audio, video, and links with preview.
 
-# 🐰 Roadmap
+# 🤘 Roadmap
 
 ## 🐣 Phase 1 (MVP)
 
@@ -39,7 +39,7 @@
 - **Direct Messaging system** for users and collectors
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
-# 🐰 Development
+# 🤘 Development
 
 ## 🛠️ Technical details
 
