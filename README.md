@@ -12,7 +12,7 @@
 - Follow other users, like, comment and share posts.
 - Optionally mint posts to mainnet.
 
-**💬< Posts**:
+**💬 Posts**:
 
 - Can have text, image, audio and video.
 - Can be minted to mainnet
