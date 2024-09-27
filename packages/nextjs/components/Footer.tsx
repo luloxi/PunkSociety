@@ -22,7 +22,7 @@ export const Footer = () => {
             <div className="flex justify-center items-center gap-2 text-sm w-full">
               <div className="text-center">
                 <a href="https://github.com/luloxi/Bun3" target="_blank" rel="noreferrer" className="link">
-                  Description & Code
+                  About the project & Code
                 </a>
               </div>
               <span>·</span>
