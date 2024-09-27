@@ -1,6 +1,6 @@
 🤘 PunkSociety is a forkable social dapp.
 
-- 🤹‍♂️ Posts can have text, image, audio, video, and links with preview.
+- 🤹‍♂️ Posts can have text, image and links.
 - 💬 Like, comment and share posts.
 - 🫂 Follow other users.
 - 🔔 Receive notifications on activity.
@@ -29,8 +29,6 @@
 
 ## 🚀 Phase 4 (Scaling)
 
-- ✅ **Add audio/video to NFTs metadata** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
-- **Add a way to upload audio/video** in a decentralized way (ideally)
 - **Whitelist:** Optional system to validate users to prevent spam
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
