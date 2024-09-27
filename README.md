@@ -24,17 +24,14 @@
 
 - **Individual post pages** for displaying long texts and big images
 - Search by address or username 
+- **Notification system**
+- **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
 ## ✍️ Phase 4 (Gasless activity)
 
 - **Signatures:** Allow users to interact with the platform without paying gas fees
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
-
-## 🚀 Phase 5 (Scaling)
-
-- **Notification system**
 - **Whitelist:** Optional system to validate users to prevent spam
-- **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
 # 🤘 Development
 
