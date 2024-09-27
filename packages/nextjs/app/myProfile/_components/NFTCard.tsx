@@ -1,10 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Collectible } from "./MyHoldings";
-import { parseEther } from "viem";
 import { useAccount } from "wagmi";
 import { AddressInput, InputBase } from "~~/components/scaffold-eth";
-import { useDeployedContractInfo, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 // For ETH conversion
 
@@ -21,73 +19,6 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const [biddingTimeSeconds, setBiddingTimeSeconds] = useState(0);
 
   const { address: connectedAddress } = useAccount();
-
-  const { writeContractAsync: MockERC721WriteContractAsync } = useScaffoldWriteContract("MockNFT");
-  const { writeContractAsync: MarketplaceWriteContractAsync } = useScaffoldWriteContract("Marketplace");
-  const { data: mockERC721Data } = useDeployedContractInfo("MockNFT");
-  const { data: marketplaceData } = useDeployedContractInfo("Marketplace");
-
-  const { data: isApproved } = useScaffoldReadContract({
-    contractName: "MockNFT",
-    functionName: "getApproved",
-    args: [BigInt(nft.id.toString())],
-  });
-
-  const handleApprove = async () => {
-    try {
-      await MockERC721WriteContractAsync({
-        functionName: "approve",
-        args: [marketplaceData?.address, BigInt(nft.id.toString())],
-      });
-    } catch (err) {
-      console.error("Error calling transferFrom function", err);
-    }
-  };
-
-  const handleTransfer = async () => {
-    try {
-      await MockERC721WriteContractAsync({
-        functionName: "transferFrom",
-        args: [nft.owner, transferToAddress, BigInt(nft.id.toString())],
-      });
-    } catch (err) {
-      console.error("Error calling transferFrom function", err);
-    }
-  };
-
-  const calculateBiddingTimeInSeconds = () => {
-    return biddingTimeDays * 86400 + biddingTimeHours * 3600 + biddingTimeMinutes * 60 + biddingTimeSeconds;
-  };
-
-  const handleCreateListing = async () => {
-    try {
-      const totalBiddingTime = calculateBiddingTimeInSeconds();
-      let priceInSmallestUnit;
-
-      // Convert price based on currency type
-      if (payableCurrency === "0") {
-        // ETH: Convert to wei
-        priceInSmallestUnit = parseEther(NFTPrice.toString());
-      } else {
-        // USDC: Convert to smallest unit by multiplying by 10^6 (for 6 decimals)
-        priceInSmallestUnit = BigInt(Math.floor(parseInt(NFTPrice) * 1e6).toString());
-      }
-
-      await MarketplaceWriteContractAsync({
-        functionName: "createListing",
-        args: [
-          mockERC721Data?.address,
-          BigInt(nft.id.toString()),
-          priceInSmallestUnit, // Use the correct price based on currency
-          parseInt(payableCurrency),
-          isAuction,
-          BigInt(totalBiddingTime.toString()),
-        ],
-      });
-    } catch (err) {
-      console.error("Error calling createListing function", err);
-    }
-  };
 
   return (
     <div className={`card-compact w-[300px] relative group ${isCollapsed ? "" : "bg-base-100"}`}>
@@ -169,11 +100,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                 onChange={newValue => setTransferToAddress(newValue)}
               />
             </div>
-            <div className="card-actions justify-end">
-              <button className="cool-button" onClick={handleTransfer}>
-                Transfer
-              </button>
-            </div>
+            <div className="card-actions justify-end"></div>
           </div>
         </div>
       )}
@@ -269,17 +196,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
           {/* Create Listing Button */}
 
-          <div className="card-actions justify-end">
-            {marketplaceData && isApproved && isApproved.toLowerCase() == marketplaceData.address ? (
-              <button className="cool-button" onClick={handleCreateListing}>
-                List for sale
-              </button>
-            ) : (
-              <button className="cool-button" onClick={handleApprove}>
-                Approve NFT
-              </button>
-            )}
-          </div>
+          <div className="card-actions justify-end"></div>
         </div>
       )}
     </div>

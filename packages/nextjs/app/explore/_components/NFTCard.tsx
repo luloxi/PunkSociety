@@ -1,9 +1,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { formatEther } from "viem";
-import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
-import { useDeployedContractInfo, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
@@ -30,20 +28,6 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
   const [activeTab, setActiveTab] = useState(initialActiveTab);
   const [isCollapsed, setIsCollapsed] = useState(true);
 
-  const { address: connectedAddress } = useAccount();
-
-  const { writeContractAsync: MarketplaceWriteContractAsync } = useScaffoldWriteContract("Marketplace");
-  const { writeContractAsync: USDCWriteContractAsync } = useScaffoldWriteContract("MockUSDC");
-
-  const { data: marketplaceData } = useDeployedContractInfo("Marketplace");
-
-  const { data: usdcAllowance } = useScaffoldReadContract({
-    contractName: "MockUSDC",
-    functionName: "allowance",
-    args: [connectedAddress, marketplaceData?.address],
-    watch: true,
-  });
-
   const handleMintNFT = async () => {
     if (!nft.price || !nft.payableCurrency) return; // Skip if required data is missing
 
@@ -67,43 +51,6 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
     }
   };
 
-  const handleBuyNFT = async () => {
-    if (!nft.listingId || !nft.price || !nft.payableCurrency) return; // Skip if required data is missing
-
-    try {
-      let value;
-
-      if (nft.payableCurrency === "ETH") {
-        value = BigInt(nft.price); // Price in wei
-      } else if (nft.payableCurrency === "USDC") {
-        value = BigInt(0); // No ETH required for USDC
-      }
-
-      await MarketplaceWriteContractAsync({
-        functionName: "buy",
-        args: [BigInt(nft.listingId.toString())],
-        value,
-      });
-    } catch (err) {
-      console.error("Error calling buy function", err);
-    }
-  };
-
-  const handleApproveUSDC = async () => {
-    if (!nft.price || !nft.payableCurrency) return; // Skip if required data is missing
-
-    try {
-      // let value;
-
-      await USDCWriteContractAsync({
-        functionName: "approve",
-        args: [marketplaceData?.address, BigInt(nft.price)],
-      });
-    } catch (err) {
-      console.error("Error calling buy function", err);
-    }
-  };
-
   // Convert and format price for display
   const formattedPrice =
     nft.price && nft.payableCurrency === "ETH"
@@ -111,14 +58,6 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
       : nft.price
       ? (parseInt(nft.price) / 1e6).toFixed(2) // Format USDC (assuming 6 decimal places)
       : "N/A"; // If price is undefined
-
-  const usdcPriceInUnits = nft.price ? BigInt(nft.price) : BigInt(0); // Ensure USDC price is handled as BigInt
-
-  // Check if approval is required (USDC)
-  const requiresApproval =
-    nft.payableCurrency === "USDC" &&
-    usdcAllowance !== undefined && // Ensure that allowance is defined
-    usdcPriceInUnits > BigInt(usdcAllowance.toString()); // Ensure comparison is accurate
 
   return (
     <div className={`card-compact w-[300px] relative group ${isCollapsed ? "" : "bg-base-100 rounded-lg"}`}>
@@ -145,21 +84,12 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
 
       {!isCollapsed && (
         <div className="tabs flex justify-center gap-3 border-b-4 border-base-200">
-          {nft.listingId ? (
-            <a
-              className={`tab ${activeTab === "buyNFT" ? "bg-red-800 text-white" : ""}`}
-              onClick={() => setActiveTab("buyNFT")}
-            >
-              Buy NFT
-            </a>
-          ) : (
-            <a
-              className={`tab ${activeTab === "mintNFT" ? "bg-green-800 text-white" : ""}`}
-              onClick={() => setActiveTab("mintNFT")}
-            >
-              Mint NFT
-            </a>
-          )}
+          <a
+            className={`tab ${activeTab === "mintNFT" ? "bg-green-800 text-white" : ""}`}
+            onClick={() => setActiveTab("mintNFT")}
+          >
+            Mint NFT
+          </a>
           <a
             className={`tab ${activeTab === "info" ? "bg-blue-900 text-white" : ""}`}
             onClick={() => setActiveTab("info")}
@@ -188,19 +118,11 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
               </div>
 
               {/* Conditionally render the Allow button */}
-              {requiresApproval ? (
-                <div className="card-actions justify-end">
-                  <button className="cool-button" onClick={handleApproveUSDC}>
-                    Allow USDC
-                  </button>
-                </div>
-              ) : (
-                <div className="card-actions justify-end">
-                  <button className="cool-button" onClick={handleMintNFT}>
-                    Mint
-                  </button>
-                </div>
-              )}
+              <div className="card-actions justify-end">
+                <button className="cool-button" onClick={handleMintNFT}>
+                  Mint
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -219,21 +141,6 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
                     </span>
                   </div>
                 </div>
-
-                {/* Conditionally render the Allow button */}
-                {requiresApproval ? (
-                  <div className="card-actions justify-end">
-                    <button className="cool-button" onClick={handleApproveUSDC}>
-                      Allow USDC
-                    </button>
-                  </div>
-                ) : (
-                  <div className="card-actions justify-end">
-                    <button className="cool-button" onClick={handleBuyNFT}>
-                      Buy
-                    </button>
-                  </div>
-                )}
               </div>
             )}
           </div>
@@ -276,10 +183,6 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
               </>
             )}
           </div>
-          {/* <div className="flex space-x-3 mt-1 items-center">
-            <span className="text-lg font-semibold">Listing ID : </span>
-            <span className="text-lg  ">{nft.listingId ?? "N/A"}</span>{" "}
-          </div> */}
         </div>
       )}
     </div>

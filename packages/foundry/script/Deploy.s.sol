@@ -56,44 +56,44 @@ contract DeployScript is ScaffoldETHDeploy {
       )
     );
 
-    mockNFT = new MockNFT();
-    console.logString(
-      string.concat("MockNFT deployed at: ", vm.toString(address(mockNFT)))
-    );
+    // mockNFT = new MockNFT();
+    // console.logString(
+    //   string.concat("MockNFT deployed at: ", vm.toString(address(mockNFT)))
+    // );
 
     if (block.chainid == AVALANCHE_FUJI_CHAIN_ID) {
-      marketplace = new Marketplace(usdcOnAvalancheFuji);
-      console.logString(
-        string.concat(
-          "Marketplace deployed at: ", vm.toString(address(marketplace))
-        )
-      );
+      // marketplace = new Marketplace(usdcOnAvalancheFuji);
+      // console.logString(
+      //   string.concat(
+      //     "Marketplace deployed at: ", vm.toString(address(marketplace))
+      //   )
+      // );
     } else if (block.chainid == POLYGON_AMOY_CHAIN_ID) {
-      marketplace = new Marketplace(usdcOnPolygonAmoy);
-      console.logString(
-        string.concat(
-          "Marketplace deployed at: ", vm.toString(address(marketplace))
-        )
-      );
+      // marketplace = new Marketplace(usdcOnPolygonAmoy);
+      // console.logString(
+      //   string.concat(
+      //     "Marketplace deployed at: ", vm.toString(address(marketplace))
+      //   )
+      // );
     } else if (
       block.chainid == LOCAL_CHAIN_ID || block.chainid == SEPOLIA_CHAIN_ID
     ) {
-      MockUSDC localUSDC = new MockUSDC();
-      console.logString(
-        string.concat(
-          "Local USDC (MockUSDC) deployed at: ", vm.toString(address(localUSDC))
-        )
-      );
-      marketplace = new Marketplace(address(localUSDC));
-      console.logString(
-        string.concat(
-          "Marketplace deployed at: ", vm.toString(address(marketplace))
-        )
-      );
+      // MockUSDC localUSDC = new MockUSDC();
+      // console.logString(
+      //   string.concat(
+      //     "Local USDC (MockUSDC) deployed at: ", vm.toString(address(localUSDC))
+      //   )
+      // );
+      // marketplace = new Marketplace(address(localUSDC));
+      // console.logString(
+      //   string.concat(
+      //     "Marketplace deployed at: ", vm.toString(address(marketplace))
+      //   )
+      // );
     }
     if (block.chainid == LOCAL_CHAIN_ID) {
       // Populate the marketplace with some initial NFTs
-      mintInitialMarketplaceNFTs();
+      // mintInitialMarketplaceNFTs();
     }
 
     vm.stopBroadcast();

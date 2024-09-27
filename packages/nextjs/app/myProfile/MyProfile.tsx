@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { MyHoldings } from "./_components/MyHoldings";
 import { ProfilePictureUpload } from "./_components/ProfilePictureUpload";
 import { NextPage } from "next";
@@ -11,8 +10,6 @@ import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-e
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
-import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
-import nftsMetadata from "~~/utils/simpleNFT/nftsMetadata";
 
 export const MyProfile: NextPage = () => {
   const [name, setName] = useState("");
@@ -23,22 +20,7 @@ export const MyProfile: NextPage = () => {
   const [activeTab, setActiveTab] = useState("your-nfts");
 
   const { address: connectedAddress, isConnected, isConnecting } = useAccount();
-  const { writeContractAsync: nftWriteAsync } = useScaffoldWriteContract("MockNFT");
-  const { writeContractAsync: usdcWriteAsync } = useScaffoldWriteContract("MockUSDC");
   const { writeContractAsync: profileInfoWriteAsync } = useScaffoldWriteContract("ProfileInfo");
-
-  const { data: tokenIdCounter } = useScaffoldReadContract({
-    contractName: "MockNFT",
-    functionName: "tokenIdCounter",
-    watch: true,
-  });
-
-  const { data: usdcBalance } = useScaffoldReadContract({
-    contractName: "MockUSDC",
-    functionName: "balanceOf",
-    args: [connectedAddress],
-    watch: true,
-  });
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "ProfileInfo",
@@ -76,62 +58,12 @@ export const MyProfile: NextPage = () => {
     }
   };
 
-  const handleMintUSDC = async () => {
-    try {
-      await usdcWriteAsync({
-        functionName: "mint",
-        args: [connectedAddress, BigInt(100e6)], // Mint 1 USDC
-      });
-
-      notification.success("USDC Minted Successfully");
-    } catch (error) {
-      console.error("Error during minting:", error);
-
-      // Log the error and notify the user
-      notification.error("Minting failed, please try again.");
-    }
-  };
-
   // const ensureHttps = (url: string) => {
   //   if (!/^https?:\/\//i.test(url)) {
   //     return `https://${url}`;
   //   }
   //   return url;
   // };
-
-  const handleMintItem = async () => {
-    if (tokenIdCounter === undefined) {
-      notification.error("Token ID Counter not found.");
-      return;
-    }
-
-    const tokenIdCounterNumber = Number(tokenIdCounter);
-    const currentTokenMetaData = nftsMetadata[tokenIdCounterNumber % nftsMetadata.length];
-    const notificationId = notification.loading("Uploading to IPFS");
-    try {
-      const uploadedItem = await addToIPFS(currentTokenMetaData);
-
-      notification.remove(notificationId);
-      notification.success("Metadata uploaded to IPFS");
-
-      // Log IPFS path before sending to contract
-      console.log("IPFS Path:", uploadedItem.path);
-
-      // Mint the NFT
-      await nftWriteAsync({
-        functionName: "mintItem",
-        args: [uploadedItem.path],
-      });
-
-      notification.success("NFT Minted Successfully");
-    } catch (error) {
-      notification.remove(notificationId);
-      console.error("Error during minting:", error);
-
-      // Log the error and notify the user
-      notification.error("Minting failed, please try again.");
-    }
-  };
 
   return (
     <div className="flex flex-col items-center p-2">
@@ -172,25 +104,7 @@ export const MyProfile: NextPage = () => {
         {/* Div to align info in the center */}
         <div></div>
         {/* USDC Zone */}
-        {isEditing ? (
-          ""
-        ) : (
-          <div className=" flex justify-end items-center gap-2">
-            <button className="btn btn-primary btn-sm" onClick={handleMintUSDC}>
-              +
-            </button>
-            <div className="w-7 h-7 relative">
-              <Image
-                src="/usdc-logo.png" // Ensure you use the correct path for Next.js
-                alt="USDC Logo"
-                width={28} // 7 * 4px = 28px
-                height={28} // 7 * 4px = 28px
-                style={{ objectFit: "contain" }} // Ensures the image behaves like 'object-contain'
-              />
-            </div>
-            <p className="text-md text-cyan-600 font-bold">{usdcBalance ? Number(usdcBalance) / 1e6 : 0}</p>
-          </div>
-        )}
+        {isEditing ? "" : <div className=" flex justify-end items-center gap-2"></div>}
         {/* User Bio */}{" "}
         {isEditing ? (
           <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
@@ -200,21 +114,7 @@ export const MyProfile: NextPage = () => {
             </>
           </div>
         ) : (
-          <>
-            {/* <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
-              {website ? (
-                <a
-                  href={ensureHttps(website)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 underline"
-                >
-                  {website}
-                </a>
-              ) : (
-                <p className="text-red-600">no link available</p>
-              )} */}
-          </>
+          <></>
         )}
         {/* Edit/Cancel Button */}
         {isEditing ? (
@@ -304,11 +204,7 @@ export const MyProfile: NextPage = () => {
               {!isConnected || isConnecting ? (
                 <RainbowKitCustomConnectButton />
               ) : (
-                <div className="flex flex-row gap-3">
-                  <button className="btn btn-secondary" onClick={handleMintItem}>
-                    Mint test NFT
-                  </button>
-                </div>
+                <div className="flex flex-row gap-3"></div>
               )}
             </div>
           </>

@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { ipfsClient } from "~~/utils/simpleNFT/ipfs";
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes (2 * 1024 * 1024 = 2,097,152 bytes)
-
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
@@ -10,12 +8,6 @@ export async function POST(request: NextRequest) {
 
     if (!file) {
       return new NextResponse(JSON.stringify({ error: "No file or invalid file provided" }), { status: 400 });
-    }
-
-    if (file.size > MAX_FILE_SIZE) {
-      return new NextResponse(JSON.stringify({ error: "File size exceeds the maximum limit of 5 MB" }), {
-        status: 400,
-      });
     }
 
     const arrayBuffer = await file.arrayBuffer();

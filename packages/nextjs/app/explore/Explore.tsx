@@ -9,7 +9,7 @@ import { RestoreDescriptionButton } from "./_components/RestoreDescriptionButton
 import { Tabs } from "./_components/Tabs";
 import { useAccount } from "wagmi";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useScaffoldContract, useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
+import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
@@ -44,29 +44,6 @@ export const Explore = () => {
     localStorage.setItem("marketplaceDescriptionVisible", "true");
   };
 
-  const { data: yourCollectibleContract } = useScaffoldContract({ contractName: "MockNFT" });
-  const {
-    data: events,
-    isLoading: isLoadingEvents,
-    error: errorReadingEvents,
-  } = useScaffoldEventHistory({
-    contractName: "Marketplace",
-    eventName: "ListingCreated",
-    fromBlock: 0n,
-    watch: true,
-  });
-
-  const {
-    data: purchaseEvents,
-    isLoading: purchaseIsLoadingEvents,
-    error: purchaseErrorReadingEvents,
-  } = useScaffoldEventHistory({
-    contractName: "Marketplace",
-    eventName: "Purchase",
-    fromBlock: 0n,
-    watch: true,
-  });
-
   const {
     data: createEvents,
     isLoading: createIsLoadingEvents,
@@ -84,42 +61,9 @@ export const Explore = () => {
 
   useEffect(() => {
     const fetchListedNFTs = async () => {
-      if (!events || !yourCollectibleContract) return;
+      if (!createEvents) return;
 
       const collectiblesUpdate: Collectible[] = [];
-
-      for (const event of events) {
-        try {
-          const { args } = event;
-          const listingId = args?.listingId;
-          const nftId = args?.nftId;
-          const seller = args?.seller;
-          const price = args?.price;
-          const payableCurrency = args?.payableCurrency === 0 ? "ETH" : "USDC";
-          const isAuction = args?.isAuction;
-          const date = new Date(Number(args?.date) * 1000).toLocaleDateString();
-          const highestBidder = args?.highestBidder;
-
-          const tokenURI = await yourCollectibleContract.read.tokenURI([nftId ? BigInt(nftId) : 0n]);
-          const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
-          const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
-
-          collectiblesUpdate.push({
-            listingId: listingId !== undefined ? parseInt(listingId.toString()) : 0,
-            uri: tokenURI,
-            owner: seller || "",
-            price: price?.toString(),
-            payableCurrency: payableCurrency,
-            isAuction: !!isAuction,
-            date,
-            highestBidder,
-            ...nftMetadata,
-          });
-        } catch (e) {
-          notification.error("Error fetching listed collectibles");
-          console.error(e);
-        }
-      }
 
       for (const event of createEvents || []) {
         try {
@@ -151,19 +95,11 @@ export const Explore = () => {
         }
       }
 
-      const updatedCollectibles = collectiblesUpdate.filter(collectible => {
-        const hasBeenPurchased = purchaseEvents?.some(purchase => {
-          const purchaseItemId = Number(purchase.args.itemId);
-          return purchaseItemId === collectible.listingId;
-        });
-        return !hasBeenPurchased;
-      });
-
-      setListedCollectibles(updatedCollectibles);
+      setListedCollectibles(collectiblesUpdate);
     };
 
     fetchListedNFTs();
-  }, [events, createEvents, purchaseEvents, yourCollectibleContract]);
+  }, [createEvents]);
 
   const filteredCollectibles = listedCollectibles.filter(collectible => {
     if (activeTab === "on-sale") {
@@ -175,16 +111,12 @@ export const Explore = () => {
     return true;
   });
 
-  if (isLoadingEvents || createIsLoadingEvents || purchaseIsLoadingEvents) {
+  if (createIsLoadingEvents) {
     return <LoadingSpinner />;
   }
 
-  if (errorReadingEvents || createErrorReadingEvents || purchaseErrorReadingEvents) {
-    return (
-      <ErrorComponent
-        message={errorReadingEvents?.message || purchaseErrorReadingEvents?.message || "Error loading events"}
-      />
-    );
+  if (createErrorReadingEvents) {
+    return <ErrorComponent message={createErrorReadingEvents?.message || "Error loading events"} />;
   }
 
   return (
