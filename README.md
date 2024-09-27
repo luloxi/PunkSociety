@@ -4,7 +4,7 @@
 - Creators get income for sales of their tokenized posts
 - First minters of a post get a share of those sales.
 
-# About the platform
+# 🐰 About the platform
 
 **Users**:
 
@@ -22,7 +22,7 @@
 
 - Collects fees from mints.
 
-# Features
+# 🐰 Features
 
 ## Posts
 
@@ -47,7 +47,7 @@
 - **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
 - **Educational Content**: The platform offers video tutorials and step-by-step guides to onboard users and users who may be unfamiliar with NFTs, Web3, or minting processes.
 
-# Roadmap
+# 🐰 Roadmap
 
 ## Phase 1 (MVP)
 
@@ -127,7 +127,7 @@
 - **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
 - **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for users or collectors who may be unfamiliar with Web3 concepts and NFT minting to improve user adoption.
 
-# Development
+# 🐰 Development
 
 ## Technical details
 
@@ -135,7 +135,7 @@
 
 🔗 To be deployed on EVM compatible chains
 
-- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/Bun3-3458ad216e8c40a9b4489fe026146552?pvs=74)
+🐰 To see current development tasks and other info about the project, [see here](https://lulox.notion.site/Bun3-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## Prerequisites
 
