@@ -13,13 +13,13 @@
 
 - ✅ **Add a way for users to register their info**
 - ✅ **Add a user profile**
-- **Search for other collectors profiles** by address and username
+- **Search for other users** by address and username
 - **Individual post pages** for displaying large descriptions, videos and big images
 
 ### 💬 Posts (NFTs)
 
 - ✅ **Create PunkPosts contract**
-- ✅ **Add audio to NFTs metadata** and **integrate with frontend** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
+- ✅ **Add audio to NFTs metadata** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
 - ✅ **Page for creating posts** (ideally make it a modal on the homepage)
 - ✅ **Display metadata preview** before minting
 
