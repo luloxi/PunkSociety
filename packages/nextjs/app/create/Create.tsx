@@ -23,7 +23,6 @@ export const Create: NextPage = () => {
   const [yourJSON, setYourJSON] = useState<object>({});
   const [uploadedImageIpfsPath, setUploadedImageIpfsPath] = useState(""); // NEW: For image IPFS path
   const [descriptionVisible, setDescriptionVisible] = useState(true);
-  // const [enableDebug, setEnableDebug] = useState(false);
 
   useEffect(() => {
     const savedVisibility = localStorage.getItem("CreateDescriptionVisible");
@@ -79,8 +78,6 @@ export const Create: NextPage = () => {
                 <MetadataForm
                   collectionName={collectionName}
                   setCollectionName={setCollectionName}
-                  collectionSymbol={collectionSymbol}
-                  setCollectionSymbol={setCollectionSymbol}
                   description={description}
                   setDescription={setDescription}
                   animationUrl={animationUrl}
