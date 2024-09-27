@@ -134,7 +134,7 @@
 
 🔗 To be deployed on EVM compatible chains
 
-🐰 To see current development tasks and other info about the project, [see here](https://lulox.notion.site/Bun3-3458ad216e8c40a9b4489fe026146552?pvs=74)
+🐰 To see current development tasks, [see here](https://lulox.notion.site/Bun3-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## 📚 Prerequisites
 
