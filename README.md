@@ -13,15 +13,14 @@
 - ✅ **Create ProfileInfo contract for users to register their info**
 - ✅ **Post creation page**
 - ✅ **User profile page**
-- ✅ **Add audio/video to NFTs metadata** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
-- **Individual post pages** for displaying large descriptions, videos and big images
+- **Individual post pages** for displaying long texts and big images
 - **Search and view other users profiles** by address and username
 
 ## 🌐 Phase 2 (Social Activity and Indexing)
 
 - **Social features:** Following users, liking, commenting and sharing posts.
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
-- **Notification system:** On web and optionally on mobile
+- **Notification system**
 
 ## ✍️ Phase 3 (Gasless activity)
 
@@ -30,6 +29,8 @@
 
 ## 🚀 Phase 4 (Scaling)
 
+- ✅ **Add audio/video to NFTs metadata** (Reference: [OpenSea metadata-standards](https://docs.opensea.io/docs/metadata-standards))
+- **Add a way to upload audio/video** in a decentralized way (ideally)
 - **Whitelist:** Optional system to validate users to prevent spam
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 

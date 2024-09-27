@@ -1,18 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AttributesForm } from "./_components/AttributesForm";
 import { ImageUploader } from "./_components/ImageUploader";
-// import { JSONViewer } from "./_components/JSONViewer";
 import { MetadataForm } from "./_components/MetadataForm";
-import { MintingForm } from "./_components/MintingButtons";
+import { MintingButtons } from "./_components/MintingButtons";
 import generateTokenURI from "./_components/generateTokenURI";
 import type { NextPage } from "next";
 
 export const Create: NextPage = () => {
   const [description, setDescription] = useState("");
-  const [animationUrl, setAnimationUrl] = useState("");
-  const [attributes, setAttributes] = useState<{ traitType: string; value: string }[]>([]);
   const [yourJSON, setYourJSON] = useState<object>({});
   const [uploadedImageIpfsPath, setUploadedImageIpfsPath] = useState(""); // NEW: For image IPFS path
 
@@ -20,19 +16,17 @@ export const Create: NextPage = () => {
     setYourJSON({});
     setUploadedImageIpfsPath("");
     setDescription("");
-    setAnimationUrl("");
-    setAttributes([]);
   };
 
   useEffect(() => {
     const generateTokenURIString = () => {
       const fullImageUrl = `https://ipfs.io/ipfs/${uploadedImageIpfsPath}`;
-      const tokenURI = generateTokenURI(description, fullImageUrl, animationUrl, attributes);
+      const tokenURI = generateTokenURI(description, fullImageUrl);
       setYourJSON(JSON.parse(atob(tokenURI.split(",")[1])));
     };
 
     generateTokenURIString();
-  }, [description, uploadedImageIpfsPath, animationUrl, attributes]);
+  }, [description, uploadedImageIpfsPath]);
 
   return (
     <>
@@ -45,61 +39,24 @@ export const Create: NextPage = () => {
 
             {/* Metadata and Attributes Forms */}
             <div className="flex flex-col gap-3 md:flex-row items-center justify-center space-x-4 mb-4">
-              {/* Media Preview */}
+              <div className="text-left w-full">
+                <MetadataForm description={description} setDescription={setDescription} />
+              </div>
               <ImageUploader
                 image={uploadedImageIpfsPath}
                 setUploadedImageIpfsPath={setUploadedImageIpfsPath} // NEW: Set the uploaded image IPFS path here
               />
-              <div className="text-left flex-1">
-                <MetadataForm
-                  description={description}
-                  setDescription={setDescription}
-                  animationUrl={animationUrl}
-                  setAnimationUrl={setAnimationUrl}
-                />
-                {animationUrl && (
-                  <video controls className="h-20 w-full pb-4">
-                    <source src={animationUrl} type="audio/mpeg" />
-                  </video>
-                )}
-                <AttributesForm attributes={attributes} setAttributes={setAttributes} />
-              </div>
             </div>
 
             {/* JSON Viewer */}
             {/* <JSONViewer yourJSON={yourJSON} setYourJSON={setYourJSON} /> */}
 
-            <MintingForm
+            <MintingButtons
               description={description}
               image={uploadedImageIpfsPath} // Pass the uploaded image IPFS path to MintingForm
-              animationUrl={animationUrl}
-              attributes={attributes}
               yourJSON={yourJSON}
               resetForm={resetForm}
             />
-
-            {/* {uploadedIpfsPath && enableDebug && (
-              <div className="mt-4">
-                <a href={`https://ipfs.io/ipfs/${uploadedIpfsPath}`} target="_blank" rel="noreferrer">
-                  {`https://ipfs.io/ipfs/${uploadedIpfsPath}`}
-                </a>
-              </div>
-            )}
-
-            {uploadedImageIpfsPath && enableDebug && (
-              <div className="mt-4">
-                <a href={`https://ipfs.io/ipfs/${uploadedImageIpfsPath}`} target="_blank" rel="noreferrer">
-                  {`https://ipfs.io/ipfs/${uploadedImageIpfsPath}`}
-                </a>
-              </div>
-            )} */}
-            {/* <div className="flex flex-col justify-center items-center mt-6 gap-3">
-              <div className="flex items-center">
-                <button className="cool-button mt-4" onClick={() => setEnableDebug(!enableDebug)}>
-                  Debug IPFS uploads
-                </button>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>

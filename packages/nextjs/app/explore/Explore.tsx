@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { CollectiblesList } from "./_components/CollectiblesList";
 import { ErrorComponent } from "./_components/ErrorComponent";
 import { LoadingSpinner } from "./_components/LoadingSpinner";
+import { NewsFeed } from "./_components/NewsFeed";
 import { useAccount } from "wagmi";
 import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
@@ -95,7 +95,7 @@ export const Explore = () => {
       ) : loading ? (
         <LoadingSpinner />
       ) : (
-        <CollectiblesList filteredCollectibles={listedCollectibles} />
+        <NewsFeed filteredCollectibles={listedCollectibles} />
       )}
     </>
   );

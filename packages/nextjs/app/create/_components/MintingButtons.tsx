@@ -7,13 +7,11 @@ import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 interface MintingFormProps {
   description: string;
   image: string;
-  animationUrl: string;
-  attributes: { traitType: string; value: string }[];
   yourJSON: object;
   resetForm: () => void;
 }
 
-export const MintingForm: React.FC<MintingFormProps> = ({ yourJSON, resetForm }) => {
+export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm }) => {
   const { address: connectedAddress } = useAccount();
   const { writeContractAsync } = useScaffoldWriteContract("PunkPosts");
 
