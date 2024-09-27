@@ -4,12 +4,6 @@
 - Creators get income for sales of their tokenized posts
 - First minters of a post get a share of those sales.
 
-# Technical details
-
-⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
-
-🔗 To be deployed on EVM compatible chains
-
 # About the platform
 
 **Users**:
@@ -53,58 +47,7 @@
 - **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
 - **Educational Content**: The platform offers video tutorials and step-by-step guides to onboard users and users who may be unfamiliar with NFTs, Web3, or minting processes.
 
-# Quickstart
-
-## Prerequisites
-
-- [Node (>= v18.17)](https://nodejs.org/en/download/package-manager)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/#windows-stable) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
-- [Foundry](https://book.getfoundry.sh/getting-started/installation)
-
-## Instructions
-
-To get started follow the steps below:
-
-1. Open a terminal and run this commands to clone this repo and install dependencies:
-
-```
-git clone https://github.com/luloxi/Bun3.git
-cd Bun3
-yarn install
-```
-
-2. After everything is installed, run this command to start a local blockchain network:
-
-```
-yarn chain
-```
-
-This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development.
-
-3. Duplicate and rename `packages/foundry/.env.example` to `packages/foundry/.env` (you don't need to fill it out until deploying to a live network)
-
-4. Open a second terminal, navigate to `Bun3` and run this command to deploy the test contract:
-
-```
-yarn deploy
-```
-
-This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script/Deploy.s.sol` to deploy the contract to the network. You can also customize the deploy script.
-
-5. Go to `packages/nextjs/scaffold.config.ts` and comment out `targetNetworks: [chains.sepolia]` and uncomment `targetNetworks: [chains.foundry]`
-
-6. Open a third terminal, navigate to `Bun3` and run this command to start your NextJS app:
-
-```
-yarn start
-```
-
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page.
-
 # Roadmap
-
-- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/Bun3-3458ad216e8c40a9b4489fe026146552?pvs=74)
 
 ## Phase 1 (MVP)
 
@@ -183,3 +126,60 @@ Visit your app on: `http://localhost:3000`. You can interact with your smart con
 - **Multi-language support**: (Spanish, etc)
 - **Accessibility support**: Text-to-speech and visual helpers to enable usage by visually and hearing impaired people
 - **Educational Content**: Make an interactive way to step-by-step user onboarding flow, and/or video material explaining the use of the platform, especially for users or collectors who may be unfamiliar with Web3 concepts and NFT minting to improve user adoption.
+
+# Development
+
+## Technical details
+
+⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
+
+🔗 To be deployed on EVM compatible chains
+
+- To see current development tasks and other info about the project, [see here](https://lulox.notion.site/Bun3-3458ad216e8c40a9b4489fe026146552?pvs=74)
+
+## Prerequisites
+
+- [Node (>= v18.17)](https://nodejs.org/en/download/package-manager)
+- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/#windows-stable) or [v2+](https://yarnpkg.com/getting-started/install))
+- [Git](https://git-scm.com/downloads)
+- [Foundry](https://book.getfoundry.sh/getting-started/installation)
+
+## Instructions
+
+To get started follow the steps below:
+
+1. Open a terminal and run this commands to clone this repo and install dependencies:
+
+```
+git clone https://github.com/luloxi/Bun3.git
+cd Bun3
+yarn install
+```
+
+2. After everything is installed, run this command to start a local blockchain network:
+
+```
+yarn chain
+```
+
+This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development.
+
+3. Duplicate and rename `packages/foundry/.env.example` to `packages/foundry/.env` (you don't need to fill it out until deploying to a live network)
+
+4. Open a second terminal, navigate to `Bun3` and run this command to deploy the test contract:
+
+```
+yarn deploy
+```
+
+This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script/Deploy.s.sol` to deploy the contract to the network. You can also customize the deploy script.
+
+5. Go to `packages/nextjs/scaffold.config.ts` and comment out `targetNetworks: [chains.sepolia]` and uncomment `targetNetworks: [chains.foundry]`
+
+6. Open a third terminal, navigate to `Bun3` and run this command to start your NextJS app:
+
+```
+yarn start
+```
+
+Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page.
