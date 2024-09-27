@@ -18,29 +18,30 @@
 - Can be minted to mainnet
 - First minters of a post get a share the income from sales.
 
-**🐇 Platform owner**:
+**🛒 Marketplace**:
 
 - Collects fees from mints.
 
 # 🐰 Features
 
-## 💬 Posts
-
-- **Media Player**: Posts with audio or video can be played without leaving the platoform. Users can control media playback from mobile notifications.
-- **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of sales.
-
 ## 🫂 Social
 
 - Create posts galleries, follow and message other users, like posts, comment on them, share them, and receive notifications on activity.
 - Customize profile colors and appearance
-- **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales.
+
+## 💬 Posts
+
+- Can contain text, image, audio, video, external links with preview
+- **Media Player**: Posts with audio or video can be played without leaving the platoform. Users can control media playback from mobile notifications.
+- **Incentivized Gasless Minting**: Users can mint their NFTs without paying upfront gas fees. Instead, the first minter covers the minting cost and earns a share of sales.
 
 ## 🛒 Marketplace
 
 - **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
 - **Native and Stablecoin Payments**: Buyers can pay with the blockchain's native gas token or stablecoins like USDC.
+- - **Dashboards**: Measure engagement (views, likes, shares) and revenue with insights into sales.
 
-## ✨ Other features
+## 👨‍🦽 Ease of use
 
 - **Web2.5 Social Login**: Allow users to sign up with Twitter, Google, or Instagram. This process also auto-generates a wallet.
 - **Multi-language support**
@@ -50,6 +51,13 @@
 # 🐰 Roadmap
 
 ## 🐣 Phase 1 (MVP)
+
+### 🫂 Social
+
+- ✅ **Add a profile for the collector** with their NFTs and info about them
+- ✅ **Add a way for users to register their info**
+- **Add individual NFT pages** with more info about the NFT, if it's on sale, and the user and bigger images
+- **Allow seeing other collectors profiles** and their NFTs
 
 ### 💬 Posts (NFTs)
 
@@ -67,19 +75,16 @@
 - ✅ Payment in native gas token **and USDC token**
 - ✅ **Display created NFTs in the marketplace**
 
-### 🫂 Social
-
-- ✅ **Add a profile for the collector** with their NFTs and info about them
-- ✅ **Add a way for users to register their info**
-- **Add individual NFT pages** with more info about the NFT, if it's on sale, and the user and bigger images
-- **Allow seeing other collectors profiles** and their NFTs
-
 ## 🌐 Phase 2 (Indexing and Signatures)
 
-- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
+### 🫂 Social
+
+- **Add a way for users to register their info with a signature**
+- Introduce **social features** (following users, liking, commenting and sharing posts)
 
 ### 💬 Posts (NFTs)
 
+- **Integrate GraphQL to index NFTs** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 - **Gasless minting function** for users to upload their metadata to IPFS and sign a EIP 712 message, and then wait for an investor (first minter) to pay for the contract creation transaction.
 - **Implement a database to store the signatures** that allows first minters to start a collection (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **First minter gets a share of the sales** of all the NFTs minted in that collection
@@ -87,11 +92,6 @@
 ### 🛒 Marketplace
 
 - **Add NFTs available for first minting** reading from the database with signatures collected through the gasless mint process
-
-### 🫂 Social
-
-- **Add a way for users to register their info with a signature**
-- Introduce **social features** (following users, liking, commenting and sharing posts)
 
 ## 🎨 Phase 3 (Customization and User Experience)
 
@@ -109,16 +109,16 @@
 
 ## 🍭 Phase 4 (Engagement)
 
-### 🛒 Marketplace
-
-- **Shopping cart**: To reduce gas fees and the amount of transactions a user needs to make
-- **Mixed pay**: Set a price in USD and pay in USDC or the equivalent amount of native gas token for the same amount of USD (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay) | Maybe add crosschain payments with USDC CCTP)
-
 ### 🫂 Social
 
 - **Notification system** for increasing engagement (customizable and ideally with email or mobile notifications)
 - **Direct Messaging system** for users and collectors
 - **Make your own group/community**
+
+### 🛒 Marketplace
+
+- **Shopping cart**: To reduce gas fees and the amount of transactions a user needs to make
+- **Mixed pay**: Set a price in USD and pay in USDC or the equivalent amount of native gas token for the same amount of USD (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay) | Maybe add crosschain payments with USDC CCTP)
 
 ## 👨‍🦽 Phase 5 (Ease of use)
 
