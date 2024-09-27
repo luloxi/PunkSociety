@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ErrorComponent } from "../explore/_components/ErrorComponent";
+import { LoadingSpinner } from "../explore/_components/LoadingSpinner";
+import { NewsFeed } from "../explore/_components/NewsFeed";
 import { MyHoldings } from "./_components/MyHoldings";
 import { ProfilePictureUpload } from "./_components/ProfilePictureUpload";
 import { NextPage } from "next";
@@ -8,8 +11,17 @@ import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";
 import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { InputBase } from "~~/components/scaffold-eth";
-import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
+import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
+import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
+
+export interface Collectible extends Partial<NFTMetaData> {
+  listingId?: number;
+  uri: string;
+  user: string;
+  date?: string;
+}
 
 export const MyProfile: NextPage = () => {
   const [name, setName] = useState("");
@@ -17,10 +29,10 @@ export const MyProfile: NextPage = () => {
   const [profilePicture, setProfilePicture] = useState<string>("");
   const [website, setWebsite] = useState("");
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
-  const [activeTab, setActiveTab] = useState("your-nfts");
 
   const { address: connectedAddress, isConnected, isConnecting } = useAccount();
-  const { writeContractAsync: profileInfoWriteAsync } = useScaffoldWriteContract("ProfileInfo");
+  const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
+  const [loading, setLoading] = useState(false);
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "ProfileInfo",
@@ -29,17 +41,18 @@ export const MyProfile: NextPage = () => {
     watch: true,
   });
 
-  const defaultProfilePicture = "/guest-profile.jpg";
+  const { writeContractAsync: profileInfoWriteAsync } = useScaffoldWriteContract("ProfileInfo");
 
-  // Update state when profileInfo changes and isEditing is false
-  useEffect(() => {
-    if (!isEditing && profileInfo) {
-      setName(profileInfo[0] || "");
-      setBio(profileInfo[1] || "");
-      setProfilePicture(profileInfo[2] ? profileInfo[2] : defaultProfilePicture);
-      setWebsite(profileInfo[3] || "");
-    }
-  }, [profileInfo, isEditing]);
+  const {
+    data: createEvents,
+    isLoading: createIsLoadingEvents,
+    error: createErrorReadingEvents,
+  } = useScaffoldEventHistory({
+    contractName: "PunkPosts",
+    eventName: "PostCreated",
+    fromBlock: 0n,
+    watch: true,
+  });
 
   const handleEditProfile = async () => {
     try {
@@ -57,6 +70,69 @@ export const MyProfile: NextPage = () => {
       notification.error("Editing profile, please try again.");
     }
   };
+
+  useEffect(() => {
+    const fetchListedNFTs = async () => {
+      if (!createEvents) return;
+
+      const collectiblesUpdate: Collectible[] = [];
+
+      for (const event of createEvents || []) {
+        try {
+          const { args } = event;
+          const user = args?.user;
+          const tokenURI = args?.tokenURI;
+
+          if (args?.user !== connectedAddress) continue;
+          if (!tokenURI) continue;
+
+          const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
+          const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
+
+          collectiblesUpdate.push({
+            listingId: undefined,
+            uri: tokenURI,
+            user: user || "",
+            ...nftMetadata,
+          });
+        } catch (e) {
+          notification.error("Error fetching collection started NFTs");
+          console.error(e);
+        }
+      }
+
+      setListedCollectibles(collectiblesUpdate);
+    };
+
+    fetchListedNFTs();
+  }, [createEvents, connectedAddress]);
+
+  useEffect(() => {
+    if (!isEditing && profileInfo) {
+      setName(profileInfo[0] || "");
+      setBio(profileInfo[1] || "");
+      setProfilePicture(profileInfo[2] ? profileInfo[2] : defaultProfilePicture);
+      setWebsite(profileInfo[3] || "");
+    }
+  }, [profileInfo, isEditing]);
+
+  useEffect(() => {
+    setLoading(false); // Stop loading after collectibles are updated
+  }, [listedCollectibles]);
+
+  // const filteredCollectibles = listedCollectibles.filter(collectible => {
+  //   return true;
+  // });
+
+  if (createIsLoadingEvents) {
+    return <LoadingSpinner />;
+  }
+
+  if (createErrorReadingEvents) {
+    return <ErrorComponent message={createErrorReadingEvents?.message || "Error loading events"} />;
+  }
+
+  const defaultProfilePicture = "/guest-profile.jpg";
 
   // const ensureHttps = (url: string) => {
   //   if (!/^https?:\/\//i.test(url)) {
@@ -136,76 +212,24 @@ export const MyProfile: NextPage = () => {
         )}
       </div>
 
-      {/* Tabs Section */}
-      <div className="mt-2 md:px-4 w-full rounded-lg">
-        <div className="tabs justify-start flex-wrap border-b-2 border-base-300 overflow-x-auto">
-          <a
-            className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "your-nfts" ? "border-blue-600 font-bold text-blue-600" : ""
-            }`}
-            onClick={() => setActiveTab("your-nfts")}
-          >
-            Your NFTs
-          </a>
-          <a
-            className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "created" ? "border-blue-600 font-bold text-blue-600" : ""
-            }`}
-            onClick={() => setActiveTab("created")}
-          >
-            Created
-          </a>
-          <a
-            className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "on-sale" ? "border-blue-600 font-bold text-blue-600" : ""
-            }`}
-            onClick={() => setActiveTab("on-sale")}
-          >
-            On Sale
-          </a>
-          <a
-            className={`tab tab-lifted text-lg whitespace-nowrap ${
-              activeTab === "past-sales" ? "border-blue-600 font-bold text-blue-600" : ""
-            }`}
-            onClick={() => setActiveTab("past-sales")}
-          >
-            Past Sales
-          </a>
-        </div>
-      </div>
-
-      {/* Content Based on Active Tab */}
       <div>
-        {activeTab === "your-nfts" && (
-          <>
-            <MyHoldings />
-            <div className="flex justify-center mb-4">
-              {!isConnected || isConnecting ? (
-                <RainbowKitCustomConnectButton />
-              ) : (
-                <div className="flex flex-row gap-3"></div>
-              )}
+        <>
+          <MyHoldings />
+          <div className="flex justify-center mb-4">
+            <div className="flex justify-center">
+              {!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}
             </div>
-          </>
-        )}
-
-        {activeTab === "created" && (
-          <div className="text-center">
-            <p className="text-lg">You have created 0 NFTs so far.</p>
+            {listedCollectibles.length === 0 ? (
+              <div className="flex justify-center items-center mt-10">
+                <div className="text-2xl text-primary-content">No NFTs found</div>
+              </div>
+            ) : loading ? (
+              <LoadingSpinner />
+            ) : (
+              <NewsFeed filteredCollectibles={listedCollectibles} />
+            )}
           </div>
-        )}
-
-        {activeTab === "on-sale" && (
-          <div className="text-center">
-            <p className="text-lg">You currently have no NFTs listed for sale.</p>
-          </div>
-        )}
-
-        {activeTab === "past-sales" && (
-          <div className="text-center">
-            <p className="text-lg">You have no past sales yet.</p>
-          </div>
-        )}
+        </>
       </div>
     </div>
   );
