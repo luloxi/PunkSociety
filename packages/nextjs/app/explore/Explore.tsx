@@ -11,7 +11,7 @@ import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
-export interface Collectible extends Partial<NFTMetaData> {
+export interface Post extends Partial<NFTMetaData> {
   listingId?: number;
   uri: string;
   user: string;
@@ -20,7 +20,7 @@ export interface Collectible extends Partial<NFTMetaData> {
 
 export const Explore = () => {
   const { address: isConnected, isConnecting } = useAccount();
-  const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
+  const [listedPosts, setListedPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
 
   const {
@@ -49,7 +49,7 @@ export const Explore = () => {
     const fetchListedNFTs = async () => {
       if (!createEvents) return;
 
-      const collectiblesUpdate: Collectible[] = [];
+      const postsUpdate: Post[] = [];
 
       for (const event of createEvents || []) {
         try {
@@ -62,7 +62,14 @@ export const Explore = () => {
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
           const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
 
-          collectiblesUpdate.push({
+          // Temporary fix for V1
+          // Check if the image attribute is valid and does not point to [object Object]
+          if (nftMetadata.image === "https://ipfs.io/ipfs/[object Object]") {
+            console.warn(`Skipping post with invalid image URL: ${nftMetadata.image}`);
+            continue;
+          }
+
+          postsUpdate.push({
             listingId: undefined,
             uri: tokenURI,
             user: user || "",
@@ -74,19 +81,19 @@ export const Explore = () => {
         }
       }
 
-      setListedCollectibles(collectiblesUpdate);
+      setListedPosts(postsUpdate);
     };
 
     fetchListedNFTs();
   }, [createEvents]);
 
   useEffect(() => {
-    if (listedCollectibles.length > 0) {
-      setLoading(false); // Stop loading after collectibles are updated
+    if (listedPosts.length > 0) {
+      setLoading(false); // Stop loading after Posts are updated
     }
-  }, [listedCollectibles]);
+  }, [listedPosts]);
 
-  // const filteredCollectibles = listedCollectibles.filter(collectible => {
+  // const filteredPosts = listedPosts.filter(Post => {
   //   return true;
   // });
 
@@ -105,14 +112,14 @@ export const Explore = () => {
   return (
     <>
       <div className="flex justify-center">{!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}</div>
-      {listedCollectibles.length === 0 ? (
+      {listedPosts.length === 0 ? (
         <div className="flex justify-center items-center mt-10">
           <div className="text-2xl text-primary-content">No posts found</div>
         </div>
       ) : loading ? (
         <LoadingSpinner />
       ) : (
-        <NewsFeed filteredCollectibles={listedCollectibles} />
+        <NewsFeed filteredPosts={listedPosts} />
       )}
     </>
   );

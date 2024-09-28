@@ -6,7 +6,7 @@ import { ProfileAddress } from "./ProfileAddress";
 import { MagnifyingGlassPlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
-export interface Collectible extends Partial<NFTMetaData> {
+export interface Post extends Partial<NFTMetaData> {
   nftAddress?: string;
   listingId?: number;
   uri: string;
@@ -14,7 +14,7 @@ export interface Collectible extends Partial<NFTMetaData> {
   date?: string;
 }
 
-export const NFTCard = ({ nft }: { nft: Collectible }) => {
+export const NFTCard = ({ nft }: { nft: Post }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
