@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoadingSpinner } from "../explore/_components/LoadingSpinner";
-import { InputBase } from "~~/components/scaffold-eth";
+import { AddressInput } from "~~/components/scaffold-eth";
 
 export const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -39,10 +39,9 @@ export const Search = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-4xl mb-4">Search for Users</h1>
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-md px-4">
         <div className="mb-4">
-          <InputBase placeholder="Enter address" value={searchQuery} onChange={setSearchQuery} />
+          <AddressInput placeholder="Enter address or ENS" value={searchQuery} onChange={setSearchQuery} />
         </div>
 
         {error && <p className="text-red-500 mb-4">{error}</p>}
