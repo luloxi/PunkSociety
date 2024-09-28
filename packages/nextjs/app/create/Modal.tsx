@@ -29,7 +29,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
         isOpen ? "animate-show" : "animate-hide"
       }`}
     >
-      <div ref={modalRef} className="relative w-full max-w-2xl mx-4 md:mx-0">
+      <div ref={modalRef} className="relative bg-base-100 rounded-lg w-full max-w-2xl mx-4 md:mx-0">
         <button
           className="absolute p-2 top-2 right-2 md:top-6 md:right-6 bg-red-600 text-white hover:text-red-800 rounded-full"
           onClick={onClose}

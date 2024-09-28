@@ -95,8 +95,12 @@ export const Modal = ({ children, onClose }: { children: React.ReactNode; onClos
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
-      <div ref={modalRef} className="relative bg-white rounded-lg p-4">
-        <button className="absolute top-2 right-2 bg-base-100 p-2 rounded-full" onClick={onClose}>
+      <div
+        ref={modalRef}
+        className="relative rounded-lg p-4 max-h-screen overflow-y-auto"
+        style={{ maxHeight: "100vh" }}
+      >
+        <button className="absolute top-2 right-2 bg-red-600 text-white p-2 rounded-full" onClick={onClose}>
           <XMarkIcon className="inline-block h-7 w-7" />
         </button>
         {children}

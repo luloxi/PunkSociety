@@ -69,7 +69,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
 
   return (
     <div
-      className={`relative flex items-center justify-center w-60 h-72 rounded-lg shadow-lg ${
+      className={`relative flex items-center justify-center w-60 h-60 rounded-lg shadow-lg ${
         dragActive ? "bg-blue-400 border-2 border-blue-600" : ""
       } ${previewImage ? "" : "bg-base-200"}`}
       onDragOver={handleDragOver}
@@ -84,7 +84,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
           <Image
             src={previewImage}
             alt="NFT Image Preview"
-            className="w-full h-auto rounded-lg object-cover"
+            className="w-full h-full rounded-lg object-cover"
             width={300}
             height={300}
           />
@@ -99,12 +99,9 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
         </div>
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          {/* <p className="font-bold">Drag & Drop Image Here</p>
-          <p>or</p> */}
           <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer">
             <span className="text-5xl h-auto rounded-full ">+</span>
             <span className="font-bold">Upload image</span>
-
             <input
               type="file"
               accept="image/*"
