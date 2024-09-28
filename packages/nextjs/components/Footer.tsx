@@ -92,9 +92,9 @@ export const Footer = () => {
           <HomeIcon className={`h-6 w-6 ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`} />
         </Link>
 
-        <Link href="/not-found" passHref>
+        <Link href="/search" passHref>
           <MagnifyingGlassIcon
-            className={`h-6 w-6 text-red-600 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
+            className={`h-6 w-6  ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
 

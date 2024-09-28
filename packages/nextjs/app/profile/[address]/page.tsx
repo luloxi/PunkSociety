@@ -26,12 +26,11 @@ export interface Collectible extends Partial<NFTMetaData> {
 const defaultProfilePicture = "/guest-profile.jpg";
 
 const ProfilePage: NextPage = () => {
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [profilePicture, setProfilePicture] = useState<string>("");
   const [website, setWebsite] = useState("");
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
-
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -64,7 +63,7 @@ const ProfilePage: NextPage = () => {
     try {
       await profileInfoWriteAsync({
         functionName: "setProfile",
-        args: [name, bio, profilePicture, website],
+        args: [username, bio, profilePicture, website],
       });
 
       notification.success("Profile Edited Successfully");
@@ -115,7 +114,7 @@ const ProfilePage: NextPage = () => {
 
   useEffect(() => {
     if (!isEditing && profileInfo) {
-      setName(profileInfo[0] || "");
+      setUsername(profileInfo[0] || "");
       setBio(profileInfo[1] || "");
       setProfilePicture(profileInfo[2] ? profileInfo[2] : defaultProfilePicture);
       setWebsite(profileInfo[3] || "");
@@ -177,10 +176,10 @@ const ProfilePage: NextPage = () => {
           {/* User Info Section */}
           <div className="flex flex-col justify-center items-center">
             {isEditing ? (
-              <InputBase placeholder="Your Name" value={name} onChange={setName} />
+              <InputBase placeholder="Your Name" value={username} onChange={setUsername} />
             ) : (
               <>
-                <h2 className="text-2xl font-bold">{name || "Guest user"}</h2>
+                <h2 className="text-2xl font-bold">{username || "Guest user"}</h2>
                 <div className="text-base-content">
                   <Address address={address} />
                 </div>

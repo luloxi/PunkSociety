@@ -1,6 +1,6 @@
 {
   "name": "PunkSociety",
-  "description": "Multimedia social dapp with monetizable posts",
+  "description": "Forkable social dapp built with Scaffold-ETH 2",
   "iconPath": "logo.svg",
   "display": "standalone"
 }

@@ -17,13 +17,13 @@
 
 ## 🌐 Phase 2 (Social Activity and Indexing)
 
+- **Search**: By address, ENS or username
 - **Social features:** Following users, liking, commenting and sharing posts.
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
 
 ## 👥 Phase 3 (Social improvements)
 
 - **Individual post pages** for displaying long texts and big images
-- Search by address or username
 - **Notification system**
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 

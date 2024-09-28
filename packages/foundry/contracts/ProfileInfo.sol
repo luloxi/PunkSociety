@@ -10,6 +10,7 @@ contract ProfileInfo {
   }
 
   mapping(address => Profile) public profiles;
+  mapping(string => address) public nameToAddress;
 
   function setProfile(
     string memory _name,
