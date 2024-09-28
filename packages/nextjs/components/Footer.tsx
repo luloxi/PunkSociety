@@ -46,14 +46,16 @@ export const Footer = () => {
 
   return (
     <>
-      <div
-        className={`fixed bottom-16 lg:bottom-8 right-8 p-3 bg-blue-600 cursor-pointer hover:bg-blue-800 text-white rounded-full shadow-lg ${
-          showPlusIcon ? "animate-show" : "animate-hide"
-        }`}
-        onClick={openModal}
-      >
-        <PlusIcon className="h-10 w-10" />
-      </div>
+      {pathname !== "/search" && (
+        <div
+          className={`fixed bottom-16 lg:bottom-8 right-8 p-3 bg-blue-600 cursor-pointer hover:bg-blue-800 text-white rounded-full shadow-lg ${
+            showPlusIcon ? "animate-show" : "animate-hide"
+          }`}
+          onClick={openModal}
+        >
+          <PlusIcon className="h-10 w-10" />
+        </div>
+      )}
 
       {isModalOpen && (
         <Modal isOpen={isModalOpen} onClose={closeModal}>
@@ -94,7 +96,7 @@ export const Footer = () => {
 
         <Link href="/search" passHref>
           <MagnifyingGlassIcon
-            className={`h-6 w-6  ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
+            className={`h-6 w-6 text-red-600 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
 
