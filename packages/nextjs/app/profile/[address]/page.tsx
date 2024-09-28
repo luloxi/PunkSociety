@@ -9,7 +9,7 @@ import { ProfilePictureUpload } from "../_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { Address } from "~~/components/scaffold-eth";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -35,7 +35,7 @@ const ProfilePage: NextPage = () => {
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const { address: connectedAddress, isConnected, isConnecting } = useAccount();
+  const { address: connectedAddress } = useAccount();
 
   const pathname = usePathname();
   const address = pathname.split("/").pop();
@@ -137,9 +137,9 @@ const ProfilePage: NextPage = () => {
     return <p>Inexistent address, try again...</p>;
   }
 
-  if (loading) {
-    return <LoadingSpinner />;
-  }
+  // if (loading) {
+  //   return <LoadingSpinner />;
+  // }
 
   if (createIsLoadingEvents) {
     return <LoadingSpinner />;
@@ -157,7 +157,7 @@ const ProfilePage: NextPage = () => {
   // };
 
   return (
-    <div className="flex flex-col items-center p-2">
+    <div className="flex flex-col items-center">
       {/* User Profile Section */}
       <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full">
         {/* Profile Picture */}
@@ -229,24 +229,17 @@ const ProfilePage: NextPage = () => {
         )}
       </div>
 
-      <div>
-        <>
-          <div className="flex justify-center mb-4">
-            <div className="flex justify-center">
-              {!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}
-            </div>
-            {listedCollectibles.length === 0 ? (
-              <div className="flex justify-center items-center mt-10">
-                <div className="text-2xl text-primary-content">No NFTs found</div>
-              </div>
-            ) : loading ? (
-              <LoadingSpinner />
-            ) : (
-              <NewsFeed filteredCollectibles={listedCollectibles} />
-            )}
-          </div>
-        </>
-      </div>
+      {loading && <LoadingSpinner />}
+
+      {listedCollectibles.length === 0 ? (
+        <div className="flex justify-center items-center mt-10">
+          <div className="text-2xl text-primary-content">No NFTs found</div>
+        </div>
+      ) : loading ? (
+        <LoadingSpinner />
+      ) : (
+        <NewsFeed filteredCollectibles={listedCollectibles} />
+      )}
     </div>
   );
 };
