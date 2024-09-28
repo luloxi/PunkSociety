@@ -157,78 +157,79 @@ const ProfilePage: NextPage = () => {
   // };
 
   return (
-    <div className="flex flex-col items-center">
-      {/* User Profile Section */}
-      <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full">
-        {/* Profile Picture */}
-        <div className="avatar ">
-          <ProfilePictureUpload
-            isEditing={isEditing}
-            profilePicture={profilePicture}
-            setProfilePicture={setProfilePicture}
-          />
-        </div>
-        {/* <div className="avatar mr-4 md:mr-8">
+    <>
+      <div className="flex flex-col items-center">
+        {/* User Profile Section */}
+        <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full">
+          {/* Profile Picture */}
+          <div className="avatar ">
+            <ProfilePictureUpload
+              isEditing={isEditing}
+              profilePicture={profilePicture}
+              setProfilePicture={setProfilePicture}
+            />
+          </div>
+          {/* <div className="avatar mr-4 md:mr-8">
           <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
             <ProfilePictureUpload profilePicture={profilePicture} setProfilePicture={setProfilePicture} />
           </div>
         </div> */}
-        {/* User Info Section */}
-        <div className="flex flex-col justify-center items-center">
+          {/* User Info Section */}
+          <div className="flex flex-col justify-center items-center">
+            {isEditing ? (
+              <InputBase placeholder="Your Name" value={name} onChange={setName} />
+            ) : (
+              <>
+                <h2 className="text-2xl font-bold">{name || "Guest user"}</h2>
+                <div className="text-base-content">
+                  <Address address={address} />
+                </div>
+                <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
+                {website && (
+                  <a href={website} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                    {website}
+                  </a>
+                )}
+              </>
+            )}
+          </div>
+          {/* Div to align info in the center */}
+          <div></div>
+          {/* User Bio */}{" "}
           {isEditing ? (
-            <InputBase placeholder="Your Name" value={name} onChange={setName} />
+            <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
+              <>
+                <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
+                <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
+              </>
+            </div>
           ) : (
+            <></>
+          )}
+          {/* Edit/Cancel Button */}
+          {address === connectedAddress && (
             <>
-              <h2 className="text-2xl font-bold">{name || "Guest user"}</h2>
-              <div className="text-base-content">
-                <Address address={address} />
-              </div>
-              <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
-              {website && (
-                <a href={website} target="_blank" rel="noopener noreferrer" className="text-blue-600">
-                  {website}
-                </a>
+              {isEditing ? (
+                <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
+                  X Cancel
+                </button>
+              ) : (
+                <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
+                  <PencilIcon className="h-5 w-5" />
+                  Edit
+                </button>
+              )}
+              {isEditing && (
+                <div className="mt-2 flex items-center gap-2">
+                  <button className="cool-button" onClick={handleEditProfile}>
+                    Save changes
+                  </button>
+                </div>
               )}
             </>
           )}
         </div>
-        {/* Div to align info in the center */}
-        <div></div>
-        {/* User Bio */}{" "}
-        {isEditing ? (
-          <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
-            <>
-              <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
-              <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
-            </>
-          </div>
-        ) : (
-          <></>
-        )}
-        {/* Edit/Cancel Button */}
-        {address === connectedAddress && (
-          <>
-            {isEditing ? (
-              <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
-                X Cancel
-              </button>
-            ) : (
-              <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
-                <PencilIcon className="h-5 w-5" />
-                Edit
-              </button>
-            )}
-            {isEditing && (
-              <div className="mt-2 flex items-center gap-2">
-                <button className="cool-button" onClick={handleEditProfile}>
-                  Save changes
-                </button>
-              </div>
-            )}
-          </>
-        )}
       </div>
-
       {loading && <LoadingSpinner />}
 
       {listedCollectibles.length === 0 ? (
@@ -240,7 +241,7 @@ const ProfilePage: NextPage = () => {
       ) : (
         <NewsFeed filteredCollectibles={listedCollectibles} />
       )}
-    </div>
+    </>
   );
 };
 
