@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import imageCompression from "browser-image-compression";
 import { notification } from "~~/utils/scaffold-eth";
 import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 
@@ -19,34 +18,25 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
 
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {
+    // Read the file and set preview
+    const reader = new FileReader();
+    reader.onloadend = () => setPreviewImage(reader.result as string); // Show preview
+    reader.readAsDataURL(file); // Convert image to base64 for preview
+
+    // Upload file to IPFS
+    setLoading(true);
+    const notificationId = notification.loading("Uploading image to IPFS...");
+
     try {
-      setLoading(true);
-
-      // Compress the image
-      const options = {
-        maxSizeMB: 0.2, // Maximum size in MB
-        maxWidthOrHeight: 1920, // Maximum width or height
-        useWebWorker: false, // Use web worker for faster compression
-      };
-      const compressedFile = await imageCompression(file, options);
-
-      // Upload the compressed file to IPFS
-      const ipfsPath = await addToIPFS(compressedFile);
-      setUploadedImageIpfsPath(ipfsPath);
-
-      // Update the preview image
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreviewImage(reader.result as string);
-      };
-      reader.readAsDataURL(compressedFile);
-
-      notification.success("Image uploaded successfully!");
-    } catch (error) {
-      console.error("Failed to upload image to IPFS:", error);
-      notification.error("Failed to upload image to IPFS.");
-    } finally {
+      const uploadedImage = await addToIPFS(file, true); // Upload image to IPFS
+      notification.success("Image uploaded to IPFS!");
+      setUploadedImageIpfsPath(uploadedImage.path); // Store IPFS path for later use
       setLoading(false);
+      notification.remove(notificationId);
+    } catch (error) {
+      notification.error("Failed to upload image to IPFS.");
+      setLoading(false);
+      notification.remove(notificationId);
     }
   };
 
