@@ -9,7 +9,6 @@ export const MetadataForm: React.FC<MetadataFormProps> = ({ description, setDesc
   return (
     <div className="text-left flex-1 ">
       <div className="break-words">
-        <strong>Text content</strong>{" "}
         <DescriptionInput
           name="description"
           value={description}

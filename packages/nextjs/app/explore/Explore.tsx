@@ -21,7 +21,7 @@ export interface Collectible extends Partial<NFTMetaData> {
 export const Explore = () => {
   const { address: isConnected, isConnecting } = useAccount();
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const {
     data: createEvents,
@@ -33,10 +33,6 @@ export const Explore = () => {
     fromBlock: 0n,
     watch: true,
   });
-
-  useEffect(() => {
-    setLoading(false); // Stop loading after collectibles are updated
-  }, [listedCollectibles]);
 
   useEffect(() => {
     const fetchListedNFTs = async () => {
@@ -62,7 +58,7 @@ export const Explore = () => {
             ...nftMetadata,
           });
         } catch (e) {
-          notification.error("Error fetching collection started NFTs");
+          notification.error("Error fetching posts");
           console.error(e);
         }
       }
@@ -73,11 +69,21 @@ export const Explore = () => {
     fetchListedNFTs();
   }, [createEvents]);
 
+  useEffect(() => {
+    if (listedCollectibles.length > 0) {
+      setLoading(false); // Stop loading after collectibles are updated
+    }
+  }, [listedCollectibles]);
+
   // const filteredCollectibles = listedCollectibles.filter(collectible => {
   //   return true;
   // });
 
   if (createIsLoadingEvents) {
+    return <LoadingSpinner />;
+  }
+
+  if (loading) {
     return <LoadingSpinner />;
   }
 

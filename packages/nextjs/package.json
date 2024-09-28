@@ -23,6 +23,7 @@
     "@uniswap/sdk-core": "~4.0.1",
     "@uniswap/v2-sdk": "~3.0.1",
     "blo": "~1.0.1",
+    "browser-image-compression": "^2.0.2",
     "burner-connector": "~0.0.8",
     "daisyui": "4.5.0",
     "firebase-admin": "^11.11.1",

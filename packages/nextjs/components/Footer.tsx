@@ -13,10 +13,7 @@ export const Footer = () => {
 
   return (
     <>
-      <div className="min-h-0 py-5 px-1 mb-11 lg:mb-0">
-        <div>
-          <div className="fixed flex justify-end items-center w-full z-10 p-4 bottom-0 left-0 pointer-events-none"></div>
-        </div>
+      <div className="min-h-0 py-5 px-1 lg:mb-0">
         <div className="w-full">
           <ul className="menu menu-horizontal w-full">
             <div className="flex justify-center items-center gap-2 text-sm w-full">
@@ -43,7 +40,7 @@ export const Footer = () => {
           </ul>
         </div>
       </div>
-      <footer className="sticky lg:hidden bottom-0 w-full bg-base-100 px-4 py-2 flex justify-between items-center">
+      <footer className="sticky lg:hidden bottom-0 w-full bg-base-100 px-4 py-2 flex justify-around items-center">
         <Link href="/" passHref>
           <FontAwesomeIcon
             icon={faHome}

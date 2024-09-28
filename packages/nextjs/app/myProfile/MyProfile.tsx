@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { ErrorComponent } from "../explore/_components/ErrorComponent";
 import { LoadingSpinner } from "../explore/_components/LoadingSpinner";
 import { NewsFeed } from "../explore/_components/NewsFeed";
-import { MyHoldings } from "./_components/MyHoldings";
 import { ProfilePictureUpload } from "./_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
@@ -32,7 +31,7 @@ export const MyProfile: NextPage = () => {
 
   const { address: connectedAddress, isConnected, isConnecting } = useAccount();
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "ProfileInfo",
@@ -117,12 +116,18 @@ export const MyProfile: NextPage = () => {
   }, [profileInfo, isEditing]);
 
   useEffect(() => {
-    setLoading(false); // Stop loading after collectibles are updated
+    if (listedCollectibles.length > 0) {
+      setLoading(false); // Stop loading after collectibles are updated
+    }
   }, [listedCollectibles]);
 
   // const filteredCollectibles = listedCollectibles.filter(collectible => {
   //   return true;
   // });
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   if (createIsLoadingEvents) {
     return <LoadingSpinner />;
@@ -214,7 +219,6 @@ export const MyProfile: NextPage = () => {
 
       <div>
         <>
-          <MyHoldings />
           <div className="flex justify-center mb-4">
             <div className="flex justify-center">
               {!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}

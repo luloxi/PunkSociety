@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import imageCompression from "browser-image-compression";
 import { notification } from "~~/utils/scaffold-eth";
 import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 
@@ -18,15 +19,24 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
 
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {
-    const reader = new FileReader();
-    reader.onloadend = () => setPreviewImage(reader.result as string); // Show preview
-    reader.readAsDataURL(file); // Convert image to base64 for preview
+    // Compress the image
+    const options = {
+      maxSizeMB: 1, // Maximum size in MB
+      maxWidthOrHeight: 1920, // Maximum width or height
+      useWebWorker: true, // Use web worker for faster compression
+    };
 
     // Upload file to IPFS
     setLoading(true);
     const notificationId = notification.loading("Uploading image to IPFS...");
 
     try {
+      const compressedFile = await imageCompression(file, options);
+
+      const reader = new FileReader();
+      reader.onloadend = () => setPreviewImage(reader.result as string); // Show preview
+      reader.readAsDataURL(compressedFile); // Convert image to base64 for preview
+
       const uploadedImage = await addToIPFS(file, true); // Upload image to IPFS
       notification.success("Image uploaded to IPFS!");
       setUploadedImageIpfsPath(uploadedImage.path); // Store IPFS path for later use
@@ -103,7 +113,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
           <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer">
             <span className="text-5xl h-auto rounded-full ">+</span>
             <span className="font-bold">Upload image</span>
-            <span className="">Max filesize: 5 MB</span>
+
             <input
               type="file"
               accept="image/*"
