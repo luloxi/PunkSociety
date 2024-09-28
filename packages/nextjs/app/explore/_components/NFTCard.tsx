@@ -1,5 +1,9 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ProfileAddress } from "./ProfileAddress";
+import { MagnifyingGlassPlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Collectible extends Partial<NFTMetaData> {
@@ -11,34 +15,91 @@ export interface Collectible extends Partial<NFTMetaData> {
 }
 
 export const NFTCard = ({ nft }: { nft: Collectible }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className={`card-compact bg-base-300 w-full lg:w-[300px] relative group rounded-lg`}>
-      {/* Image Section */}
+    <div className="flex justify-center items-center">
+      <div className={`card-compact bg-base-300 w-[75%] lg:w-[300px] relative group rounded-lg`}>
+        {/* Image Section */}
+        {nft.image && nft.image !== "https://ipfs.io/ipfs/" && (
+          <div className="relative w-full h-0 pb-[100%] overflow-hidden">
+            <figure className="absolute inset-0">
+              <Image
+                src={nft.image || "/path/to/default/image.png"}
+                alt="NFT Image"
+                className="w-full h-full rounded-lg object-cover"
+                layout="fill" // Ensures the image fills the container
+              />
+              <button
+                className="absolute bottom-2 right-2 bg-base-200 p-2 rounded-full shadow-lg"
+                onClick={handleOpenModal}
+              >
+                <MagnifyingGlassPlusIcon className="inline-block h-7 w-7" />
+              </button>
+            </figure>
+          </div>
+        )}
 
-      {nft.image && nft.image !== "https://ipfs.io/ipfs/" && (
-        <figure className="relative">
-          <Image
-            src={nft.image || "/path/to/default/image.png"}
-            alt="NFT Image"
-            className="w-full h-auto rounded-lg object-cover"
-            layout="responsive" // Ensures responsiveness like the original img
-            width={300} // Same as the original container width
-            height={300} // Adjust this to maintain the aspect ratio of the image
-          />
-        </figure>
-      )}
+        <div className="card-body space-y-3">
+          <div className="flex flex-col justify-center mt-1">
+            <p className="my-0 text-lg">{nft.description ?? "No description available."}</p>
+          </div>
 
-      <div className="card-body space-y-3">
-        <div className="flex flex-col justify-center mt-1">
-          <p className="my-0 text-lg">{nft.description ?? "No description available."}</p>
-        </div>
-
-        <div className="flex space-x-3 mt-1 items-center">
-          <>
-            <span className="text-lg font-semibold">Posted by: </span>
+          <div className="flex space-x-3 mt-1 items-center">
             <ProfileAddress address={nft.user} />
-          </>
+          </div>
         </div>
+
+        {/* Modal for fullscreen image */}
+        {isModalOpen && (
+          <Modal onClose={handleCloseModal}>
+            <Image
+              src={nft.image || "/path/to/default/image.png"}
+              alt="NFT Image"
+              className="w-full h-auto rounded-lg object-cover"
+              layout="responsive"
+              width={800} // Adjust this to the desired fullscreen width
+              height={800} // Adjust this to maintain the aspect ratio of the image
+            />
+          </Modal>
+        )}
+      </div>
+    </div>
+  );
+};
+
+// Modal Component
+export const Modal = ({ children, onClose }: { children: React.ReactNode; onClose: () => void }) => {
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        onClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75">
+      <div ref={modalRef} className="relative bg-white rounded-lg p-4">
+        <button className="absolute top-2 right-2 bg-base-100 p-2 rounded-full" onClick={onClose}>
+          <XMarkIcon className="inline-block h-7 w-7" />
+        </button>
+        {children}
       </div>
     </div>
   );
