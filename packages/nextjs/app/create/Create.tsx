@@ -8,7 +8,7 @@ import generateTokenURI from "./_components/generateTokenURI";
 
 // import type { NextPage } from "next";
 
-const Create = () => {
+const Create = ({ onClose }: { onClose: any }) => {
   const [description, setDescription] = useState("");
   const [yourJSON, setYourJSON] = useState<object>({});
   const [uploadedImageIpfsPath, setUploadedImageIpfsPath] = useState(""); // NEW: For image IPFS path
@@ -17,6 +17,11 @@ const Create = () => {
     setYourJSON({});
     setUploadedImageIpfsPath("");
     setDescription("");
+  };
+
+  const handlePostCreated = () => {
+    resetForm();
+    onClose();
   };
 
   useEffect(() => {
@@ -57,6 +62,7 @@ const Create = () => {
               image={uploadedImageIpfsPath} // Pass the uploaded image IPFS path to MintingForm
               yourJSON={yourJSON}
               resetForm={resetForm}
+              onPostCreated={handlePostCreated}
             />
           </div>
         </div>

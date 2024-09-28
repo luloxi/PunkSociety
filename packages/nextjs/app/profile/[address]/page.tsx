@@ -234,7 +234,7 @@ const ProfilePage: NextPage = () => {
 
       {listedCollectibles.length === 0 ? (
         <div className="flex justify-center items-center mt-10">
-          <div className="text-2xl text-primary-content">No NFTs found</div>
+          <div className="text-2xl text-primary-content">No posts found</div>
         </div>
       ) : loading ? (
         <LoadingSpinner />

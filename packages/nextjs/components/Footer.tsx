@@ -55,9 +55,11 @@ export const Footer = () => {
         <PlusIcon className="h-10 w-10" />
       </div>
 
-      <Modal isOpen={isModalOpen} onClose={closeModal}>
-        <Create />
-      </Modal>
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <Create onClose={closeModal} />
+        </Modal>
+      )}
       <div className="min-h-0 py-5 px-1 lg:mb-0">
         <div className="w-full">
           <ul className="menu menu-horizontal w-full">

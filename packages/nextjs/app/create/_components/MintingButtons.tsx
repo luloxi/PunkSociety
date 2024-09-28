@@ -9,9 +9,10 @@ interface MintingFormProps {
   image: string;
   yourJSON: object;
   resetForm: () => void;
+  onPostCreated: () => void;
 }
 
-export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm }) => {
+export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm, onPostCreated }) => {
   const { address: connectedAddress } = useAccount();
   const { writeContractAsync } = useScaffoldWriteContract("PunkPosts");
 
@@ -32,7 +33,7 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
     }
   };
 
-  const handlePaidMint = async () => {
+  const handleCreatePost = async () => {
     if (!connectedAddress) {
       notification.error("Please connect your wallet");
       return;
@@ -52,6 +53,7 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
         notification.success("Posted successfully!");
       }
       resetForm();
+      onPostCreated();
     } catch (error) {
       console.error("Error during posting:", error);
       notification.error("Posting failed, please try again.");
@@ -63,7 +65,7 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
   return (
     <div className="flex flex-col justify-center items-center mt-6 gap-3">
       <div className="flex items-center">
-        <button className="cool-button" disabled={loading} onClick={handlePaidMint}>
+        <button className="cool-button" disabled={loading} onClick={handleCreatePost}>
           Create Post
         </button>
       </div>
