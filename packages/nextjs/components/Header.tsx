@@ -114,7 +114,7 @@ export const Header = () => {
           {isMenuOpen && isConnected && (
             <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
               <div className="my-2 flex flex-row items-center justify-center gap-2">
-                <Link href="/myProfile" passHref>
+                <Link href={`/profile/${connectedAddress}`} passHref>
                   <span className="btn btn-primary bg-base-200 border-0" onClick={handleMenuClose}>
                     My Profile
                   </span>

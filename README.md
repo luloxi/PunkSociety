@@ -13,7 +13,7 @@
 - ✅ **Create ProfileInfo contract for users to register their info**
 - ✅ **Post creation page**
 - ✅ **User profile page**
-- **View other users profiles**
+- ✅ **View other users profiles**
 
 ## 🌐 Phase 2 (Social Activity and Indexing)
 
@@ -23,7 +23,7 @@
 ## 👥 Phase 3 (Social improvements)
 
 - **Individual post pages** for displaying long texts and big images
-- Search by address or username 
+- Search by address or username
 - **Notification system**
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 

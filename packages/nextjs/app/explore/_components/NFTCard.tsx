@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Address } from "~~/components/scaffold-eth";
+import { ProfileAddress } from "./ProfileAddress";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Collectible extends Partial<NFTMetaData> {
@@ -36,7 +36,7 @@ export const NFTCard = ({ nft }: { nft: Collectible }) => {
         <div className="flex space-x-3 mt-1 items-center">
           <>
             <span className="text-lg font-semibold">Posted by: </span>
-            <Address address={nft.user} />
+            <ProfileAddress address={nft.user} />
           </>
         </div>
       </div>

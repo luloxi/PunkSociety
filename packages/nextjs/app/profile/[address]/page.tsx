@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ErrorComponent } from "../explore/_components/ErrorComponent";
-import { LoadingSpinner } from "../explore/_components/LoadingSpinner";
-import { NewsFeed } from "../explore/_components/NewsFeed";
-import { ProfilePictureUpload } from "./_components/ProfilePictureUpload";
+import { usePathname } from "next/navigation";
+import { ErrorComponent } from "../../explore/_components/ErrorComponent";
+import { LoadingSpinner } from "../../explore/_components/LoadingSpinner";
+import { NewsFeed } from "../../explore/_components/NewsFeed";
+import { ProfilePictureUpload } from "../_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";
@@ -22,21 +23,27 @@ export interface Collectible extends Partial<NFTMetaData> {
   date?: string;
 }
 
-export const MyProfile: NextPage = () => {
+const defaultProfilePicture = "/guest-profile.jpg";
+
+const ProfilePage: NextPage = () => {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [profilePicture, setProfilePicture] = useState<string>("");
   const [website, setWebsite] = useState("");
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
 
-  const { address: connectedAddress, isConnected, isConnecting } = useAccount();
   const [listedCollectibles, setListedCollectibles] = useState<Collectible[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const { address: connectedAddress, isConnected, isConnecting } = useAccount();
+
+  const pathname = usePathname();
+  const address = pathname.split("/").pop();
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "ProfileInfo",
     functionName: "profiles",
-    args: [connectedAddress],
+    args: [address],
     watch: true,
   });
 
@@ -82,7 +89,7 @@ export const MyProfile: NextPage = () => {
           const user = args?.user;
           const tokenURI = args?.tokenURI;
 
-          if (args?.user !== connectedAddress) continue;
+          if (args?.user !== address) continue;
           if (!tokenURI) continue;
 
           const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
@@ -104,7 +111,7 @@ export const MyProfile: NextPage = () => {
     };
 
     fetchListedNFTs();
-  }, [createEvents, connectedAddress]);
+  }, [createEvents, address, connectedAddress]);
 
   useEffect(() => {
     if (!isEditing && profileInfo) {
@@ -125,6 +132,11 @@ export const MyProfile: NextPage = () => {
   //   return true;
   // });
 
+  // Ensure the address is available before rendering the component
+  if (!address) {
+    return <p>Inexistent address, try again...</p>;
+  }
+
   if (loading) {
     return <LoadingSpinner />;
   }
@@ -136,8 +148,6 @@ export const MyProfile: NextPage = () => {
   if (createErrorReadingEvents) {
     return <ErrorComponent message={createErrorReadingEvents?.message || "Error loading events"} />;
   }
-
-  const defaultProfilePicture = "/guest-profile.jpg";
 
   // const ensureHttps = (url: string) => {
   //   if (!/^https?:\/\//i.test(url)) {
@@ -171,7 +181,7 @@ export const MyProfile: NextPage = () => {
             <>
               <h2 className="text-2xl font-bold">{name || "Guest user"}</h2>
               <div className="text-base-content">
-                <Address address={connectedAddress} />
+                <Address address={address} />
               </div>
               <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
               {website && (
@@ -196,24 +206,26 @@ export const MyProfile: NextPage = () => {
           <></>
         )}
         {/* Edit/Cancel Button */}
-        {isEditing ? (
-          <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
-            X Cancel
-          </button>
-        ) : (
-          <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
-            <PencilIcon className="h-5 w-5" />
-            Edit
-          </button>
-        )}
-        {isEditing ? (
-          <div className="mt-2 flex items-center gap-2">
-            <button className="cool-button" onClick={handleEditProfile}>
-              Save changes
-            </button>
-          </div>
-        ) : (
-          ""
+        {address === connectedAddress && (
+          <>
+            {isEditing ? (
+              <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
+                X Cancel
+              </button>
+            ) : (
+              <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
+                <PencilIcon className="h-5 w-5" />
+                Edit
+              </button>
+            )}
+            {isEditing && (
+              <div className="mt-2 flex items-center gap-2">
+                <button className="cool-button" onClick={handleEditProfile}>
+                  Save changes
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
 
@@ -238,3 +250,5 @@ export const MyProfile: NextPage = () => {
     </div>
   );
 };
+
+export default ProfilePage;
