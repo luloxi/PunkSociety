@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { ErrorComponent } from "../../explore/_components/ErrorComponent";
 import { LoadingSpinner } from "../../explore/_components/LoadingSpinner";
 import { NewsFeed } from "../../explore/_components/NewsFeed";
-import { ProfilePictureUpload } from "../_components/ProfilePictureUpload";
+import ProfilePictureUpload from "../_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";

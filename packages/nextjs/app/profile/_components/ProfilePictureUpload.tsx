@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { uploadToPinata } from "~~/utils/pinata-upload";
 import { notification } from "~~/utils/scaffold-eth";
-import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
+
+// Import the Pinata upload function
 
 interface ProfilePictureUploadProps {
-  isEditing: boolean;
   profilePicture: string;
-  setProfilePicture: (path: string) => void;
+  setProfilePicture: (url: string) => void;
+  isEditing: boolean;
 }
 
-export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
-  isEditing,
+const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   profilePicture,
   setProfilePicture,
+  isEditing,
 }) => {
   const [previewImage, setPreviewImage] = useState<string | null>(profilePicture || null);
   const [dragActive, setDragActive] = useState(false);
@@ -27,19 +29,19 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
     reader.onloadend = () => setPreviewImage(reader.result as string); // Show preview
     reader.readAsDataURL(file); // Convert image to base64 for preview
 
-    // Upload file to IPFS
+    // Upload file to Pinata
     setLoading(true);
-    const notificationId = notification.loading("Uploading image to IPFS...");
+    const notificationId = notification.loading("Uploading image to Pinata...");
 
     try {
-      const ipfsId = await addToIPFS(file, true);
-      const ipfsUrl = `https://ipfs.io/ipfs/${ipfsId.path}`;
-      notification.success("Image uploaded to IPFS!");
+      const response = await uploadToPinata(file);
+      const ipfsUrl = `https://gateway.pinata.cloud/ipfs/${response.IpfsHash}`;
+      notification.success("Image uploaded to Pinata!");
       setProfilePicture(ipfsUrl); // Store IPFS path for later use
       setLoading(false);
       notification.remove(notificationId);
     } catch (error) {
-      notification.error("Failed to upload image to IPFS.");
+      notification.error("Failed to upload image to Pinata.");
       setLoading(false);
       notification.remove(notificationId);
     }
@@ -104,13 +106,10 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
         </div>
       ) : isEditing ? (
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
-          {/* <p className="text-xs font-bold m-0">Drag & Drop</p>
-          <p className="text-xs m-0">Image Here</p>
-          <p className="text-xs m-0">or</p> */}
-          <label className="w-full h-full flex flex-col cursor-pointer text-xs m-0">
-            <span className="text-5xl h-auto rounded-full ">+</span>
+          <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer text-xs m-0">
+            <span className="text-5xl h-auto rounded-full">+</span>
             <span className="font-bold">Upload image</span>
-            <span className="">Max filesize: 5 MB</span>
+
             <input
               type="file"
               accept="image/*"
@@ -136,3 +135,5 @@ export const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
     </div>
   );
 };
+
+export default ProfilePictureUpload;

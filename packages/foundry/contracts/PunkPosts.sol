@@ -16,8 +16,10 @@ contract PunkPosts is ERC721, ERC721Enumerable, ERC721URIStorage {
   mapping(uint256 => address) public postIdToUser;
   mapping(address => uint256[]) public userToPostsId;
 
-  event PostCreated(address user, string tokenURI);
-  event PostDeleted(address user, uint256 postId);
+  event PostCreated(
+    uint256 indexed postId, address indexed user, string tokenURI
+  );
+  event PostDeleted(uint256 indexed postId);
 
   // bytes32 public constant TYPEHASH = keccak256("createPost(string,address)");
 
@@ -27,10 +29,9 @@ contract PunkPosts is ERC721, ERC721Enumerable, ERC721URIStorage {
   function createPost(
     string memory _tokenURI
   ) public returns (bool) {
-    postIdToUser[_tokenIds] = msg.sender;
-    userToPostsId[msg.sender].push(_tokenIds);
-
-    // Add nonce to prevent replay?
+    uint256 postId = _tokenIds;
+    postIdToUser[postId] = msg.sender;
+    userToPostsId[msg.sender].push(postId);
 
     _tokenIds++;
     uint256 id = _tokenIds;
@@ -38,7 +39,7 @@ contract PunkPosts is ERC721, ERC721Enumerable, ERC721URIStorage {
     _mint(msg.sender, id);
     _setTokenURI(id, _tokenURI);
 
-    emit PostCreated(msg.sender, _tokenURI);
+    emit PostCreated(postId, msg.sender, _tokenURI);
 
     return true;
   }
@@ -53,7 +54,7 @@ contract PunkPosts is ERC721, ERC721Enumerable, ERC721URIStorage {
 
     _burn(_postId);
 
-    emit PostDeleted(msg.sender, _postId);
+    emit PostDeleted(_postId);
 
     return true;
   }

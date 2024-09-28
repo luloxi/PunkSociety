@@ -2,8 +2,10 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import { uploadToPinata } from "~~/utils/pinata-upload";
 import { notification } from "~~/utils/scaffold-eth";
-import { addToIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
+
+// Import the Pinata upload function
 
 interface ImageUploaderProps {
   image: string;
@@ -23,18 +25,18 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
     reader.onloadend = () => setPreviewImage(reader.result as string); // Show preview
     reader.readAsDataURL(file); // Convert image to base64 for preview
 
-    // Upload file to IPFS
+    // Upload file to Pinata
     setLoading(true);
-    const notificationId = notification.loading("Uploading image to IPFS...");
-
+    const notificationId = notification.loading("Uploading image to Pinata...");
     try {
-      const uploadedImage = await addToIPFS(file, true); // Upload image to IPFS
-      notification.success("Image uploaded to IPFS!");
-      setUploadedImageIpfsPath(uploadedImage.path); // Store IPFS path for later use
+      const response = await uploadToPinata(file);
+      notification.success("Image uploaded to Pinata!");
+      setUploadedImageIpfsPath(response.IpfsHash); // Store IPFS hash for later use
       setLoading(false);
       notification.remove(notificationId);
     } catch (error) {
-      notification.error("Failed to upload image to IPFS.");
+      console.error("Error uploading image to Pinata:", error);
+      notification.error("Failed to upload image to Pinata.");
       setLoading(false);
       notification.remove(notificationId);
     }
@@ -119,3 +121,5 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
     </div>
   );
 };
+
+export default ImageUploader;

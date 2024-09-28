@@ -34,6 +34,17 @@ export const Explore = () => {
     watch: true,
   });
 
+  // const {
+  //   data: deleteEvents,
+  //   isLoading: deleteIsLoadingEvents,
+  //   error: deleteErrorReadingEvents,
+  // } = useScaffoldEventHistory({
+  //   contractName: "PunkPosts",
+  //   eventName: "PostDeleted",
+  //   fromBlock: 0n,
+  //   watch: true,
+  // });
+
   useEffect(() => {
     const fetchListedNFTs = async () => {
       if (!createEvents) return;
