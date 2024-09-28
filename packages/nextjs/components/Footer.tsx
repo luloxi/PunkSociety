@@ -1,18 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { faBell, faHome, faPlus, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Create from "../app/create/Create";
+import Modal from "../app/create/Modal";
 import { HeartIcon } from "@heroicons/react/24/outline";
+import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/24/solid";
+
+// Import Modal
 
 /**
  * Site footer
  */
 export const Footer = () => {
   const pathname = usePathname();
+  const [showPlusIcon, setShowPlusIcon] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // Scrolling down
+        setShowPlusIcon(false);
+      } else {
+        // Scrolling up
+        setShowPlusIcon(true);
+      }
+      lastScrollY = window.scrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <>
+      <div
+        className={`fixed bottom-16 lg:bottom-8 right-8 p-3 bg-blue-600 cursor-pointer hover:bg-blue-800 text-white rounded-full shadow-lg ${
+          showPlusIcon ? "animate-show" : "animate-hide"
+        }`}
+        onClick={openModal}
+      >
+        <PlusIcon className="h-10 w-10" />
+      </div>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Create />
+      </Modal>
       <div className="min-h-0 py-5 px-1 lg:mb-0">
         <div className="w-full">
           <ul className="menu menu-horizontal w-full">
@@ -42,30 +87,26 @@ export const Footer = () => {
       </div>
       <footer className="sticky lg:hidden bottom-0 w-full bg-base-100 px-4 py-2 flex justify-around items-center">
         <Link href="/" passHref>
-          <FontAwesomeIcon
-            icon={faHome}
-            className={`h-6 w-6 ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`}
-          />
+          <HomeIcon className={`h-6 w-6 ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`} />
         </Link>
 
-        <Link href="/create" passHref>
-          <FontAwesomeIcon
-            icon={faPlus}
-            className={`h-6 w-6 ${pathname === "/create" ? "text-blue-600" : "hover:text-blue-600"}`}
+        <Link href="/not-found" passHref>
+          <MagnifyingGlassIcon
+            className={`h-6 w-6 text-red-600 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
 
         <Link href="/not-found" passHref>
-          <FontAwesomeIcon
-            icon={faSearch}
-            className={`h-6 w-6 text-red-500 ${pathname === "/profile" ? "text-blue-600" : "hover:text-blue-600"}`}
+          <BellIcon
+            className={`h-6 w-6 text-red-600 ${
+              pathname === "/notifications" ? "text-blue-600" : "hover:text-blue-600"
+            }`}
           />
         </Link>
 
         <Link href="/not-found" passHref>
-          <FontAwesomeIcon
-            icon={faBell}
-            className={`h-6 w-6 text-red-500 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
+          <EnvelopeIcon
+            className={`h-6 w-6 text-red-600 ${pathname === "/messages" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
       </footer>

@@ -1,4 +1,3 @@
-import { Create } from "./Create";
 import type { NextPage } from "next";
 import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
 
@@ -8,11 +7,7 @@ export const metadata = getMetadata({
 });
 
 const CreatePage: NextPage = () => {
-  return (
-    <>
-      <Create />
-    </>
-  );
+  return <></>;
 };
 
 export default CreatePage;

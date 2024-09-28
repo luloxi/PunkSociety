@@ -4,10 +4,9 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
-import { faHome, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { hardhat } from "viem/chains";
 import { useAccount } from "wagmi";
+import { HomeIcon } from "@heroicons/react/24/solid";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract, useTargetNetwork } from "~~/hooks/scaffold-eth";
 
@@ -56,25 +55,14 @@ export const Header = () => {
         <div className="flex flex-row gap-3">
           <Link href="/" passHref>
             <button
-              className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
+              className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
                 pathname === "/" ? "text-blue-600" : ""
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
-                <FontAwesomeIcon icon={faHome} className="h-6 w-6" />
+                <HomeIcon className="h-6 w-6" />
+
                 <span>Home</span>
-              </div>
-            </button>
-          </Link>
-          <Link href="/create" passHref>
-            <button
-              className={` bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-2xl ${
-                pathname === "/create" ? "text-blue-600" : ""
-              }`}
-            >
-              <div className="flex flex-row items-center justify-center gap-2">
-                <FontAwesomeIcon icon={faPlus} className="h-6 w-6" />
-                <span>Create</span>
               </div>
             </button>
           </Link>

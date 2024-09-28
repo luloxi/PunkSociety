@@ -5,9 +5,10 @@ import { ImageUploader } from "./_components/ImageUploader";
 import { MetadataForm } from "./_components/MetadataForm";
 import { MintingButtons } from "./_components/MintingButtons";
 import generateTokenURI from "./_components/generateTokenURI";
-import type { NextPage } from "next";
 
-export const Create: NextPage = () => {
+// import type { NextPage } from "next";
+
+const Create = () => {
   const [description, setDescription] = useState("");
   const [yourJSON, setYourJSON] = useState<object>({});
   const [uploadedImageIpfsPath, setUploadedImageIpfsPath] = useState(""); // NEW: For image IPFS path
@@ -39,13 +40,13 @@ export const Create: NextPage = () => {
 
             {/* Metadata and Attributes Forms */}
             <div className="flex flex-col gap-3 md:flex-row items-center justify-center space-x-4 mb-4">
-              <div className="text-left w-full">
-                <MetadataForm description={description} setDescription={setDescription} />
-              </div>
               <ImageUploader
                 image={uploadedImageIpfsPath}
                 setUploadedImageIpfsPath={setUploadedImageIpfsPath} // NEW: Set the uploaded image IPFS path here
               />
+              <div className="text-left w-full">
+                <MetadataForm description={description} setDescription={setDescription} />
+              </div>
             </div>
 
             {/* JSON Viewer */}
@@ -63,3 +64,5 @@ export const Create: NextPage = () => {
     </>
   );
 };
+
+export default Create;

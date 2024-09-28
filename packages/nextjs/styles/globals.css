@@ -3,6 +3,36 @@
 @import "tailwindcss/utilities";
 
 /* Added by Lulox */
+/* CSS Animations */
+@keyframes show {
+  0% {
+    transform: translateY(100%) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes hide {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%) scale(0);
+    opacity: 0;
+  }
+}
+
+.animate-show {
+  animation: show 0.5s forwards;
+}
+
+.animate-hide {
+  animation: hide 0.5s forwards;
+}
 
 .cool-button {
   appearance: button;
