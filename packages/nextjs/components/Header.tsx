@@ -81,12 +81,15 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="navbar-center flex-1 flex justify-center items-center">
-        <div className="w-7 h-7 relative">
-          <Link href="/" passHref>
-            🤘
-          </Link>
-        </div>
+      <div className="navbar-center flex-1 flex  justify-center items-center">
+        <Link href="/" passHref>
+          <span className="inline-flex items-center gap-2">
+            <strong>PunkSociety</strong>{" "}
+            <span role="img" aria-label="emoji">
+              🤘
+            </span>
+          </span>
+        </Link>
       </div>
 
       <div className="navbar-end mr-4 relative" ref={menuRef}>
