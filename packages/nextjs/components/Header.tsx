@@ -4,11 +4,10 @@ import React, { useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
-import { hardhat } from "viem/chains";
 import { useAccount } from "wagmi";
 import { Cog6ToothIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick, useScaffoldReadContract, useTargetNetwork } from "~~/hooks/scaffold-eth";
+import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 /**
  * Site header
@@ -42,9 +41,6 @@ export const Header = () => {
   };
 
   useOutsideClick(menuRef, closeSettingsMenu);
-
-  const { targetNetwork } = useTargetNetwork();
-  const isLocalNetwork = targetNetwork.id === hardhat.id;
 
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
@@ -105,10 +101,18 @@ export const Header = () => {
       </div>
 
       <div className="navbar-end mr-4 relative" ref={menuRef}>
-        <div className="flex flex-row items-center justify-center">
-          <SwitchTheme
-            className={`mr-4 hidden lg:flex pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`}
-          />
+        <div className="flex flex-row items-center justify-center gap-3">
+          <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
+          {/* <Cog6ToothIcon className="h-6 w-6" /> */}
+          {isSettingsMenuOpen && (
+            <div className="absolute right-5 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
+              <div className="flex flex-col justify-center items-center my-2 gap-1">
+                <RainbowKitCustomConnectButton />
+                <SwitchTheme />
+                <FaucetButton />
+              </div>
+            </div>
+          )}
           <Link href={`/profile/${connectedAddress}`} passHref>
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
