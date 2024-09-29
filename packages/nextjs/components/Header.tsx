@@ -14,12 +14,7 @@ import { useOutsideClick, useScaffoldReadContract, useTargetNetwork } from "~~/h
  * Site header
  */
 export const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
-
-  const toggleSettingsMenu = () => {
-    setIsSettingsMenuOpen(!isSettingsMenuOpen);
-  };
 
   const { address: connectedAddress } = useAccount();
 
@@ -38,15 +33,15 @@ export const Header = () => {
 
   const pathname = usePathname();
 
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
+  const toggleSettingsMenu = () => {
+    setIsSettingsMenuOpen(!isSettingsMenuOpen);
   };
 
-  const handleMenuClose = () => {
-    setIsMenuOpen(false);
+  const closeSettingsMenu = () => {
+    setIsSettingsMenuOpen(false);
   };
 
-  useOutsideClick(menuRef, handleMenuClose);
+  useOutsideClick(menuRef, closeSettingsMenu);
 
   const { targetNetwork } = useTargetNetwork();
   const isLocalNetwork = targetNetwork.id === hardhat.id;
@@ -117,7 +112,6 @@ export const Header = () => {
           <Link href={`/profile/${connectedAddress}`} passHref>
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
-              onClick={handleMenuToggle}
               style={{
                 backgroundImage: `url(${profilePicture})`,
                 backgroundSize: "cover",

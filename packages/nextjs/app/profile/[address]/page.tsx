@@ -9,7 +9,7 @@ import ProfilePictureUpload from "../_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import { Address } from "~~/components/scaffold-eth";
+import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -178,11 +178,6 @@ const ProfilePage: NextPage = () => {
               setProfilePicture={setProfilePicture}
             />
           </div>
-          {/* <div className="avatar mr-4 md:mr-8">
-          <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-            <ProfilePictureUpload profilePicture={profilePicture} setProfilePicture={setProfilePicture} />
-          </div>
-        </div> */}
           {/* User Info Section */}
           <div className="flex flex-col justify-center items-center">
             {isEditing ? (
@@ -190,15 +185,22 @@ const ProfilePage: NextPage = () => {
             ) : (
               <>
                 <h2 className="text-2xl font-bold">{username || "Guest user"}</h2>
-                <div className="text-base-content">
-                  <Address address={address} />
-                </div>
-                <p className={`text-base-content ${bio ? "" : "text-red-600"}`}>{bio || "no biography available"}</p>
+
+                {bio && <p className="text-base-content">{bio}</p>}
                 {website && (
                   <a href={website} target="_blank" rel="noopener noreferrer" className="text-blue-600">
                     {website}
                   </a>
                 )}
+                <div className="mt-2">
+                  {address == connectedAddress ? (
+                    <RainbowKitCustomConnectButton />
+                  ) : (
+                    <div className="text-base-content">
+                      <Address address={address} />
+                    </div>
+                  )}
+                </div>
               </>
             )}
           </div>
