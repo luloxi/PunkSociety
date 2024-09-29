@@ -169,7 +169,7 @@ const ProfilePage: NextPage = () => {
     <>
       <div className="flex flex-col items-center">
         {/* User Profile Section */}
-        <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full">
+        <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
           {/* Profile Picture */}
           <div className="avatar ">
             <ProfilePictureUpload

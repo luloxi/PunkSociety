@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
 import { hardhat } from "viem/chains";
 import { useAccount } from "wagmi";
-import { HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { Cog6ToothIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract, useTargetNetwork } from "~~/hooks/scaffold-eth";
 
@@ -15,8 +15,13 @@ import { useOutsideClick, useScaffoldReadContract, useTargetNetwork } from "~~/h
  */
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
 
-  const { address: connectedAddress, isConnected } = useAccount();
+  const toggleSettingsMenu = () => {
+    setIsSettingsMenuOpen(!isSettingsMenuOpen);
+  };
+
+  const { address: connectedAddress } = useAccount();
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "ProfileInfo",
@@ -50,7 +55,17 @@ export const Header = () => {
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ml-2">
         <div className="flex lg:hidden ml-2 items-center justify-center">
-          <SwitchTheme className={`pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`} />
+          <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
+          {/* <Cog6ToothIcon className="h-6 w-6" /> */}
+          {isSettingsMenuOpen && (
+            <div className="absolute left-5 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
+              <div className="flex flex-col justify-center items-center my-2 gap-1">
+                <RainbowKitCustomConnectButton />
+                <SwitchTheme />
+                <FaucetButton />
+              </div>
+            </div>
+          )}
         </div>
         <div className="flex flex-row gap-3">
           <Link href="/" passHref>
@@ -99,7 +114,18 @@ export const Header = () => {
           <SwitchTheme
             className={`mr-4 hidden lg:flex pointer-events-auto ${isLocalNetwork ? "self-end md:self-auto" : ""}`}
           />
-          {isConnected ? (
+          <Link href={`/profile/${connectedAddress}`} passHref>
+            <div
+              className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
+              onClick={handleMenuToggle}
+              style={{
+                backgroundImage: `url(${profilePicture})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></div>
+          </Link>
+          {/* {isConnected ? (
             <>
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
@@ -131,7 +157,7 @@ export const Header = () => {
                 <RainbowKitCustomConnectButton />
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </div>
     </div>
