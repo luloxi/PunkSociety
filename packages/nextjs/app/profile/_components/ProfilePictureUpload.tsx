@@ -18,7 +18,9 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 }) => {
   const defaultProfilePicture = "/guest-profile.jpg";
 
-  const [previewImage, setPreviewImage] = useState<string | null>(profilePicture || null);
+  const [previewImage, setPreviewImage] = useState<string | null>(
+    profilePicture != "" ? profilePicture : defaultProfilePicture,
+  );
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
