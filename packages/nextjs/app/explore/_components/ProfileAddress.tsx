@@ -7,6 +7,7 @@ import { hardhat } from "viem/chains";
 import { normalize } from "viem/ens";
 import { useEnsAvatar, useEnsName } from "wagmi";
 import { BlockieAvatar } from "~~/components/scaffold-eth";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 
 type AddressProps = {
@@ -30,11 +31,18 @@ const blockieSizeMap = {
  * Displays an address (or ENS) with a Blockie image and option to copy address.
  */
 export const ProfileAddress = ({ address, disableAddressLink, format, size = "base" }: AddressProps) => {
-  const [ens, setEns] = useState<string | null>();
+  // const [ens, setEns] = useState<string | null>();
   const [ensAvatar, setEnsAvatar] = useState<string | null>();
   const checkSumAddress = address ? getAddress(address) : undefined;
 
   const { targetNetwork } = useTargetNetwork();
+
+  const { data: profileInfo } = useScaffoldReadContract({
+    contractName: "ProfileInfo",
+    functionName: "profiles",
+    args: [address],
+    watch: true,
+  });
 
   const { data: fetchedEns } = useEnsName({
     address: checkSumAddress,
@@ -53,9 +61,9 @@ export const ProfileAddress = ({ address, disableAddressLink, format, size = "ba
   });
 
   // We need to apply this pattern to avoid Hydration errors.
-  useEffect(() => {
-    setEns(fetchedEns);
-  }, [fetchedEns]);
+  // useEffect(() => {
+  //   setEns(fetchedEns);
+  // }, [fetchedEns]);
 
   useEffect(() => {
     setEnsAvatar(fetchedEnsAvatar);
@@ -79,8 +87,12 @@ export const ProfileAddress = ({ address, disableAddressLink, format, size = "ba
 
   let displayAddress = checkSumAddress?.slice(0, 6) + "..." + checkSumAddress?.slice(-4);
 
-  if (ens) {
-    displayAddress = ens;
+  // else if (ens) {
+  //   displayAddress = ens;
+  // }
+
+  if (profileInfo && profileInfo[0] !== "") {
+    displayAddress = profileInfo[0];
   } else if (format === "long") {
     displayAddress = checkSumAddress;
   }
