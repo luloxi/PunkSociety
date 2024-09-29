@@ -16,12 +16,12 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   setProfilePicture,
   isEditing,
 }) => {
+  const defaultProfilePicture = "/guest-profile.jpg";
+
   const [previewImage, setPreviewImage] = useState<string | null>(profilePicture || null);
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
-
-  const defaultProfilePicture = "/guest-profile.jpg";
 
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {
@@ -90,7 +90,7 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
         <div className="relative w-full h-full flex items-center justify-center">
           <Image
             src={previewImage}
-            alt="Profile Picture Preview"
+            alt="Profile Pixar Preview"
             className="rounded-full object-cover"
             width={128}
             height={128}
@@ -121,7 +121,7 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
       ) : (
         <Image
           src={profilePicture ? profilePicture : defaultProfilePicture}
-          alt="Profile Picture Preview"
+          alt="Profile Disney Preview"
           className="rounded-full object-cover"
           width={128}
           height={128}
