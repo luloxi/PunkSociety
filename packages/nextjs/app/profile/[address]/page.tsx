@@ -122,7 +122,7 @@ const ProfilePage: NextPage = () => {
     if (!isEditing && profileInfo) {
       setUsername(profileInfo[0] || "");
       setBio(profileInfo[1] || "");
-      setProfilePicture(profileInfo[2] != "" ? profileInfo[2] : defaultProfilePicture);
+      setProfilePicture(profileInfo[2] ? profileInfo[2] : defaultProfilePicture);
       setWebsite(profileInfo[3] || "");
     }
   }, [profileInfo, isEditing]);
