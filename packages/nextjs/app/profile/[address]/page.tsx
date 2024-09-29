@@ -61,9 +61,11 @@ const ProfilePage: NextPage = () => {
 
   const handleEditProfile = async () => {
     try {
-      // Unset the current profile picture
-      setProfilePicture("");
-      // setPreviewImage(null);
+      // Check if the current profile picture is the default one
+      if (profilePicture === defaultProfilePicture) {
+        // Unset the current profile picture before editing the profile
+        setProfilePicture("");
+      }
 
       await profileInfoWriteAsync({
         functionName: "setProfile",
