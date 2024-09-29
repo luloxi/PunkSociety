@@ -61,6 +61,10 @@ const ProfilePage: NextPage = () => {
 
   const handleEditProfile = async () => {
     try {
+      // Unset the current profile picture
+      setProfilePicture("");
+      // setPreviewImage(null);
+
       await profileInfoWriteAsync({
         functionName: "setProfile",
         args: [username, bio, profilePicture, website],
