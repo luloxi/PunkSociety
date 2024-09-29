@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { uploadToPinata } from "~~/utils/pinata-upload";
 import { notification } from "~~/utils/scaffold-eth";
@@ -18,12 +18,18 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
 }) => {
   const defaultProfilePicture = "/guest-profile.jpg";
 
-  const [previewImage, setPreviewImage] = useState<string | null>(
-    profilePicture != "" ? profilePicture : defaultProfilePicture,
-  );
+  const [previewImage, setPreviewImage] = useState<string>("");
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(false);
   const [hovered, setHovered] = useState(false);
+
+  useEffect(() => {
+    if (profilePicture) {
+      setPreviewImage(profilePicture);
+    } else {
+      setPreviewImage("");
+    }
+  }, [profilePicture]);
 
   // Handle file drop or selection
   const handleFileUpload = async (file: File) => {
@@ -73,7 +79,7 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   // Handle remove image
   const handleRemoveImage = () => {
     setProfilePicture("");
-    setPreviewImage(null);
+    setPreviewImage("");
   };
 
   return (
@@ -88,10 +94,66 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
       onMouseLeave={() => setHovered(false)}
     >
       <input type="file" onChange={handleFileInputChange} className="hidden" />
-      {previewImage ? (
+      {isEditing ? (
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+          {previewImage ? (
+            <>
+              <Image
+                src={previewImage}
+                alt="Profile Picture"
+                className="rounded-full object-cover w-32 h-32"
+                width={128}
+                height={128}
+              />
+              <button
+                className="absolute top-5 right-5 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full"
+                onClick={handleRemoveImage}
+              >
+                ✕
+              </button>
+            </>
+          ) : (
+            <label className="w-32 h-32 flex flex-col items-center justify-center cursor-pointer text-xs m-0 border border-dashed border-gray-400 rounded-full">
+              <span className="text-5xl h-auto rounded-full">+</span>
+              <span className="font-bold">Upload image</span>
+              <input type="file" accept="image/*" className="hidden" onChange={handleFileInputChange} />
+            </label>
+          )}
+        </div>
+      ) : (
+        <Image
+          src={profilePicture ? profilePicture : defaultProfilePicture}
+          alt="Profile Picture"
+          className="rounded-full object-cover w-32 h-32"
+          width={128}
+          height={128}
+        />
+      )}
+      {hovered && previewImage && (
+        <button
+          className="absolute top-5 right-5 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full"
+          onClick={handleRemoveImage}
+        >
+          ✕
+        </button>
+      )}
+      {loading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-75 text-white">
+          Uploading...
+        </div>
+      )}
+      {/* {hovered && !isEditing && (
+        <button
+          className="absolute top-5 right-5 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full"
+          onClick={() => setIsEditing(true)}
+        >
+          ✎
+        </button>
+      )} */}
+      {/* {previewImage ? (
         <div className="relative w-full h-full flex items-center justify-center">
           <Image
-            src={previewImage}
+            src={previewImage ? profilePicture : defaultProfilePicture}
             alt="Profile Pixar Preview"
             className="rounded-full object-cover"
             width={128}
@@ -133,7 +195,7 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
         <div className="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-75 text-white">
           Uploading...
         </div>
-      )}
+      )} */}
     </div>
   );
 };

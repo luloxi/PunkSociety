@@ -83,8 +83,11 @@ const ProfilePage: NextPage = () => {
   };
 
   useEffect(() => {
-    const fetchListedNFTs = async () => {
-      if (!createEvents) return;
+    const fetchPosts = async () => {
+      if (!createEvents) {
+        // setLoading(false);
+        return;
+      }
 
       const postsUpdate: Post[] = [];
 
@@ -113,9 +116,10 @@ const ProfilePage: NextPage = () => {
       }
 
       setListedPosts(postsUpdate);
+      setLoading(false);
     };
 
-    fetchListedNFTs();
+    fetchPosts();
   }, [createEvents, address, connectedAddress]);
 
   useEffect(() => {
@@ -235,16 +239,16 @@ const ProfilePage: NextPage = () => {
           )}
         </div>
       </div>
-      {loading && <LoadingSpinner />}
+      {/* {loading && <LoadingSpinner />} */}
 
-      {listedPosts.length === 0 ? (
+      {loading ? (
+        <LoadingSpinner />
+      ) : listedPosts.length !== 0 ? (
+        <NewsFeed filteredPosts={listedPosts} />
+      ) : (
         <div className="flex justify-center items-center mt-10">
           <div className="text-2xl text-primary-content">No posts found</div>
         </div>
-      ) : loading ? (
-        <LoadingSpinner />
-      ) : (
-        <NewsFeed filteredPosts={listedPosts} />
       )}
     </>
   );

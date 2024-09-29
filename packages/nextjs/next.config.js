@@ -14,11 +14,6 @@ const nextConfig = {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
-};
-
-module.exports = nextConfig;
-
-module.exports = {
   images: {
     remotePatterns: [
       {
@@ -27,6 +22,33 @@ module.exports = {
         port: "",
         pathname: "/ipfs/**",
       },
+      {
+        protocol: "https",
+        hostname: "gateway.pinata.cloud",
+        port: "",
+        pathname: "/ipfs/**",
+      },
     ],
   },
 };
+
+module.exports = nextConfig;
+
+// module.exports = {
+//   images: {
+//     remotePatterns: [
+//       {
+//         protocol: "https",
+//         hostname: "ipfs.io",
+//         port: "",
+//         pathname: "/ipfs/**",
+//       },
+//       {
+//         protocol: "https",
+//         hostname: "gateway.pinata.cloud",
+//         port: "",
+//         pathname: "/ipfs/**",
+//       },
+//     ],
+//   },
+// };
