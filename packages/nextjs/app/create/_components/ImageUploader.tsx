@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+// import sharp from "sharp";
 import { uploadToPinata } from "~~/utils/pinata-upload";
 import { notification } from "~~/utils/scaffold-eth";
 

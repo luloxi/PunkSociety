@@ -102,17 +102,19 @@ export const Header = () => {
 
       <div className="navbar-end mr-4 relative" ref={menuRef}>
         <div className="flex flex-row items-center justify-center gap-3">
-          <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
-          {/* <Cog6ToothIcon className="h-6 w-6" /> */}
-          {isSettingsMenuOpen && (
-            <div className="absolute right-5 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
-              <div className="flex flex-col justify-center items-center my-2 gap-1">
-                <RainbowKitCustomConnectButton />
-                <SwitchTheme />
-                <FaucetButton />
+          <div className="hidden lg:flex">
+            <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
+            {/* <Cog6ToothIcon className="h-6 w-6" /> */}
+            {isSettingsMenuOpen && (
+              <div className="absolute right-5 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
+                <div className="flex flex-col justify-center items-center my-2 gap-1">
+                  <RainbowKitCustomConnectButton />
+                  <SwitchTheme />
+                  <FaucetButton />
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
           <Link href={`/profile/${connectedAddress}`} passHref>
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
