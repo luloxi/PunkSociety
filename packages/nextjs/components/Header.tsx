@@ -1,20 +1,17 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
 import { useAccount } from "wagmi";
-import { BellIcon, Cog6ToothIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
-import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 /**
  * Site header
  */
 export const Header = () => {
-  const [isSettingsMenuOpen, setIsSettingsMenuOpen] = useState(false);
-
   const { address: connectedAddress } = useAccount();
 
   const { data: profileInfo } = useScaffoldReadContract({
@@ -28,38 +25,13 @@ export const Header = () => {
 
   const profilePicture = profileInfo && profileInfo[2] ? profileInfo[2] : defaultProfilePicture;
 
-  const menuRef = useRef<HTMLDivElement>(null);
-
   const pathname = usePathname();
-
-  const toggleSettingsMenu = () => {
-    setIsSettingsMenuOpen(!isSettingsMenuOpen);
-  };
-
-  const closeSettingsMenu = () => {
-    setIsSettingsMenuOpen(false);
-  };
-
-  useOutsideClick(menuRef, closeSettingsMenu);
 
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ml-2" ref={menuRef}>
+      <div className="navbar-start ml-2">
         <div className="flex lg:hidden ml-2 items-center justify-center">
-          <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
-          {/* <Cog6ToothIcon className="h-6 w-6" /> */}
-          {isSettingsMenuOpen && (
-            <div
-              className="absolute left-12 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg"
-              onClick={e => e.stopPropagation()} // Stop event propagation
-            >
-              <div className="flex flex-col justify-center items-center my-2 gap-1">
-                <RainbowKitCustomConnectButton />
-                <SwitchTheme />
-                <FaucetButton />
-              </div>
-            </div>
-          )}
+          <SwitchTheme />
         </div>
         <div className="flex flex-row gap-3">
           <Link href="/" passHref>
@@ -70,8 +42,6 @@ export const Header = () => {
             >
               <div className="flex flex-row items-center justify-center gap-2">
                 <HomeIcon className="h-6 w-6" />
-
-                {/* <span>Home</span> */}
               </div>
             </button>
           </Link>
@@ -84,8 +54,6 @@ export const Header = () => {
             >
               <div className="flex flex-row items-center justify-center gap-2">
                 <MagnifyingGlassIcon className="h-6 w-6" />
-
-                {/* <span>Search</span> */}
               </div>
             </button>
           </Link>
@@ -127,24 +95,10 @@ export const Header = () => {
         </Link>
       </div>
 
-      <div className="navbar-end mr-4 relative" ref={menuRef}>
+      <div className="navbar-end mr-4 relative">
         <div className="flex flex-row items-center justify-center gap-3">
           <div className="hidden lg:flex">
-            <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
-            {/* <Cog6ToothIcon className="h-6 w-6" /> */}
-            {isSettingsMenuOpen && (
-              <div
-                ref={menuRef}
-                className="absolute right-5 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg"
-                onClick={e => e.stopPropagation()}
-              >
-                <div className="flex flex-col justify-center items-center my-2 gap-1">
-                  <RainbowKitCustomConnectButton />
-                  <SwitchTheme />
-                  <FaucetButton />
-                </div>
-              </div>
-            )}
+            <SwitchTheme />
           </div>
           <Link href={`/profile/${connectedAddress}`} passHref>
             <div
@@ -156,39 +110,6 @@ export const Header = () => {
               }}
             ></div>
           </Link>
-          {/* {isConnected ? (
-            <>
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
-                onClick={handleMenuToggle}
-                style={{
-                  backgroundImage: `url(${profilePicture})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "center",
-                }}
-              ></div>
-            </>
-          ) : (
-            <>
-              <RainbowKitCustomConnectButton />
-            </>
-          )}
-          {isMenuOpen && isConnected && (
-            <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
-              <div className="my-2 flex flex-row items-center justify-center gap-2">
-                <Link href={`/profile/${connectedAddress}`} passHref>
-                  <span className="btn btn-primary bg-base-200 border-0" onClick={handleMenuClose}>
-                    My Profile
-                  </span>
-                </Link>
-                <FaucetButton />
-              </div>
-
-              <div className="mb-2">
-                <RainbowKitCustomConnectButton />
-              </div>
-            </div>
-          )} */}
         </div>
       </div>
     </div>
