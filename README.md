@@ -15,29 +15,26 @@
 - ✅ **User profile page**
 - ✅ **View other users profiles**
 
-## 🌐 Phase 2 (Social Activity and Indexing)
+## 👥 Phase 2 (Social Activity and Indexing)
 
 - **Search**: By address, ENS or username
 - **Social features:** Following users, liking, commenting and sharing posts.
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
-
-## 👥 Phase 3 (Social improvements)
-
 - **Individual post pages** for displaying long texts and big images
 - **Notification system**
 
-## ✍️ Phase 4 (Gasless activity)
+## ✍️ Phase 3 (Gasless activity)
 
 - **Signatures:** Allow users to interact with the platform without paying gas fees
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Whitelist:** Optional system to validate users to prevent spam
 
-## 💌 Phase 5 (Direct messages)
+## 💌 Phase 4 (Direct messages)
 
 - **Direct messages:** Allow users to send messages to each other
 - **Group chats:** Allow users to create and join group chats
 
-## 🧑‍🦽 Phase 6 (Accessibility)
+## 🧑‍🦽 Phase 5 (Accessibility)
 
 - **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
