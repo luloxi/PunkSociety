@@ -25,7 +25,6 @@
 
 - **Individual post pages** for displaying long texts and big images
 - **Notification system**
-- **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
 ## ✍️ Phase 4 (Gasless activity)
 
@@ -37,6 +36,10 @@
 
 - **Direct messages:** Allow users to send messages to each other
 - **Group chats:** Allow users to create and join group chats
+
+## 🧑‍🦽 Phase 6 (Accessibility)
+
+- **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
 # 🤘 Development
 
