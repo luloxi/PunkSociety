@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
 import { useAccount } from "wagmi";
-import { Cog6ToothIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { BellIcon, Cog6ToothIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
@@ -71,7 +71,7 @@ export const Header = () => {
               <div className="flex flex-row items-center justify-center gap-2">
                 <HomeIcon className="h-6 w-6" />
 
-                <span>Home</span>
+                {/* <span>Home</span> */}
               </div>
             </button>
           </Link>
@@ -85,7 +85,35 @@ export const Header = () => {
               <div className="flex flex-row items-center justify-center gap-2">
                 <MagnifyingGlassIcon className="h-6 w-6" />
 
-                <span>Search</span>
+                {/* <span>Search</span> */}
+              </div>
+            </button>
+          </Link>
+
+          <Link href="/not-found" passHref>
+            <button
+              className={`bg-transparent text-red-600 hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+                pathname === "/notifications" ? "text-blue-600" : ""
+              }`}
+            >
+              <div className="flex flex-row items-center justify-center gap-2">
+                <BellIcon className="h-6 w-6" />
+
+                {/* <span>Home</span> */}
+              </div>
+            </button>
+          </Link>
+
+          <Link href="/not-found" passHref>
+            <button
+              className={`bg-transparent text-red-600 hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+                pathname === "/messages" ? "text-blue-600" : ""
+              }`}
+            >
+              <div className="flex flex-row items-center justify-center gap-2">
+                <EnvelopeIcon className="h-6 w-6" />
+
+                {/* <span>Home</span> */}
               </div>
             </button>
           </Link>
