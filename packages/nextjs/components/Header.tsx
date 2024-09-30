@@ -45,7 +45,7 @@ export const Header = () => {
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ml-2">
-        <div className="flex lg:hidden ml-2 items-center justify-center">
+        <div ref={menuRef} className="flex lg:hidden ml-2 items-center justify-center">
           <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
           {isSettingsMenuOpen && (
             <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
@@ -65,7 +65,6 @@ export const Header = () => {
           )}
           {/* {isSettingsMenuOpen && (
             <div
-              ref={menuRef}
               className="absolute left-12 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg"
               onClick={e => e.stopPropagation()} // Stop event propagation
             >
