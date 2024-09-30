@@ -5,6 +5,7 @@
 - 🫂 Follow other users.
 - 🔔 Receive notifications on activity.
 - 💌 Message other users and join group chats
+- 🧑‍🦽 Accessibility for visually impaired users
 
 # 🤘 Roadmap
 
