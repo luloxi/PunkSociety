@@ -47,36 +47,19 @@ export const Header = () => {
       <div className="navbar-start ml-2">
         <div ref={menuRef} className="flex lg:hidden ml-2 items-center justify-center">
           <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
+          {/* <Cog6ToothIcon className="h-6 w-6" /> */}
           {isSettingsMenuOpen && (
-            <div className="absolute flex flex-col items-center justify-center right-0 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
-              <div className="my-2 flex flex-row items-center justify-center gap-2">
-                <Link href={`/profile/${connectedAddress}`} passHref>
-                  <span className="btn btn-primary bg-base-200 border-0" onClick={closeSettingsMenu}>
-                    My Profile
-                  </span>
-                </Link>
-                <FaucetButton />
-              </div>
-
-              <div className="mb-2">
-                <RainbowKitCustomConnectButton />
-              </div>
-            </div>
-          )}
-          {/* {isSettingsMenuOpen && (
             <div
               className="absolute left-12 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg"
               onClick={e => e.stopPropagation()} // Stop event propagation
             >
               <div className="flex flex-col justify-center items-center my-2 gap-1">
                 <RainbowKitCustomConnectButton />
-
                 <SwitchTheme />
-
                 <FaucetButton />
               </div>
             </div>
-          )} */}
+          )}
         </div>
         <div className="flex flex-row gap-3">
           <Link href="/" passHref>
