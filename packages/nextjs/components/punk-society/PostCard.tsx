@@ -27,7 +27,7 @@ export const PostCard = ({ post }: { post: Post }) => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className={`card-compact bg-base-300 w-[75%] lg:w-[300px] relative group rounded-lg`}>
+      <div className={`card-compact bg-base-300 w-[90%] lg:w-[300px] relative group rounded-lg`}>
         {/* Image Section */}
         {post.image && post.image !== "https://ipfs.io/ipfs/" && (
           <div className="relative w-full h-0 pb-[100%] overflow-hidden">
