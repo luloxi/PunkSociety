@@ -50,6 +50,14 @@ const ProfilePage: NextPage = () => {
     watch: true,
   });
 
+  // Function to normalize URLs
+  const normalizeUrl = (url: string) => {
+    if (!url.startsWith("http://") && !url.startsWith("https://")) {
+      return `https://${url}`;
+    }
+    return url;
+  };
+
   const { writeContractAsync: profileInfoWriteAsync } = useScaffoldWriteContract("ProfileInfo");
 
   const {
@@ -174,10 +182,6 @@ const ProfilePage: NextPage = () => {
     return <p>Inexistent address, try again...</p>;
   }
 
-  // if (loading) {
-  //   return <LoadingSpinner />;
-  // }
-
   if (loading && page === 1) {
     return <LoadingSpinner />;
   }
@@ -185,13 +189,6 @@ const ProfilePage: NextPage = () => {
   if (createErrorReadingEvents) {
     return <ErrorComponent message={createErrorReadingEvents?.message || "Error loading events"} />;
   }
-
-  // const ensureHttps = (url: string) => {
-  //   if (!/^https?:\/\//i.test(url)) {
-  //     return `https://${url}`;
-  //   }
-  //   return url;
-  // };
 
   return (
     <>
@@ -223,7 +220,7 @@ const ProfilePage: NextPage = () => {
 
                   {bio && <p className="text-base-content">{bio}</p>}
                   {website && (
-                    <a href={website} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                    <a href={normalizeUrl(website)} target="_blank" rel="noopener noreferrer" className="text-blue-600">
                       {website}
                     </a>
                   )}
