@@ -49,7 +49,11 @@ export const Header = () => {
           <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
           {/* <Cog6ToothIcon className="h-6 w-6" /> */}
           {isSettingsMenuOpen && (
-            <div className="absolute left-5 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg">
+            <div
+              ref={menuRef}
+              className="absolute left-12 top-10 mt-2 w-48 bg-base-300 shadow-lg rounded-lg"
+              onClick={e => e.stopPropagation()} // Stop event propagation
+            >
               <div className="flex flex-col justify-center items-center my-2 gap-1">
                 <RainbowKitCustomConnectButton />
                 <SwitchTheme />
