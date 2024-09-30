@@ -116,7 +116,13 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
             <label className="w-32 h-32 flex flex-col items-center justify-center cursor-pointer text-xs m-0 border border-dashed border-gray-400 rounded-full">
               <span className="text-5xl h-auto rounded-full">+</span>
               <span className="font-bold">Upload image</span>
-              <input type="file" accept="image/*" className="hidden" onChange={handleFileInputChange} />
+              <input
+                type="file"
+                accept="image/*"
+                multiple={false}
+                className="hidden"
+                onChange={handleFileInputChange}
+              />
             </label>
           )}
         </div>
@@ -142,60 +148,6 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
           Uploading...
         </div>
       )}
-      {/* {hovered && !isEditing && (
-        <button
-          className="absolute top-5 right-5 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full"
-          onClick={() => setIsEditing(true)}
-        >
-          ✎
-        </button>
-      )} */}
-      {/* {previewImage ? (
-        <div className="relative w-full h-full flex items-center justify-center">
-          <Image
-            src={previewImage ? profilePicture : defaultProfilePicture}
-            alt="Profile Pixar Preview"
-            className="rounded-full object-cover"
-            width={128}
-            height={128}
-          />
-          {hovered && isEditing && (
-            <button
-              className="absolute top-5 right-5 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full"
-              onClick={handleRemoveImage}
-            >
-              ✕
-            </button>
-          )}
-        </div>
-      ) : isEditing ? (
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
-          <label className="w-full h-full flex flex-col items-center justify-center cursor-pointer text-xs m-0">
-            <span className="text-5xl h-auto rounded-full">+</span>
-            <span className="font-bold">Upload image</span>
-
-            <input
-              type="file"
-              accept="image/*"
-              className="hidden"
-              onChange={handleFileInputChange} // Handle file input
-            />
-          </label>
-        </div>
-      ) : (
-        <Image
-          src={profilePicture ? profilePicture : defaultProfilePicture}
-          alt="Profile Disney Preview"
-          className="rounded-full object-cover"
-          width={128}
-          height={128}
-        />
-      )}
-      {loading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-75 text-white">
-          Uploading...
-        </div>
-      )} */}
     </div>
   );
 };

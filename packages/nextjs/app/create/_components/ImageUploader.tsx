@@ -108,6 +108,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
             <input
               type="file"
               accept="image/*"
+              multiple={false}
               className="hidden"
               onChange={handleFileInputChange} // Handle file input
             />
