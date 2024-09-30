@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { LoadingSpinner } from "../explore/_components/LoadingSpinner";
+import { LoadingBars } from "../../components/punk-society/LoadingBars";
 import { AddressInput } from "~~/components/scaffold-eth";
 
 export const Search = () => {
@@ -34,7 +34,7 @@ export const Search = () => {
   };
 
   if (loading) {
-    return <LoadingSpinner />;
+    return <LoadingBars />;
   }
 
   return (
@@ -49,7 +49,7 @@ export const Search = () => {
           onClick={handleSearch}
           className="btn btn-primary w-full border-0 bg-blue-600 rounded-lg text-white py-2 px-4"
         >
-          Search
+          Go to profile
         </button>
       </div>
     </div>

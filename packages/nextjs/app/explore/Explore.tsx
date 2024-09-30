@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { LoadingSpinner } from "./_components/LoadingSpinner";
-import { NewsFeed } from "./_components/NewsFeed";
+import { LoadingBars } from "../../components/punk-society/LoadingBars";
+import { NewsFeed } from "../../components/punk-society/NewsFeed";
 import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
@@ -105,14 +105,14 @@ export const Explore = () => {
   );
 
   if (loading && page === 0) {
-    return <LoadingSpinner />;
+    return <LoadingBars />;
   }
 
   return (
     <div>
       <NewsFeed posts={posts} />
       <div ref={lastPostElementRef}></div>
-      {loadingMore && <LoadingSpinner />}
+      {loadingMore && <LoadingBars />}
     </div>
   );
 };

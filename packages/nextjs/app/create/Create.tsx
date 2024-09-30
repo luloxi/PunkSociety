@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { ImageUploader } from "./_components/ImageUploader";
-import { MetadataForm } from "./_components/MetadataForm";
 import { MintingButtons } from "./_components/MintingButtons";
+import { TextInput } from "./_components/TextInput";
 import generateTokenURI from "./_components/generateTokenURI";
 
 // import type { NextPage } from "next";
@@ -53,7 +53,7 @@ const Create = ({ onClose }: { onClose: any }) => {
               />
             </div>
             <div className="text-left flex-shrink-0 w-full">
-              <MetadataForm description={description} setDescription={setDescription} />
+              <TextInput description={description} setDescription={setDescription} />
             </div>
           </div>
 

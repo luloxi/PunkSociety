@@ -98,8 +98,6 @@ export const Header = () => {
             >
               <div className="flex flex-row items-center justify-center gap-2">
                 <BellIcon className="h-6 w-6" />
-
-                {/* <span>Home</span> */}
               </div>
             </button>
           </Link>
@@ -112,8 +110,6 @@ export const Header = () => {
             >
               <div className="flex flex-row items-center justify-center gap-2">
                 <EnvelopeIcon className="h-6 w-6" />
-
-                {/* <span>Home</span> */}
               </div>
             </button>
           </Link>

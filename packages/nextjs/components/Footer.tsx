@@ -15,6 +15,7 @@ export const Footer = () => {
   const pathname = usePathname();
   const [showPlusIcon, setShowPlusIcon] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -41,7 +42,11 @@ export const Footer = () => {
   };
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsAnimating(false);
+      setIsModalOpen(false);
+    }, 300); // Adjust the timeout to match your animation duration
   };
 
   return (
@@ -57,7 +62,7 @@ export const Footer = () => {
         </div>
       )}
 
-      {isModalOpen && (
+      {(isModalOpen || isAnimating) && (
         <Modal isOpen={isModalOpen} onClose={closeModal}>
           <Create onClose={closeModal} />
         </Modal>

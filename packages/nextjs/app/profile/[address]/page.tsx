@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-import { ErrorComponent } from "../../explore/_components/ErrorComponent";
-import { LoadingSpinner } from "../../explore/_components/LoadingSpinner";
-import { NewsFeed } from "../../explore/_components/NewsFeed";
+import { ErrorComponent } from "../../../components/punk-society/ErrorComponent";
+import { LoadingBars } from "../../../components/punk-society/LoadingBars";
+import { NewsFeed } from "../../../components/punk-society/NewsFeed";
 import ProfilePictureUpload from "../_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
@@ -183,7 +183,7 @@ const ProfilePage: NextPage = () => {
   }
 
   if (loading && page === 1) {
-    return <LoadingSpinner />;
+    return <LoadingBars />;
   }
 
   if (createErrorReadingEvents) {
@@ -197,7 +197,7 @@ const ProfilePage: NextPage = () => {
         {loadingProfile ? (
           <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
             <div className="flex items-center justify-center w-full h-full">
-              <LoadingSpinner />
+              <LoadingBars />
             </div>
           </div>
         ) : (
@@ -277,12 +277,12 @@ const ProfilePage: NextPage = () => {
           </div>
         )}
       </div>
-      {/* {loading && <LoadingSpinner />} */}
+      {/* {loading && <LoadingBars />} */}
 
       <div>
         <NewsFeed posts={posts} />
         <div ref={lastPostElementRef}></div>
-        {loadingMore && <LoadingSpinner />}
+        {loadingMore && <LoadingBars />}
       </div>
     </>
   );

@@ -36,7 +36,7 @@ export const PostCard = ({ post }: { post: Post }) => {
                 src={post.image || "/path/to/default/image.png"}
                 alt="NFT Image"
                 className="w-full h-full rounded-lg object-cover"
-                layout="fill" // Ensures the image fills the container
+                fill // Ensures the image fills the container
               />
               <button
                 className="absolute bottom-2 right-2 bg-base-200 p-2 rounded-full shadow-lg"

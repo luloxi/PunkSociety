@@ -1,5 +1,5 @@
 import React from "react";
-import { Post } from "../Explore";
+import { Post } from "../../app/explore/Explore";
 import { PostCard } from "./PostCard";
 
 type NewsFeedProps = {

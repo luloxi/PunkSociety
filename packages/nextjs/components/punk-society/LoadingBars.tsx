@@ -1,5 +1,5 @@
-// LoadingSpinner.tsx
-export const LoadingSpinner = () => {
+// LoadingBars.tsx
+export const LoadingBars = () => {
   return (
     <div className="flex justify-center items-center mt-10">
       <span className="loading text-blue-600 loading-bars loading-lg"></span>
