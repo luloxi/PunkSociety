@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ErrorComponent } from "./_components/ErrorComponent";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { LoadingSpinner } from "./_components/LoadingSpinner";
 import { NewsFeed } from "./_components/NewsFeed";
-import { useAccount } from "wagmi";
-import { RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
@@ -19,14 +16,16 @@ export interface Post extends Partial<NFTMetaData> {
 }
 
 export const Explore = () => {
-  const { address: isConnected, isConnecting } = useAccount();
-  const [listedPosts, setListedPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [page, setPage] = useState(0);
+  const observer = useRef<IntersectionObserver | null>(null);
 
   const {
     data: createEvents,
-    isLoading: createIsLoadingEvents,
-    error: createErrorReadingEvents,
+    // isLoading: createIsLoadingEvents,
+    // error: createErrorReadingEvents,
   } = useScaffoldEventHistory({
     contractName: "PunkPosts",
     eventName: "PostCreated",
@@ -34,93 +33,86 @@ export const Explore = () => {
     watch: true,
   });
 
-  // const {
-  //   data: deleteEvents,
-  //   isLoading: deleteIsLoadingEvents,
-  //   error: deleteErrorReadingEvents,
-  // } = useScaffoldEventHistory({
-  //   contractName: "PunkPosts",
-  //   eventName: "PostDeleted",
-  //   fromBlock: 0n,
-  //   watch: true,
-  // });
-
-  useEffect(() => {
-    const fetchListedNFTs = async () => {
+  const fetchPosts = useCallback(
+    async (page: number) => {
       if (!createEvents) return;
 
-      const postsUpdate: Post[] = [];
+      setLoadingMore(true);
+      try {
+        // Calculate the start and end indices for the current page
+        const start = (page - 1) * 8;
+        const end = page * 8;
+        const eventsToFetch = createEvents.slice(start, end);
 
-      for (const event of createEvents || []) {
-        try {
-          const { args } = event;
-          const user = args?.user;
-          const tokenURI = args?.tokenURI;
+        const postsUpdate: Post[] = [];
 
-          if (!tokenURI) continue;
+        for (const event of eventsToFetch) {
+          try {
+            const user = event.args?.user;
+            const tokenURI = event.args?.tokenURI;
 
-          const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
-          const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
+            if (!tokenURI) continue;
 
-          // Temporary fix for V1
-          // Check if the image attribute is valid and does not point to [object Object]
-          if (nftMetadata.image === "https://ipfs.io/ipfs/[object Object]") {
-            console.warn(`Skipping post with invalid image URL: ${nftMetadata.image}`);
-            continue;
+            const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
+            const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
+
+            // Temporary fix for V1
+            // Check if the image attribute is valid and does not point to [object Object]
+            if (nftMetadata.image === "https://ipfs.io/ipfs/[object Object]") {
+              console.warn(`Skipping post with invalid image URL: ${nftMetadata.image}`);
+              continue;
+            }
+
+            postsUpdate.push({
+              listingId: undefined,
+              uri: tokenURI,
+              user: user || "",
+              ...nftMetadata,
+            });
+          } catch (e) {
+            notification.error("Error fetching posts");
+            console.error(e);
           }
-
-          postsUpdate.push({
-            listingId: undefined,
-            uri: tokenURI,
-            user: user || "",
-            ...nftMetadata,
-          });
-        } catch (e) {
-          notification.error("Error fetching posts");
-          console.error(e);
         }
+
+        setPosts(prevPosts => [...prevPosts, ...postsUpdate]);
+      } catch (error) {
+        notification.error("Failed to load posts");
+      } finally {
+        setLoadingMore(false);
       }
-
-      setListedPosts(postsUpdate);
-    };
-
-    fetchListedNFTs();
-  }, [createEvents]);
+    },
+    [createEvents],
+  );
 
   useEffect(() => {
-    if (listedPosts.length > 0) {
-      setLoading(false); // Stop loading after Posts are updated
-    }
-  }, [listedPosts]);
+    setLoading(true);
+    fetchPosts(page).finally(() => setLoading(false));
+  }, [page, fetchPosts]);
 
-  // const filteredPosts = listedPosts.filter(Post => {
-  //   return true;
-  // });
+  const lastPostElementRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (loadingMore) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          setPage(prevPage => prevPage + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loadingMore],
+  );
 
-  if (createIsLoadingEvents) {
+  if (loading && page === 0) {
     return <LoadingSpinner />;
-  }
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
-  if (createErrorReadingEvents) {
-    return <ErrorComponent message={createErrorReadingEvents?.message || "Error loading events"} />;
   }
 
   return (
-    <>
-      <div className="flex justify-center">{!isConnected || isConnecting ? <RainbowKitCustomConnectButton /> : ""}</div>
-      {listedPosts.length === 0 ? (
-        <div className="flex justify-center items-center mt-10">
-          <div className="text-2xl text-primary-content">No posts found</div>
-        </div>
-      ) : loading ? (
-        <LoadingSpinner />
-      ) : (
-        <NewsFeed filteredPosts={listedPosts} />
-      )}
-    </>
+    <div>
+      <NewsFeed posts={posts} />
+      <div ref={lastPostElementRef}></div>
+      {loadingMore && <LoadingSpinner />}
+    </div>
   );
 };

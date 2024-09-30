@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ErrorComponent } from "../../explore/_components/ErrorComponent";
 import { LoadingSpinner } from "../../explore/_components/LoadingSpinner";
@@ -31,8 +31,12 @@ const ProfilePage: NextPage = () => {
   const [profilePicture, setProfilePicture] = useState<string>("");
   const [website, setWebsite] = useState("");
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
-  const [listedPosts, setListedPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(true);
+  const [page, setPage] = useState(1); // Start from page 1 to get the last post first
+  const [loadingProfile, setLoadingProfile] = useState(true);
+  const observer = useRef<IntersectionObserver | null>(null);
 
   const { address: connectedAddress } = useAccount();
 
@@ -50,7 +54,7 @@ const ProfilePage: NextPage = () => {
 
   const {
     data: createEvents,
-    isLoading: createIsLoadingEvents,
+    // isLoading: createIsLoadingEvents,
     error: createErrorReadingEvents,
   } = useScaffoldEventHistory({
     contractName: "PunkPosts",
@@ -82,45 +86,78 @@ const ProfilePage: NextPage = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      if (!createEvents) {
-        // setLoading(false);
-        return;
-      }
+  const fetchPosts = useCallback(
+    async (page: number) => {
+      if (!createEvents) return;
 
-      const postsUpdate: Post[] = [];
+      setLoadingMore(true);
+      try {
+        // Calculate the start and end indices for the current page
+        const start = (page - 1) * 8;
+        const end = page * 8;
+        const eventsToFetch = createEvents.slice(start, end);
 
-      for (const event of createEvents || []) {
-        try {
-          const { args } = event;
-          const user = args?.user;
-          const tokenURI = args?.tokenURI;
+        const postsUpdate: Post[] = [];
 
-          if (args?.user !== address) continue;
-          if (!tokenURI) continue;
+        for (const event of eventsToFetch) {
+          try {
+            const { args } = event;
+            const user = args?.user;
+            const tokenURI = args?.tokenURI;
 
-          const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
-          const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
+            if (args?.user !== address) continue;
+            if (!tokenURI) continue;
 
-          postsUpdate.push({
-            listingId: undefined,
-            uri: tokenURI,
-            user: user || "",
-            ...nftMetadata,
-          });
-        } catch (e) {
-          notification.error("Error fetching collection started NFTs");
-          console.error(e);
+            const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
+            const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
+
+            // Temporary fix for V1
+            // Check if the image attribute is valid and does not point to [object Object]
+            if (nftMetadata.image === "https://ipfs.io/ipfs/[object Object]") {
+              console.warn(`Skipping post with invalid image URL: ${nftMetadata.image}`);
+              continue;
+            }
+
+            postsUpdate.push({
+              listingId: undefined,
+              uri: tokenURI,
+              user: user || "",
+              ...nftMetadata,
+            });
+          } catch (e) {
+            notification.error("Error fetching posts");
+            console.error(e);
+          }
         }
+
+        setPosts(prevPosts => [...prevPosts, ...postsUpdate]);
+      } catch (error) {
+        notification.error("Failed to load posts");
+      } finally {
+        setLoadingMore(false);
       }
+    },
+    [createEvents, address],
+  );
 
-      setListedPosts(postsUpdate);
-      setLoading(false);
-    };
+  useEffect(() => {
+    setLoading(true);
+    fetchPosts(page).finally(() => setLoading(false));
+  }, [page, fetchPosts]);
 
-    fetchPosts();
-  }, [createEvents, address, connectedAddress]);
+  const lastPostElementRef = useCallback(
+    (node: any) => {
+      if (loadingMore) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          setPage(prevPage => prevPage + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [loadingMore],
+  );
 
   useEffect(() => {
     if (!isEditing && profileInfo) {
@@ -128,18 +165,9 @@ const ProfilePage: NextPage = () => {
       setBio(profileInfo[1] || "");
       setProfilePicture(profileInfo[2] ? profileInfo[2] : defaultProfilePicture);
       setWebsite(profileInfo[3] || "");
+      setLoadingProfile(false);
     }
   }, [profileInfo, isEditing]);
-
-  useEffect(() => {
-    if (listedPosts.length > 0) {
-      setLoading(false); // Stop loading after Posts are updated
-    }
-  }, [listedPosts]);
-
-  // const filteredPosts = listedPosts.filter(Post => {
-  //   return true;
-  // });
 
   // Ensure the address is available before rendering the component
   if (!address) {
@@ -150,7 +178,7 @@ const ProfilePage: NextPage = () => {
   //   return <LoadingSpinner />;
   // }
 
-  if (createIsLoadingEvents) {
+  if (loading && page === 1) {
     return <LoadingSpinner />;
   }
 
@@ -169,89 +197,96 @@ const ProfilePage: NextPage = () => {
     <>
       <div className="flex flex-col items-center">
         {/* User Profile Section */}
-        <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
-          {/* Profile Picture */}
-          <div className="avatar ">
-            <ProfilePictureUpload
-              isEditing={isEditing}
-              profilePicture={profilePicture}
-              setProfilePicture={setProfilePicture}
-            />
+        {loadingProfile ? (
+          <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
+            <div className="flex items-center justify-center w-full h-full">
+              <LoadingSpinner />
+            </div>
           </div>
-          {/* User Info Section */}
-          <div className="flex flex-col justify-center items-center">
-            {isEditing ? (
-              <InputBase placeholder="Your Name" value={username} onChange={setUsername} />
-            ) : (
-              <>
-                <h2 className="text-2xl font-bold">{username || "Guest user"}</h2>
+        ) : (
+          <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
+            {/* Profile Picture */}
+            <div className="avatar ">
+              <ProfilePictureUpload
+                isEditing={isEditing}
+                profilePicture={profilePicture}
+                setProfilePicture={setProfilePicture}
+              />
+            </div>
+            {/* User Info Section */}
+            <div className="flex flex-col justify-center items-center">
+              {isEditing ? (
+                <InputBase placeholder="Your Name" value={username} onChange={setUsername} />
+              ) : (
+                <>
+                  <h2 className="text-2xl font-bold">{username || "Guest user"}</h2>
 
-                {bio && <p className="text-base-content">{bio}</p>}
-                {website && (
-                  <a href={website} target="_blank" rel="noopener noreferrer" className="text-blue-600">
-                    {website}
-                  </a>
-                )}
-                <div className="mt-2">
-                  {address == connectedAddress ? (
-                    <RainbowKitCustomConnectButton />
-                  ) : (
-                    <div className="text-base-content">
-                      <Address address={address} />
-                    </div>
+                  {bio && <p className="text-base-content">{bio}</p>}
+                  {website && (
+                    <a href={website} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                      {website}
+                    </a>
                   )}
-                </div>
+                  <div className="mt-2">
+                    {address == connectedAddress ? (
+                      <RainbowKitCustomConnectButton />
+                    ) : (
+                      <div className="text-base-content">
+                        <Address address={address} />
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
+            {/* Div to align info in the center */}
+            <div></div>
+            {/* User Bio */}{" "}
+            {isEditing ? (
+              <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
+                <>
+                  <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
+                  <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
+                </>
+              </div>
+            ) : (
+              <></>
+            )}
+            {/* Edit/Cancel Button */}
+            {address === connectedAddress && (
+              <>
+                {isEditing ? (
+                  <button
+                    className="absolute top-4 right-4 btn btn-secondary btn-sm"
+                    onClick={() => setIsEditing(false)}
+                  >
+                    X Cancel
+                  </button>
+                ) : (
+                  <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
+                    <PencilIcon className="h-5 w-5" />
+                    Edit
+                  </button>
+                )}
+                {isEditing && (
+                  <div className="mt-2 flex items-center gap-2">
+                    <button className="cool-button" onClick={handleEditProfile}>
+                      Save changes
+                    </button>
+                  </div>
+                )}
               </>
             )}
           </div>
-          {/* Div to align info in the center */}
-          <div></div>
-          {/* User Bio */}{" "}
-          {isEditing ? (
-            <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
-              <>
-                <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
-                <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
-              </>
-            </div>
-          ) : (
-            <></>
-          )}
-          {/* Edit/Cancel Button */}
-          {address === connectedAddress && (
-            <>
-              {isEditing ? (
-                <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
-                  X Cancel
-                </button>
-              ) : (
-                <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
-                  <PencilIcon className="h-5 w-5" />
-                  Edit
-                </button>
-              )}
-              {isEditing && (
-                <div className="mt-2 flex items-center gap-2">
-                  <button className="cool-button" onClick={handleEditProfile}>
-                    Save changes
-                  </button>
-                </div>
-              )}
-            </>
-          )}
-        </div>
+        )}
       </div>
       {/* {loading && <LoadingSpinner />} */}
 
-      {loading ? (
-        <LoadingSpinner />
-      ) : listedPosts.length !== 0 ? (
-        <NewsFeed filteredPosts={listedPosts} />
-      ) : (
-        <div className="flex justify-center items-center mt-10">
-          <div className="text-2xl text-primary-content">No posts found</div>
-        </div>
-      )}
+      <div>
+        <NewsFeed posts={posts} />
+        <div ref={lastPostElementRef}></div>
+        {loadingMore && <LoadingSpinner />}
+      </div>
     </>
   );
 };
