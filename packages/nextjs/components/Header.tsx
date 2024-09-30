@@ -44,8 +44,8 @@ export const Header = () => {
 
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ml-2">
-        <div ref={menuRef} className="flex lg:hidden ml-2 items-center justify-center">
+      <div className="navbar-start ml-2" ref={menuRef}>
+        <div className="flex lg:hidden ml-2 items-center justify-center">
           <Cog6ToothIcon onClick={toggleSettingsMenu} className="cursor-pointer h-6 w-6" />
           {/* <Cog6ToothIcon className="h-6 w-6" /> */}
           {isSettingsMenuOpen && (
