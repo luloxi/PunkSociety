@@ -93,7 +93,12 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <input type="file" onChange={handleFileInputChange} className="hidden" />
+      <input
+        type="file"
+        accept="image/*" // This will disable non-image files and camera on mobile
+        onChange={handleFileInputChange}
+        className="hidden"
+      />
       {isEditing ? (
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           {previewImage ? (

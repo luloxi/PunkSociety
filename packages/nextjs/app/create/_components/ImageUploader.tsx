@@ -81,7 +81,12 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <input type="file" onChange={handleFileInputChange} className="hidden" />
+      <input
+        type="file"
+        accept="image/*" // This will disable non-image files and camera on mobile
+        onChange={handleFileInputChange}
+        className="hidden"
+      />
       {previewImage ? (
         <div className="relative w-full h-full flex items-center justify-center">
           <Image
