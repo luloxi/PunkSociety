@@ -19,9 +19,11 @@ export const AddressQRCodeModal = ({ address, modalId }: AddressQRCodeModalProps
             <label htmlFor={`${modalId}`} className="btn btn-ghost btn-sm btn-circle absolute right-3 top-3">
               ✕
             </label>
-            <div className="space-y-3 py-6">
-              <div className="flex flex-col items-center gap-6">
-                <QRCodeSVG value={address} size={256} />
+            <div className="space-y-3 py-6 ">
+              <div className="flex flex-col items-center gap-6 ">
+                <div className="bg-white p-4 rounded-lg shadow-lg">
+                  <QRCodeSVG value={address} size={256} />
+                </div>
                 <Address address={address} format="long" disableAddressLink />
               </div>
             </div>
