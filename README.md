@@ -38,7 +38,7 @@
 
 ## 🧑‍🦽 Phase 5 (Accessibility)
 
-- **Accessibility support**: Posts on the website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+- **Accessibility support**: Website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
 # 🤘 Development
 
