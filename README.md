@@ -4,6 +4,7 @@
 - 💬 Like, comment and share posts.
 - 🫂 Follow other users.
 - 🔔 Receive notifications on activity.
+- 💌 Message other users and join group chats
 
 # 🤘 Roadmap
 
