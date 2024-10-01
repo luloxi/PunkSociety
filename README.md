@@ -25,20 +25,20 @@
 - **Individual post pages** for displaying long texts and big images
 - **Notification system**
 
-## ✍️ Phase 3 (Gasless activity)
-
-- **Signatures:** Allow users to interact with the platform without paying gas fees
-- **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
-- **Whitelist:** Optional system to validate users to prevent spam
-
-## 💌 Phase 4 (Direct messages)
+## 💌 Phase 3 (Direct messages)
 
 - **Direct messages:** Allow users to send messages to each other
 - **Group chats:** Allow users to create and join group chats
 
-## 🧑‍🦽 Phase 5 (Accessibility)
+## 🧑‍🦽 Phase 4 (Accessibility)
 
 - **Accessibility support**: Website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+
+## ✍️ Phase 5 (Gasless activity)
+
+- **Signatures:** Allow users to interact with the platform without paying gas fees
+- **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
+- **Whitelist:** Optional system to validate users to prevent spam
 
 # 🤘 Development
 
