@@ -11,11 +11,7 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
   const isDarkMode = resolvedTheme === "dark";
 
   const handleToggle = () => {
-    if (isDarkMode) {
-      setTheme("light");
-      return;
-    }
-    setTheme("dark");
+    setTheme(isDarkMode ? "light" : "dark");
   };
 
   useEffect(() => {
@@ -26,10 +22,14 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
 
   return (
     <div className={`flex space-x-2 h-8 items-center justify-center text-sm ${className}`}>
-      <label htmlFor="theme-toggle" className={`swap swap-rotate ${!isDarkMode ? "swap-active" : ""}`}>
-        <SunIcon className="swap-on h-5 w-5" />
-        <MoonIcon className="swap-off h-5 w-5" />
-      </label>
+      <button onClick={handleToggle} className="swap swap-rotate">
+        {isDarkMode ? (
+          <MoonIcon className="h-5 w-5" />
+        ) : (
+          <SunIcon className="h-5 w-5" />
+        )}
+      </button>
     </div>
   );
 };
+
