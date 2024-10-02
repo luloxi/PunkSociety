@@ -5,7 +5,7 @@ import Create from "../app/create/Create";
 import Modal from "../app/create/Modal";
 import { useAccount } from "wagmi";
 import { HeartIcon } from "@heroicons/react/24/outline";
-import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/24/solid";
+import { BellIcon, HomeIcon, MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 export const Footer = () => {
@@ -105,9 +105,14 @@ export const Footer = () => {
         </div>
       </div>
       <footer className="sticky lg:hidden bottom-0 w-full bg-base-100 px-4 py-2 flex justify-around items-center">
-        <Link href="/not-found" passHref>
-          <EnvelopeIcon
-            className={`h-6 w-6 text-red-600 ${pathname === "/messages" ? "text-blue-600" : "hover:text-blue-600"}`}
+      
+        <Link href="/" passHref>
+          <HomeIcon className={`h-6 w-6 ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`} />
+        </Link>
+
+        <Link href="/search" passHref>
+          <MagnifyingGlassIcon
+            className={`h-6 w-6 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
 
@@ -116,16 +121,6 @@ export const Footer = () => {
             className={`h-6 w-6 text-red-600 ${
               pathname === "/notifications" ? "text-blue-600" : "hover:text-blue-600"
             }`}
-          />
-        </Link>
-
-        <Link href="/" passHref>
-          <HomeIcon className={`h-6 w-6 ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`} />
-        </Link>
-
-        <Link href="/search" passHref>
-          <MagnifyingGlassIcon
-            className={`h-6 w-6 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
           />
         </Link>
 
