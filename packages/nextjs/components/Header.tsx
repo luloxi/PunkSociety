@@ -8,7 +8,7 @@ import { PunkBalance } from "./punk-society/PunkBalance";
 import { PunkConnectButton } from "./punk-society/PunkConnectButton";
 import { FaucetButton } from "./scaffold-eth";
 import { useAccount } from "wagmi";
-import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { BellIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 /**
@@ -76,18 +76,6 @@ export const Header = () => {
             >
               <div className="flex flex-row items-center justify-center gap-2">
                 <BellIcon className="h-6 w-6" />
-              </div>
-            </button>
-          </Link>
-
-          <Link href="/not-found" passHref>
-            <button
-              className={`bg-transparent text-red-600 hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
-                pathname === "/messages" ? "text-blue-600" : ""
-              }`}
-            >
-              <div className="flex flex-row items-center justify-center gap-2">
-                <EnvelopeIcon className="h-6 w-6" />
               </div>
             </button>
           </Link>
