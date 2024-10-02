@@ -85,7 +85,7 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   return (
     <div
       className={`relative flex items-center justify-center w-32 h-32 rounded-full shadow-lg ${
-        dragActive ? "bg-orange-500 border-2 border-orange-600" : "bg-base-200"
+        dragActive ? "bg-blue-500 border-2 border-blue-600" : "bg-base-200"
       } ${previewImage ? "" : "bg-base-200"} `}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
