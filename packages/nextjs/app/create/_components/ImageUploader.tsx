@@ -73,7 +73,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
   return (
     <div
       className={`relative flex items-center justify-center w-60 h-60 rounded-lg shadow-lg ${
-        dragActive ? "bg-blue-400 border-2 border-blue-600" : ""
+        dragActive ? "bg-orange-400 border-2 border-orange-600" : ""
       } ${previewImage ? "" : "bg-base-200"}`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}

@@ -47,7 +47,7 @@ export const Search = () => {
         {error && <p className="text-red-500 mb-4">{error}</p>}
         <button
           onClick={handleSearch}
-          className="btn btn-primary w-full border-0 bg-blue-600 rounded-lg text-white py-2 px-4"
+          className="btn btn-primary w-full border-0 bg-orange-600 rounded-lg text-white py-2 px-4"
         >
           Go to profile
         </button>

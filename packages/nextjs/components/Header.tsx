@@ -4,6 +4,9 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
+import { PunkBalance } from "./punk-society/PunkBalance";
+import { PunkConnectButton } from "./punk-society/PunkConnectButton";
+import { FaucetButton } from "./scaffold-eth";
 import { useAccount } from "wagmi";
 import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
@@ -37,7 +40,7 @@ export const Header = () => {
           <Link href="/" passHref>
             <button
               className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
-                pathname === "/" ? "text-blue-600" : ""
+                pathname === "/" ? "text-orange-600" : ""
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
@@ -49,7 +52,7 @@ export const Header = () => {
           <Link href="/search" passHref>
             <button
               className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
-                pathname === "/search" ? "text-blue-600" : ""
+                pathname === "/search" ? "text-orange-600" : ""
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
@@ -61,7 +64,7 @@ export const Header = () => {
           <Link href="/not-found" passHref>
             <button
               className={`bg-transparent text-red-600 hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
-                pathname === "/notifications" ? "text-blue-600" : ""
+                pathname === "/notifications" ? "text-orange-600" : ""
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
@@ -73,7 +76,7 @@ export const Header = () => {
           <Link href="/not-found" passHref>
             <button
               className={`bg-transparent text-red-600 hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
-                pathname === "/messages" ? "text-blue-600" : ""
+                pathname === "/messages" ? "text-orange-600" : ""
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
@@ -95,11 +98,20 @@ export const Header = () => {
         </Link>
       </div>
 
-      <div className="navbar-end mr-4 relative">
-        <div className="flex flex-row items-center justify-center gap-3">
+      <div className="navbar-end lg:mr-4 relative">
+        <div className="flex justify-center items-center gap-3 ">
           <div className="hidden lg:flex">
+            <PunkBalance address={connectedAddress} usdMode />
+          </div>
+
+          <PunkConnectButton />
+          <FaucetButton />
+        </div>
+        <div className="hidden lg:flex flex-row items-center justify-center gap-3">
+          <div className="lg:mr-2">
             <SwitchTheme />
           </div>
+
           <Link href={`/profile/${connectedAddress}`} passHref>
             <div
               className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"

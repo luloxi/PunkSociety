@@ -220,7 +220,12 @@ const ProfilePage: NextPage = () => {
 
                   {bio && <p className="text-base-content">{bio}</p>}
                   {website && (
-                    <a href={normalizeUrl(website)} target="_blank" rel="noopener noreferrer" className="text-blue-600">
+                    <a
+                      href={normalizeUrl(website)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-orange-600"
+                    >
                       {website}
                     </a>
                   )}

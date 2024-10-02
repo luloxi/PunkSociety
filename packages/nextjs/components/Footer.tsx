@@ -3,19 +3,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Create from "../app/create/Create";
 import Modal from "../app/create/Modal";
+import { useAccount } from "wagmi";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/24/solid";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
-// Import Modal
-
-/**
- * Site footer
- */
 export const Footer = () => {
   const pathname = usePathname();
   const [showPlusIcon, setShowPlusIcon] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  const { address: connectedAddress } = useAccount();
+
+  const { data: profileInfo } = useScaffoldReadContract({
+    contractName: "ProfileInfo",
+    functionName: "profiles",
+    args: [connectedAddress],
+    watch: true,
+  });
+
+  const defaultProfilePicture = "/guest-profile.jpg";
+
+  const profilePicture = profileInfo && profileInfo[2] ? profileInfo[2] : defaultProfilePicture;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -53,7 +63,7 @@ export const Footer = () => {
     <>
       {pathname !== "/search" && (
         <div
-          className={`fixed bottom-16 lg:bottom-8 right-8 p-3 bg-blue-600 cursor-pointer hover:bg-blue-800 text-white rounded-full shadow-lg ${
+          className={`fixed bottom-16 lg:bottom-8 right-8 p-3 bg-orange-600 cursor-pointer hover:bg-orange-800 text-white rounded-full shadow-lg ${
             showPlusIcon ? "animate-show" : "animate-hide"
           }`}
           onClick={openModal}
@@ -95,29 +105,42 @@ export const Footer = () => {
         </div>
       </div>
       <footer className="sticky lg:hidden bottom-0 w-full bg-base-100 px-4 py-2 flex justify-around items-center">
-        <Link href="/" passHref>
-          <HomeIcon className={`h-6 w-6 ${pathname === "/" ? "text-blue-600" : "hover:text-blue-600"}`} />
-        </Link>
-
-        <Link href="/search" passHref>
-          <MagnifyingGlassIcon
-            className={`h-6 w-6 ${pathname === "/search" ? "text-blue-600" : "hover:text-blue-600"}`}
+        <Link href="/not-found" passHref>
+          <EnvelopeIcon
+            className={`h-6 w-6 text-red-600 ${pathname === "/messages" ? "text-orange-600" : "hover:text-orange-600"}`}
           />
         </Link>
 
         <Link href="/not-found" passHref>
           <BellIcon
             className={`h-6 w-6 text-red-600 ${
-              pathname === "/notifications" ? "text-blue-600" : "hover:text-blue-600"
+              pathname === "/notifications" ? "text-orange-600" : "hover:text-orange-600"
             }`}
           />
         </Link>
 
-        <Link href="/not-found" passHref>
-          <EnvelopeIcon
-            className={`h-6 w-6 text-red-600 ${pathname === "/messages" ? "text-blue-600" : "hover:text-blue-600"}`}
+        <Link href="/" passHref>
+          <HomeIcon className={`h-6 w-6 ${pathname === "/" ? "text-orange-600" : "hover:text-orange-600"}`} />
+        </Link>
+
+        <Link href="/search" passHref>
+          <MagnifyingGlassIcon
+            className={`h-6 w-6 ${pathname === "/search" ? "text-orange-600" : "hover:text-orange-600"}`}
           />
         </Link>
+
+        <div className="flex flex-row items-center justify-center gap-3">
+          <Link href={`/profile/${connectedAddress}`} passHref>
+            <div
+              className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
+              style={{
+                backgroundImage: `url(${profilePicture})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></div>
+          </Link>
+        </div>
       </footer>
     </>
   );
