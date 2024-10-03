@@ -23,13 +23,8 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
   return (
     <div className={`flex space-x-2 h-8 items-center justify-center text-sm ${className}`}>
       <button onClick={handleToggle} className="swap swap-rotate">
-        {isDarkMode ? (
-          <MoonIcon className="h-5 w-5" />
-        ) : (
-          <SunIcon className="h-5 w-5" />
-        )}
+        {isDarkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
       </button>
     </div>
   );
 };
-
