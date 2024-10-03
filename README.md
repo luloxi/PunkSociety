@@ -31,14 +31,13 @@
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Whitelist:** Optional system to validate users to prevent spam
 
-## 🧑‍🦽 Phase 4 (Accessibility)
+## 💌 Phase 4 (Direct messages)
+
+- **Direct messages:** Allow users to send private messages to each other
+
+## 🧑‍🦽 Phase 5 (Accessibility)
 
 - **Accessibility support**: Website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
-
-## 💌 Phase 5 (Direct messages)
-
-- **Direct messages:** Allow users to send messages to each other
-- **Group chats:** Allow users to create and join group chats
 
 # 🤘 Development
 
