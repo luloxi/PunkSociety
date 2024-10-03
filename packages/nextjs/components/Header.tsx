@@ -32,17 +32,8 @@ export const Header = () => {
 
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ml-2">
-        <div className="flex lg:hidden">
-          <Link href="/" passHref>
-            <span className="inline-flex items-center gap-2">
-              <strong>PunkSociety</strong>{" "}
-              <span role="img" aria-label="emoji">
-                🤘
-              </span>
-            </span>
-          </Link>
-        </div>
+      <div className="navbar-start ml-4">
+        <SwitchTheme />
         <div className="flex flex-row gap-3">
           <Link href="/" passHref>
             <button
@@ -82,15 +73,22 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="navbar-center hidden flex-1 lg:flex justify-center items-center">
-        <Link href="/" passHref>
-          <span className="inline-flex items-center gap-2">
-            <strong>PunkSociety</strong>{" "}
-            <span role="img" aria-label="emoji">
-              🤘
+      <div className="navbar-center flex-1 justify-center items-center">
+        <div className="hidden lg:flex">
+          <Link href="/" passHref>
+            <span className="inline-flex items-center gap-2">
+              <strong>PunkSociety</strong>{" "}
+              <span role="img" aria-label="emoji">
+                🤘
+              </span>
             </span>
+          </Link>
+        </div>
+        <div className="flex lg:hidden bg-base-200 rounded-full p-2">
+          <span role="img" aria-label="PunkSociety logo">
+            🤘
           </span>
-        </Link>
+        </div>
       </div>
 
       <div className="navbar-end mr-2 relative">
@@ -103,9 +101,7 @@ export const Header = () => {
           <FaucetButton />
         </div>
         <div className="flex flex-row items-center justify-center gap-3">
-          <div className="lg:mr-2">
-            <SwitchTheme />
-          </div>
+          {/* <div className="lg:mr-2"></div> */}
 
           <div className="hidden lg:flex">
             <Link href={`/profile/${connectedAddress}`} passHref>
