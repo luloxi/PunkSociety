@@ -1,15 +1,13 @@
-🤘 PunkSociety is a gasless social dapp where posts can optionally be minted as NFTs, with the first minter earning a share of future revenue.
+🐰 PunkSociety is an social dapp 🫂 that allows users to monetize 🛒 their posts 💬.
 
-- 🤹‍♂️ Posts can have text, image and links.
-- 💬 Like, comment and share posts.
-- 🫂 Follow other users.
-- ⛽ Gasless activity: Posting, liking, commenting, sharing and following are gasless operations
-- 🍀 Incentivized Minting: Users posts can be optionally minted as NFTs. First minter covers minting costs and earns a share of future minting revenue.
+- 🤹‍♂️ Posts can have text, image, audio, video and links.
+- 💬 Posting, liking, commenting, sharing and 🫂 following are ⛽ gasless operations.
+- 🍀 Incentivized Minting: Users posts can be optionally minted as NFTs. Creators get income from mints of their posts. First minters of a post earn a share of future minting revenue.
 - 🔔 Receive notifications on activity.
-- 💌 Message other users
-- 🎨 Users can personalize profile appearance with customizable colors and layouts.
+- 💌 Message other users.
+- 🎨 Customizable profile colors and layout.
 - 📚 Built-in guides to help users understand Web3 and NFT minting.
-- 🧑‍🦽 Accessibility for visually impaired users
+- 🧑‍🦽 Accessibility for visually impaired users.
 
 # 🤘 Roadmap
 
@@ -45,7 +43,8 @@
 
 - **Post Collections**: Create and share collections on galleries visibles from user profiles.
 - **Profile Customization**: Users can customize colors and profile appearance.
-- **Educational Content**: Includes onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
+- **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
+- **Educational Content**: Include onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
 
 ## 💌 Phase 6 (Direct messages)
 
