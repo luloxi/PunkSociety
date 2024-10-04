@@ -37,16 +37,16 @@
 
 ## 🍀 Phase 4 (Incentivized minting)
 
-- **Optional Tokenization & Gasless Minting**: Users can upload metadata to IPFS, sign an EIP-712 message, and create a post (gasless minting). The first minter pays the gas fees for contract creation and receives a share from subsequent mints (if not the creator).
+- **Optional Tokenization**: Users can post for free (gasless). The first user to mint a post as an NFT is incentivied by receiving a share from subsequent mints (if not the creator).
 - **Incentivized Minting**: The first minter earns a share of revenue from future mints in the collection, creating an incentive for early minting.
 - **Dashboard Insights**: Track and analyze minting revenue.
 - **Revenue Model**: PunkSociety collects fees from mints.
 
 ## 🎨 Phase 5 (Customization and ease of use)
 
-Post Collections: Create and share collections like playlists or galleries on profiles.
-Profile Customization: Users can customize colors and profile appearance.
-Educational Content: Includes onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
+- **Post Collections**: Create and share collections on galleries visibles from user profiles.
+- **Profile Customization**: Users can customize colors and profile appearance.
+- **Educational Content**: Includes onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
 
 ## 💌 Phase 6 (Direct messages)
 
