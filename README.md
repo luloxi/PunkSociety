@@ -25,20 +25,19 @@
 
 - **Search**: By address, ENS or username
 - **Social features:** Following users, liking, commenting and sharing posts.
-- **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension))
+- **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
 - **Individual post pages** for displaying long texts and big images
 - **Notification system**
 
 ## ✍️ Phase 3 (Gasless activity)
 
 - **Signatures:** Allow users to interact with the platform without paying gas fees
-- **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
+- **Database:** To store and retrieve EIP 712 signatures (Reference: [SE-2 firebase-auth-extension](https://github.com/ByteAtATime/firebase-auth-extension))
 - **Whitelist:** Optional system to validate users to prevent spam
 
 ## 🍀 Phase 4 (Incentivized minting)
 
-- **Optional Tokenization**: Users can post for free (gasless). The first user to mint a post as an NFT is incentivied by receiving a share from subsequent mints (if not the creator).
-- **Incentivized Minting**: The first minter earns a share of revenue from future mints in the collection, creating an incentive for early minting.
+- **Optional Tokenization with Incentivized Minting**: Users can post for free (gasless). The first user to mint a post as an NFT, if not the creator, is incentivized by receiving a share of the revenue from subsequent mints, creating an incentive for early minting.
 - **Dashboard Insights**: Track and analyze minting revenue.
 - **Revenue Model**: PunkSociety collects fees from mints.
 
