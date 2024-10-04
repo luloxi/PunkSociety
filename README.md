@@ -3,6 +3,7 @@
 - 🤹‍♂️ Posts can have text, image, audio, video and links.
 - 💬 Posting, liking, commenting, sharing and 🫂 following are ⛽ gasless operations.
 - 🍀 Incentivized Minting: Users posts can be optionally minted as NFTs. Creators get income from mints of their posts. First minters of a post earn a share of future minting revenue.
+- 🛒 Shopping cart: To streamline the user experience, collectors can mint multiple NFTs in a single transaction.
 - 🔔 Receive notifications on activity.
 - 💌 Message other users.
 - 🎨 Customizable profile colors and layout.
