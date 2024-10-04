@@ -1,10 +1,14 @@
-🤘 PunkSociety is a forkable social dapp.
+🤘 PunkSociety is a gasless social dapp where posts can optionally be minted as NFTs, with the first minter earning a share of future revenue.
 
 - 🤹‍♂️ Posts can have text, image and links.
 - 💬 Like, comment and share posts.
 - 🫂 Follow other users.
+- ⛽ Gasless activity: Posting, liking, commenting, sharing and following are gasless operations
+- 🍀 Incentivized Minting: Users posts can be optionally minted as NFTs. First minter covers minting costs and earns a share of future minting revenue.
 - 🔔 Receive notifications on activity.
-- 💌 Message other users and join group chats
+- 💌 Message other users
+- 🎨 Users can personalize profile appearance with customizable colors and layouts.
+- 📚 Built-in guides to help users understand Web3 and NFT minting.
 - 🧑‍🦽 Accessibility for visually impaired users
 
 # 🤘 Roadmap
@@ -31,11 +35,24 @@
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [grants.buidlguidl.com](https://github.com/BuidlGuidl/grants.buidlguidl.com))
 - **Whitelist:** Optional system to validate users to prevent spam
 
-## 💌 Phase 4 (Direct messages)
+## 🍀 Phase 4 (Incentivized minting)
+
+- **Optional Tokenization & Gasless Minting**: Users can upload metadata to IPFS, sign an EIP-712 message, and create a post (gasless minting). The first minter pays the gas fees for contract creation and receives a share from subsequent mints (if not the creator).
+- **Incentivized Minting**: The first minter earns a share of revenue from future mints in the collection, creating an incentive for early minting.
+- **Dashboard Insights**: Track and analyze minting revenue.
+- **Revenue Model**: PunkSociety collects fees from mints.
+
+## 🎨 Phase 5 (Customization and ease of use)
+
+Post Collections: Create and share collections like playlists or galleries on profiles.
+Profile Customization: Users can customize colors and profile appearance.
+Educational Content: Includes onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
+
+## 💌 Phase 6 (Direct messages)
 
 - **Direct messages:** Allow users to send private messages to each other
 
-## 🧑‍🦽 Phase 5 (Accessibility)
+## 🧑‍🦽 Phase 7 (Accessibility)
 
 - **Accessibility support**: Website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
