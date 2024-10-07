@@ -1,65 +1,54 @@
-Social dapp that allows users to monetize 🛒 their social activity 🫂.
+Social dapp that allows users to monetize 💰 their social activity 🫂.
 
 - 💬 We don't show ads
 - 📊 We don't sell your data
-- 💰 You can earn from your social activity
 
 # 🤘 Features
 
 - 🤹‍♂️ Posts can have text, image, audio, video and links.
+- 💰 Liking, commenting and sharing send $ to the user on the other end
+- 📈 Track and analyze revenue on your dashboard.
+- 🛒 Shopping cart: Do multiple actions in a single transaction.
 - 🔔 Receive notifications on activity.
 - 💌 Message other users.
-- 💰 Liking, commenting, sharing and following send $ to the user on the other end
-- 🛒 Shopping cart: Do multiple actions in a single transaction.
-- 📈 Track and analyze revenue on your dashboard.
-- 🎨 Customize your profile colors and appearance.
-- 📚 Built-in guides to help users understand Web3 and NFT minting.
-- 🧑‍🦽 Accessibility for visually impaired users.
 
 # 🤘 Roadmap
 
 ## 🐣 Phase 1 (MVP)
 
 - ✅ **Create PunkPosts contract**
-- ✅ **Create ProfileInfo contract for users to register their info**
-- ✅ **Post creation page**
+- ✅ **Create PunkProfile contract to register users info and socials**
+- ✅ **Post creation tool**
 - ✅ **User profile page**
-- ✅ **View other users profiles**
 
 ## 👥 Phase 2 (Social Activity and Indexing)
 
-- **Social features:** Following users, liking, commenting and sharing posts.
-- **Search**: By address, ENS or username
-- **Individual post pages** for displaying long texts and big images
+- ✅ **PunkSociety contract:** Following users, liking, commenting and sharing posts.
+- **Search**: By address or username
 - **Notification system**
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
+- Enable audio, video and links with preview type of posts.
+- **Individual post viewer**
 
 ## 🍀 Phase 3 (Incentivized socials)
 
-- **Incentive model**: Likes, comments, shares and follows send $ to the user on the other end.
+- **Incentive model**: Likes, comments and shares send $ to the user on the other end.
 - **Dashboard Insights**: Track and analyze revenue.
-- **Revenue Model**: PunkSociety collects fees.
+- **Revenue Model**: PunkSociety collects fees from interactions.
 
-## 🎨 Phase 4 (Customization and ease of use)
-
-- **Post Collections**: Create and share collections on galleries visibles from user profiles.
-- **Profile Customization**: Users can customize colors and profile appearance.
-- **Shopping cart**: To reduce gas fees and streamline the user experience, users can send multiple actions in a single transaction.
-- **Educational Content**: Include onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
-
-## 💌 Phase 5 (Direct messages)
+## 💌 Phase 4 (Direct messages)
 
 - **Direct messages:** Allow users to send private messages to each other
+
+## 🎨 Phase 5 (Ease of use)
+
+- **Shopping cart**: To reduce gas fees and streamline the user experience, users can send multiple actions in a single transaction.
+- **Educational Content**: Include onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
 
 ## ✍️ Phase 6 (Gasless activity)
 
 - **Signatures:** Allow users to interact with the platform without paying gas fees
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [SE-2 firebase-auth-extension](https://github.com/ByteAtATime/firebase-auth-extension))
-- **Whitelist:** Optional system to validate users to prevent spam
-
-## 🧑‍🦽 Phase 7 (Accessibility)
-
-- **Accessibility support**: Website must be [ARIA compliant](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
 # 🤘 Development
 
