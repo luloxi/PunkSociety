@@ -1,12 +1,17 @@
-🐰 PunkSociety is an social dapp 🫂 that allows users to monetize 🛒 their posts 💬.
+Social dapp that allows users to monetize 🛒 their social activity 🫂.
 
+- 💬 We don't show ads
+- 📊 We don't sell your data
+- 💰 You can earn from your social activity
+
+# 🤘 Features
+
+- 💰 Liking, commenting, sharing and following send $ to the user on the other end
 - 🤹‍♂️ Posts can have text, image, audio, video and links.
-- 💬 Posting, liking, commenting, sharing and 🫂 following are ⛽ gasless operations.
-- 🍀 Incentivized Minting: Users posts can be optionally minted as NFTs. Creators get income from mints of their posts. First minters of a post earn a share of future minting revenue.
-- 🛒 Shopping cart: To streamline the user experience, collectors can mint multiple NFTs in a single transaction.
+- 🛒 Shopping cart: To streamline the user experience, users can do multiple actions in a single transaction.
 - 🔔 Receive notifications on activity.
 - 💌 Message other users.
-- 🎨 Customizable profile colors and layout.
+- 🎨 Customizable profile.
 - 📚 Built-in guides to help users understand Web3 and NFT minting.
 - 🧑‍🦽 Accessibility for visually impaired users.
 
@@ -22,34 +27,34 @@
 
 ## 👥 Phase 2 (Social Activity and Indexing)
 
-- **Search**: By address, ENS or username
 - **Social features:** Following users, liking, commenting and sharing posts.
-- **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
+- **Search**: By address, ENS or username
 - **Individual post pages** for displaying long texts and big images
 - **Notification system**
+- **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
 
-## ✍️ Phase 3 (Gasless activity)
+## 🍀 Phase 3 (Incentivized socials)
+
+- **Incentive model**: Likes, comments, shares and follows send $ to the user on the other end.
+- **Dashboard Insights**: Track and analyze revenue.
+- **Revenue Model**: PunkSociety collects fees.
+
+## 🎨 Phase 4 (Customization and ease of use)
+
+- **Post Collections**: Create and share collections on galleries visibles from user profiles.
+- **Profile Customization**: Users can customize colors and profile appearance.
+- **Shopping cart**: To reduce gas fees and streamline the user experience, users can send multiple actions in a single transaction.
+- **Educational Content**: Include onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
+
+## 💌 Phase 5 (Direct messages)
+
+- **Direct messages:** Allow users to send private messages to each other
+
+## ✍️ Phase 6 (Gasless activity)
 
 - **Signatures:** Allow users to interact with the platform without paying gas fees
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [SE-2 firebase-auth-extension](https://github.com/ByteAtATime/firebase-auth-extension))
 - **Whitelist:** Optional system to validate users to prevent spam
-
-## 🍀 Phase 4 (Incentivized minting)
-
-- **Optional Tokenization with Incentivized Minting**: Users can post for free (gasless). The first user to mint a post as an NFT, if not the creator, is incentivized by receiving a share of the revenue from subsequent mints, creating an incentive for early minting.
-- **Dashboard Insights**: Track and analyze minting revenue.
-- **Revenue Model**: PunkSociety collects fees from mints.
-
-## 🎨 Phase 5 (Customization and ease of use)
-
-- **Post Collections**: Create and share collections on galleries visibles from user profiles.
-- **Profile Customization**: Users can customize colors and profile appearance.
-- **Shopping cart**: To reduce gas fees and streamline the user experience, collectors can buy multiple NFTs in a single transaction.
-- **Educational Content**: Include onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
-
-## 💌 Phase 6 (Direct messages)
-
-- **Direct messages:** Allow users to send private messages to each other
 
 ## 🧑‍🦽 Phase 7 (Accessibility)
 
