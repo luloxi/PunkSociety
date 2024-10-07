@@ -6,12 +6,13 @@ Social dapp that allows users to monetize 🛒 their social activity 🫂.
 
 # 🤘 Features
 
-- 💰 Liking, commenting, sharing and following send $ to the user on the other end
 - 🤹‍♂️ Posts can have text, image, audio, video and links.
-- 🛒 Shopping cart: To streamline the user experience, users can do multiple actions in a single transaction.
 - 🔔 Receive notifications on activity.
 - 💌 Message other users.
-- 🎨 Customizable profile.
+- 💰 Liking, commenting, sharing and following send $ to the user on the other end
+- 🛒 Shopping cart: Do multiple actions in a single transaction.
+- 📈 Track and analyze revenue on your dashboard.
+- 🎨 Customize your profile colors and appearance.
 - 📚 Built-in guides to help users understand Web3 and NFT minting.
 - 🧑‍🦽 Accessibility for visually impaired users.
 
