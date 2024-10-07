@@ -23,7 +23,7 @@ Social dapp that allows users to monetize 💰 their social activity 🫂.
 
 ## 👥 Phase 2 (Social Activity and Indexing)
 
-- ✅ **PunkSociety contract:** Following users, liking, commenting and sharing posts.
+- **PunkSociety contract:** Following users, liking, commenting and sharing posts.
 - **Search**: By address or username
 - **Notification system**
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
