@@ -5,12 +5,17 @@ Social dapp that allows users to monetize 💰 their social activity 🫂.
 
 # 🤘 Features
 
-- 🤹‍♂️ Posts can have text, image, audio, video and links.
-- 💰 Liking, commenting and sharing send $ to the user on the other end
+- 🤹‍♂️ Posts can have text, image, audio, video, links and polls.
+- 📜 Create and share playlists and galleries
+- 🎥 Media player: Play audio and video without leaving the platform
+- 💰 Liking, commenting and sharing sends $ to the user on the other end
+- 🛒 Shopping cart: Do multiple actions in a single transaction
 - 📈 Track and analyze revenue on your dashboard.
-- 🛒 Shopping cart: Do multiple actions in a single transaction.
+- 🎨 Customize your profile appearance
 - 🔔 Receive notifications on activity.
 - 💌 Message other users.
+- 🌐 Create groups/communities with group chats and custom newsfeed.
+- 📱 Web 2.5 social login: Sign up and log in with Google, Twitter, Instagram, etc.
 
 # 🤘 Roadmap
 
@@ -27,8 +32,6 @@ Social dapp that allows users to monetize 💰 their social activity 🫂.
 - **Search**: By address or username
 - **Notification system**
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
-- Enable audio, video and links with preview type of posts.
-- **Individual post viewer**
 
 ## 🍀 Phase 3 (Incentivized socials)
 
@@ -39,13 +42,33 @@ Social dapp that allows users to monetize 💰 their social activity 🫂.
 ## 💌 Phase 4 (Direct messages)
 
 - **Direct messages:** Allow users to send private messages to each other
+- **Make your own group/community:** Group chats and custom feeds to enhance the social experience
 
-## 🎨 Phase 5 (Ease of use)
+## 💬 Phase 5 (Social enhancement)
+
+- Enable audio, video and links with preview type of posts.
+- **Polls**: Allow users to create polls
+- **Individual post viewer**
+- **Group/Community page, chat and newsfeed**
+- **Web 2.5 social login:** Sign up and log in with Google, Twitter, Instagram, etc.
+
+## 🎨 Phase 6 (Customization)
+
+- **Customization**: Allow users to customize their profile appearance
+- **Playlists and Galleries**: Create and share playlists and galleries
+
+## 👨‍🦽 Phase 7 (Ease of use)
 
 - **Shopping cart**: To reduce gas fees and streamline the user experience, users can send multiple actions in a single transaction.
+- **Web 2.5 social login:** Allow users to sign up and log in with Google, Twitter, Instagram, etc.
+- **Multi-language support**: Allow users to switch between languages
 - **Educational Content**: Include onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
 
-## ✍️ Phase 6 (Gasless activity)
+## 📈 Phase 8 (Media player)
+
+- **Media Player**: Posts with audio or video can be played without leaving the platoform. Users can control media playback from mobile notifications. (Reference: [React Player](https://www.npmjs.com/package/react-player))
+
+## ✍️ Phase 9 (Gasless activity)
 
 - **Signatures:** Allow users to interact with the platform without paying gas fees
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [SE-2 firebase-auth-extension](https://github.com/ByteAtATime/firebase-auth-extension))
@@ -99,7 +122,7 @@ This command deploys a test smart contract to the local network. The contract is
 
 5. Go to `packages/nextjs/scaffold.config.ts` and comment out `targetNetworks: [chains.arbitrum]` and uncomment `targetNetworks: [chains.foundry]`
 
-6. Rename the `.env.example` to `.env` in the `packages/nextjs` folder. [Log in or Create an account on Pinata](https://app.pinata.cloud/signin), then create a new project, and copy the API Key and the Secret API Key into the `.env` file's `NEXT_PUBLIC_PINATA_API_KEY` and `NEXT_PUBLIC_PINATA_SECRET_API_KEY` variables and save the file.
+6. Rename the `.env.example` to `.env` in the `packages/nextjs` folder. [Log in or Create an account on Pinata](https://app.pinata.cloud/signin), then create a new project, and copy the **API Key** and the **Secret API Key** into the `.env` file's `NEXT_PUBLIC_PINATA_API_KEY` and `NEXT_PUBLIC_PINATA_SECRET_API_KEY` variables and save the file.
 
 7. Open a third terminal, navigate to `PunkSociety` and run this command to start your NextJS app:
 
