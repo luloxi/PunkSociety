@@ -1,16 +1,17 @@
 //SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity ^0.8.0;
 
 import { PunkPosts } from "../contracts/PunkPosts.sol";
-import { ProfileInfo } from "../contracts/ProfileInfo.sol";
+import { PunkProfile } from "../contracts/PunkProfile.sol";
+import { PunkSociety } from "../contracts/PunkSociety.sol";
 import "./DeployHelpers.s.sol";
 
 contract DeployScript is ScaffoldETHDeploy {
-  uint256 SEPOLIA_CHAIN_ID = 11155111;
   uint256 LOCAL_CHAIN_ID = 31337;
 
   PunkPosts punkPosts;
-  ProfileInfo profileInfo;
+  PunkProfile punkProfile;
+  PunkSociety punkSociety;
 
   error InvalidPrivateKey(string);
 
@@ -29,17 +30,29 @@ contract DeployScript is ScaffoldETHDeploy {
       string.concat("PunkPosts deployed at: ", vm.toString(address(punkPosts)))
     );
 
-    profileInfo = new ProfileInfo();
+    punkProfile = new PunkProfile();
     console.logString(
       string.concat(
-        "ProfileInfo deployed at: ", vm.toString(address(profileInfo))
+        "PunkProfile deployed at: ", vm.toString(address(punkProfile))
       )
     );
 
-    if (block.chainid == LOCAL_CHAIN_ID) {
-      // Populate the marketplace with some initial PunkPosts
-      // mintInitialMarketplaceNFTs();
-    }
+    punkSociety = new PunkSociety(address(punkProfile), address(punkPosts));
+    console.logString(
+      string.concat(
+        "PunkSociety deployed at: ", vm.toString(address(punkSociety))
+      )
+    );
+
+    punkPosts.transferOwnership(address(punkSociety));
+    console.logString(
+      string.concat(
+        "PunkPosts ownership transferred to: ",
+        vm.toString(address(punkSociety))
+      )
+    );
+
+    if (block.chainid == LOCAL_CHAIN_ID) { }
 
     vm.stopBroadcast();
 
@@ -50,8 +63,4 @@ contract DeployScript is ScaffoldETHDeploy {
      */
     exportDeployments();
   }
-
-  function mintInitialMarketplaceNFTs() internal { }
-
-  function test() public { }
 }

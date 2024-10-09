@@ -18,7 +18,7 @@ export const Header = () => {
   const { address: connectedAddress } = useAccount();
 
   const { data: profileInfo } = useScaffoldReadContract({
-    contractName: "ProfileInfo",
+    contractName: "PunkProfile",
     functionName: "profiles",
     args: [connectedAddress],
     watch: true,
@@ -32,11 +32,9 @@ export const Header = () => {
 
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start">
-        <div className="ml-4 lg:ml-2 lg:mr-4">
-          <SwitchTheme />
-        </div>
-        <div className="flex flex-row gap-3">
+      <div className="navbar-start ml-4 lg:ml-2">
+        <SwitchTheme />
+        <div className="flex flex-row gap-3 lg:ml-2">
           <Link href="/" passHref>
             <button
               className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
@@ -93,19 +91,24 @@ export const Header = () => {
         </div>
       </div>
 
-      <div className="navbar-end mr-2 relative">
-        <div className="flex justify-center items-center gap-3 ">
-          <div className="hidden lg:flex">
-            <PunkBalance address={connectedAddress} usdMode />
+      <div className="navbar-end relative">
+        <div className="flex justify-center items-center  ">
+          <div className="hidden lg:flex lg:mr-2">
+            <PunkBalance address={connectedAddress} />
           </div>
 
-          <PunkConnectButton />
-          <FaucetButton />
+          <div className="flex items-center justify-center lg:mr-2">
+            <PunkConnectButton />
+          </div>
+
+          <div className="mr-4">
+            <FaucetButton />
+          </div>
         </div>
         <div className="flex flex-row items-center justify-center gap-3">
           {/* <div className="lg:mr-2"></div> */}
 
-          <div className="hidden lg:flex">
+          <div className="hidden lg:flex lg:mr-2">
             <Link href={`/profile/${connectedAddress}`} passHref>
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"

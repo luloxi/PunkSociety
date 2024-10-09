@@ -16,7 +16,7 @@ interface MintingFormProps {
 
 export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm, onPostCreated }) => {
   const { address: connectedAddress } = useAccount();
-  const { writeContractAsync } = useScaffoldWriteContract("PunkPosts");
+  const { writeContractAsync } = useScaffoldWriteContract("PunkSociety");
 
   const [loading, setLoading] = useState(false);
 

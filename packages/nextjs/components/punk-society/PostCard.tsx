@@ -2,20 +2,24 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import CommentSection from "./CommentSection";
+import LikeButton from "./LikedButton";
 import { ProfileAddress } from "./ProfileAddress";
-import { MagnifyingGlassPlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleLeftIcon, MagnifyingGlassPlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { ChatBubbleLeftIcon as ChatBubbleLeftSolidIcon } from "@heroicons/react/24/solid";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Post extends Partial<NFTMetaData> {
   nftAddress?: string;
-  listingId?: number;
+  postId?: number;
   uri: string;
   user: string;
   date?: string;
 }
 
-export const PostCard = ({ post }: { post: Post }) => {
+export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showCommentSection, setShowCommentSection] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -25,9 +29,16 @@ export const PostCard = ({ post }: { post: Post }) => {
     setIsModalOpen(false);
   };
 
+  const toggleCommentSection = () => {
+    setShowCommentSection(!showCommentSection);
+  };
+
   return (
     <div className="flex justify-center items-center">
-      <div className={`card-compact bg-base-300 w-[90%] lg:w-[300px] relative group rounded-lg`}>
+      <div className={`card-compact bg-base-300 ${isGrid ? "w-[300px]" : "w-[100%]"} relative group rounded-lg`}>
+        <div className="flex space-x-3 p-3 items-center">
+          <ProfileAddress address={post.user} />
+        </div>
         {/* Image Section */}
         {post.image && post.image !== "https://ipfs.io/ipfs/" && (
           <div className="relative w-full h-0 pb-[100%] overflow-hidden">
@@ -53,9 +64,18 @@ export const PostCard = ({ post }: { post: Post }) => {
             <p className="my-0 text-lg">{post.description ?? "No description available."}</p>
           </div>
 
-          <div className="flex space-x-3 mt-1 items-center">
-            <ProfileAddress address={post.user} />
+          <div className="flex items-center justify-start gap-3">
+            {/* Your component JSX here */}
+            <LikeButton postId={BigInt(post.postId || 0)} />
+            <button onClick={toggleCommentSection} className="comment-icon-button">
+              {showCommentSection ? (
+                <ChatBubbleLeftSolidIcon className="comment-icon text-blue-600" />
+              ) : (
+                <ChatBubbleLeftIcon className="comment-icon" />
+              )}
+            </button>
           </div>
+          {showCommentSection && <CommentSection postId={BigInt(post.postId || 0)} />}
         </div>
 
         {/* Modal for fullscreen image */}

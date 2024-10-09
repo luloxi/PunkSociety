@@ -27,6 +27,59 @@
   }
 }
 
+.comment-section-container {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  width: 100%;
+}
+.comment-icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.comment-input-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.comment-input {
+  flex: 1;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.comment-button {
+  margin-left: 8px;
+  font-size: 16px;
+  border: none;
+
+  color: white;
+  border-radius: 50%; /* Make the button completely round */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.comment-button:hover {
+}
+
+.post-card-container {
+  margin-bottom: 16px; /* Add some space between posts */
+}
+
 .animate-show {
   animation: show 0.5s forwards;
 }

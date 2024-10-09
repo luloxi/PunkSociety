@@ -9,9 +9,10 @@ import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Post extends Partial<NFTMetaData> {
-  listingId?: number;
+  postId?: number;
   uri: string;
   user: string;
+
   date?: string;
 }
 
@@ -19,6 +20,7 @@ export const Explore = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
+
   const [page, setPage] = useState(0);
   const observer = useRef<IntersectionObserver | null>(null);
 
@@ -27,7 +29,7 @@ export const Explore = () => {
     // isLoading: createIsLoadingEvents,
     // error: createErrorReadingEvents,
   } = useScaffoldEventHistory({
-    contractName: "PunkPosts",
+    contractName: "PunkSociety",
     eventName: "PostCreated",
     fromBlock: 0n,
     watch: true,
@@ -56,15 +58,8 @@ export const Explore = () => {
             const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
             const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
 
-            // Temporary fix for V1
-            // Check if the image attribute is valid and does not point to [object Object]
-            if (nftMetadata.image === "https://ipfs.io/ipfs/[object Object]") {
-              console.warn(`Skipping post with invalid image URL: ${nftMetadata.image}`);
-              continue;
-            }
-
             postsUpdate.push({
-              listingId: undefined,
+              postId: parseInt(event.args?.postId?.toString() ?? "0"),
               uri: tokenURI,
               user: user || "",
               ...nftMetadata,
@@ -105,12 +100,16 @@ export const Explore = () => {
   );
 
   if (loading && page === 0) {
-    return <LoadingBars />;
+    return (
+      <>
+        <LoadingBars />
+      </>
+    );
   }
 
   return (
     <div>
-      <NewsFeed posts={posts} />
+      <NewsFeed posts={posts} isGrid={false} />
       <div ref={lastPostElementRef}></div>
       {loadingMore && <LoadingBars />}
     </div>

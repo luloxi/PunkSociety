@@ -9,7 +9,7 @@ import ProfilePictureUpload from "../_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import { Address, FaucetButton, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -29,7 +29,6 @@ const ProfilePage: NextPage = () => {
   const [username, setUsername] = useState("");
   const [bio, setBio] = useState("");
   const [profilePicture, setProfilePicture] = useState<string>("");
-  const [website, setWebsite] = useState("");
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -43,29 +42,21 @@ const ProfilePage: NextPage = () => {
   const pathname = usePathname();
   const address = pathname.split("/").pop();
 
-  const { data: profileInfo } = useScaffoldReadContract({
-    contractName: "ProfileInfo",
+  const { data: punkProfile } = useScaffoldReadContract({
+    contractName: "PunkProfile",
     functionName: "profiles",
     args: [address],
     watch: true,
   });
 
-  // Function to normalize URLs
-  const normalizeUrl = (url: string) => {
-    if (!url.startsWith("http://") && !url.startsWith("https://")) {
-      return `https://${url}`;
-    }
-    return url;
-  };
-
-  const { writeContractAsync: profileInfoWriteAsync } = useScaffoldWriteContract("ProfileInfo");
+  const { writeContractAsync: punkProfileWriteAsync } = useScaffoldWriteContract("PunkProfile");
 
   const {
     data: createEvents,
     // isLoading: createIsLoadingEvents,
     error: createErrorReadingEvents,
   } = useScaffoldEventHistory({
-    contractName: "PunkPosts",
+    contractName: "PunkSociety",
     eventName: "PostCreated",
     fromBlock: 0n,
     watch: true,
@@ -79,9 +70,9 @@ const ProfilePage: NextPage = () => {
         setProfilePicture("");
       }
 
-      await profileInfoWriteAsync({
+      await punkProfileWriteAsync({
         functionName: "setProfile",
-        args: [username, bio, profilePicture, website],
+        args: [username, bio, profilePicture],
       });
 
       notification.success("Profile Edited Successfully");
@@ -168,14 +159,13 @@ const ProfilePage: NextPage = () => {
   );
 
   useEffect(() => {
-    if (!isEditing && profileInfo) {
-      setUsername(profileInfo[0] || "");
-      setBio(profileInfo[1] || "");
-      setProfilePicture(profileInfo[2] ? profileInfo[2] : defaultProfilePicture);
-      setWebsite(profileInfo[3] || "");
+    if (!isEditing && punkProfile) {
+      setUsername(punkProfile[0] || "");
+      setBio(punkProfile[1] || "");
+      setProfilePicture(punkProfile[2] ? punkProfile[2] : defaultProfilePicture);
       setLoadingProfile(false);
     }
-  }, [profileInfo, isEditing]);
+  }, [punkProfile, isEditing]);
 
   // Ensure the address is available before rendering the component
   if (!address) {
@@ -219,16 +209,11 @@ const ProfilePage: NextPage = () => {
                   <h2 className="text-2xl font-bold">{username || "Guest user"}</h2>
 
                   {bio && <p className="text-base-content">{bio}</p>}
-                  {website && (
-                    <a href={normalizeUrl(website)} target="_blank" rel="noopener noreferrer" className="text-blue-600">
-                      {website}
-                    </a>
-                  )}
+
                   <div className="mt-2">
                     {address == connectedAddress ? (
                       <>
                         <RainbowKitCustomConnectButton />
-                        <FaucetButton />
                       </>
                     ) : (
                       <div className="text-base-content">
@@ -246,7 +231,6 @@ const ProfilePage: NextPage = () => {
               <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
                 <>
                   <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
-                  <InputBase placeholder="Your Website" value={website} onChange={setWebsite} />
                 </>
               </div>
             ) : (

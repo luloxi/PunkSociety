@@ -13,7 +13,7 @@ const scaffoldConfig = {
 
   // For working locally, comment out chains.sepolia or chains.arbitrum
   // and uncomment chains.foundry
-  targetNetworks: [chains.arbitrum],
+  targetNetworks: [chains.sepolia],
   // targetNetworks: [chains.foundry],
 
   // The interval at which your front-end polls the RPC servers for new data

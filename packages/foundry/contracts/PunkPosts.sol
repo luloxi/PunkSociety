@@ -1,99 +1,65 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.0;
 
 // NFTs with programmable royalties.
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-// import { EIP712 } from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
-// import { ECDSA } from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
+import { ERC721 } from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import { ERC721Enumerable } from
+  "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import { ERC721URIStorage } from
+  "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 
-contract PunkPosts is ERC721, ERC721Enumerable, ERC721URIStorage {
-  uint256 private _tokenIds; // Replaces the Counters.Counter
+contract PunkPosts is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+  uint256 public tokenId; // Replaces the Counters.Counter
 
-  mapping(uint256 => address) public postIdToUser;
-  mapping(address => uint256[]) public userToPostsId;
+  constructor() ERC721("PunkPosts", "PP") Ownable(msg.sender) { }
 
-  event PostCreated(
-    uint256 indexed postId, address indexed user, string tokenURI
-  );
-  event PostDeleted(uint256 indexed postId);
-
-  // bytes32 public constant TYPEHASH = keccak256("createPost(string,address)");
-
-  constructor() ERC721("PunkPosts", "PP") { }
-
-  // Function to start a collection by the user
-  function createPost(
+  function mint(
     string memory _tokenURI
-  ) public returns (bool) {
-    uint256 postId = _tokenIds;
-    postIdToUser[postId] = msg.sender;
-    userToPostsId[msg.sender].push(postId);
-
-    _tokenIds++;
-    uint256 id = _tokenIds;
-
-    _mint(msg.sender, id);
-    _setTokenURI(id, _tokenURI);
-
-    emit PostCreated(postId, msg.sender, _tokenURI);
-
-    return true;
+  ) public onlyOwner {
+    uint256 postId = tokenId++;
+    _mint(msg.sender, postId);
+    _setTokenURI(postId, _tokenURI);
   }
 
-  function deletePost(
+  function burn(
     uint256 _postId
-  ) public returns (bool) {
-    require(
-      postIdToUser[_postId] == msg.sender,
-      "PunkPosts: Not the owner of the post"
-    );
-
+  ) public {
     _burn(_postId);
-
-    emit PostDeleted(_postId);
-
-    return true;
   }
 
   function tokenURI(
-    uint256 tokenId
+    uint256 _tokenId
   ) public view override(ERC721, ERC721URIStorage) returns (string memory) {
-    return super.tokenURI(tokenId);
-  }
-
-  function tokenIdCounter() public view returns (uint256) {
-    return _tokenIds;
+    return super.tokenURI(_tokenId);
   }
 
   // The following functions are overrides required by Solidity.
 
   function supportsInterface(
-    bytes4 interfaceId
+    bytes4 _interfaceId
   )
     public
     view
     override(ERC721, ERC721Enumerable, ERC721URIStorage)
     returns (bool)
   {
-    return super.supportsInterface(interfaceId);
+    return super.supportsInterface(_interfaceId);
   }
 
   function _update(
-    address to,
-    uint256 tokenId,
-    address auth
+    address _to,
+    uint256 _tokenId,
+    address _auth
   ) internal override(ERC721, ERC721Enumerable) returns (address) {
-    return super._update(to, tokenId, auth);
+    return super._update(_to, _tokenId, _auth);
   }
 
   function _increaseBalance(
-    address account,
-    uint128 value
+    address _account,
+    uint128 _value
   ) internal override(ERC721, ERC721Enumerable) {
-    super._increaseBalance(account, value);
+    super._increaseBalance(_account, _value);
   }
 }

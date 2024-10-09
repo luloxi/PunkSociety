@@ -16,8 +16,8 @@ export const Footer = () => {
 
   const { address: connectedAddress } = useAccount();
 
-  const { data: profileInfo } = useScaffoldReadContract({
-    contractName: "ProfileInfo",
+  const { data: punkProfile } = useScaffoldReadContract({
+    contractName: "PunkProfile",
     functionName: "profiles",
     args: [connectedAddress],
     watch: true,
@@ -25,7 +25,7 @@ export const Footer = () => {
 
   const defaultProfilePicture = "/guest-profile.jpg";
 
-  const profilePicture = profileInfo && profileInfo[2] ? profileInfo[2] : defaultProfilePicture;
+  const profilePicture = punkProfile && punkProfile[2] ? punkProfile[2] : defaultProfilePicture;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;

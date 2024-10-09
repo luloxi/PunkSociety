@@ -56,10 +56,10 @@ export const PunkBalance = ({ address, className = "", usdMode }: BalanceProps) 
   return (
     <div className="flex flex-col items-center justify-center">
       <button
-        className={`btn btn-sm btn-ghost flex flex-col font-normal items-center hover:bg-transparent ${className}`}
+        className={`mr-2  flex flex-col font-normal items-center hover:bg-transparent ${className}`}
         onClick={toggleDisplayUsdMode}
       >
-        <div className="w-full flex items-center justify-center">
+        <div className="w-full flex items-center justify-center text-sm">
           {displayUsdMode ? (
             <>
               <span className="text-[0.8em] font-bold mr-1">$</span>
@@ -67,7 +67,7 @@ export const PunkBalance = ({ address, className = "", usdMode }: BalanceProps) 
             </>
           ) : (
             <>
-              <span>{formattedBalance.toFixed(4)}</span>
+              <span>{formattedBalance.toFixed(6)}</span>
               <span className="text-[0.8em] font-bold ml-1">{targetNetwork.nativeCurrency.symbol}</span>
             </>
           )}

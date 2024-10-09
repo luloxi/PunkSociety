@@ -1,16 +1,12 @@
 import { create } from "kubo-rpc-client";
 
-const PROJECT_ID = "2GajDLTC6y04qsYsoDRq9nGmWwK";
-const PROJECT_SECRET = "48c62c6b3f82d2ecfa2cbe4c90f97037";
-const PROJECT_ID_SECRET = `${PROJECT_ID}:${PROJECT_SECRET}`;
+// Pinata gateway configuration
+const PINATA_GATEWAY = "https://gateway.pinata.cloud/ipfs/";
 
 export const ipfsClient = create({
-  host: "ipfs.infura.io",
-  port: 5001,
+  host: "gateway.pinata.cloud",
+  port: 443,
   protocol: "https",
-  headers: {
-    Authorization: `Basic ${Buffer.from(PROJECT_ID_SECRET).toString("base64")}`,
-  },
 });
 
 /**
@@ -30,30 +26,15 @@ function extractIpfsHash(input: string): string {
 }
 
 /**
- * Fetch NFT metadata from IPFS, handling both full URLs and raw IPFS hashes.
+ * Fetch NFT metadata from Pinata
+ * Maybe needs to be improved for handling both full URLs and raw IPFS hashes.
  */
-export async function getNFTMetadataFromIPFS(ipfsInput: string) {
-  // Extract the IPFS hash from the input (either full URL or hash)
-  const ipfsHash = extractIpfsHash(ipfsInput);
-
-  // Fetch the metadata from IPFS
-  for await (const file of ipfsClient.get(ipfsHash)) {
-    // The file is of type unit8array so we need to convert it to string
-    const content = new TextDecoder().decode(file);
-    // Remove any leading/trailing whitespace
-    const trimmedContent = content.trim();
-    // Find the start and end index of the JSON object
-    const startIndex = trimmedContent.indexOf("{");
-    const endIndex = trimmedContent.lastIndexOf("}") + 1;
-    // Extract the JSON object string
-    const jsonObjectString = trimmedContent.slice(startIndex, endIndex);
-    try {
-      // Parse the extracted JSON string
-      const jsonObject = JSON.parse(jsonObjectString);
-      return jsonObject;
-    } catch (error) {
-      console.log("Error parsing JSON:", error);
-      return undefined;
-    }
+export async function getNFTMetadataFromIPFS(ipfsHash: string) {
+  const hash = extractIpfsHash(ipfsHash);
+  const url = `${PINATA_GATEWAY}${hash}`;
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch metadata from Pinata: ${response.statusText}`);
   }
+  return await response.json();
 }
