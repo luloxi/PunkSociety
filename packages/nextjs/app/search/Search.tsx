@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoadingBars } from "../../components/punk-society/LoadingBars";
-import { AddressInput } from "~~/components/scaffold-eth";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 export const Search = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,47 +11,52 @@ export const Search = () => {
   const [error, setError] = useState("");
   const router = useRouter();
 
+  const { data: nameToAddress } = useScaffoldReadContract({
+    contractName: "PunkProfile",
+    functionName: "nameToAddress",
+    args: [searchQuery],
+    watch: true,
+  });
+
   const handleSearch = async () => {
     if (!searchQuery) {
-      setError("Please enter an address.");
+      setError("Please enter an address or username.");
       return;
     }
 
     setLoading(true);
     setError("");
 
-    const address = searchQuery;
-
-    // If the search query is not an address, show an error
-    if (!/^0x[a-fA-F0-9]{40}$/.test(searchQuery)) {
-      setError("Invalid address format.");
+    try {
+      if (searchQuery.length > 17) {
+        // If the search query is longer than 17 characters, assume it's an Ethereum address
+        router.push(`/profile/${searchQuery}`);
+      } else if (nameToAddress && nameToAddress !== "0x0000000000000000000000000000000000000000") {
+        // If the search query resolves to a non-zero address, navigate to the resolved address profile
+        router.push(`/profile/${nameToAddress}`);
+      } else {
+        setError("Invalid address or username.");
+      }
+    } catch (error) {
+      setError("An error occurred while searching.");
+    } finally {
       setLoading(false);
-      return;
     }
-
-    // Redirect to the user's profile page
-    router.push(`/profile/${address}`);
   };
 
-  if (loading) {
-    return <LoadingBars />;
-  }
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <div className="w-full max-w-md px-4">
-        <div className="mb-4">
-          <AddressInput placeholder="Enter address or ENS" value={searchQuery} onChange={setSearchQuery} />
-        </div>
-
-        {error && <p className="text-red-500 mb-4">{error}</p>}
-        <button
-          onClick={handleSearch}
-          className="btn btn-primary w-full border-0 bg-blue-600 rounded-lg text-white py-2 px-4"
-        >
-          Go to profile
-        </button>
-      </div>
+    <div className="flex items-center justify-center min-h-screen  gap-3">
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={e => setSearchQuery(e.target.value.toLowerCase())}
+        placeholder="Enter username or address"
+        className="input input-bordered w-full max-w-xs"
+      />
+      <button onClick={handleSearch} disabled={loading} className="btn btn-primary">
+        {loading ? <LoadingBars /> : "Go"}
+      </button>
+      {error && <p className="text-red-500 mt-2">{error}</p>}
     </div>
   );
 };

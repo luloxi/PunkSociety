@@ -14,16 +14,6 @@ type AddressProps = {
   size?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl" | "3xl";
 };
 
-const blockieSizeMap = {
-  xs: 6,
-  sm: 7,
-  base: 8,
-  lg: 9,
-  xl: 10,
-  "2xl": 12,
-  "3xl": 15,
-};
-
 /**
  * Displays an address (or ENS) with a Blockie image and option to copy address.
  */
@@ -72,17 +62,17 @@ export const ProfileAddress = ({ address, disableAddressLink, format, size = "ba
           <Image
             src={profileInfo[2]}
             alt="Profile Picture"
-            width={(blockieSizeMap[size] * 24) / blockieSizeMap["base"]}
-            height={(blockieSizeMap[size] * 24) / blockieSizeMap["base"]}
-            className="rounded-full"
+            width={128}
+            height={128}
+            className="rounded-full object-cover w-8 h-8"
           />
         ) : (
           <Image
             src={defaultProfilePicture}
             alt="Profile Picture"
-            width={(blockieSizeMap[size] * 24) / blockieSizeMap["base"]}
-            height={(blockieSizeMap[size] * 24) / blockieSizeMap["base"]}
-            className="rounded-full"
+            width={128}
+            height={128}
+            className="rounded-full object-cover w-8 h-8"
           />
         )}
       </div>
