@@ -1,21 +1,16 @@
-Social dapp that allows users to monetize 💰 their social activity 🫂.
+A social dapp where interactions (likes, comments, and shares) are monetized 💰, allowing users to earn through engaging with their community 🫂.
 
-- 💬 We don't show ads
-- 📊 We don't sell your data
+Privacy is a core value. We don’t sell ads 💬 or your data, but instead, we charge a small fee for every interaction.
 
 # 🤘 Features
 
-- 🤹‍♂️ Posts can have text, image, audio, video, links and polls.
-- 📜 Create and share playlists and galleries
-- 🎥 Media player: Play audio and video without leaving the platform
-- 💰 Liking, commenting and sharing sends $ to the user on the other end
-- 🛒 Shopping cart: Do multiple actions in a single transaction
-- 📈 Track and analyze revenue on your dashboard.
-- 🎨 Customize your profile appearance
-- 🔔 Receive notifications on activity.
-- 💌 Message other users.
-- 🌐 Create groups/communities with group chats and custom newsfeed.
-- 📱 Web 2.5 social login: Sign up and log in with Google, Twitter, Instagram, etc.
+- 🤹‍♂️ **Post types**: Posts can have text, image, audio, video, links and polls
+- 💰 **Monetization of Social Activity**: Each interaction (likes, comments, and shares) sends money to the user on the other end
+- 📈 **Revenue dashboard**: Users can track and analyze their earnings
+- 🔔 **Notifications**: Receive alerts on activity
+- 💌 **Messaging**: Direct messaging and group chat features
+- 🎨 **Profile customization**: Users can customize their profile and post collections
+- 📱 **Web 2.5 login**: Social login options with Web2 platforms (Google, Twitter, etc.)
 
 # 🤘 Roadmap
 
@@ -28,51 +23,43 @@ Social dapp that allows users to monetize 💰 their social activity 🫂.
 
 ## 👥 Phase 2 (Social Activity and Indexing)
 
-- ✅ **PunkSociety contract:** Social interactions.
+- ✅ **PunkSociety contract:** Social interactions
 - ✅ **Search**: By address or username
 - Enable following users, liking, commenting and sharing posts on frontend
 - **Notification system**
+- **Individual post viewer**
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
 
 ## 🍀 Phase 3 (Incentivized socials)
 
-- **Incentive model**: Likes, comments and shares send $ to the user on the other end.
-- **Dashboard Insights**: Track and analyze revenue.
-- **Revenue Model**: PunkSociety collects fees from interactions.
+- **Incentive model**: Likes, comments and shares send $ to the user on the other end
+- **Dashboard Insights**: Track and analyze revenue
+- **Revenue Model**: PunkSociety collects fees from interactions
 
 ## 💌 Phase 4 (Direct messages)
 
 - **Direct messages:** Allow users to send private messages to each other
-- **Make your own group/community:** Group chats and custom feeds to enhance the social experience
 
-## 💬 Phase 5 (Social enhancement)
+## ✍️ Phase 5 (Gasless activity)
 
-- Enable audio, video and links with preview type of posts.
+- **Signatures:** Interact with the platform without paying gas fees
+- **Database:** To store and retrieve EIP 712 signatures (Reference: [SE-2 firebase-auth-extension](https://github.com/ByteAtATime/firebase-auth-extension))
+
+## 💬 Phase 6 (Social enhancement)
+
+- Enable audio, video and links with preview type of posts
 - **Polls**: Allow users to create polls
-- **Individual post viewer**
-- **Group/Community page, chat and newsfeed**
-- **Web 2.5 social login:** Sign up and log in with Google, Twitter, Instagram, etc.
-
-## 🎨 Phase 6 (Customization)
-
 - **Customization**: Allow users to customize their profile appearance
-- **Playlists and Galleries**: Create and share playlists and galleries
+- **Collections**: Create and share collections of posts
+- **Groups**: Allow users to create and join groups with custom chat and newfeed
+- **Categories**: Allow users to categorize their posts, filter by category and search by category
 
 ## 👨‍🦽 Phase 7 (Ease of use)
 
-- **Shopping cart**: To reduce gas fees and streamline the user experience, users can send multiple actions in a single transaction.
-- **Web 2.5 social login:** Allow users to sign up and log in with Google, Twitter, Instagram, etc.
-- **Multi-language support**: Allow users to switch between languages
-- **Educational Content**: Include onboarding tutorials and step-by-step guides to help users and collectors understand NFTs and Web3 concepts.
-
-## 📈 Phase 8 (Media player)
-
-- **Media Player**: Posts with audio or video can be played without leaving the platoform. Users can control media playback from mobile notifications. (Reference: [React Player](https://www.npmjs.com/package/react-player))
-
-## ✍️ Phase 9 (Gasless activity)
-
-- **Signatures:** Allow users to interact with the platform without paying gas fees
-- **Database:** To store and retrieve EIP 712 signatures (Reference: [SE-2 firebase-auth-extension](https://github.com/ByteAtATime/firebase-auth-extension))
+- **Account abstraction**: Interact with the platform without flooding your NFT collections with social posts
+- **Web 2.5 social login:** Sign up and log in with Google, Twitter, Instagram, etc
+- **Multi-language support**: Switch between languages
+- **Educational Content**: Include onboarding tutorials and step-by-step guides to help users understand NFTs and Web3 concepts
 
 # 🤘 Development
 
