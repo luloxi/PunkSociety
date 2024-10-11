@@ -32,11 +32,21 @@ export const Header = () => {
 
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ml-4 lg:ml-2">
+      <div className="navbar-start ml-4 lg:ml-0">
         <div className="flex lg:hidden">
           <SwitchTheme />
+          <div className="flex justify-center items-center ml-8 lg:ml-0">
+            <Link href="/" passHref>
+              <span className="inline-flex items-center gap-2">
+                <strong>PunkSociety</strong>{" "}
+                <span role="img" aria-label="emoji">
+                  🤘
+                </span>
+              </span>
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-row gap-3 lg:ml-2">
+        <div className="flex flex-row gap-3 ">
           <Link href="/" passHref>
             <button
               className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
@@ -86,11 +96,11 @@ export const Header = () => {
             </span>
           </Link>
         </div>
-        <div className="flex lg:hidden bg-base-200 rounded-full p-2">
+        {/* <div className="flex lg:hidden bg-base-200 rounded-full p-2">
           <span role="img" aria-label="PunkSociety logo">
             🤘
           </span>
-        </div>
+        </div> */}
       </div>
 
       <div className="navbar-end relative">
@@ -99,7 +109,7 @@ export const Header = () => {
             <PunkBalance address={connectedAddress} />
           </div>
 
-          <div className="flex items-center justify-center lg:mr-2">
+          <div className="flex items-center justify-center">
             <PunkConnectButton />
           </div>
 
@@ -110,7 +120,7 @@ export const Header = () => {
         <div className="flex flex-row items-center justify-center gap-3">
           {/* <div className="lg:mr-2"></div> */}
 
-          <div className="hidden lg:flex lg:mr-2">
+          <div className="hidden lg:flex">
             <Link href={`/profile/${connectedAddress}`} passHref>
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
@@ -121,8 +131,9 @@ export const Header = () => {
                 }}
               ></div>
             </Link>
-
-            <SwitchTheme />
+            <div className="lg:ml-2">
+              <SwitchTheme />
+            </div>
           </div>
         </div>
       </div>
