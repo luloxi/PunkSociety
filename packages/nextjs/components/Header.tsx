@@ -33,7 +33,9 @@ export const Header = () => {
   return (
     <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ml-4 lg:ml-2">
-        <SwitchTheme />
+        <div className="flex lg:hidden">
+          <SwitchTheme />
+        </div>
         <div className="flex flex-row gap-3 lg:ml-2">
           <Link href="/" passHref>
             <button
@@ -119,6 +121,8 @@ export const Header = () => {
                 }}
               ></div>
             </Link>
+
+            <SwitchTheme />
           </div>
         </div>
       </div>
