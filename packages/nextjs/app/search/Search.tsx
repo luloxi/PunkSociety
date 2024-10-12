@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { LoadingBars } from "../../components/punk-society/LoadingBars";
+// import { AddressInput } from "~~/components/scaffold-eth";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 export const Search = () => {
@@ -53,6 +54,7 @@ export const Search = () => {
         placeholder="Enter username or address"
         className="input input-bordered w-full max-w-xs"
       />
+      {/* <AddressInput value={searchQuery} onChange={setSearchQuery} placeholder="Enter username or ENS" /> */}
       <button onClick={handleSearch} disabled={loading} className="btn btn-primary">
         {loading ? <LoadingBars /> : "Go"}
       </button>

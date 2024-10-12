@@ -1,6 +1,4 @@
-A social dapp where interactions (likes, comments, and shares) are monetized 💰, allowing users to earn through engaging with their community 🫂.
-
-Privacy is a core value. We don’t sell ads 💬 or your data, but instead, we charge a small fee for every interaction.
+A social dapp where interactions are free, and mints are monetized 💰, allowing users to earn through engaging with their community 🫂.
 
 # 🤘 Features
 
@@ -11,6 +9,8 @@ Privacy is a core value. We don’t sell ads 💬 or your data, but instead, we 
 - 💌 **Messaging**: Direct messaging and group chat features
 - 🎨 **Profile customization**: Users can customize their profile and post collections
 - 📱 **Web 2.5 login**: Social login options with Web2 platforms (Google, Twitter, etc.)
+- 🌐 **Multi-chain support**: Interact with the platform on multiple chains
+- 🎧 **Accessibility support**: ARIA compliant for screen readers and other assistive technologies
 
 # 🤘 Roadmap
 
@@ -26,24 +26,27 @@ Privacy is a core value. We don’t sell ads 💬 or your data, but instead, we 
 - ✅ **PunkSociety contract:** Social interactions
 - ✅ **Search**: By address or username
 - Enable following users, liking, commenting and sharing posts on frontend
+- Enable options for sharing on other platforms
 - **Notification system**
 - **Individual post viewer**
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
 
-## 🍀 Phase 3 (Incentivized socials)
-
-- **Incentive model**: Likes, comments and shares send $ to the user on the other end
-- **Dashboard Insights**: Track and analyze revenue
-- **Revenue Model**: PunkSociety collects fees from interactions
-
-## 💌 Phase 4 (Direct messages)
+## 💌 Phase 3 (Direct messages)
 
 - **Direct messages:** Allow users to send private messages to each other
 
-## ✍️ Phase 5 (Gasless activity)
+## ✍️ Phase 4 (Gasless activity)
 
 - **Signatures:** Interact with the platform without paying gas fees
 - **Database:** To store and retrieve EIP 712 signatures (Reference: [SE-2 firebase-auth-extension](https://github.com/ByteAtATime/firebase-auth-extension))
+
+## 🍀 Phase 5 (Incentivized socials)
+
+- **Incentive model**: Post mints send $ to the user that posted
+- **Multiple payment methods:** Pay with native gas, or with coins like `$USDT`, `$USDC`, `$DAI`, and also with `$PUNKS` for a discount. (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
+- **Built-in wallet manager**: Built-in simple wallet for sending supported tokens and receiving funds, generating and scanning QR, buying gas, etc (Reference: [PunkWallet](https://app.buidlguidl.com/build/mTKhXMLEOCQEgPgG57R9) | [FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button))
+- **Dashboard Insights**: Track and analyze revenue
+- **Revenue Model**: PunkSociety collects fees from mints
 
 ## 💬 Phase 6 (Social enhancement)
 
@@ -56,7 +59,9 @@ Privacy is a core value. We don’t sell ads 💬 or your data, but instead, we 
 
 ## 👨‍🦽 Phase 7 (Ease of use)
 
-- **Account abstraction**: Interact with the platform without flooding your NFT collections with social posts
+- **Account abstraction**: Interact with the platform without flooding your NFT collections with social posts or having to sign for every interaction.
+- **Multi-chain support**: Allow users to interact with the platform on multiple chains
+- **Accesibility support**: For the hearing and visually impaired, the app should be ARIA compliant to support screen readers and other assistive technologies (Reference: [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA))
 - **Web 2.5 social login:** Sign up and log in with Google, Twitter, Instagram, etc
 - **Multi-language support**: Switch between languages
 - **Educational Content**: Include onboarding tutorials and step-by-step guides to help users understand NFTs and Web3 concepts
