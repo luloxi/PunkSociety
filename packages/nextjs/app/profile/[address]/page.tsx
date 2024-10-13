@@ -35,6 +35,12 @@ const ProfilePage: NextPage = () => {
   const [loadingMore, setLoadingMore] = useState(true);
   const [page, setPage] = useState(1); // Start from page 1 to get the last post first
   const [loadingProfile, setLoadingProfile] = useState(true);
+  const [activeTab, setActiveTab] = useState("Minted");
+
+  const handleTabClick = (tab: any) => {
+    setActiveTab(tab);
+  };
+
   const observer = useRef<IntersectionObserver | null>(null);
 
   const { address: connectedAddress } = useAccount();
@@ -212,9 +218,12 @@ const ProfilePage: NextPage = () => {
 
                   <div className="mt-2">
                     {address == connectedAddress ? (
-                      <>
-                        <RainbowKitCustomConnectButton />
-                      </>
+                      <div className="flex flex-col md:flex-row items-center justify-center gap-3">
+                        <div>
+                          <RainbowKitCustomConnectButton />
+                        </div>
+                        <button className="btn btn-primary bg-red-600 hover:bg-red-700 border-0">+ Add funds</button>
+                      </div>
                     ) : (
                       <div className="text-base-content">
                         <Address address={address} />
@@ -266,7 +275,30 @@ const ProfilePage: NextPage = () => {
       </div>
       {/* {loading && <LoadingBars />} */}
 
-      <div>
+      <div className="flex flex-col items-center justify-center">
+        <div className="tabs-bar ">
+          <button
+            className={`tab text-red-600 ${activeTab === "Featured" ? "active" : ""}`}
+            onClick={() => handleTabClick("Featured")}
+          >
+            Featured
+          </button>
+          <button className={`tab ${activeTab === "Minted" ? "active" : ""}`} onClick={() => handleTabClick("Minted")}>
+            Minted
+          </button>
+          <button
+            className={`tab text-red-600 ${activeTab === "Shared" ? "active" : ""}`}
+            onClick={() => handleTabClick("Shared")}
+          >
+            Shared
+          </button>
+          <button
+            className={`tab text-red-600 ${activeTab === "Revenue" ? "active" : ""}`}
+            onClick={() => handleTabClick("Revenue")}
+          >
+            Revenue
+          </button>
+        </div>
         <NewsFeed posts={posts} />
         <div ref={lastPostElementRef}></div>
         {loadingMore && <LoadingBars />}

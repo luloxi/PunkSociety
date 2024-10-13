@@ -5,7 +5,14 @@ import Image from "next/image";
 import CommentSection from "./CommentSection";
 import LikeButton from "./LikedButton";
 import { ProfileAddress } from "./ProfileAddress";
-import { ChatBubbleLeftIcon, MagnifyingGlassPlusIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowUturnUpIcon,
+  ChatBubbleLeftIcon,
+  MagnifyingGlassPlusIcon,
+  ShareIcon,
+  ShoppingCartIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { ChatBubbleLeftIcon as ChatBubbleLeftSolidIcon } from "@heroicons/react/24/solid";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
@@ -47,7 +54,9 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
                 src={post.image || "/path/to/default/image.png"}
                 alt="NFT Image"
                 className="w-full h-full rounded-lg object-cover"
-                fill // Ensures the image fills the container
+                // fill // Ensures the image fills the container
+                width={800} // Adjust this to the desired fullscreen width
+                height={800} // Adjust this to maintain the aspect ratio of the image
               />
               <button
                 className="absolute bottom-2 right-2 bg-base-200 p-2 rounded-full shadow-lg"
@@ -64,16 +73,30 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
             <p className="my-0 text-lg">{post.description ?? "No description available."}</p>
           </div>
 
-          <div className="flex items-center justify-start gap-3">
+          <div className="flex items-center justify-between gap-3">
             {/* Your component JSX here */}
-            <LikeButton postId={BigInt(post.postId || 0)} />
-            <button onClick={toggleCommentSection} className="comment-icon-button">
-              {showCommentSection ? (
-                <ChatBubbleLeftSolidIcon className="comment-icon text-blue-600" />
-              ) : (
-                <ChatBubbleLeftIcon className="comment-icon" />
-              )}
-            </button>
+            <div className="flex items-center gap-3">
+              <LikeButton postId={BigInt(post.postId || 0)} />
+              <button onClick={toggleCommentSection} className="icon-button">
+                {showCommentSection ? (
+                  <ChatBubbleLeftSolidIcon className="comment-icon text-blue-600" />
+                ) : (
+                  <ChatBubbleLeftIcon className="comment-icon" />
+                )}
+              </button>
+              <button className="icon-button">
+                <ArrowUturnUpIcon className="repost-icon text-red-600" />
+              </button>
+              <button className="icon-button">
+                <ShareIcon className="repost-icon text-red-600" />
+              </button>
+            </div>
+            <div className="flex items-center gap-3">
+              <button className="px-4 py-2 rounded-lg bg-red-600 text-white">Mint</button>
+              <button className="p-2 rounded-full bg-red-600 text-white">
+                <ShoppingCartIcon className="h-5 w-5" />
+              </button>
+            </div>
           </div>
           {showCommentSection && <CommentSection postId={BigInt(post.postId || 0)} />}
         </div>

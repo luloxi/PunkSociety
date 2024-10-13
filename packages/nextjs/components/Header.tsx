@@ -8,7 +8,7 @@ import { PunkBalance } from "./punk-society/PunkBalance";
 import { PunkConnectButton } from "./punk-society/PunkConnectButton";
 import { FaucetButton } from "./scaffold-eth";
 import { useAccount } from "wagmi";
-import { BellIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 /**
@@ -31,8 +31,8 @@ export const Header = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex lg:sticky top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
-      <div className="navbar-start ml-4 lg:ml-0">
+    <div className="flex lg:sticky  top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
+      <div className="navbar-start ml-4 lg:ml-2">
         <div className="flex lg:hidden">
           <SwitchTheme />
           <div className="flex justify-center items-center ml-8 lg:ml-0">
@@ -82,6 +82,18 @@ export const Header = () => {
               </div>
             </button>
           </Link>
+
+          <Link href="/not-found" passHref>
+            <button
+              className={`bg-transparent text-red-600 hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+                pathname === "/messages" ? "text-blue-600" : ""
+              }`}
+            >
+              <div className="flex flex-row items-center justify-center gap-2">
+                <EnvelopeIcon className="h-6 w-6" />
+              </div>
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -103,9 +115,9 @@ export const Header = () => {
         </div> */}
       </div>
 
-      <div className="navbar-end relative">
+      <div className="navbar-end relative lg:mr-2">
         <div className="flex justify-center items-center  ">
-          <div className="hidden lg:flex lg:mr-2">
+          <div className="hidden md:flex lg:mr-2">
             <PunkBalance address={connectedAddress} />
           </div>
 
@@ -131,7 +143,7 @@ export const Header = () => {
                 }}
               ></div>
             </Link>
-            <div className="lg:ml-2">
+            <div className="lg:ml-4">
               <SwitchTheme />
             </div>
           </div>

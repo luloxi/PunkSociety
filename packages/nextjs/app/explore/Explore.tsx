@@ -20,8 +20,13 @@ export const Explore = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
-
   const [page, setPage] = useState(0);
+  const [activeTab, setActiveTab] = useState("Global");
+
+  const handleTabClick = (tab: any) => {
+    setActiveTab(tab);
+  };
+
   const observer = useRef<IntersectionObserver | null>(null);
 
   const {
@@ -108,7 +113,24 @@ export const Explore = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center">
+      <div className="tabs-bar ">
+        <button className={`tab ${activeTab === "Global" ? "active" : ""}`} onClick={() => handleTabClick("Global")}>
+          Global
+        </button>
+        <button
+          className={`tab text-red-600 ${activeTab === "Following" ? "active" : ""}`}
+          onClick={() => handleTabClick("Following")}
+        >
+          Following
+        </button>
+        <button
+          className={`tab text-red-600 ${activeTab === "Groups" ? "active" : ""}`}
+          onClick={() => handleTabClick("Groups")}
+        >
+          Groups
+        </button>
+      </div>
       <NewsFeed posts={posts} isGrid={false} />
       <div ref={lastPostElementRef}></div>
       {loadingMore && <LoadingBars />}

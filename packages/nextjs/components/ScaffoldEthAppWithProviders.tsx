@@ -13,6 +13,8 @@ import { ProgressBar } from "~~/components/scaffold-eth/ProgressBar";
 import { useInitializeNativeCurrencyPrice } from "~~/hooks/scaffold-eth";
 import { wagmiConfig } from "~~/services/web3/wagmiConfig";
 
+// Adjust the import path as needed
+
 const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   useInitializeNativeCurrencyPrice();
 

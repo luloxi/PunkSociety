@@ -27,13 +27,37 @@
   }
 }
 
+.tabs-bar {
+  display: flex;
+  justify-content: center;
+  items-align: center;
+  padding-bottom: 7px;
+  border-bottom: 1px solid;
+  max-width: 500px;
+}
+
+.tab {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.tab.active {
+  color: #2563eb; /* Blue text */
+}
+
 .comment-section-container {
   display: flex;
   align-items: center;
   margin-top: 8px;
   width: 100%;
 }
-.comment-icon-button {
+
+.icon-button {
   background: none;
   border: none;
   cursor: pointer;
