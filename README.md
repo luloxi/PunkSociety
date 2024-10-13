@@ -3,7 +3,8 @@ A social dapp where interactions are free, and mints are monetized 💰, allowin
 # 🤘 Features
 
 - 🤹‍♂️ **Post types**: Posts can have text, image, audio, video, links and polls
-- 💰 **Monetization of Social Activity**: Each interaction (likes, comments, and shares) sends money to the user on the other end
+- 💰 **Monetization of Posts**: Users can mint each other posts as NFTs while paying to the original creator.
+- 🥇 **First minter incentive**: First minters of a post, if not the creator, earn a share of the earnings from succesive mints.
 - 📈 **Revenue dashboard**: Users can track and analyze their earnings
 - 🔔 **Notifications**: Receive alerts on activity
 - 💌 **Messaging**: Direct messaging and group chat features
