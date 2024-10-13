@@ -222,6 +222,7 @@ const ProfilePage: NextPage = () => {
                         <div>
                           <RainbowKitCustomConnectButton />
                         </div>
+
                         <button className="btn btn-primary bg-red-600 hover:bg-red-700 text-white border-0">
                           + Add funds
                         </button>

@@ -44,8 +44,8 @@ A social dapp where interactions are free, and mints are monetized 💰, allowin
 ## 🍀 Phase 5 (Incentivized socials)
 
 - **Incentive model**: Post mints send $ to the user that posted
-- **Multiple payment methods:** Pay with native gas, or with coins like `$USDT`, `$USDC`, `$DAI`, and also with `$PUNKS` for a discount. (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
-- **Built-in wallet manager**: Built-in simple wallet for sending supported tokens and receiving funds, generating and scanning QR, buying gas, etc (Reference: [PunkWallet](https://app.buidlguidl.com/build/mTKhXMLEOCQEgPgG57R9) | [FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button))
+- **Multiple payment methods:** Pay with native gas or with `$USDC`, and also with `$PUNKS` for a discount. (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
+- **Built-in wallet manager**: Built-in simple wallet for sending supported tokens and receiving funds, generating and scanning QR, buying gas, etc (Reference: [PunkWallet](https://app.buidlguidl.com/build/mTKhXMLEOCQEgPgG57R9) | [FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button) [OnchainKit extension for Scaffold-ETH 2](https://github.com/scaffold-eth/create-eth-extensions/tree/onchainkit))
 - **Dashboard Insights**: Track and analyze revenue
 - **Revenue Model**: PunkSociety collects fees from mints
 

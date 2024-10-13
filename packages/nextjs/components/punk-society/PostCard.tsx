@@ -40,6 +40,23 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
     setShowCommentSection(!showCommentSection);
   };
 
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: "Check out this post!",
+          text: post.description ?? "No description available.",
+          url: window.location.href,
+        });
+        console.log("Content shared successfully");
+      } catch (error) {
+        console.error("Error sharing content:", error);
+      }
+    } else {
+      console.error("Web Share API is not supported in this browser.");
+    }
+  };
+
   return (
     <div className="flex justify-center items-center">
       <div className={`card-compact bg-base-300 ${isGrid ? "w-[300px]" : "w-[100%]"} relative group rounded-lg`}>
@@ -87,8 +104,8 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
               <button className="icon-button">
                 <ArrowUturnUpIcon className="repost-icon text-red-600" />
               </button>
-              <button className="icon-button">
-                <ShareIcon className="repost-icon text-red-600" />
+              <button onClick={handleShare} className="icon-button">
+                <ShareIcon className="repost-icon " />
               </button>
             </div>
             <div className="flex items-center gap-3">
