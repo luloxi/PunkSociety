@@ -9,7 +9,7 @@ type NewsFeedProps = {
 
 export const NewsFeed: React.FC<NewsFeedProps> = ({ posts, isGrid = false }) => {
   return (
-    <div className="mt-4 md:flex md:justify-center md:items-center px-6 border-x-2">
+    <div className="mt-4 md:flex md:justify-center md:items-center md:px-6 md:border-x-2">
       <div
         className={`${
           isGrid
