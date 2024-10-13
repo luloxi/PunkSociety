@@ -14,6 +14,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { ChatBubbleLeftIcon as ChatBubbleLeftSolidIcon } from "@heroicons/react/24/solid";
+import { notification } from "~~/utils/scaffold-eth";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Post extends Partial<NFTMetaData> {
@@ -53,7 +54,12 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
         console.error("Error sharing content:", error);
       }
     } else {
-      console.error("Web Share API is not supported in this browser.");
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        notification.success("URL copied to clipboard");
+      } catch (error) {
+        notification.error("Error copying URL to clipboard");
+      }
     }
   };
 
