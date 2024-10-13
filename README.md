@@ -26,8 +26,8 @@ A social dapp where interactions are free, and mints are monetized 💰, allowin
 
 - ✅ **PunkSociety contract:** Social interactions
 - ✅ **Search**: By address or username
+- ✅ Enable options for sharing on other platforms
 - Enable following users, liking, commenting and sharing posts on frontend
-- Enable options for sharing on other platforms
 - **Notification system**
 - **Individual post viewer**
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
