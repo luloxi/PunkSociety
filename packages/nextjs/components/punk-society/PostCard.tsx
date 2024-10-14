@@ -6,7 +6,7 @@ import CommentSection from "./CommentSection";
 import LikeButton from "./LikedButton";
 import { ProfileAddress } from "./ProfileAddress";
 import {
-  ArrowUturnUpIcon,
+  ArrowPathRoundedSquareIcon,
   ChatBubbleLeftIcon,
   MagnifyingGlassPlusIcon,
   ShareIcon,
@@ -108,7 +108,7 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
                 )}
               </button>
               <button className="icon-button">
-                <ArrowUturnUpIcon className="repost-icon text-red-600" />
+                <ArrowPathRoundedSquareIcon className="repost-icon text-red-600" />
               </button>
               <button onClick={handleShare} className="icon-button">
                 <ShareIcon className="repost-icon " />
