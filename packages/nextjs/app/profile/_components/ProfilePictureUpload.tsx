@@ -21,7 +21,6 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
   const [previewImage, setPreviewImage] = useState<string>("");
   const [dragActive, setDragActive] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     if (profilePicture) {
@@ -90,8 +89,6 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
     >
       <input
         type="file"
@@ -139,14 +136,6 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
           width={128}
           height={128}
         />
-      )}
-      {hovered && previewImage && (
-        <button
-          className="absolute top-5 right-5 bg-red-500 text-white w-6 h-6 flex items-center justify-center rounded-full"
-          onClick={handleRemoveImage}
-        >
-          ✕
-        </button>
       )}
       {loading && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-700 bg-opacity-75 text-white">
