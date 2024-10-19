@@ -1,18 +1,18 @@
-Social dapp where interactions are monetized 💰 allowing users to earn through engaging with their community 🫂.
+Social protocol where interactions are monetized 💰 allowing users to earn through engaging with their community 🫂.
 
 # 🤘 Features
 
 > NOTE: This is a work in progress and most features are not yet implemented.
 
-- ⛓️ **Avalanche L1 with USDC as native gas**
-- 💸 **When bridged to PunkSociety, USDC earns interest on AAVE**
+- 💸 **When bridged to PunkSociety, you can select different options to stake your USDC or bridged asset**
+- ⛓️ **Avalanche L1 with USDC as native gas** and other tokens bridged from other chains.
 - 💰 **Social monetization**: Likes, comments, shares and follows send USDC to the user on the other end
 - 📈 **Revenue dashboard**: Users can track and analyze their earnings
 
 - 🤹‍♂️ **Post types**: Posts can have text, image, audio, video, links and polls
 - 🔔 **Notifications**: Receive alerts on activity
 - 💌 **Messaging**: Direct messaging and group chat features
-- 🎨 **Profile customization**: Users can customize their profile and post collections
+- 🎨 **Profile customization**: Users can customize their profile and create post collections
 
 - 📱 **Web 2.5 login**: Social login options with Web2 platforms (Google, Twitter, etc.)
 - 🌐 **Multi-chain support**: Bridge your posts as NFTs to Avalanche L0 and other chains to access NFT markets
@@ -33,17 +33,19 @@ Social dapp where interactions are monetized 💰 allowing users to earn through
 - ✅ **Search**: By address or username
 - ✅ Enable options for sharing on other platforms
 - ✅ **Avalanche L1 with USDC as native gas:** Use an Avalanche L1 with USDC as native gas (Reference: [Create an Avalanche L1](https://docs.avax.network/tooling/create-deploy-avalanche-l1s/create-avalanche-l1))
-- Enable following users, liking, commenting and sharing posts on frontend
-- **Individual post viewer**
+- Enable liking with incentive
 
 ## 📈 Phase 2 (Business model)
 
 - **Incentive model**: Social interactions send $ to the user on the other end
-- **Built-in bridge manager**: Built-in simple tool for bridging USDC and NFTs to and from Avalanche, Base, Ethereum, and other EVM chains (Reference: [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer) | [Chainlink CCIP Cross Chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
-- **Staking**: Bridged USDC goes to lending on AAVE so users can earn interest on their USDC while using the platform
-- **Dashboard Insights**: Track and analyze your revenue
-- **Easy onramp tool**: Easy USDC buying tool for onboarding new users. (Reference:[FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button) | [OnchainKit extension for Scaffold-ETH 2](https://github.com/scaffold-eth/create-eth-extensions/tree/onchainkit))
+- **USDC Staking/Lending model**: Bridged USDC can be lent or staked on AAVE and/or Compound (or similar) so users can earn interest on their USDC while using the platform
 - **Business Model**: PunkSociety collects 1% fees from social interactions and from USDC lending revenue
+- **Easy onramp tool**: Easy USDC buying tool for onboarding new users. (Reference:[FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button) | [OnchainKit extension for Scaffold-ETH 2](https://github.com/scaffold-eth/create-eth-extensions/tree/onchainkit))
+- **Built-in bridge manager**: Built-in simple tool for bridging USDC and NFTs to and from Avalanche, Base, Ethereum, and other EVM chains (Reference: [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer) | [Chainlink CCIP Cross Chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
+- Make PunkSociety the only one who can deploy contracts on the chain (Reference: [Avalanche Contract Deployer Allowlist](https://academy.avax.network/course/multi-chain-architecture/06-permissioning-users/06-contract-deployer-allowlist))
+- **Dashboard Insights**: Track and analyze your revenue
+- Enable following users, liking, commenting and sharing posts on frontend
+- **Individual post viewer**
 
 ## 🌐 Phase 3 (Indexing)
 
@@ -74,9 +76,13 @@ Social dapp where interactions are monetized 💰 allowing users to earn through
 
 ## 🛠️ Technical details
 
-⚙️ Built using Foundry, NextJS, RainbowKit, Wagmi, Viem, and Typescript,
+⚙️ Currently built using [Scaffold-ETH 2](https://scaffoldeth.io/), [Foundry](https://book.getfoundry.sh/), [OnchainKit](https://onchainkit.xyz/), [Pinata](https://pinata.cloud/), [Vercel](https://vercel.com/), [NextJS](https://nextjs.org/), [RainbowKit](https://rainbowkit.com/), [Wagmi](https://wagmi.sh/), [Viem](https://viem.sh/), and [Typescript](https://www.typescriptlang.org/).
 
-🔗 To be deployed on EVM compatible chains
+🏦 Considering using protocols: [The Graph](https://thegraph.com/) for indexing events, [Uniswap](https://app.uniswap.org/) and similar with an aggregator for token swaps, [AAVE](https://aave.com/), [Compound](https://compound.finance/) and similar options for generating interest on bridged [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/), [Chainlink](https://chain.link/) for price oracles, [Push Protocol](https://push.org/) for notifications and messages.
+
+📜 Considering using contracts: [Ownable](https://docs.openzeppelin.com/contracts/2.x/access-control) and [Upgradeable](https://docs.openzeppelin.com/upgrades-plugins/1.x/writing-upgradeable) from [OpenZeppelin](https://www.openzeppelin.com/) or [Solady](https://github.com/Vectorized/solady) for contract ownership. [EIP712 Signatures](https://eips.ethereum.org/EIPS/eip-712).
+
+🔗 To be deployed on [Avalanche L1](https://github.com/ava-labs/avalanche-starter-kit) and Bridge [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) and [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) using [Avalanche Interchain Token Transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer) and [Chainlink CCIP Transfer Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens) with [EVM compatible chains](https://ethereum.org/en/developers/docs/scaling/sidechains/#evm-compatibility).
 
 ## 📚 Prerequisites
 
@@ -105,7 +111,7 @@ yarn install
 
 4. Start a local Avalanche L1:
 
-It'd be ideal to run it with one command like `yarn avalanche`, but so far, you gotta [follow this instructions](./AVALANCHE-L1.md).
+It'd be ideal to run it with one command like `yarn avalanche`, but so far, **you gotta [follow this instructions](./AVALANCHE-L1.md)**.
 
 You'll start a local Avalanche L1 using [Ava Labs avalanche-starter-kit](https://github.com/ava-labs/avalanche-starter-kit). The network runs on your local machine and can be used for testing and development.
 

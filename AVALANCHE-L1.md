@@ -21,11 +21,13 @@ It'll take some time to load, go take a walk or something
 
 5. After it boots up the blockchain, for some reason port `9650` doesn't set itself automatically to public, so you gotta click `Ports` to the right of `Terminal`, find port 9650, right click it, Port visibility, Public
 
-> NOTE: After 30 minutes (or if you close the tab/browser) your codespaces goes to sleep. To restart your blockchain after your codespace was sleep, run `avalanche network start`
+> NOTE: After 30 minutes (or if you close the tab/browser) your codespaces goes to sleep. To restart your blockchain after your codespace was sleep, run `avalanche network start`. Remember to set **Port 9650** to public again.
 
-> NOTE 2: To keep alive the codespace, you can run `while true; do echo "I'm alive!" > /dev/null; sleep 900; done &` on the terminal. It'll print `I'm alive!` every 15 minutes, keeping the codespace alive.
+> NOTE for Ava Labs: Maybe a **function to set Port 9650 to public** could be a temporary improvement to open it until it's opened automatically by default.
 
-> NOTE for Ava Labs: Codespace could be kept alive automatically on codespaces [with a cronjob](./avalanche_codespace_keepalive.md).
+> NOTE for Ava Labs: Codespace should be kept alive automatically on codespaces [with a cronjob (maybe not this one)](./avalanche_codespace_keepalive.md).
+
+> NOTE for Ava Labs: When running `avalanche network start` after the codespace was asleep, my dapp can't connect with the same RPC URL to the blockchain anymore, and I have to start a new chain. Maybe it's a problem with the codespace or my computer, I'm not sure. Had to reinstall [Linux Mint Cinnamon Edition](https://linuxmint.com/download.php) a few days ago, maybe I'm missing some dependency or something, or it's a problem with my local/internet network.
 
 ## 2. Load RPC URL into your scaffold-eth
 
