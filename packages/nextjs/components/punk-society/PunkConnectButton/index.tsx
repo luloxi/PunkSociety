@@ -3,7 +3,10 @@
 // @refresh reset
 import { AddressInfoDropdown } from "./AddressInfoDropdown";
 import { AddressQRCodeModal } from "./AddressQRCodeModal";
+import { BridgeUSDCModal } from "./BridgeUSDCModal";
+import { LoadPrivateKeyModal } from "./LoadPrivateKeyModal";
 import { PrivateKeyModal } from "./PrivateKeyModal";
+import { SendUSDCModal } from "./SendUSDCModal";
 import { SwitchLanguageModal } from "./SwitchLanguageModal";
 import { WrongNetworkDropdown } from "./WrongNetworkDropdown";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -56,7 +59,10 @@ export const PunkConnectButton = () => {
                   />
                   <AddressQRCodeModal address={account.address as Address} modalId="qrcode-modal" />
                   <PrivateKeyModal modalId="private-key-modal" />
+                  <LoadPrivateKeyModal modalId="load-private-key-modal" />
                   <SwitchLanguageModal modalId="switch-language-modal" />
+                  <SendUSDCModal modalId="send-usdc-modal" />
+                  <BridgeUSDCModal modalId="bridge-usdc-modal" />
                 </>
               );
             })()}
