@@ -1,16 +1,15 @@
-A social dapp where interactions are free, and mints are monetized 💰, allowing users to earn through engaging with their community 🫂.
+A social dapp where interactions are monetized 💰, allowing users to earn through engaging with their community 🫂.
 
 # 🤘 Features
 
 - 🤹‍♂️ **Post types**: Posts can have text, image, audio, video, links and polls
-- 💰 **Monetization of Posts**: Users can mint each other posts as NFTs while paying to the original creator.
-- 🥇 **First minter incentive**: First minters of a post, if not the creator, earn a share of the earnings from succesive mints.
+- 💰 **Social monetization**: Likes, comments, shares and follows send USDC to the user on the other end
 - 📈 **Revenue dashboard**: Users can track and analyze their earnings
 - 🔔 **Notifications**: Receive alerts on activity
 - 💌 **Messaging**: Direct messaging and group chat features
 - 🎨 **Profile customization**: Users can customize their profile and post collections
 - 📱 **Web 2.5 login**: Social login options with Web2 platforms (Google, Twitter, etc.)
-- 🌐 **Multi-chain support**: Interact with the platform on multiple chains
+- 🌐 **Multi-chain support**: Bridge your posts as NFTs to Avalanche L0 and other chains to access NFT markets
 - 🎧 **Accessibility support**: ARIA compliant for screen readers and other assistive technologies
 
 # 🤘 Roadmap
@@ -19,37 +18,31 @@ A social dapp where interactions are free, and mints are monetized 💰, allowin
 
 - ✅ **Create PunkPosts contract**
 - ✅ **Create PunkProfile contract to register users info and socials**
+- ✅ **PunkSociety contract:** Social interactions
 - ✅ **Post creation tool**
 - ✅ **User profile page**
-
-## 👥 Phase 2 (Social Activity and Indexing)
-
-- ✅ **PunkSociety contract:** Social interactions
 - ✅ **Search**: By address or username
 - ✅ Enable options for sharing on other platforms
+- **Incentive model**: Social interactions send $ to the user that posted
+- **Revenue Model**: PunkSociety collects fees from interactions
 - Enable following users, liking, commenting and sharing posts on frontend
-- **Notification system**
+- **USDC payment method:** Bridge USDC from Avalanche to PunkSociety L1 and use it as native gas and payment method for social interactions (Reference: [Create an Avalanche L1](https://docs.avax.network/tooling/create-deploy-avalanche-l1s/create-avalanche-l1))
+- **Multi-chain support**: Allow users to bridge their posts as NFTs to other chains (Reference: [Interchain Token Transfer](https://academy.avax.network/course/interchain-token-transfer/02-avalanche-starter-kit/01-avalanche-starter-kit) | [Chainlink CCIP Cross Chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 - **Individual post viewer**
+
+## 👥 Phase 2 (Indexing and Bridging)
+
+- **Built-in bridge manager**: Built-in simple tool for bridging USDC and NFTs to Avalanche L0 and other EVM chains
+- **Easy onramp tool**: Easy USDC buying and bridging tool for onboarding new users. (Reference:[FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button) | [OnchainKit extension for Scaffold-ETH 2](https://github.com/scaffold-eth/create-eth-extensions/tree/onchainkit))
 - **Integrate The Graph to index activity** and save RPC calls (Reference: [Bootstrap a Full Stack Modern dapp using the Scaffold-ETH CLI and Subgraph Extension](https://siddhantk08.hashnode.dev/bootstrap-a-full-stack-modern-dapp-using-the-scaffold-eth-cli-and-subgraph-extension) | [The Graph tool for creating a subgraph](https://thegraph.com/docs/en/developing/creating-a-subgraph/))
+- **Dashboard Insights**: Track and analyze revenue
+- **Notification system**
 
 ## 💌 Phase 3 (Direct messages)
 
-- **Direct messages:** Allow users to send private messages to each other
+- **Direct messages:** Allow users to send private messages to each other (Reference [Push Protocol](https://push.org/))
 
-## ✍️ Phase 4 (Gasless activity)
-
-- **Signatures:** Interact with the platform without paying gas fees
-- **Database:** To store and retrieve EIP 712 signatures (Reference: [SE-2 firebase-auth-extension](https://github.com/ByteAtATime/firebase-auth-extension))
-
-## 🍀 Phase 5 (Incentivized socials)
-
-- **Incentive model**: Post mints send $ to the user that posted
-- **Multiple payment methods:** Pay with native gas or with `$USDC`, and also with `$PUNKS` for a discount. (Reference: [Easy2Pay](https://github.com/luloxi/Easy2Pay))
-- **Built-in wallet manager**: Built-in simple wallet for sending supported tokens and receiving funds, generating and scanning QR, buying gas, etc (Reference: [PunkWallet](https://app.buidlguidl.com/build/mTKhXMLEOCQEgPgG57R9) | [FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button) [OnchainKit extension for Scaffold-ETH 2](https://github.com/scaffold-eth/create-eth-extensions/tree/onchainkit))
-- **Dashboard Insights**: Track and analyze revenue
-- **Revenue Model**: PunkSociety collects fees from mints
-
-## 💬 Phase 6 (Social enhancement)
+## 💬 Phase 4 (Social enhancement)
 
 - Enable audio, video and links with preview type of posts
 - **Polls**: Allow users to create polls
@@ -58,12 +51,11 @@ A social dapp where interactions are free, and mints are monetized 💰, allowin
 - **Groups**: Allow users to create and join groups with custom chat and newfeed
 - **Categories**: Allow users to categorize their posts, filter by category and search by category
 
-## 👨‍🦽 Phase 7 (Ease of use)
+## 👨‍🦽 Phase 5 (Ease of use)
 
-- **Account abstraction**: Interact with the platform without flooding your NFT collections with social posts or having to sign for every interaction.
-- **Multi-chain support**: Allow users to interact with the platform on multiple chains
 - **Accesibility support**: For the hearing and visually impaired, the app should be ARIA compliant to support screen readers and other assistive technologies (Reference: [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA))
 - **Web 2.5 social login:** Sign up and log in with Google, Twitter, Instagram, etc
+- **Account abstraction**: Interact with the platform without flooding your NFT collections with social posts or having to sign for every interaction.
 - **Multi-language support**: Switch between languages
 - **Educational Content**: Include onboarding tutorials and step-by-step guides to help users understand NFTs and Web3 concepts
 

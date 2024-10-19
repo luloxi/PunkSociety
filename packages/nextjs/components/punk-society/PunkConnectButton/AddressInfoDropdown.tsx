@@ -4,6 +4,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import { getAddress } from "viem";
 import { Address } from "viem";
 import { useDisconnect } from "wagmi";
+import { KeyIcon, LanguageIcon } from "@heroicons/react/20/solid";
 import {
   ArrowLeftOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
@@ -99,6 +100,12 @@ export const AddressInfoDropdown = ({
             </label>
           </li>
           <li className={selectingNetwork ? "hidden" : ""}>
+            <label htmlFor="private-key-modal" className="btn-sm !rounded-xl flex gap-3 py-3">
+              <KeyIcon className="h-6 w-4 ml-2 sm:ml-0" />
+              <span className="whitespace-nowrap">View Private Key</span>
+            </label>
+          </li>
+          <li className={selectingNetwork ? "hidden" : ""}>
             <button className="menu-item btn-sm !rounded-xl flex gap-3 py-3" type="button">
               <ArrowTopRightOnSquareIcon className="h-6 w-4 ml-2 sm:ml-0" />
               <a
@@ -110,6 +117,12 @@ export const AddressInfoDropdown = ({
                 View on Block Explorer
               </a>
             </button>
+          </li>
+          <li className={selectingNetwork ? "hidden" : ""}>
+            <label htmlFor="switch-language-modal" className="btn-sm !rounded-xl flex gap-3 py-3">
+              <LanguageIcon className="h-6 w-4 ml-2 sm:ml-0" />
+              <span className="whitespace-nowrap">Switch languages</span>
+            </label>
           </li>
           {allowedNetworks.length > 1 ? (
             <li className={selectingNetwork ? "hidden" : ""}>

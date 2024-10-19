@@ -54,7 +54,7 @@ export const Header = () => {
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
-                <HomeIcon className="h-6 w-6" />
+                <HomeIcon className="h-6 w-6" /> Home
               </div>
             </button>
           </Link>
@@ -66,7 +66,7 @@ export const Header = () => {
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
-                <MagnifyingGlassIcon className="h-6 w-6" />
+                <MagnifyingGlassIcon className="h-6 w-6" /> Search
               </div>
             </button>
           </Link>
@@ -78,7 +78,7 @@ export const Header = () => {
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
-                <BellIcon className="h-6 w-6" />
+                <BellIcon className="h-6 w-6" /> Notifications
               </div>
             </button>
           </Link>
@@ -90,7 +90,7 @@ export const Header = () => {
               }`}
             >
               <div className="flex flex-row items-center justify-center gap-2">
-                <EnvelopeIcon className="h-6 w-6" />
+                <EnvelopeIcon className="h-6 w-6" /> Messages
               </div>
             </button>
           </Link>

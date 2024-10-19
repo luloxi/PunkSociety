@@ -9,7 +9,7 @@ import ProfilePictureUpload from "../_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import { Address, RainbowKitCustomConnectButton } from "~~/components/scaffold-eth";
+import { Address } from "~~/components/scaffold-eth";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -217,21 +217,9 @@ const ProfilePage: NextPage = () => {
                   {bio && <p className="text-base-content">{bio}</p>}
 
                   <div className="mt-2">
-                    {address == connectedAddress ? (
-                      <div className="flex flex-col md:flex-row items-center justify-center gap-3">
-                        <div>
-                          <RainbowKitCustomConnectButton />
-                        </div>
-
-                        <button className="btn btn-primary bg-red-600 hover:bg-red-700 text-white border-0">
-                          + Add funds
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="text-base-content">
-                        <Address address={address} />
-                      </div>
-                    )}
+                    <div className="text-base-content">
+                      <Address address={address} />
+                    </div>
                   </div>
                 </>
               )}
@@ -287,13 +275,13 @@ const ProfilePage: NextPage = () => {
             Featured
           </button>
           <button className={`tab ${activeTab === "Minted" ? "active" : ""}`} onClick={() => handleTabClick("Minted")}>
-            Minted
+            Shared
           </button>
           <button
             className={`tab text-red-600 ${activeTab === "Shared" ? "active" : ""}`}
             onClick={() => handleTabClick("Shared")}
           >
-            Shared
+            Liked
           </button>
           <button
             className={`tab text-red-600 ${activeTab === "Revenue" ? "active" : ""}`}
