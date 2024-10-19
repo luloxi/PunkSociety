@@ -46,3 +46,5 @@ Add the rpc url on `packages/foundry/.env` and on `packages/nextjs/.env` variabl
 Now you'll be able to deploy contracts to PunkSociety!
 
 4. Open your metamask and add a new account with that private key.
+
+**[CLICK HERE to CONTINUE with STEP 5 in the INSTRUCTIONS NOW!](./README.md#L113)**
