@@ -1,4 +1,27 @@
+import { defineChain } from "viem";
 import * as chains from "viem/chains";
+
+// Read the environment variable
+const rpcUrl = process.env.NEXT_PUBLIC_PUNKSOCIETY_RPC_URL || "http://127.0.0.1:9650";
+
+// Convert to WebSocket URL
+const wsRpcUrl = rpcUrl.replace(/^https:\/\//, "ws://");
+
+export const punksociety = /*#__PURE__*/ defineChain({
+  id: 615_243,
+  name: "PunkSociety",
+  nativeCurrency: {
+    decimals: 18,
+    name: "Circle USDC",
+    symbol: "USDC",
+  },
+  rpcUrls: {
+    default: {
+      http: [rpcUrl],
+      webSocket: [wsRpcUrl],
+    },
+  },
+});
 
 export type ScaffoldConfig = {
   targetNetworks: readonly chains.Chain[];
@@ -13,7 +36,8 @@ const scaffoldConfig = {
 
   // For working locally, comment out chains.sepolia or chains.arbitrum
   // and uncomment chains.foundry
-  targetNetworks: [chains.baseSepolia],
+  // targetNetworks: [punksociety, chains.baseSepolia, chains.avalancheFuji],
+  targetNetworks: [punksociety],
   // targetNetworks: [chains.foundry],
 
   // The interval at which your front-end polls the RPC servers for new data
