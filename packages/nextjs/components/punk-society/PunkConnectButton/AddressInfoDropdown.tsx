@@ -131,7 +131,7 @@ export const AddressInfoDropdown = ({ address, displayName, blockExplorerAddress
           <li className={selectingNetwork ? "hidden" : ""}>
             <label
               htmlFor="qrcode-modal"
-              className="bg-[#4338CA] hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
+              className="bg-[#4338CA] text-white hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
             >
               <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">Receive USDC</span>
@@ -140,7 +140,7 @@ export const AddressInfoDropdown = ({ address, displayName, blockExplorerAddress
           <li className={selectingNetwork ? "hidden" : ""}>
             <label
               htmlFor="send-usdc-modal"
-              className="bg-[#4338CA] hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
+              className="bg-[#4338CA] text-white hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
             >
               <ArrowUpLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">Send USDC</span>
@@ -149,7 +149,7 @@ export const AddressInfoDropdown = ({ address, displayName, blockExplorerAddress
           <li className={selectingNetwork ? "hidden" : ""}>
             <label
               htmlFor="bridge-usdc-modal"
-              className="bg-[#4338CA] hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
+              className="bg-[#4338CA] text-white hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
             >
               <LinkIcon className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">Bridge USDC</span>
@@ -211,7 +211,7 @@ export const AddressInfoDropdown = ({ address, displayName, blockExplorerAddress
 
           <li className={selectingNetwork ? "hidden" : ""}>
             <button
-              className="menu-item text-error btn-sm !rounded-xl flex gap-3 py-3"
+              className="menu-item text-red-600 dark:text-red-500 btn-sm !rounded-xl flex gap-3 py-3"
               type="button"
               onClick={() => disconnect()}
             >
