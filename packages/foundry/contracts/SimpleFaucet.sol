@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+error FailedToTransfer();
+
 contract SimpleFaucet {
   // Mapping to track if an address has claimed ETH
   mapping(address => bool) public hasClaimed;
@@ -27,6 +29,13 @@ contract SimpleFaucet {
 
   // Function to deposit ETH into the faucet
   function deposit() external payable { }
+
+  function transfer(
+    address receiver
+  ) public payable {
+    (bool sent,) = payable(receiver).call{ value: msg.value }("");
+    if (!sent) revert FailedToTransfer();
+  }
 
   // Fallback function to accept ETH deposits
   receive() external payable { }
