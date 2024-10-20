@@ -971,7 +971,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",
@@ -1158,7 +1158,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",
@@ -1597,7 +1597,7 @@ const deployedContracts = {
   },
   7615243: {
     PunkPosts: {
-      address: "0xa4DfF80B4a1D748BF28BC4A271eD834689Ea3407",
+      address: "0xF5f1f185cF359dC48469e410Aeb6983cD4DC5812",
       abi: [
         {
           type: "constructor",
@@ -2282,7 +2282,7 @@ const deployedContracts = {
       },
     },
     PunkProfile: {
-      address: "0xe336d36FacA76840407e6836d26119E1EcE0A2b4",
+      address: "0x768AF58E63775354938e9F3FEdB764F601c038b4",
       abi: [
         {
           type: "function",
@@ -2444,7 +2444,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     PunkSociety: {
-      address: "0x95CA0a568236fC7413Cd2b794A7da24422c2BBb6",
+      address: "0x97C0FE6aB595cbFD50ad3860DA5B2017d8B35c2E",
       abi: [
         {
           type: "constructor",
@@ -2561,7 +2561,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",
@@ -2748,7 +2748,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",
@@ -3185,7 +3185,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SimpleFaucet: {
-      address: "0xE3573540ab8A1C4c754Fd958Dc1db39BBE81b208",
+      address: "0xBBfCE55AD100b5bEd880083fCE366120347Af872",
       abi: [
         {
           type: "receive",
@@ -4207,7 +4207,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",
@@ -4394,7 +4394,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",

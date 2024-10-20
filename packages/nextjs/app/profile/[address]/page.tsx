@@ -17,7 +17,7 @@ import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Post extends Partial<NFTMetaData> {
-  listingId?: number;
+  postId?: number;
   uri: string;
   user: string;
   date?: string;
@@ -124,7 +124,7 @@ const ProfilePage: NextPage = () => {
             }
 
             postsUpdate.push({
-              listingId: undefined,
+              postId: parseInt(event.args?.postId?.toString() ?? "0"),
               uri: tokenURI,
               user: user || "",
               ...nftMetadata,

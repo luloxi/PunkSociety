@@ -14,7 +14,6 @@ export interface Post extends Partial<NFTMetaData> {
   postId?: number;
   uri: string;
   user: string;
-
   date?: string;
 }
 

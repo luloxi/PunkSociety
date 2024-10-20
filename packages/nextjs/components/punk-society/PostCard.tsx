@@ -2,12 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import CommentSection from "./CommentSection";
+// import CommentSection from "./CommentSection";
 import LikeButton from "./LikedButton";
 import { ProfileAddress } from "./ProfileAddress";
 import {
-  ArrowPathRoundedSquareIcon,
-  ChatBubbleLeftIcon,
+  ArrowPathRoundedSquareIcon, // ChatBubbleLeftIcon,
   MagnifyingGlassPlusIcon,
   ShareIcon,
   XMarkIcon,
@@ -26,7 +25,7 @@ export interface Post extends Partial<NFTMetaData> {
 
 export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [showCommentSection, setShowCommentSection] = useState(false);
+  // const [showCommentSection, setShowCommentSection] = useState(false);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -36,9 +35,9 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
     setIsModalOpen(false);
   };
 
-  const toggleCommentSection = () => {
-    setShowCommentSection(!showCommentSection);
-  };
+  // const toggleCommentSection = () => {
+  //   setShowCommentSection(!showCommentSection);
+  // };
 
   const handleShare = async () => {
     if (navigator.share) {
@@ -99,12 +98,13 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
             {/* Your component JSX here */}
             <div className="flex items-center gap-3">
               <LikeButton postId={BigInt(post.postId || 0)} />
-              <button onClick={toggleCommentSection} className="icon-button">
-                {showCommentSection ? (
+              <button className="icon-button">
+                <ChatBubbleLeftSolidIcon className="comment-icon text-red-600" />
+                {/* {showCommentSection ? (
                   <ChatBubbleLeftSolidIcon className="comment-icon text-blue-600" />
                 ) : (
                   <ChatBubbleLeftIcon className="comment-icon" />
-                )}
+                )} */}
               </button>
               <button className="icon-button">
                 <ArrowPathRoundedSquareIcon className="repost-icon text-red-600" />
@@ -116,7 +116,7 @@ export const PostCard = ({ post, isGrid }: { post: Post; isGrid: boolean }) => {
               </button>
             </div>
           </div>
-          {showCommentSection && <CommentSection postId={BigInt(post.postId || 0)} />}
+          {/* {showCommentSection && <CommentSection postId={BigInt(post.postId || 0)} />} */}
         </div>
 
         {/* Modal for fullscreen image */}
