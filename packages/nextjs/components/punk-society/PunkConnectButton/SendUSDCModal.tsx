@@ -1,30 +1,54 @@
-import Image from "next/image";
+import { useState } from "react";
+import { useAccount } from "wagmi";
+import { InputBase } from "~~/components/scaffold-eth";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { notification } from "~~/utils/scaffold-eth";
 
 type SendUSDCModalProps = {
   modalId: string;
 };
 
 export const SendUSDCModal = ({ modalId }: SendUSDCModalProps) => {
-  const handleSendUSDCClick = () => {
-    window.open("https://core.app/es/", "_blank");
+  const [amount, setAmount] = useState("");
+  const [receiver, setReceiver] = useState("");
+  const { address: connectedAddress } = useAccount();
+  const { writeContractAsync } = useScaffoldWriteContract("SimpleFaucet");
+
+  const handleTransfer = async () => {
+    if (!connectedAddress) {
+      notification.error("Please connect your wallet");
+      return;
+    }
+
+    try {
+      const contractResponse = await writeContractAsync({
+        functionName: "transfer",
+        args: [receiver],
+        value: BigInt(amount),
+      });
+
+      if (contractResponse) {
+        notification.success("Transfered successfully!");
+      }
+    } catch (error) {
+      console.error("Error during transfering:", error);
+      notification.error("Transfering failed, please try again.");
+    } finally {
+    }
   };
+
   return (
     <>
       <div>
         <input type="checkbox" id={`${modalId}`} className="modal-toggle" />
         <label htmlFor={`${modalId}`} className="modal cursor-pointer">
           <label className="modal-box relative" htmlFor="">
-            <div className="flex flex-col justify-center items-center text-center">
-              <h2 className="text-xl font-bold mb-4 text-red-600">Sorry, we can&apos;t send USDC yet.</h2>
-              <h2 className="text-xl font-bold mb-4 text-red-600">
-                Import your private key to Core Wallet and send them there
-              </h2>
-              <button
-                onClick={handleSendUSDCClick}
-                className="btn btn-primary border-0 flex items-center bg-black hover:bg-green-600 active:bg-green-600"
-              >
-                <Image src="/corewallet.png" alt="Import your key in Core!" width={40} height={40} className="mr-2" />
-                Send USDC with Core!
+            <div className="flex flex-col justify-center items-center text-center gap-3">
+              <h2 className="text-xl">Transfer USDC to other address</h2>
+              <InputBase value={receiver} onChange={setReceiver} placeholder="Enter amount" />
+              <InputBase value={amount} onChange={setAmount} placeholder="Enter amount" />
+              <button className="btn btn-primary" onClick={handleTransfer}>
+                Transfer
               </button>
               <label
                 htmlFor={`${modalId}`}

@@ -1597,7 +1597,7 @@ const deployedContracts = {
   },
   7615243: {
     PunkPosts: {
-      address: "0xF5f1f185cF359dC48469e410Aeb6983cD4DC5812",
+      address: "0xa3Acaa140222047317D19F682C7C920E9540A91E",
       abi: [
         {
           type: "constructor",
@@ -2282,7 +2282,7 @@ const deployedContracts = {
       },
     },
     PunkProfile: {
-      address: "0x768AF58E63775354938e9F3FEdB764F601c038b4",
+      address: "0xf606475e888A22d85b43DF58b0aB6b2EAf7ac1c1",
       abi: [
         {
           type: "function",
@@ -2444,7 +2444,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     PunkSociety: {
-      address: "0x97C0FE6aB595cbFD50ad3860DA5B2017d8B35c2E",
+      address: "0x4475A8FBeF5Cf4a92a484B6f5602A91F3abC72D8",
       abi: [
         {
           type: "constructor",
@@ -3185,7 +3185,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     SimpleFaucet: {
-      address: "0xBBfCE55AD100b5bEd880083fCE366120347Af872",
+      address: "0x049d189BB264FE7FBF38BfBAba83562Fbb6d7DEb",
       abi: [
         {
           type: "receive",
@@ -3236,6 +3236,24 @@ const deployedContracts = {
             },
           ],
           stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transfer",
+          inputs: [
+            {
+              name: "receiver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "payable",
+        },
+        {
+          type: "error",
+          name: "FailedToTransfer",
+          inputs: [],
         },
       ],
       inheritedFunctions: {},
