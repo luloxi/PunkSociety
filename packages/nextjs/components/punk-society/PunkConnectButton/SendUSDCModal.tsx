@@ -51,7 +51,7 @@ export const SendUSDCModal = ({ modalId }: SendUSDCModalProps) => {
 
               <div className="flex flex-row justify-between items-center gap-3">
                 <InputBase value={receiver} onChange={setReceiver} placeholder="Enter receiver" />
-                <button className="p-4 text-white bg-red-600 hover:bg-red-500 active:bg-red-500 ">
+                <button className="p-4 text-white bg-red-600 hover:bg-red-500 active:bg-red-500 rounded-full">
                   <QrCodeIcon className="h-6 w-6" />
                 </button>
               </div>
@@ -67,7 +67,7 @@ export const SendUSDCModal = ({ modalId }: SendUSDCModalProps) => {
               </button>
               <label
                 htmlFor={`${modalId}`}
-                className="btn text-xl rounded-full bg-red-600 hover:bg-red-500 btn-ghost btn-sm btn-circle absolute right-3 top-3"
+                className="btn text-xl rounded-full text-white bg-red-600 hover:bg-red-500 active:bg-red-500 btn-ghost btn-sm btn-circle absolute right-3 top-3"
               >
                 ✕
               </label>
