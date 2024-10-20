@@ -1,5 +1,7 @@
 Social protocol where interactions are monetized 💰 allowing users to earn through engaging with their community 🫂.
 
+🎁 Current build focuses on implementing USDC, NFTs and interaction between users on an Avalanche L1 with USDC as native gas and onramp USDC with Coinbase OnchainKit
+
 # 🤘 Features
 
 > NOTE: This is a work in progress and most features are not yet implemented.
