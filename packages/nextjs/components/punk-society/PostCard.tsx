@@ -63,7 +63,7 @@ export const PostCard = ({ post }: { post: Post; isGrid: boolean }) => {
 
   return (
     <div className="flex justify-center items-center">
-      <div className={`card-compact bg-base-300 w-full lg:w-[300px] relative group rounded-lg`}>
+      <div className={`card-compact bg-base-300 w-full relative group rounded-lg`}>
         <div className="flex space-x-3 p-3 items-center">
           <ProfileAddress address={post.user} />
         </div>
