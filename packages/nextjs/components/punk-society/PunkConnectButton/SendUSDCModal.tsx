@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PunkBalance } from "../PunkBalance";
 import { useAccount } from "wagmi";
+import { QrCodeIcon } from "@heroicons/react/24/solid";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -12,6 +13,7 @@ type SendUSDCModalProps = {
 export const SendUSDCModal = ({ modalId }: SendUSDCModalProps) => {
   const [amount, setAmount] = useState("");
   const [receiver, setReceiver] = useState("");
+
   const { address: connectedAddress } = useAccount();
   const { writeContractAsync } = useScaffoldWriteContract("SimpleFaucet");
 
@@ -47,7 +49,12 @@ export const SendUSDCModal = ({ modalId }: SendUSDCModalProps) => {
             <div className="flex flex-col justify-center items-center text-center gap-3">
               <h2 className="text-xl">Transfer USDC to other address</h2>
 
-              <InputBase value={receiver} onChange={setReceiver} placeholder="Enter receiver" />
+              <div className="flex flex-row justify-between items-center gap-3">
+                <InputBase value={receiver} onChange={setReceiver} placeholder="Enter receiver" />
+                <button className="p-4 text-white bg-red-600 hover:bg-red-500 active:bg-red-500 ">
+                  <QrCodeIcon className="h-6 w-6" />
+                </button>
+              </div>
               <div className="flex flex-row justify-between items-center">
                 <PunkBalance address={connectedAddress} />
                 <InputBase value={amount} onChange={setAmount} placeholder="Enter amount" />

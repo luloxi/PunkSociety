@@ -53,7 +53,7 @@ export const AddressInfoDropdown = ({ blockExplorerAddressLink }: AddressInfoDro
           <li className={selectingNetwork ? "hidden" : ""}>
             <label
               htmlFor="qrcode-modal"
-              className="bg-red-600 text-white hover:bg-red-500 active:bg-red-500 btn-sm !rounded-xl flex gap-3 py-3"
+              className="text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-500 btn-sm !rounded-xl flex gap-3 py-3"
             >
               <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">View your address</span>
@@ -62,7 +62,7 @@ export const AddressInfoDropdown = ({ blockExplorerAddressLink }: AddressInfoDro
           <li className={selectingNetwork ? "hidden" : ""}>
             <label
               htmlFor="private-key-modal"
-              className="btn-sm bg-red-600 text-white hover:bg-red-500 active:bg-red-500 !rounded-xl flex gap-3 py-3"
+              className="btn-sm text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-500 !rounded-xl flex gap-3 py-3"
             >
               <KeyIconOutline className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">View Private Key</span>
@@ -72,7 +72,7 @@ export const AddressInfoDropdown = ({ blockExplorerAddressLink }: AddressInfoDro
           <li className={selectingNetwork ? "hidden" : ""}>
             <label
               htmlFor="load-private-key-modal"
-              className="btn-sm bg-red-600 text-white hover:bg-red-500 active:bg-red-500 !rounded-xl flex gap-3 py-3"
+              className="btn-sm text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-500 !rounded-xl flex gap-3 py-3"
             >
               <KeyIconSolid className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">Load Private Key</span>
