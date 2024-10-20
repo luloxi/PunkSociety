@@ -35,7 +35,8 @@ Social protocol where interactions are monetized 💰 allowing users to earn thr
 - ✅ **Search**: By address or username
 - ✅ Enable options for sharing on other platforms
 - ✅ **Avalanche L1 with USDC as native gas:** Use an Avalanche L1 with USDC as native gas (Reference: [Create an Avalanche L1](https://docs.avax.network/tooling/create-deploy-avalanche-l1s/create-avalanche-l1))
-- Enable liking with incentive
+- ✅ Enable liking with incentive
+- ✅ Enable posting with a fee to owner
 
 ## 📈 Phase 2 (Business model)
 

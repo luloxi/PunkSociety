@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 
 import { PunkProfile } from "./PunkProfile.sol";
 import { PunkPosts } from "./PunkPosts.sol";
+
+import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 // import { EIP712 } from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 // import { ECDSA } from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
@@ -12,7 +14,7 @@ struct Comment {
   uint256 index;
 }
 
-contract PunkSociety {
+contract PunkSociety is Ownable {
   /*//////////////////////////////////////////////////////////////
                                     EVENTS
   //////////////////////////////////////////////////////////////*/
@@ -92,7 +94,7 @@ contract PunkSociety {
                             CONSTRUCTOR FUNCTION
   //////////////////////////////////////////////////////////////*/
 
-  constructor(address _punkProfile, address _punkPosts) {
+  constructor(address _punkProfile, address _punkPosts) Ownable(msg.sender) {
     punkProfile = PunkProfile(_punkProfile);
     punkPosts = PunkPosts(_punkPosts);
   }
@@ -109,6 +111,7 @@ contract PunkSociety {
     userPosts[msg.sender].push(postId);
 
     punkPosts.mint(_tokenURI);
+    payable(owner()).transfer(3 ether);
 
     emit PostCreated(postId, msg.sender, _tokenURI, block.timestamp);
   }
@@ -130,7 +133,7 @@ contract PunkSociety {
     require(
       !userToPostLikes[msg.sender][_postID], "You have already liked this post"
     );
-    require(msg.value == 0.1 ether, "Must send 0.1 ETH to like a post");
+    require(msg.value == 1 ether, "Must send 0.1 ETH to like a post");
 
     address postOwner = postIdToUser[_postID];
     require(postOwner != address(0), "Post owner does not exist");
@@ -139,7 +142,7 @@ contract PunkSociety {
     postToLikes[_postID]++;
 
     // Transfer 0.1 ETH to the post owner
-    (bool sent,) = postOwner.call{ value: 0.1 ether }("");
+    (bool sent,) = postOwner.call{ value: 1 ether }("");
     require(sent, "Failed to send ETH to the post owner");
 
     emit PostLiked(_postID, msg.sender, block.timestamp);
@@ -152,7 +155,7 @@ contract PunkSociety {
     require(
       userToPostLikes[msg.sender][_postID], "You have not liked this post yet"
     );
-    require(msg.value == 0.1 ether, "Must send 0.1 ETH to unlike a post");
+    require(msg.value == 0.5 ether, "Must send 0.1 ETH to unlike a post");
 
     address postOwner = postIdToUser[_postID];
     require(postOwner != address(0), "Post owner does not exist");
@@ -161,7 +164,7 @@ contract PunkSociety {
     postToLikes[_postID]--;
 
     // Transfer 0.1 ETH to the post owner
-    (bool sent,) = postOwner.call{ value: 0.1 ether }("");
+    (bool sent,) = postOwner.call{ value: 0.5 ether }("");
     require(sent, "Failed to send ETH to the post owner");
 
     emit PostUnliked(_postID, msg.sender, block.timestamp);

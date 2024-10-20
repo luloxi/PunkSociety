@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { PunkBalance } from "../PunkBalance";
 import { useAccount } from "wagmi";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
@@ -45,9 +46,16 @@ export const SendUSDCModal = ({ modalId }: SendUSDCModalProps) => {
           <label className="modal-box relative" htmlFor="">
             <div className="flex flex-col justify-center items-center text-center gap-3">
               <h2 className="text-xl">Transfer USDC to other address</h2>
-              <InputBase value={receiver} onChange={setReceiver} placeholder="Enter amount" />
-              <InputBase value={amount} onChange={setAmount} placeholder="Enter amount" />
-              <button className="btn btn-primary" onClick={handleTransfer}>
+
+              <InputBase value={receiver} onChange={setReceiver} placeholder="Enter receiver" />
+              <div className="flex flex-row justify-between items-center">
+                <PunkBalance address={connectedAddress} />
+                <InputBase value={amount} onChange={setAmount} placeholder="Enter amount" />
+              </div>
+              <button
+                className="btn btn-primary text-white bg-[#2E79CC] hover:bg-blue-700 active:bg-blue-700  border-0"
+                onClick={handleTransfer}
+              >
                 Transfer
               </button>
               <label

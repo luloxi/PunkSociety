@@ -41,6 +41,7 @@
     "react-dom": "~18.2.0",
     "react-hot-toast": "~2.4.0",
     "react-json-view": "^1.21.3",
+    "react-qr-reader": "^3.0.0-beta-1",
     "sharp": "^0.33.5",
     "swr": "^2.2.5",
     "use-debounce": "~8.0.4",
