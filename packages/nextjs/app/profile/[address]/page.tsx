@@ -290,7 +290,7 @@ const ProfilePage: NextPage = () => {
             Revenue
           </button>
         </div>
-        <NewsFeed posts={posts} />
+        <NewsFeed posts={posts} isGrid={false} />
         <div ref={lastPostElementRef}></div>
         {loadingMore && <LoadingBars />}
       </div>
