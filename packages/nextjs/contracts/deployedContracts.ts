@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  615243: {
     PunkPosts: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x8B3BC4270BE2abbB25BC04717830bd1Cc493a461",
       abi: [
         {
           type: "constructor",
@@ -692,7 +692,7 @@ const deployedContracts = {
       },
     },
     PunkProfile: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0x7B4982e1F7ee384F206417Fb851a1EB143c513F9",
       abi: [
         {
           type: "function",
@@ -854,7 +854,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     PunkSociety: {
-      address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+      address: "0x55a4eDd8A2c051079b426E9fbdEe285368824a89",
       abi: [
         {
           type: "constructor",
@@ -1595,9 +1595,9 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
   },
-  84532: {
+  7615243: {
     PunkPosts: {
-      address: "0xB93b900C9AC7e7711DbE734F87B92E1B4C879fba",
+      address: "0xa4DfF80B4a1D748BF28BC4A271eD834689Ea3407",
       abi: [
         {
           type: "constructor",
@@ -2282,7 +2282,7 @@ const deployedContracts = {
       },
     },
     PunkProfile: {
-      address: "0x9f3F7B9bE04712a8588f1b36db49dd349496Ca35",
+      address: "0xe336d36FacA76840407e6836d26119E1EcE0A2b4",
       abi: [
         {
           type: "function",
@@ -2444,7 +2444,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     PunkSociety: {
-      address: "0xC5b2cd1DC825A1614a4C28c7104b6211c9006D8C",
+      address: "0x95CA0a568236fC7413Cd2b794A7da24422c2BBb6",
       abi: [
         {
           type: "constructor",
@@ -3180,6 +3180,62 @@ const deployedContracts = {
             },
           ],
           anonymous: false,
+        },
+      ],
+      inheritedFunctions: {},
+    },
+    SimpleFaucet: {
+      address: "0xE3573540ab8A1C4c754Fd958Dc1db39BBE81b208",
+      abi: [
+        {
+          type: "receive",
+          stateMutability: "payable",
+        },
+        {
+          type: "function",
+          name: "AMOUNT",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "claim",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "deposit",
+          inputs: [],
+          outputs: [],
+          stateMutability: "payable",
+        },
+        {
+          type: "function",
+          name: "hasClaimed",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
         },
       ],
       inheritedFunctions: {},

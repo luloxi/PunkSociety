@@ -113,11 +113,13 @@ export const Header = () => {
         <div className="flex flex-row items-center justify-center gap-3">
           {/* <div className="lg:mr-2"></div> */}
 
-          <div className="hidden lg:flex">
-            <SwitchTheme />
+          <div className=" lg:ml-4">
+            <ConfigMenu />
           </div>
           <div className="mr-4">
-            <ConfigMenu />
+            <div className="hidden lg:flex ">
+              <SwitchTheme />
+            </div>
           </div>
         </div>
       </div>

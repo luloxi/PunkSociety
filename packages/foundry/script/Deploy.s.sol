@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 import { PunkPosts } from "../contracts/PunkPosts.sol";
 import { PunkProfile } from "../contracts/PunkProfile.sol";
 import { PunkSociety } from "../contracts/PunkSociety.sol";
+import { SimpleFaucet } from "../contracts/SimpleFaucet.sol";
 import "./DeployHelpers.s.sol";
 
 contract DeployScript is ScaffoldETHDeploy {
@@ -12,6 +13,8 @@ contract DeployScript is ScaffoldETHDeploy {
   PunkPosts punkPosts;
   PunkProfile punkProfile;
   PunkSociety punkSociety;
+
+  SimpleFaucet simpleFaucet;
 
   error InvalidPrivateKey(string);
 
@@ -51,6 +54,17 @@ contract DeployScript is ScaffoldETHDeploy {
         vm.toString(address(punkSociety))
       )
     );
+
+    simpleFaucet = new SimpleFaucet();
+    console.logString(
+      string.concat(
+        "SimpleFaucet deployed at: ", vm.toString(address(simpleFaucet))
+      )
+    );
+
+    // Transfer 5000 USDC to the simpleFaucet
+    payable(address(simpleFaucet)).transfer(5000 * 1e18);
+    console.logString("5000 USDC transferred to SimpleFaucet");
 
     if (block.chainid == LOCAL_CHAIN_ID) { }
 
