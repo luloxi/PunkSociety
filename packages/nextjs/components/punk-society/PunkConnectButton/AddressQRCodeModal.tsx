@@ -31,13 +31,13 @@ export const AddressQRCodeModal = ({ address, modalId }: AddressQRCodeModalProps
               </div>
               <div className="break-words whitespace-pre-wrap text-center w-full">{address}</div>
               <CopyToClipboard text={address} onCopy={handleCopy}>
-                <button className="btn btn-primary bg-green-600 hover:bg-green-500 active:bg-green-500 mt-4">
+                <button className="btn btn-primary text-white border-0 bg-green-600 hover:bg-green-500 active:bg-green-500 mt-4">
                   {copied ? "Copied!" : "Copy Address"}
                 </button>
               </CopyToClipboard>
               <label
                 htmlFor={`${modalId}`}
-                className="btn text-xl rounded-full bg-red-600 hover:bg-red-500 btn-ghost btn-sm btn-circle absolute right-3 top-3"
+                className="btn text-xl rounded-full text-white bg-red-600 border-0 hover:bg-red-500 btn-ghost btn-sm btn-circle absolute right-3 top-3"
               >
                 ✕
               </label>

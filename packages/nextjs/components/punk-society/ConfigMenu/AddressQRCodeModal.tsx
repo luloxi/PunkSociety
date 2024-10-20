@@ -37,7 +37,7 @@ export const AddressQRCodeModal = ({ address, modalId }: AddressQRCodeModalProps
               </CopyToClipboard>
               <label
                 htmlFor={`${modalId}`}
-                className="btn text-xl rounded-full bg-red-600 hover:bg-red-500 btn-ghost btn-sm btn-circle absolute right-3 top-3"
+                className="btn text-xl rounded-full text-white bg-red-600 hover:bg-red-500 btn-ghost btn-sm btn-circle absolute right-3 top-3"
               >
                 ✕
               </label>
