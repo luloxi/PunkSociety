@@ -40,7 +40,7 @@ export const AddressInfoDropdown = ({ blockExplorerAddressLink }: AddressInfoDro
       <details ref={dropdownRef} className="dropdown dropdown-end leading-3">
         <summary
           tabIndex={0}
-          className="btn btn-secondary shadow-none bg-transparent border-0 btn-sm p-2 dropdown-toggle gap-0 !h-auto"
+          className="flex items-center justify-center hover:cursor-pointer p-2 shadow-none bg-transparent border-0 btn-sm  dropdown-toggle gap-0 !h-auto"
         >
           <Cog6ToothIcon className="h-5 w-5 ml-2 sm:ml-0" />
         </summary>

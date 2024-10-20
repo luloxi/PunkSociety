@@ -9,7 +9,6 @@ import { useAccount } from "wagmi";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
 import { ArrowUpLeftIcon, LinkIcon } from "@heroicons/react/24/solid";
-import { isENS } from "~~/components/scaffold-eth";
 import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 type AddressInfoDropdownProps = {
@@ -19,7 +18,7 @@ type AddressInfoDropdownProps = {
   ensAvatar?: string;
 };
 
-export const AddressInfoDropdown = ({ address, displayName }: AddressInfoDropdownProps) => {
+export const AddressInfoDropdown = ({ address }: AddressInfoDropdownProps) => {
   const [selectingNetwork, setSelectingNetwork] = useState(false);
 
   const checkSumAddress = getAddress(address);
@@ -70,7 +69,9 @@ export const AddressInfoDropdown = ({ address, displayName }: AddressInfoDropdow
           ></div>
 
           <span className="ml-2 mr-1">
-            {isENS(displayName) ? displayName : checkSumAddress?.slice(0, 6) + "..." + checkSumAddress?.slice(-4)}
+            {profileInfo && profileInfo[0] != ""
+              ? profileInfo[0]
+              : checkSumAddress?.slice(0, 6) + "..." + checkSumAddress?.slice(-4)}
           </span>
           {/* <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" /> */}
         </summary>
