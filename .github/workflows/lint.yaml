@@ -39,6 +39,7 @@ jobs:
         env:
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
           PUNKSOCIETY_RPC_URL: ${{ secrets.PUNKSOCIETY_RPC_URL }}
+          DEPLOYER_PRIVATE_KEY: ${{ secrets.DEPLOYER_PRIVATE_KEY }}
         run: yarn chain & yarn deploy
 
       - name: Run nextjs lint
