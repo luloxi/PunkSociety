@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { parseEther } from "viem";
 import { useAccount } from "wagmi";
 import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { uploadToPinata } from "~~/utils/pinata-upload";
@@ -52,6 +53,7 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
       const contractResponse = await writeContractAsync({
         functionName: "createPost",
         args: [ipfsPath],
+        value: parseEther("3"),
       });
 
       if (contractResponse) {

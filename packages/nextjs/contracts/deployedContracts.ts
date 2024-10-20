@@ -901,7 +901,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",
@@ -1675,7 +1675,7 @@ const deployedContracts = {
   },
   7615243: {
     PunkPosts: {
-      address: "0xDbDa30ad00b67702BDCEd019C3b46D35DB9e94ce",
+      address: "0x93c9699B00BE288c23AC9aD924769fA0C7B8D5A9",
       abi: [
         {
           type: "constructor",
@@ -2360,7 +2360,7 @@ const deployedContracts = {
       },
     },
     PunkProfile: {
-      address: "0x4359190563c0F38C84037a28288E01A2b1011Ec8",
+      address: "0xccf9D57d9a0468829D6DdC9bE54538b89a37a6da",
       abi: [
         {
           type: "function",
@@ -2522,7 +2522,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     PunkSociety: {
-      address: "0x5F909f607A29156Dd9Fc43382d09420bba7799A6",
+      address: "0xe45eFf7a6889893E166a0Dd84bfAa95ad9d04D64",
       abi: [
         {
           type: "constructor",
@@ -2569,7 +2569,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",
@@ -3341,7 +3341,7 @@ const deployedContracts = {
       },
     },
     SimpleFaucet: {
-      address: "0x1A44477AF531Ab811cd82772477f40750e763ff9",
+      address: "0x519f46ae0962abe5BF3516B225c3181914A3F735",
       abi: [
         {
           type: "receive",
@@ -4311,7 +4311,7 @@ const deployedContracts = {
             },
           ],
           outputs: [],
-          stateMutability: "nonpayable",
+          stateMutability: "payable",
         },
         {
           type: "function",
