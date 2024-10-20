@@ -1,7 +1,6 @@
 "use client";
 
 import { Address, formatEther } from "viem";
-import { useNetworkColor } from "~~/hooks/scaffold-eth";
 import { useDisplayUsdMode } from "~~/hooks/scaffold-eth/useDisplayUsdMode";
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { useWatchBalance } from "~~/hooks/scaffold-eth/useWatchBalance";
@@ -16,9 +15,8 @@ type BalanceProps = {
 /**
  * Display (ETH & USD) balance of an ETH address.
  */
-export const PunkBalance = ({ address, className = "", usdMode }: BalanceProps) => {
+export const Balance = ({ address, className = "", usdMode }: BalanceProps) => {
   const { targetNetwork } = useTargetNetwork();
-  const networkColor = useNetworkColor();
   const nativeCurrencyPrice = useGlobalState(state => state.nativeCurrency.price);
   const isNativeCurrencyPriceFetching = useGlobalState(state => state.nativeCurrency.isFetching);
 
@@ -54,28 +52,23 @@ export const PunkBalance = ({ address, className = "", usdMode }: BalanceProps) 
   const formattedBalance = balance ? Number(formatEther(balance.value)) : 0;
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <button
-        className={`mr-2  flex flex-col font-normal items-center hover:bg-transparent ${className}`}
-        onClick={toggleDisplayUsdMode}
-      >
-        <div className="w-full flex items-center justify-center text-sm">
-          {displayUsdMode ? (
-            <>
-              <span className="text-[0.8em] font-bold mr-1">$</span>
-              <span>{(formattedBalance * nativeCurrencyPrice).toFixed(2)}</span>
-            </>
-          ) : (
-            <>
-              <span>{formattedBalance.toFixed(2)}</span>
-              <span className="text-[0.8em] font-bold ml-1">{targetNetwork.nativeCurrency.symbol}</span>
-            </>
-          )}
-        </div>
-      </button>
-      <span className="text-xs" style={{ color: networkColor }}>
-        {targetNetwork.name}
-      </span>
-    </div>
+    <button
+      className={`btn btn-sm btn-ghost flex flex-col font-normal items-center hover:bg-transparent ${className}`}
+      onClick={toggleDisplayUsdMode}
+    >
+      <div className="w-full flex items-center justify-center">
+        {displayUsdMode ? (
+          <>
+            <span className="text-[0.8em] font-bold mr-1">$</span>
+            <span>{(formattedBalance * nativeCurrencyPrice).toFixed(2)}</span>
+          </>
+        ) : (
+          <>
+            <span>{formattedBalance.toFixed(4)}</span>
+            <span className="text-[0.8em] font-bold ml-1">{targetNetwork.nativeCurrency.symbol}</span>
+          </>
+        )}
+      </div>
+    </button>
   );
 };

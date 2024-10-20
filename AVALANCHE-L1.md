@@ -21,7 +21,9 @@ It'll take some time to load, go take a walk or something
 
 5. After it boots up the blockchain, for some reason port `9650` doesn't set itself automatically to public, so you gotta click `Ports` to the right of `Terminal`, find port 9650, right click it, Port visibility, Public
 
-> NOTE: After 30 minutes (or if you close the tab/browser) your codespaces goes to sleep. To restart your blockchain after your codespace was sleep, run `avalanche network start`. Remember to set **Port 9650** to public again.
+> NOTE: After 30 minutes (or if you close the tab/browser) your codespaces goes to sleep. To prevent this from happening, run this command: `while true; do echo "Ah ah ah ah, staying alive!"; sleep 900; done &` to ping the codespace every 15 minutes.
+
+> NOTE: Remember [GitHub will provide users in the free plan](https://docs.github.com/es/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces) (boo!) 120 core hours or 60 hours of run time on a 2 core codespace, plus 15 GB of storage each month. So remember to shut it down when you're not using it.
 
 > NOTE for Ava Labs: Maybe a **function to set Port 9650 to public** could be a temporary improvement to open it until it's opened automatically by default.
 

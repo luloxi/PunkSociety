@@ -4,18 +4,15 @@ import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { SwitchTheme } from "./SwitchTheme";
-import { PunkBalance } from "./punk-society/PunkBalance";
+import { ConfigMenu } from "./punk-society/ConfigMenu";
 import { PunkConnectButton } from "./punk-society/PunkConnectButton";
 import { FaucetButton } from "./scaffold-eth";
-import { useAccount } from "wagmi";
 import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 /**
  * Site header
  */
 export const Header = () => {
-  const { address: connectedAddress } = useAccount();
-
   const pathname = usePathname();
 
   return (
@@ -37,7 +34,7 @@ export const Header = () => {
         <div className="flex flex-row gap-3 ">
           <Link href="/" passHref>
             <button
-              className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+              className={`bg-transparent hover:bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
                 pathname === "/" ? "text-blue-600" : ""
               }`}
             >
@@ -49,7 +46,7 @@ export const Header = () => {
 
           <Link href="/search" passHref>
             <button
-              className={`bg-transparent hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+              className={`bg-transparent hover:bg-bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
                 pathname === "/search" ? "text-blue-600" : ""
               }`}
             >
@@ -61,7 +58,7 @@ export const Header = () => {
 
           <Link href="/not-found" passHref>
             <button
-              className={`bg-transparent text-red-600 hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+              className={`bg-transparent text-red-600 hover:bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
                 pathname === "/notifications" ? "text-blue-600" : ""
               }`}
             >
@@ -73,7 +70,7 @@ export const Header = () => {
 
           <Link href="/not-found" passHref>
             <button
-              className={`bg-transparent text-red-600 hover:bg-base-200 border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+              className={`bg-transparent text-red-600 hover:bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
                 pathname === "/messages" ? "text-blue-600" : ""
               }`}
             >
@@ -103,17 +100,13 @@ export const Header = () => {
         </div> */}
       </div>
 
-      <div className="navbar-end relative lg:mr-2">
+      <div className="navbar-end relative ">
         <div className="flex justify-center items-center  ">
-          <div className="hidden md:flex lg:mr-2">
-            <PunkBalance address={connectedAddress} />
-          </div>
-
           <div className="flex items-center justify-center">
             <PunkConnectButton />
           </div>
 
-          <div className="">
+          <div>
             <FaucetButton />
           </div>
         </div>
@@ -121,9 +114,10 @@ export const Header = () => {
           {/* <div className="lg:mr-2"></div> */}
 
           <div className="hidden lg:flex">
-            <div className="lg:ml-4">
-              <SwitchTheme />
-            </div>
+            <SwitchTheme />
+          </div>
+          <div className="mr-4">
+            <ConfigMenu />
           </div>
         </div>
       </div>

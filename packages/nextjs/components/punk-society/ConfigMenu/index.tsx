@@ -3,8 +3,10 @@
 // @refresh reset
 import { AddressInfoDropdown } from "./AddressInfoDropdown";
 import { AddressQRCodeModal } from "./AddressQRCodeModal";
+import { BridgeUSDCModal } from "./BridgeUSDCModal";
 import { LoadPrivateKeyModal } from "./LoadPrivateKeyModal";
 import { PrivateKeyModal } from "./PrivateKeyModal";
+import { SendUSDCModal } from "./SendUSDCModal";
 import { SwitchLanguageModal } from "./SwitchLanguageModal";
 import { WrongNetworkDropdown } from "./WrongNetworkDropdown";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
@@ -15,7 +17,7 @@ import { getBlockExplorerAddressLink } from "~~/utils/scaffold-eth";
 /**
  * Custom Wagmi Connect Button (watch balance + custom design)
  */
-export const PunkConnectButton = () => {
+export const ConfigMenu = () => {
   const { targetNetwork } = useTargetNetwork();
 
   return (
@@ -43,6 +45,13 @@ export const PunkConnectButton = () => {
 
               return (
                 <>
+                  <div></div>
+                  {/* <div className="flex flex-col items-center mr-1">
+                    <Balance address={account.address as Address} usdMode={true} className="min-h-0 h-auto" />
+                    <span className="text-xs" style={{ color: networkColor }}>
+                      {chain.name}
+                    </span>
+                  </div> */}
                   <AddressInfoDropdown
                     address={account.address as Address}
                     displayName={account.displayName}
@@ -53,6 +62,8 @@ export const PunkConnectButton = () => {
                   <PrivateKeyModal modalId="private-key-modal" />
                   <LoadPrivateKeyModal modalId="load-private-key-modal" />
                   <SwitchLanguageModal modalId="switch-language-modal" />
+                  <SendUSDCModal modalId="send-usdc-modal" />
+                  <BridgeUSDCModal modalId="bridge-usdc-modal" />
                 </>
               );
             })()}

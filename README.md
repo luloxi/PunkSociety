@@ -112,7 +112,7 @@ yarn install
 
 4. Start a local Avalanche L1:
 
-It'd be ideal to run it with one command like `yarn subnet`, but so far, **you gotta <a href="./AVALANCHE-L1.md" target="_blank">follow this instructions</a>**.
+It'd be ideal to run it with one command like `yarn subnet` with a config file, but so far, **you gotta <a href="./AVALANCHE-L1.md" target="_blank">follow this instructions</a>**.
 
 You'll start a local Avalanche L1 using [Ava Labs avalanche-starter-kit](https://github.com/ava-labs/avalanche-starter-kit). The network runs on your local machine and can be used for testing and development.
 
