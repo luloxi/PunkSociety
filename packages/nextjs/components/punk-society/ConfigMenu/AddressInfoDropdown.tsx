@@ -11,6 +11,7 @@ import {
   QrCodeIcon,
 } from "@heroicons/react/24/outline";
 import { KeyIcon as KeyIconSolid, LanguageIcon } from "@heroicons/react/24/solid";
+import { SwitchTheme } from "~~/components/SwitchTheme";
 import { useOutsideClick } from "~~/hooks/scaffold-eth";
 import { getTargetNetworks } from "~~/utils/scaffold-eth";
 
@@ -91,6 +92,9 @@ export const AddressInfoDropdown = ({ blockExplorerAddressLink }: AddressInfoDro
               </button>
             </li>
           ) : null}
+          <div className={selectingNetwork ? "hidden" : "flex items-center justify-center"}>
+            <SwitchTheme />
+          </div>
           <li className={selectingNetwork ? "hidden" : ""}>
             <label htmlFor="switch-language-modal" className="btn-sm !rounded-xl flex gap-3 py-3">
               <LanguageIcon className="h-6 w-4 ml-2 sm:ml-0" />

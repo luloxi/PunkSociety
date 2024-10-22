@@ -21,9 +21,13 @@ export const SwitchTheme = ({ className }: { className?: string }) => {
   if (!mounted) return null;
 
   return (
-    <div className={`flex space-x-2 h-8 items-center justify-center text-sm ${className}`}>
-      <button onClick={handleToggle} className="swap swap-rotate">
+    <div
+      onClick={handleToggle}
+      className={`flex cursor-pointer space-x-2 h-8 items-center hover:bg-[#C9D8E5] dark:hover:bg-[#193048] justify-start w-full rounded-lg pl-5 lg:pl-3 text-sm ${className}`}
+    >
+      <button className="swap swap-rotate flex flex-row gap-2 justify-start items-center">
         {isDarkMode ? <MoonIcon className="h-5 w-5" /> : <SunIcon className="h-5 w-5" />}
+        <span>Switch theme</span>
       </button>
     </div>
   );

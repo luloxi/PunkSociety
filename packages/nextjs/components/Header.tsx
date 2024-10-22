@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SwitchTheme } from "./SwitchTheme";
 import { ConfigMenu } from "./punk-society/ConfigMenu";
 import { PunkConnectButton } from "./punk-society/PunkConnectButton";
 import { FaucetButton } from "./scaffold-eth";
@@ -19,7 +18,7 @@ export const Header = () => {
     <div className="flex lg:sticky  top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start ml-4 lg:ml-2">
         <div className="flex lg:hidden">
-          <SwitchTheme />
+          {/* <ConfigMenu /> */}
           <div className="flex justify-center items-center ml-8 lg:ml-0">
             <Link href="/" passHref>
               <span className="inline-flex items-center gap-2">
@@ -113,13 +112,8 @@ export const Header = () => {
         <div className="flex flex-row items-center justify-center gap-3">
           {/* <div className="lg:mr-2"></div> */}
 
-          <div className=" lg:ml-4">
+          <div className=" lg:ml-4 mr-4">
             <ConfigMenu />
-          </div>
-          <div className="mr-4">
-            <div className="hidden lg:flex ">
-              <SwitchTheme />
-            </div>
           </div>
         </div>
       </div>

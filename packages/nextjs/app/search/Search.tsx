@@ -46,9 +46,17 @@ export const Search = () => {
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen  gap-3">
-      <InputBase value={searchQuery} onChange={setSearchQuery} placeholder="Enter username or address" />
+      <div onKeyDown={handleKeyDown}>
+        <InputBase value={searchQuery} onChange={setSearchQuery} placeholder="Enter username or address" />
+      </div>
       {/* <AddressInput value={searchQuery} onChange={setSearchQuery} placeholder="Enter username, address or ENS" /> */}
       <button onClick={handleSearch} disabled={loading} className="btn btn-primary">
         {loading ? <LoadingBars /> : "Go"}
