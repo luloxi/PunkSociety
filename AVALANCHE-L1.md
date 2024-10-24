@@ -4,9 +4,9 @@ General avalanche instructions: `avalanche -h`
 
 ## 0. Start the GitHub codespace
 
-Run [avalanche-starter-kit](https://github.com/ava-labs/avalanche-starter-kit) as GitHub codespaces (click on Code, Go to tab Codespaces, Click on `+` to start a new codespace):
+Go to [avalanche-starter-kit](https://github.com/ava-labs/avalanche-starter-kit), open Code, switch to tab Codespaces, then click on `+` to start a new codespace:
 
-It'll take some time to load, go take a walk or something
+It'll take some time to load, go take a walk or do something else while it loads
 
 ## 1. Create and Start the local blockchain
 
@@ -24,12 +24,6 @@ It'll take some time to load, go take a walk or something
 > NOTE: After 30 minutes (or if you close the tab/browser) your codespaces goes to sleep. To prevent this from happening, run this command: `while true; do echo "Ah ah ah ah, staying alive!"; sleep 900; done &` to ping the codespace every 15 minutes.
 
 > NOTE: Remember [GitHub will provide users in the free plan](https://docs.github.com/es/billing/managing-billing-for-your-products/managing-billing-for-github-codespaces/about-billing-for-github-codespaces) (boo!) 120 core hours or 60 hours of run time on a 2 core codespace, plus 15 GB of storage each month. So remember to shut it down when you're not using it.
-
-> NOTE for Ava Labs: Maybe a **function to set Port 9650 to public** could be a temporary improvement to open it until it's opened automatically by default.
-
-> NOTE for Ava Labs: Codespace should be kept alive automatically on codespaces [with a cronjob (maybe not this one)](./avalanche_codespace_keepalive.md).
-
-> NOTE for Ava Labs: When running `avalanche network start` after the codespace was asleep, my dapp can't connect with the same RPC URL to the blockchain anymore, and I have to start a new chain. Maybe it's a problem with the codespace or my computer, I'm not sure. Had to reinstall [Linux Mint Cinnamon Edition](https://linuxmint.com/download.php) a few days ago, maybe I'm missing some dependency or something, or it's a problem with my local/internet network.
 
 ## 2. Load RPC URL into your scaffold-eth
 
