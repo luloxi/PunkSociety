@@ -2,13 +2,13 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { PunkBalance } from "../PunkBalance";
 import { NetworkOptions } from "./NetworkOptions";
-import { FundButton, getOnrampBuyUrl } from "@coinbase/onchainkit/fund";
+// import { FundButton, getOnrampBuyUrl } from "@coinbase/onchainkit/fund";
 import { getAddress } from "viem";
 import { Address } from "viem";
-import { useAccount } from "wagmi";
+import { useAccount, useDisconnect } from "wagmi";
 import { UserIcon } from "@heroicons/react/24/outline";
 import { QrCodeIcon } from "@heroicons/react/24/outline";
-import { ArrowUpLeftIcon, LinkIcon } from "@heroicons/react/24/solid";
+import { ArrowLeftOnRectangleIcon, ArrowUpLeftIcon } from "@heroicons/react/24/solid";
 import { useOutsideClick, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 type AddressInfoDropdownProps = {
@@ -23,16 +23,17 @@ export const AddressInfoDropdown = ({ address }: AddressInfoDropdownProps) => {
 
   const checkSumAddress = getAddress(address);
   const { address: connectedAddress } = useAccount();
+  const { disconnect } = useDisconnect();
 
-  const projectId = process.env.NEXT_PUBLIC_CDP_PROJECT_ID || "";
+  // const projectId = process.env.NEXT_PUBLIC_CDP_PROJECT_ID || "";
 
-  const onrampBuyUrl = getOnrampBuyUrl({
-    projectId,
-    addresses: { connectedAddress: ["base", "avalanche"] },
-    assets: ["USDC"],
-    presetFiatAmount: 5,
-    fiatCurrency: "USD",
-  });
+  // const onrampBuyUrl = getOnrampBuyUrl({
+  //   projectId,
+  //   addresses: { connectedAddress: ["base", "avalanche"] },
+  //   assets: ["USDC"],
+  //   presetFiatAmount: 5,
+  //   fiatCurrency: "USD",
+  // });
 
   const { data: profileInfo } = useScaffoldReadContract({
     contractName: "PunkProfile",
@@ -94,24 +95,18 @@ export const AddressInfoDropdown = ({ address }: AddressInfoDropdownProps) => {
             </Link>
           </li>
           <li className={selectingNetwork ? "hidden" : ""}>
-            <label
-              htmlFor="qrcode-modal"
-              className="bg-[#4338CA] text-white hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
-            >
+            <label htmlFor="qrcode-modal" className="btn-sm !rounded-xl flex gap-3 py-3">
               <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
-              <span className="whitespace-nowrap">Receive USDC</span>
+              <span className="whitespace-nowrap">Receive ETH</span>
             </label>
           </li>
           <li className={selectingNetwork ? "hidden" : ""}>
-            <label
-              htmlFor="send-usdc-modal"
-              className="bg-[#4338CA] text-white hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
-            >
+            <label htmlFor="send-usdc-modal" className=" btn-sm !rounded-xl flex gap-3 py-3">
               <ArrowUpLeftIcon className="h-6 w-4 ml-2 sm:ml-0" />
-              <span className="whitespace-nowrap">Send USDC</span>
+              <span className="whitespace-nowrap">Send ETH</span>
             </label>
           </li>
-          <li className={selectingNetwork ? "hidden" : ""}>
+          {/* <li className={selectingNetwork ? "hidden" : ""}>
             <label
               htmlFor="bridge-usdc-modal"
               className="bg-[#4338CA] text-white hover:bg-[#4f46e5] active:bg-[#4f46e5] btn-sm !rounded-xl flex gap-3 py-3"
@@ -126,9 +121,9 @@ export const AddressInfoDropdown = ({ address }: AddressInfoDropdownProps) => {
               fundingUrl={onrampBuyUrl}
               className="py-1 text-white px-6 md:px-3.5 gap-0.5 md:gap-1 text-md rounded-xl bg-[#4338CA] hover:bg-[#4f46e5] active:bg-[#4f46e5] justify-start font-normal "
             />
-          </li>
+          </li> */}
 
-          {/* <li className={selectingNetwork ? "hidden" : ""}>
+          <li className={selectingNetwork ? "hidden" : ""}>
             <button
               className="menu-item text-red-600 dark:text-red-500 btn-sm !rounded-xl flex gap-3 py-3"
               type="button"
@@ -136,7 +131,7 @@ export const AddressInfoDropdown = ({ address }: AddressInfoDropdownProps) => {
             >
               <ArrowLeftOnRectangleIcon className="h-6 w-4 ml-2 sm:ml-0" /> <span>Disconnect</span>
             </button>
-          </li> */}
+          </li>
         </ul>
       </details>
     </>

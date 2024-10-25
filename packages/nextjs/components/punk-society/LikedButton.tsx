@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { parseEther } from "viem";
+// import { parseEther } from "viem";
 import { useAccount } from "wagmi";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -42,7 +42,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ postId }) => {
       await writeContractAsync({
         functionName: "likePost",
         args: [postId],
-        value: parseEther("1"),
+        // value: parseEther("1"),
       });
       notification.success("Liked successfully!");
     } catch (error) {
@@ -60,7 +60,7 @@ const LikeButton: React.FC<LikeButtonProps> = ({ postId }) => {
       await writeContractAsync({
         functionName: "unlikePost",
         args: [postId],
-        value: parseEther("0.5"),
+        // value: parseEther("0.5"),
       });
       notification.success("Unliked successfully!");
     } catch (error) {

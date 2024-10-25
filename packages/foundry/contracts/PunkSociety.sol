@@ -106,13 +106,13 @@ contract PunkSociety is Ownable {
   function createPost(
     string memory _tokenURI
   ) public payable {
-    require(msg.value == 3 ether, "Must send 3 USDC to create a post");
+    // require(msg.value == 3 ether, "Must send 3 USDC to create a post");
     uint256 postId = postIds++;
     postIdToUser[postId] = msg.sender;
     userPosts[msg.sender].push(postId);
 
     punkPosts.mint(_tokenURI);
-    payable(owner()).transfer(3 ether);
+    // payable(owner()).transfer(3 ether);
 
     emit PostCreated(postId, msg.sender, _tokenURI, block.timestamp);
   }
@@ -134,7 +134,7 @@ contract PunkSociety is Ownable {
     require(
       !userToPostLikes[msg.sender][_postID], "You have already liked this post"
     );
-    require(msg.value == 1 ether, "Must send 1 USDC to like a post");
+    // require(msg.value == 1 ether, "Must send 1 USDC to like a post");
 
     address postOwner = postIdToUser[_postID];
     require(postOwner != address(0), "Post owner does not exist");
@@ -142,9 +142,9 @@ contract PunkSociety is Ownable {
     userToPostLikes[msg.sender][_postID] = true;
     postToLikes[_postID]++;
 
-    // Transfer 0.1 ETH to the post owner
-    (bool sent,) = postOwner.call{ value: 1 ether }("");
-    require(sent, "Failed to send ETH to the post owner");
+    // Transfer 1 USDC to the post owner
+    // (bool sent,) = postOwner.call{ value: 1 ether }("");
+    // require(sent, "Failed to send USDC to the post owner");
 
     emit PostLiked(_postID, msg.sender, block.timestamp);
   }
@@ -156,7 +156,7 @@ contract PunkSociety is Ownable {
     require(
       userToPostLikes[msg.sender][_postID], "You have not liked this post yet"
     );
-    require(msg.value == 0.5 ether, "Must send 0.5 USDC to unlike a post");
+    // require(msg.value == 0.5 ether, "Must send 0.5 USDC to unlike a post");
 
     address postOwner = postIdToUser[_postID];
     require(postOwner != address(0), "Post owner does not exist");
@@ -164,9 +164,9 @@ contract PunkSociety is Ownable {
     userToPostLikes[msg.sender][_postID] = false;
     postToLikes[_postID]--;
 
-    // Transfer 0.1 ETH to the post owner
-    (bool sent,) = postOwner.call{ value: 0.5 ether }("");
-    require(sent, "Failed to send ETH to the post owner");
+    // Transfer 0.5 USDC to the post owner
+    // (bool sent,) = postOwner.call{ value: 0.5 ether }("");
+    // require(sent, "Failed to send USDC to the post owner");
 
     emit PostUnliked(_postID, msg.sender, block.timestamp);
   }

@@ -7,8 +7,7 @@ import { KeyIcon as KeyIconOutline } from "@heroicons/react/24/outline";
 import {
   ArrowLeftOnRectangleIcon,
   ArrowTopRightOnSquareIcon,
-  ArrowsRightLeftIcon,
-  QrCodeIcon,
+  ArrowsRightLeftIcon, // QrCodeIcon,
 } from "@heroicons/react/24/outline";
 import { KeyIcon as KeyIconSolid, LanguageIcon } from "@heroicons/react/24/solid";
 import { SwitchTheme } from "~~/components/SwitchTheme";
@@ -51,7 +50,7 @@ export const AddressInfoDropdown = ({ blockExplorerAddressLink }: AddressInfoDro
         >
           <NetworkOptions hidden={!selectingNetwork} />
 
-          <li className={selectingNetwork ? "hidden" : ""}>
+          {/* <li className={selectingNetwork ? "hidden" : ""}>
             <label
               htmlFor="qrcode-modal"
               className="text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-500 btn-sm !rounded-xl flex gap-3 py-3"
@@ -59,22 +58,16 @@ export const AddressInfoDropdown = ({ blockExplorerAddressLink }: AddressInfoDro
               <QrCodeIcon className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">View your address</span>
             </label>
-          </li>
+          </li> */}
           <li className={selectingNetwork ? "hidden" : ""}>
-            <label
-              htmlFor="private-key-modal"
-              className="btn-sm text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-500 !rounded-xl flex gap-3 py-3"
-            >
+            <label htmlFor="private-key-modal" className="btn-sm  !rounded-xl flex gap-3 py-3">
               <KeyIconOutline className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">View Private Key</span>
             </label>
           </li>
 
           <li className={selectingNetwork ? "hidden" : ""}>
-            <label
-              htmlFor="load-private-key-modal"
-              className="btn-sm text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-500 !rounded-xl flex gap-3 py-3"
-            >
+            <label htmlFor="load-private-key-modal" className="btn-sm  !rounded-xl flex gap-3 py-3">
               <KeyIconSolid className="h-6 w-4 ml-2 sm:ml-0" />
               <span className="whitespace-nowrap">Load Private Key</span>
             </label>

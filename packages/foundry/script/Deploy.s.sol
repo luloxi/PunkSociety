@@ -63,8 +63,9 @@ contract DeployScript is ScaffoldETHDeploy {
     );
 
     // Transfer 5000 USDC to the simpleFaucet
-    payable(address(simpleFaucet)).transfer(5000 * 1e18);
-    console.logString("5000 USDC transferred to SimpleFaucet");
+    // payable(address(simpleFaucet)).transfer(5000 * 1e18);
+    // payable(address(simpleFaucet)).transfer(0.5 * 1e18);
+    // console.logString("5000 USDC transferred to SimpleFaucet");
 
     if (block.chainid == LOCAL_CHAIN_ID) { }
 

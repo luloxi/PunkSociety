@@ -7,8 +7,9 @@ contract SimpleFaucet {
   // Mapping to track if an address has claimed ETH
   mapping(address => bool) public hasClaimed;
 
-  // Ether to be dispensed (10 ETH in 18 decimals)
-  uint256 public constant AMOUNT = 10 ether;
+  // Ether to be dispensed (10 USDC in 18 decimals)
+  // uint256 public constant AMOUNT = 10 ether;
+  uint256 public constant AMOUNT = 0.01 ether;
 
   // Only allow each address to claim once
   modifier onlyOnce() {

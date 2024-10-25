@@ -3417,7 +3417,7 @@ const deployedContracts = {
   },
   11155111: {
     PunkPosts: {
-      address: "0xda169ecb96f10f1f02801da59c4de93af92e627b",
+      address: "0x29Aa5406e281172cf2a25D98c32C549Ed92485F9",
       abi: [
         {
           type: "constructor",
@@ -4102,7 +4102,7 @@ const deployedContracts = {
       },
     },
     PunkProfile: {
-      address: "0xb4adbae83c70f445e40d3ee2744b8c31bcecae89",
+      address: "0xF27F9f4b2D2884b9A90127E12FD3C330D3B36c0E",
       abi: [
         {
           type: "function",
@@ -4264,7 +4264,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     PunkSociety: {
-      address: "0xc531df99af12835762494a987bc41819981cd957",
+      address: "0x73C7fEac248776113666bDa263dd8a3B169DC343",
       abi: [
         {
           type: "constructor",
@@ -5081,6 +5081,80 @@ const deployedContracts = {
         renounceOwnership: "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
         transferOwnership: "lib/openzeppelin-contracts/contracts/access/Ownable.sol",
       },
+    },
+    SimpleFaucet: {
+      address: "0x094379a6276A430CD3fBbD4a5E28C2B52E3E7030",
+      abi: [
+        {
+          type: "receive",
+          stateMutability: "payable",
+        },
+        {
+          type: "function",
+          name: "AMOUNT",
+          inputs: [],
+          outputs: [
+            {
+              name: "",
+              type: "uint256",
+              internalType: "uint256",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "claim",
+          inputs: [],
+          outputs: [],
+          stateMutability: "nonpayable",
+        },
+        {
+          type: "function",
+          name: "deposit",
+          inputs: [],
+          outputs: [],
+          stateMutability: "payable",
+        },
+        {
+          type: "function",
+          name: "hasClaimed",
+          inputs: [
+            {
+              name: "",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [
+            {
+              name: "",
+              type: "bool",
+              internalType: "bool",
+            },
+          ],
+          stateMutability: "view",
+        },
+        {
+          type: "function",
+          name: "transfer",
+          inputs: [
+            {
+              name: "receiver",
+              type: "address",
+              internalType: "address",
+            },
+          ],
+          outputs: [],
+          stateMutability: "payable",
+        },
+        {
+          type: "error",
+          name: "FailedToTransfer",
+          inputs: [],
+        },
+      ],
+      inheritedFunctions: {},
     },
   },
 } as const;
