@@ -8,7 +8,7 @@ const rpcUrl = process.env.NEXT_PUBLIC_PUNKSOCIETY_RPC_URL || "http://127.0.0.1:
 const wsRpcUrl = rpcUrl.replace(/^https:\/\//, "ws://");
 
 export const punksociety = /*#__PURE__*/ defineChain({
-  id: 7_615_243,
+  id: 615_243,
   name: "PunkSociety",
   nativeCurrency: {
     decimals: 18,
