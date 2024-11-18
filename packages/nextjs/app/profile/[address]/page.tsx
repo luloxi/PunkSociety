@@ -9,7 +9,7 @@ import ProfilePictureUpload from "../_components/ProfilePictureUpload";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";
-import { Address } from "~~/components/scaffold-eth";
+import { Address, Balance } from "~~/components/scaffold-eth";
 import { InputBase } from "~~/components/scaffold-eth";
 import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
@@ -219,6 +219,10 @@ const ProfilePage: NextPage = () => {
                   <div className="mt-2">
                     <div className="text-base-content">
                       <Address address={address} />
+                      <div className="flex flex-row items-center">
+                        <span>Balance: </span>
+                        <Balance address={address} />
+                      </div>
                     </div>
                   </div>
                 </>
