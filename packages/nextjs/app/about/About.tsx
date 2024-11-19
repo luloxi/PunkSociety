@@ -19,8 +19,8 @@ export const About = () => {
             src="/socialmonetization.jpg"
             alt="Animation clicking a like button and increasing USDC balance"
             className="max-w-sm rounded-lg shadow-2xl border-2"
-            width={500}
-            height={500}
+            width={400}
+            height={400}
           />
           <div>
             <h1 className="text-6xl font-mono">What if you earned 💸 money from socials?</h1>
