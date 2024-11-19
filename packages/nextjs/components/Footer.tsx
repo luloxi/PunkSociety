@@ -99,7 +99,7 @@ export const Footer = () => {
                 </p>
                 <a
                   className="flex justify-center items-center gap-1"
-                  href="https://x.com/LuloxDev"
+                  href="https://linktr.ee/lulox"
                   target="_blank"
                   rel="noreferrer"
                 >

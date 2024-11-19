@@ -19,11 +19,11 @@ export const About = () => {
             src="/socialmonetization.jpg"
             alt="Animation clicking a like button and increasing USDC balance"
             className="max-w-sm rounded-lg shadow-2xl border-2"
-            width={400}
-            height={400}
+            width={500}
+            height={500}
           />
           <div>
-            <h1 className="text-6xl font-mono">What if you earned 💸 money from socials?</h1>
+            <h1 className="text-6xl font-mono">What if you earned 💸 money from socializing?</h1>
             <p className="py-6">
               <div className="flex justify-center items-center gap-1 flex-wrap">
                 <span className="text-xl text-center">
@@ -54,19 +54,56 @@ export const About = () => {
         <h1 className="text-6xl font-mono text-center">Features! 🤘</h1>
       </div>
       <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 lg:p-4">
-        <div className="card lg:h-[500px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between bg-base-100 shadow-xl">
           <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/usdc-flag.jpg" alt="USDC Flag" className="rounded-xl" width={500} height={500} />
+            <Image src="/post-types.png" alt="Post types" className="" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl font-mono">Pay for transactions with USDC!</h2>
-            <p>USDC is the native gas! We&apos;ll use our own Avalanche L1 for that.</p>
+            <h2 className="card-title text-3xl font-mono">Several post types!</h2>
+            <p>
+              Posts can have text, image, audio, video, links and polls.
+              <br /> And yeah, they&apos;re all NFTs! 🤯
+            </p>
           </div>
         </div>
-        <div className="card lg:h-[500px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between rounded-none lg:rounded-xl bg-base-100 shadow-xl">
+          <figure className=" h-[250px] mt-10 flex-shrink-0">
+            <Image src="/socialmonetization.jpg" alt="Social monetization" className="" width={500} height={500} />
+          </figure>
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <h2 className="card-title text-3xl font-mono">Social monetization!</h2>
+            <p>
+              When liking, commenting and sharing, you send USDC to the post creator. If you receive a lot of
+              interactions, you&apos;ll receive a lot of USDC!
+            </p>
+          </div>
+        </div>
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
           <div className="lg:h-[300px] mt-10 w-full overflow-hidden flex justify-center items-center">
             <figure className="px-10 pt-10 flex-shrink-0">
-              <Image src="/revenue.jpg" alt="Revenue" className="rounded-xl object-cover" width={500} height={500} />
+              <Image src="/usdc-yield.jpg" alt="Revenue" className=" object-cover" width={500} height={500} />
+            </figure>
+          </div>
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <h2 className="card-title text-3xl font-mono">Earn USDC yield while using PunkSociety!</h2>
+            <p>When bridged to our Avalanche L1, USDC gets invested and generates interest on the home blockchain. </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <figure className="px-10 pt-10 flex-shrink-0">
+            <Image src="/usdc-flag.jpg" alt="USDC Flag" className="" width={500} height={500} />
+          </figure>
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <h2 className="card-title text-3xl font-mono">USDC is the native gas here!</h2>
+            <p>1 USD = 1 USDC = native gas! And that pays for transactions and interactions within PunkSociety L1.</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+          <div className="lg:h-[300px] mt-10 w-full overflow-hidden flex justify-center items-center">
+            <figure className="px-10 pt-10 flex-shrink-0">
+              <Image src="/revenue.jpg" alt="Revenue" className="object-cover" width={500} height={500} />
             </figure>
           </div>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
@@ -74,31 +111,18 @@ export const About = () => {
             <p>Analyze your earnings and spendings in your revenue dashboard.</p>
           </div>
         </div>
-        <div className="card lg:h-[500px] flex flex-col justify-between rounded-none lg:rounded-xl bg-base-100 shadow-xl">
+
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between bg-base-100 shadow-xl">
           <figure className="px-10 pt-10 flex-shrink-0">
-            <Image
-              src="/socialmonetization.jpg"
-              alt="Social monetization"
-              className="rounded-xl"
-              width={500}
-              height={500}
-            />
+            <Image src="/social-login.jpeg" alt="Notifications" className="" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl font-mono">Social monetization!</h2>
-            <p>When liking, commenting and sharing, you send USDC to the post creator.</p>
+            <h2 className="card-title text-3xl font-mono">Social login!</h2>
+            <p>Access with your wallet or your social accounts!</p>
           </div>
         </div>
-        <div className="card lg:h-[500px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/post-types.png" alt="Post types" className="rounded-xl" width={500} height={500} />
-          </figure>
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl font-mono">Several post types!</h2>
-            <p>Posts can have text, image, audio, video, links and polls.</p>
-          </div>
-        </div>
-        <div className="card lg:h-[500px] flex flex-col justify-between bg-base-100 shadow-xl">
+
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="lg:h-[300px] mt-10 w-full overflow-hidden flex justify-center items-center">
             <figure className="px-10 pt-10 flex-shrink-0">
               <Image src="/customize-profile.jpg" alt="Notifications" className="rounded-xl" width={500} height={500} />
@@ -110,7 +134,8 @@ export const About = () => {
             <p>Change colors, cover photo, create post collections, and so much more...</p>
           </div>
         </div>
-        <div className="card lg:h-[500px] flex flex-col justify-between bg-base-100 shadow-xl">
+
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="lg:h-[300px] mt-10 w-full overflow-hidden flex justify-center items-center">
             <figure className="px-10 pt-10 flex-shrink-0">
               <Image src="/messaging.jpg" alt="Messaging" width={500} height={500} />
@@ -121,34 +146,28 @@ export const About = () => {
             <p>Encrypted direct messaging and group chats.</p>
           </div>
         </div>
-        <div className="card lg:h-[500px] flex flex-col justify-between bg-base-100 shadow-xl">
+
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between bg-base-100 shadow-xl">
           <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/social-login.jpeg" alt="Notifications" className="rounded-xl" width={500} height={500} />
-          </figure>
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl font-mono">Social login!</h2>
-            <p>Access with your wallet or your social accounts!</p>
-          </div>
-        </div>
-        <div className="card lg:h-[500px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/notifications.png" alt="Notifications" className="rounded-xl" width={500} height={500} />
+            <Image src="/notifications.png" alt="Notifications" className="" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-3xl font-mono">Notifications!</h2>
             <p>Get them on our web, on your phone, on your mail...</p>
           </div>
         </div>
-        <div className="card lg:h-[500px] flex flex-col justify-between bg-base-100 shadow-xl">
+
+        <div className="card lg:h-[500px] max-w-[600px] flex flex-col justify-between bg-base-100 shadow-xl">
           <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/accesibility.jpg" alt="Accesibility" className="rounded-xl" width={500} height={500} />
+            <Image src="/accesibility.jpg" alt="Accesibility" className="" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-3xl font-mono">Accesibility!</h2>
-            <p>PunkSocial can be used by anyone, including people with disabilities.</p>
+            <p>PunkSociety can be used by people with visual or hearing impairments.</p>
           </div>
         </div>
       </div>
+
       <div className="w-full pt-2 bg-base-200">
         <h1 className="text-6xl font-mono text-center">Meet the team! 🤘</h1>
       </div>
