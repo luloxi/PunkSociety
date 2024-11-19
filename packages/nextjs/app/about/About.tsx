@@ -59,7 +59,6 @@ export const About = () => {
               When liking, commenting and sharing, you send USDC to the post creator. If you receive a lot of
               interactions, you&apos;ll receive a lot of USDC!
             </p>
-            👨‍🦽
           </div>
         </div>
         <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
