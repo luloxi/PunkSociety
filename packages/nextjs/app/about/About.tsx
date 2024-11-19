@@ -30,24 +30,18 @@ export const About = () => {
             <p className="pt-6">
               <div className="flex justify-center items-center gap-1 flex-wrap">
                 <span className="text-3xl text-center">
-                  What if <span className="text-orange-600 font-bold">every like, comment, and share</span>{" "}
+                  What if <span className="text-orange-600 font-bold">every like ❤️, comment 💬, and share 🔄</span>{" "}
                   <span className="text-green-600">changed the</span>
                 </span>
-                <span className="text-3xl text-blue-600 font-bold">USDC</span>
+                <span className="text-3xl px-1 text-blue-600 font-bold">USDC</span>
                 <Image src="/usdc-logo.png" alt="USDC" width={30} height={30} />
                 <span className="text-3xl">balance of your life? 🤔</span>
+                <span className="text-3xl">
+                  Meet <strong>PunkSociety 🤘</strong>!
+                </span>
               </div>
               <br />
             </p>
-            {/* <div className="flex justify-around gap-3">
-              <button className="w-1/3 h-16 text-xl btn btn-primary text-white bg-orange-600 border-0 hover:bg-orange-700">
-                See some posts!
-              </button>
-
-              <button className="w-1/3 h-16 text-xl btn btn-primary text-white bg-blue-600 border-0 hover:bg-blue-700">
-                Create a profile!
-              </button>
-            </div> */}
           </div>
         </div>
       </div>
