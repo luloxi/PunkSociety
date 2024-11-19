@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Post extends Partial<NFTMetaData> {
@@ -25,10 +26,10 @@ export const About = () => {
           />
           <div>
             <h1 className="text-4xl font-bold font-mono text-center">
-              What if you <strong className="text-green-600">earned</strong> 💸 from using social media?
+              Wanna <strong className="text-green-600">earn</strong> 💸 from using social media?
             </h1>
             <p className="pt-6 flex justify-center">
-              <span className="text-2xl ">
+              <span className="text-5xl text-center ">
                 Meet <strong>PunkSociety 🤘</strong>!
               </span>
             </p>
@@ -36,7 +37,7 @@ export const About = () => {
         </div>
       </div>
       <div className="w-full pt-6 bg-base-300">
-        <h1 className="text-6xl font-mono text-center">Features! 🤘</h1>
+        <h1 className="text-4xl font-bold font-mono text-center">Features! 🤘</h1>
       </div>
       <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
         <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
@@ -46,8 +47,8 @@ export const About = () => {
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-2xl font-mono">Post whatever! 🤹‍♂️</h2>
             <p>
-              Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊. And yeah,{" "}
-              <strong>they&apos;re all NFTs! 🤯</strong>
+              Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊. <br />
+              And yeah, <strong>they&apos;re all NFTs! 🤯</strong>
             </p>
           </div>
         </div>
@@ -57,13 +58,20 @@ export const About = () => {
             <Image src="/socialmonetization.jpg" alt="Social monetization" className="" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Social monetization! ❤️</h2>
+            <h2 className="card-title text-2xl font-mono">Social economy! ❤️</h2>
             <p>
-              Every like ❤️, comment 💬, and share 🔄 sends <span className="pr-1 text-blue-600 font-bold">USDC</span>
-              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> to the post
-              creator. If you receive a lot of interactions, you&apos;ll receive a lot of{" "}
-              <span className="pr-1 text-blue-600 font-bold">USDC</span>
-              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />!
+              Every like ❤️, comment 💬, and share 🔄 sends{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              to the post creator. <br />
+              If you receive a lot of interactions, you&apos;ll receive a lot of{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              !
             </p>
           </div>
         </div>
@@ -76,10 +84,17 @@ export const About = () => {
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-2xl font-mono">Earn USDC yield! 🫰</h2>
             <p>
-              Your <span className="pr-1 text-blue-600 font-bold">USDC</span>
-              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> generates
-              interest while bridged to our <span className="pr-1 text-red-600 font-bold">Avalanche</span>
-              <Image src="/avalanche-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> L1!
+              Your{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              generates interest while bridged to our{" "}
+              <Link href="https://www.avax.network/" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche</span>
+                <Image src="/avalanche-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              L1!
             </p>
           </div>
         </div>
@@ -91,7 +106,7 @@ export const About = () => {
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-2xl font-mono">USDC = native gas! ⛽</h2>
             <p>
-              Only <span className="pr-1 text-blue-600 font-bold">USDC</span>
+              Only <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
               <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> is needed to pay
               for transactions and interactions.
             </p>
