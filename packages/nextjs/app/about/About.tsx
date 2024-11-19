@@ -25,7 +25,7 @@ export const About = () => {
           />
           <div>
             <h1 className="text-6xl font-mono text-center">
-              What if you <strong className="text-green-600">earned</strong> 💸 from using social media? 🤔
+              What if you <strong className="text-green-600">earned</strong> 💸 from using social media?
             </h1>
             <p className="pt-6">
               <div className="flex justify-center items-center gap-1 flex-wrap">
