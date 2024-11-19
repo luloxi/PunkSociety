@@ -75,6 +75,38 @@ export const About = () => {
             </p>
           </div>
         </div>
+
+        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+          <div className="lg:h-[300px]  w-full overflow-hidden flex justify-center items-center">
+            <figure className="px-10 pt-10 flex-shrink-0">
+              <Image src="/revenue.jpg" alt="Revenue" className="object-cover" width={500} height={500} />
+            </figure>
+          </div>
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <h2 className="card-title text-2xl font-mono">Track your revenue! 💹</h2>
+            <p>Analyze your earnings and spendings in your revenue dashboard.</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <figure className="px-10 pt-10 flex-shrink-0">
+            <Image src="/usdc-flag.jpg" alt="USDC Flag" className="" width={500} height={500} />
+          </figure>
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <h2 className="card-title text-2xl font-mono">USDC = native gas! ⛽</h2>
+            <p>
+              <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+              <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" /> is used to
+              pay for transactions and interactions on our{" "}
+              <Link href="https://www.avax.network/" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche</span>
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              L1.
+            </p>
+          </div>
+        </div>
+
         <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
           <div className="lg:h-[300px] w-full overflow-hidden flex justify-center items-center">
             <figure className="px-10 flex-shrink-0">
@@ -87,12 +119,17 @@ export const About = () => {
               Your{" "}
               <Link href="https://circle.com/" target="_blank">
                 <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
               </Link>{" "}
-              generates interest while bridged to our{" "}
+              generates interest on{" "}
+              <Link href="https://aave.com/" target="_blank">
+                <span className="pr-1 text-indigo-600 font-bold underline underline-offset-2">AAVE</span>
+                <Image src="/aave-logo.png" alt="AAVE logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              while bridged to our{" "}
               <Link href="https://www.avax.network/" target="_blank">
                 <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche</span>
-                <Image src="/avalanche-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
               </Link>{" "}
               L1!
             </p>
@@ -101,27 +138,11 @@ export const About = () => {
 
         <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/usdc-flag.jpg" alt="USDC Flag" className="" width={500} height={500} />
+            <Image src="/notifications.png" alt="Notifications" className="" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">USDC = native gas! ⛽</h2>
-            <p>
-              Only <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> is needed to pay
-              for transactions and interactions.
-            </p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
-          <div className="lg:h-[300px]  w-full overflow-hidden flex justify-center items-center">
-            <figure className="px-10 pt-10 flex-shrink-0">
-              <Image src="/revenue.jpg" alt="Revenue" className="object-cover" width={500} height={500} />
-            </figure>
-          </div>
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Track your revenue! 💹</h2>
-            <p>Analyze your earnings and spendings in your revenue dashboard.</p>
+            <h2 className="card-title text-2xl font-mono">Notifications! 🔔</h2>
+            <p>Get informed on activity on our web 🌐, your phone notifications 📱 or your mail 📧.</p>
           </div>
         </div>
 
@@ -155,18 +176,8 @@ export const About = () => {
             </figure>
           </div>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Message with others! 💬</h2>
+            <h2 className="card-title text-2xl font-mono">Chat with friends! 💬</h2>
             <p>Encrypted direct messaging and group chats.</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/notifications.png" alt="Notifications" className="" width={500} height={500} />
-          </figure>
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Notifications! 🔔</h2>
-            <p>Get them on our web, on your phone, on your mail...</p>
           </div>
         </div>
 
