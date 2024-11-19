@@ -27,20 +27,10 @@ export const About = () => {
             <h1 className="text-4xl font-bold font-mono text-center">
               What if you <strong className="text-green-600">earned</strong> 💸 from using social media?
             </h1>
-            <p className="pt-6">
-              <div className="flex justify-center items-center gap-1 flex-wrap text-center">
-                <span className="text-2xl">
-                  What if <span className="text-orange-600 font-bold">every like ❤️, comment 💬, and share 🔄</span>{" "}
-                  <span className="text-green-600">changed the</span>
-                </span>
-                <span className="text-2xl px-1 text-blue-600 font-bold">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC" width={30} height={30} className="inline-block" />
-                <span className="text-2xl">balance of your life? 🤔</span>
-                <span className="text-2xl">
-                  Meet <strong>PunkSociety 🤘</strong>!
-                </span>
-              </div>
-              <br />
+            <p className="pt-6 flex justify-center">
+              <span className="text-2xl ">
+                Meet <strong>PunkSociety 🤘</strong>!
+              </span>
             </p>
           </div>
         </div>
@@ -55,7 +45,10 @@ export const About = () => {
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-2xl font-mono">Post whatever! 🤹‍♂️</h2>
-            <p>Posts can have text, image, audio, video, links and polls. And yeah, they&apos;re all NFTs! 🤯</p>
+            <p>
+              Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊. And yeah,{" "}
+              <strong>they&apos;re all NFTs! 🤯</strong>
+            </p>
           </div>
         </div>
 
@@ -66,8 +59,11 @@ export const About = () => {
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-2xl font-mono">Social monetization! ❤️</h2>
             <p>
-              When liking, commenting and sharing, you send USDC to the post creator. If you receive a lot of
-              interactions, you&apos;ll receive a lot of USDC!
+              Every like ❤️, comment 💬, and share 🔄 sends <span className="pr-1 text-blue-600 font-bold">USDC</span>
+              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> to the post
+              creator. If you receive a lot of interactions, you&apos;ll receive a lot of{" "}
+              <span className="pr-1 text-blue-600 font-bold">USDC</span>
+              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />!
             </p>
           </div>
         </div>
@@ -79,7 +75,12 @@ export const About = () => {
           </div>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-2xl font-mono">Earn USDC yield! 🫰</h2>
-            <p>When bridged to our Avalanche L1, USDC generates interest on the home blockchain. </p>
+            <p>
+              Your <span className="pr-1 text-blue-600 font-bold">USDC</span>
+              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> generates
+              interest while bridged to our <span className="pr-1 text-red-600 font-bold">Avalanche</span>
+              <Image src="/avalanche-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> L1!
+            </p>
           </div>
         </div>
 
@@ -89,7 +90,11 @@ export const About = () => {
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-2xl font-mono">USDC = native gas! ⛽</h2>
-            <p>Only USDC is needed to pay for transactions and interactions.</p>
+            <p>
+              Only <span className="pr-1 text-blue-600 font-bold">USDC</span>
+              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" /> is needed to pay
+              for transactions and interactions.
+            </p>
           </div>
         </div>
 
