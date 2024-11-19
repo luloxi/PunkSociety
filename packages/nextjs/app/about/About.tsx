@@ -20,8 +20,8 @@ export const About = () => {
             src="/like-dollar.png"
             alt="Animation clicking a like button and increasing USDC balance"
             className="max-w-sm rounded-lg"
-            width={300}
-            height={300}
+            width={150}
+            height={150}
           />
           <div>
             <h1 className="text-6xl font-mono text-center">
