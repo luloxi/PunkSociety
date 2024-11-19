@@ -23,7 +23,7 @@ export const About = () => {
             height={500}
           />
           <div>
-            <h1 className="text-6xl font-mono">What if you earned 💸 money from socializing?</h1>
+            <h1 className="text-6xl font-mono">What if you earned 💸 money from socials?</h1>
             <p className="py-6">
               <div className="flex justify-center items-center gap-1 flex-wrap">
                 <span className="text-xl text-center">
