@@ -106,7 +106,7 @@ export const About = () => {
           </div>
 
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl">Customize your profile!</h2>
+            <h2 className="card-title text-3xl font-mono">Customize your profile!</h2>
             <p>Change colors, cover photo, create post collections, and so much more...</p>
           </div>
         </div>
@@ -117,7 +117,7 @@ export const About = () => {
             </figure>
           </div>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl">Message with others!</h2>
+            <h2 className="card-title text-3xl font-mono">Message with others!</h2>
             <p>Encrypted direct messaging and group chats.</p>
           </div>
         </div>
@@ -126,7 +126,7 @@ export const About = () => {
             <Image src="/social-login.jpeg" alt="Notifications" className="rounded-xl" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl">Social login!</h2>
+            <h2 className="card-title text-3xl font-mono">Social login!</h2>
             <p>Access with your wallet or your social accounts!</p>
           </div>
         </div>
@@ -135,7 +135,7 @@ export const About = () => {
             <Image src="/notifications.png" alt="Notifications" className="rounded-xl" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl">Notifications!</h2>
+            <h2 className="card-title text-3xl font-mono">Notifications!</h2>
             <p>Get them on our web, on your phone, on your mail...</p>
           </div>
         </div>
@@ -144,7 +144,7 @@ export const About = () => {
             <Image src="/accesibility.jpg" alt="Accesibility" className="rounded-xl" width={500} height={500} />
           </figure>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-3xl">Accesibility!</h2>
+            <h2 className="card-title text-3xl font-mono">Accesibility!</h2>
             <p>PunkSocial can be used by anyone, including people with disabilities.</p>
           </div>
         </div>
