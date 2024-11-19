@@ -48,7 +48,7 @@ export const About = () => {
       <div className="w-full pt-6 bg-base-300">
         <h1 className="text-6xl font-mono text-center">Features! 🤘</h1>
       </div>
-      <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 lg:p-4">
+      <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
         <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <figure className=" h-[250px]  flex-shrink-0">
             <Image src="/socialmonetization.jpg" alt="Social monetization" className="" width={500} height={500} />
@@ -59,6 +59,7 @@ export const About = () => {
               When liking, commenting and sharing, you send USDC to the post creator. If you receive a lot of
               interactions, you&apos;ll receive a lot of USDC!
             </p>
+            👨‍🦽
           </div>
         </div>
         <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
@@ -172,7 +173,7 @@ export const About = () => {
             </figure>
             <div className="flex pb-5 flex-col items-center justify-center">
               <h2 className="text-3xl">Lulox</h2>
-              <span className="italic">founder, builder</span>
+              <span className="italic">buidler</span>
               <a
                 className="flex justify-center items-center gap-1"
                 href="https://linktr.ee/lulox"
