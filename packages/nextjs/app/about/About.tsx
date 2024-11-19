@@ -49,6 +49,16 @@ export const About = () => {
         <h1 className="text-6xl font-mono text-center">Features! 🤘</h1>
       </div>
       <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
+        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <figure className="px-10 pt-10 flex-shrink-0">
+            <Image src="/post-types.png" alt="Post types" className="" width={500} height={500} />
+          </figure>
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <h2 className="card-title text-2xl font-mono">Post whatever! 🤹‍♂️</h2>
+            <p>Posts can have text, image, audio, video, links and polls. And yeah, they&apos;re all NFTs! 🤯</p>
+          </div>
+        </div>
+
         <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <figure className=" h-[250px]  flex-shrink-0">
             <Image src="/socialmonetization.jpg" alt="Social monetization" className="" width={500} height={500} />
@@ -83,13 +93,15 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/post-types.png" alt="Post types" className="" width={500} height={500} />
-          </figure>
+        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+          <div className="lg:h-[300px]  w-full overflow-hidden flex justify-center items-center">
+            <figure className="px-10 pt-10 flex-shrink-0">
+              <Image src="/revenue.jpg" alt="Revenue" className="object-cover" width={500} height={500} />
+            </figure>
+          </div>
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Post whatever! 🤹‍♂️</h2>
-            <p>Posts can have text, image, audio, video, links and polls. And yeah, they&apos;re all NFTs! 🤯</p>
+            <h2 className="card-title text-2xl font-mono">Track your revenue! 💹</h2>
+            <p>Analyze your earnings and spendings in your revenue dashboard.</p>
           </div>
         </div>
 
@@ -103,18 +115,6 @@ export const About = () => {
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <h2 className="card-title text-2xl font-mono">Display your taste! 🎨</h2>
             <p>Create post collections, change cover photo, and so much more...</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
-          <div className="lg:h-[300px]  w-full overflow-hidden flex justify-center items-center">
-            <figure className="px-10 pt-10 flex-shrink-0">
-              <Image src="/revenue.jpg" alt="Revenue" className="object-cover" width={500} height={500} />
-            </figure>
-          </div>
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Track your revenue! 💹</h2>
-            <p>Analyze your earnings and spendings in your revenue dashboard.</p>
           </div>
         </div>
 
