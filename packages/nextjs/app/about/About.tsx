@@ -15,15 +15,16 @@ export const About = () => {
     <div className="flex flex-col items-center justify-center">
       <div className="hero bg-base-200 ">
         <div className="hero-content flex-col lg:flex-row-reverse lg:p-14">
-          <Image
+          {/* INSERT HERE A GIF SHOWING HOW A LIKE BECOMES MONEY */}
+          {/* <Image
             src="/socialmonetization.jpg"
             alt="Animation clicking a like button and increasing USDC balance"
             className="max-w-sm rounded-lg shadow-2xl border-2"
             width={500}
             height={500}
-          />
+          /> */}
           <div>
-            <h1 className="text-6xl font-mono">What if you earned 💸 money from socializing?</h1>
+            <h1 className="text-6xl font-mono text-center">What if you earned 💸 money from using social media?</h1>
             <p className="py-6">
               <div className="flex justify-center items-center gap-1 flex-wrap">
                 <span className="text-xl text-center">
