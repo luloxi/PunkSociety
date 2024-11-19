@@ -1,27 +1,10 @@
 Social protocol where interactions are monetized 💰 allowing users to earn through engaging with their community 🫂.
 
-🎁 Current build focuses on implementing USDC, NFTs and interaction between users on an Avalanche L1 with USDC as native gas and onramp USDC with Coinbase OnchainKit
-
-# 🤘 Features
-
-> NOTE: This is a work in progress and most features are not yet implemented.
-
-- 💸 **When bridged to PunkSociety, you can select different options to stake your USDC or bridged asset**
-- ⛓️ **Avalanche L1 with USDC as native gas** and other tokens bridged from other chains.
-- 💰 **Social monetization**: Likes, comments, shares and follows send USDC to the user on the other end
-- 📈 **Revenue dashboard**: Users can track and analyze their earnings
-- 🤹‍♂️ **Post types**: Posts can have text, image, audio, video, links and polls
-- 🔔 **Notifications**: Receive alerts on activity
-- 💌 **Messaging**: Direct messaging and group chat features
-- 🎨 **Profile customization**: Users can customize their profile and create post collections
-- 📱 **Web 2.5 login**: Social login options with Web2 platforms (Google, Twitter, etc.)
-- 🌐 **Multi-chain support**: Bridge your posts as NFTs to Avalanche L0 and other chains to access NFT markets
-- 🎧 **Accessibility support**: ARIA compliant for screen readers and other assistive technologies
-- 📚 **Educational content**: Onboarding tutorials and step-by-step guides
-
-# 🤘 Roadmap
+❓ To know what this project aims to be, [see the about page](https://punksociety.xyz/about).
 
 📥 To see pending project tasks, [see this Trello](https://trello.com/b/HLBnvKSu/punksociety)
+
+# 🤘 Roadmap
 
 ## 🐣 Phase 1 (MVP)
 
