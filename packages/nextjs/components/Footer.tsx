@@ -61,7 +61,7 @@ export const Footer = () => {
 
   return (
     <>
-      {pathname !== "/search" && (
+      {pathname !== "/search" && pathname !== "/about" && (
         <div
           className={`fixed bottom-16 lg:bottom-8 right-8 p-3 bg-blue-600 cursor-pointer hover:bg-blue-800 text-white rounded-full shadow-lg ${
             showPlusIcon ? "animate-show" : "animate-hide"
@@ -82,8 +82,14 @@ export const Footer = () => {
           <ul className="menu menu-horizontal w-full">
             <div className="flex justify-center items-center gap-2 text-sm w-full">
               <div className="text-center">
+                <Link className="link" href="/about" passHref>
+                  About
+                </Link>
+              </div>
+              <span>·</span>
+              <div className="text-center">
                 <a href="https://github.com/luloxi/PunkSociety/" target="_blank" rel="noreferrer" className="link">
-                  Fork me
+                  Code
                 </a>
               </div>
               <span>·</span>
