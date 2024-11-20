@@ -76,6 +76,26 @@ export const About = () => {
           </div>
         </div>
 
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🗳️</span>
+            <h2 className="card-title text-2xl font-mono">Survey! </h2>
+
+            <span>
+              How much{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              would you pay for a like?
+            </span>
+            <div className="max-w-24">
+              <InputBase value={usdcPrice} onChange={setUsdcPrice} placeholder="0" />
+            </div>
+            {/* <button className="btn btn-success">Send</button> */}
+          </div>
+        </div>
+
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">💎</span>
@@ -86,25 +106,6 @@ export const About = () => {
                 <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs</span>
               </Link>
               are digital collectibles that can be resold ! 🤯
-            </p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">⛽</span>
-            <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
-            <p>
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              is used to pay for transactions and interactions on our{" "}
-              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
-                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              .
             </p>
           </div>
         </div>
@@ -130,6 +131,25 @@ export const About = () => {
                 <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
               </Link>{" "}
               !
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">⛽</span>
+            <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
+            <p>
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              is used to pay for transactions and interactions on our{" "}
+              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              .
             </p>
           </div>
         </div>
@@ -195,34 +215,46 @@ export const About = () => {
             <p>PunkSociety can be used by people with visual or hearing impairments.</p>
           </div>
         </div>
-      </div>
 
-      <div className="w-full pt-6 bg-base-200">
-        <h1 className="text-4xl font-mono text-center">Survey! 🤘</h1>
-      </div>
-      <div className="hero bg-base-200 ">
-        <div className="hero-content flex-col">
-          <span>
-            How much{" "}
-            <Link href="https://circle.com/" target="_blank">
-              <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-            </Link>{" "}
-            would you pay for a like?
-          </span>
-          <div className="max-w-24">
-            <InputBase value={usdcPrice} onChange={setUsdcPrice} placeholder="0" />
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">❤️</span>
+            <h2 className="card-title text-2xl font-mono">Like the project? </h2>
+
+            <span>
+              You said you&apos;d pay {usdcPrice}{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>
+              , would you donate us the cost of a like? 🥺
+            </span>
+
+            <button className="btn btn-warning">Approve {usdcPrice} USDC</button>
           </div>
-          <button className="btn btn-success">Send</button>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🗳️</span>
+            <h2 className="card-title text-2xl font-mono">Statistics! </h2>
+            <span>
+              So far, 0 people liked the project and the average price for a like is $0.00{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+            </span>
+          </div>
         </div>
       </div>
 
-      <div className="w-full pt-6 bg-base-300">
+      <div className="w-full pt-6 bg-base-100">
         <h1 className="text-4xl font-mono text-center">Meet us! 🤘</h1>
       </div>
-      <div className="hero bg-base-300 ">
+      <div className="hero bg-base-100 ">
         <div className="hero-content flex-col md:flex-row">
-          <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg">
+          <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg border-2">
             <figure className="px-10 pt-5 flex-shrink-0">
               <Image src="/lulox.jpg" alt="Lulox" className="rounded-xl" width={200} height={200} />
             </figure>
@@ -240,7 +272,7 @@ export const About = () => {
             </div>
           </div>
 
-          <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg">
+          <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg border-2">
             <figure className="px-10 pt-5 flex-shrink-0">
               <Image
                 src="/guest-profile.jpg"
