@@ -1,7 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { InputBase } from "~~/components/scaffold-eth";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Post extends Partial<NFTMetaData> {
@@ -12,6 +14,8 @@ export interface Post extends Partial<NFTMetaData> {
 }
 
 export const About = () => {
+  const [usdcPrice, setUsdcPrice] = useState<number>();
+
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="hero bg-base-200 ">
@@ -194,9 +198,29 @@ export const About = () => {
       </div>
 
       <div className="w-full pt-6 bg-base-200">
-        <h1 className="text-4xl font-mono text-center">Meet us! 🤘</h1>
+        <h1 className="text-4xl font-mono text-center">Survey! 🤘</h1>
       </div>
       <div className="hero bg-base-200 ">
+        <div className="hero-content flex-col">
+          <span>
+            How much{" "}
+            <Link href="https://circle.com/" target="_blank">
+              <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+              <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+            </Link>{" "}
+            would you pay for a like?
+          </span>
+          <div className="max-w-24">
+            <InputBase value={usdcPrice} onChange={setUsdcPrice} placeholder="0" />
+          </div>
+          <button className="btn btn-success">Send</button>
+        </div>
+      </div>
+
+      <div className="w-full pt-6 bg-base-300">
+        <h1 className="text-4xl font-mono text-center">Meet us! 🤘</h1>
+      </div>
+      <div className="hero bg-base-300 ">
         <div className="hero-content flex-col md:flex-row">
           <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg">
             <figure className="px-10 pt-5 flex-shrink-0">
