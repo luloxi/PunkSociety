@@ -156,6 +156,14 @@ export const About = () => {
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">💬</span>
+            <h2 className="card-title text-2xl font-mono">Chat with friends! </h2>
+            <p>Enjoy our encrypted private and group messaging.</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🕵️‍♂️</span>
             <h2 className="card-title text-2xl font-mono">Users are real humans! </h2>
             <p>
@@ -173,14 +181,6 @@ export const About = () => {
             <span className="text-6xl">🔔</span>
             <h2 className="card-title text-2xl font-mono">Notifications! </h2>
             <p>Get informed on activity on our web 🌐, your phone notifications 📱 or your mail 📧.</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">💬</span>
-            <h2 className="card-title text-2xl font-mono">Chat with friends! </h2>
-            <p>Enjoy our encrypted private and group messaging.</p>
           </div>
         </div>
 
@@ -228,7 +228,7 @@ export const About = () => {
             </figure>
             <div className="flex pb-5 flex-col items-center justify-center">
               <h2 className="text-3xl">You?</h2>
-              <span className="italic">Fullstack web3 developer</span>
+              <span className="italic">Buidler</span>
               <a
                 className="flex justify-center items-center gap-1"
                 href="https://linktr.ee/lulox"
