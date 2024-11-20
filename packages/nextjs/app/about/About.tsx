@@ -17,13 +17,13 @@ export const About = () => {
       <div className="hero bg-base-200 ">
         <div className="hero-content flex-col lg:flex-row-reverse lg:p-14">
           {/* INSERT HERE A GIF SHOWING HOW A LIKE BECOMES MONEY */}
-          <Image
+          {/* <Image
             src="/like-dollar.png"
             alt="Animation clicking a like button and increasing USDC balance"
             className="max-w-sm rounded-lg"
             width={150}
             height={150}
-          />
+          /> */}
           <div>
             <h1 className="text-4xl font-bold font-mono text-center">
               Wanna <strong className="text-green-600">earn</strong> 💸 from using social media?
@@ -161,7 +161,7 @@ export const About = () => {
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">💬</span>
             <h2 className="card-title text-2xl font-mono">Chat with friends! </h2>
-            <p>Encrypted direct messaging and group chats.</p>
+            <p>Enjoy our encrypted private and group messaging.</p>
           </div>
         </div>
 
