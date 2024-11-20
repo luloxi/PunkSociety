@@ -40,58 +40,60 @@ export const About = () => {
         <h1 className="text-4xl font-bold font-mono text-center">Features! 🤘</h1>
       </div>
       <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          {/* <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/post-types.png" alt="Post types" className="" width={500} height={500} />
-          </figure> */}
-
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🤹‍♂️</span>
             <h2 className="card-title text-2xl font-mono">Post whatever!</h2>
+            <p>Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊.</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">💎</span>
+            <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
             <p>
-              Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊. <br />
-              And yeah,{" "}
               <strong>
-                they&apos;re all{" "}
                 <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
-                  <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>💎
+                  <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>
                 </Link>{" "}
-                , digital collectibles that can be resold ! 🤯
+                are digital collectibles that can be resold ! 🤯
               </strong>
             </p>
           </div>
         </div>
 
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
-          {/* <figure className=" h-[250px]  flex-shrink-0">
-            <Image src="/socialmonetization.jpg" alt="Social monetization" className="" width={500} height={500} />
-          </figure> */}
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">❤️</span>
+            <span className="text-6xl">🫂</span>
             <h2 className="card-title text-2xl font-mono">Social economy! </h2>
             <p>
-              Every like ❤️, comment 💬, and share 🔄 sends{" "}
+              Likes ❤️ and comments 💬 send{" "}
               <Link href="https://circle.com/" target="_blank">
                 <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
                 <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
               </Link>{" "}
-              to the post creator. <br />
-              If you receive a lot of interactions, you&apos;ll receive a lot of{" "}
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              !
+              to the post creator.
             </p>
           </div>
         </div>
 
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
-          {/* <div className="lg:h-[300px] w-full overflow-hidden flex justify-center items-center">
-            <figure className="px-10 flex-shrink-0">
-              <Image src="/usdc-yield.jpg" alt="Revenue" className=" object-cover" width={500} height={500} />
-            </figure>
-          </div> */}
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🔄</span>
+            <h2 className="card-title text-2xl font-mono">Sharing incentives! </h2>
+            <p>
+              Every like ❤️ and comment 💬 that comes from your reposts gives you a portion of the
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              paid to the post creator.
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫰</span>
             <h2 className="card-title text-2xl font-mono">Earn USDC yield! </h2>
@@ -116,7 +118,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">⛽</span>
             <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
@@ -133,7 +135,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">💹</span>
             <h2 className="card-title text-2xl font-mono">Track your revenue! </h2>
@@ -141,7 +143,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🔔</span>
             <h2 className="card-title text-2xl font-mono">Notifications! </h2>
@@ -149,7 +151,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🎨</span>
             <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
@@ -157,7 +159,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">💬</span>
             <h2 className="card-title text-2xl font-mono">Chat with friends! </h2>
@@ -165,7 +167,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">👨‍🦽</span>
             <h2 className="card-title text-2xl font-mono">Accesibility! </h2>
