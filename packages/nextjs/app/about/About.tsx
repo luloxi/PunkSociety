@@ -26,7 +26,7 @@ export const About = () => {
           /> */}
           <div>
             <h1 className="text-4xl font-bold font-mono text-center">
-              Wanna <strong className="text-green-600">earn</strong> 💸 from using social media?
+              Wanna <strong className="text-green-600">earn</strong> 💸 while using social media?
             </h1>
             <p className="pt-6 flex justify-center">
               <span className="text-5xl text-center ">
@@ -53,12 +53,11 @@ export const About = () => {
             <span className="text-6xl">💎</span>
             <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
             <p>
-              <strong>
-                <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
-                  <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>
-                </Link>{" "}
-                are digital collectibles that can be resold ! 🤯
-              </strong>
+              If you didn&apos;t know,{" "}
+              <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
+                <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>
+              </Link>{" "}
+              are digital collectibles that can be resold ! 🤯
             </p>
           </div>
         </div>
@@ -145,17 +144,31 @@ export const About = () => {
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🔔</span>
-            <h2 className="card-title text-2xl font-mono">Notifications! </h2>
-            <p>Get informed on activity on our web 🌐, your phone notifications 📱 or your mail 📧.</p>
+            <span className="text-6xl">🎨</span>
+            <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
+            <p>Create post collections, change cover photo, and so much more...</p>
           </div>
         </div>
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🎨</span>
-            <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
-            <p>Create post collections, change cover photo, and so much more...</p>
+            <span className="text-6xl">🕵️‍♂️</span>
+            <h2 className="card-title text-2xl font-mono">Users are real humans! </h2>
+            <p>
+              We use{" "}
+              <Link href="https://0xparc.org/blog/zk-id-1" target="_blank">
+                <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">ZK-identity</span>
+              </Link>
+              to ensure that all users are real humans rather than AI 🤖...
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🔔</span>
+            <h2 className="card-title text-2xl font-mono">Notifications! </h2>
+            <p>Get informed on activity on our web 🌐, your phone notifications 📱 or your mail 📧.</p>
           </div>
         </div>
 
@@ -177,7 +190,7 @@ export const About = () => {
       </div>
 
       <div className="w-full pt-6 bg-base-200">
-        <h1 className="text-6xl font-mono text-center">Meet the team! 🤘</h1>
+        <h1 className="text-4xl font-mono text-center">Meet the team! 🤘</h1>
       </div>
       <div className="hero bg-base-200 ">
         <div className="hero-content flex-col lg:flex-row">
