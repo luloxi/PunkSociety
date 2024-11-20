@@ -217,7 +217,7 @@ export const About = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <button className="btn btn-success mt-2">Contact me</button>
+                <button className="btn btn-success mt-2">Linktree</button>
               </a>
             </div>
           </div>
