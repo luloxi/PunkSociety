@@ -15,7 +15,7 @@ export const About = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="hero bg-base-200 ">
-        <div className="hero-content flex-col lg:flex-row-reverse lg:p-14">
+        <div className="hero-content flex-col lg:flex-row-reverse lg:px-14">
           {/* INSERT HERE A GIF SHOWING HOW A LIKE BECOMES MONEY */}
           {/* <Image
             src="/like-dollar.png"
