@@ -57,7 +57,7 @@ export const Header = () => {
 
           <Link href="/not-found" passHref>
             <button
-              className={`bg-transparent text-red-600 hover:bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+              className={`bg-transparent text-gray-500 hover:bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
                 pathname === "/notifications" ? "text-blue-600" : ""
               }`}
             >
@@ -69,7 +69,7 @@ export const Header = () => {
 
           <Link href="/not-found" passHref>
             <button
-              className={`bg-transparent text-red-600 hover:bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
+              className={`bg-transparent text-gray-500 hover:bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
                 pathname === "/messages" ? "text-blue-600" : ""
               }`}
             >
