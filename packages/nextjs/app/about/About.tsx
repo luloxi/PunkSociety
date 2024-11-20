@@ -40,14 +40,6 @@ export const About = () => {
         <h1 className="text-4xl font-bold font-mono text-center">Features! 🤘</h1>
       </div>
       <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🤹‍♂️</span>
-            <h2 className="card-title text-2xl font-mono">Post whatever!</h2>
-            <p>Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊.</p>
-          </div>
-        </div>
-
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫂</span>
@@ -63,21 +55,6 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🔄</span>
-            <h2 className="card-title text-2xl font-mono">Sharing incentives! </h2>
-            <p>
-              Every like ❤️ and comment 💬 that comes from your reposts gives you a portion of the
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              paid to the post creator.
-            </p>
-          </div>
-        </div>
-
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">💎</span>
@@ -88,6 +65,21 @@ export const About = () => {
                 <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>
               </Link>{" "}
               are digital collectibles that can be resold ! 🤯
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🔄</span>
+            <h2 className="card-title text-2xl font-mono">Sharing incentives! </h2>
+            <p>
+              Every like ❤️ and comment 💬 that comes from your reposts gives you a portion of the{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              paid to the post creator.
             </p>
           </div>
         </div>
@@ -146,14 +138,6 @@ export const About = () => {
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🎨</span>
-            <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
-            <p>Create post collections, change cover photo, and so much more...</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🕵️‍♂️</span>
             <h2 className="card-title text-2xl font-mono">Users are real humans! </h2>
             <p>
@@ -163,6 +147,22 @@ export const About = () => {
               </Link>
               to ensure that all users are real humans rather than AI 🤖...
             </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🤹‍♂️</span>
+            <h2 className="card-title text-2xl font-mono">Post whatever!</h2>
+            <p>Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊.</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🎨</span>
+            <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
+            <p>Create post collections, change cover photo, and so much more...</p>
           </div>
         </div>
 
