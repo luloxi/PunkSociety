@@ -40,12 +40,14 @@ export const About = () => {
         <h1 className="text-4xl font-bold font-mono text-center">Features! 🤘</h1>
       </div>
       <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          {/* <figure className="px-10 pt-10 flex-shrink-0">
             <Image src="/post-types.png" alt="Post types" className="" width={500} height={500} />
-          </figure>
+          </figure> */}
+
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Post whatever! 🤹‍♂️</h2>
+            <span className="text-6xl">🤹‍♂️</span>
+            <h2 className="card-title text-2xl font-mono">Post whatever!</h2>
             <p>
               Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊. <br />
               And yeah,{" "}
@@ -60,12 +62,13 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
-          <figure className=" h-[250px]  flex-shrink-0">
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
+          {/* <figure className=" h-[250px]  flex-shrink-0">
             <Image src="/socialmonetization.jpg" alt="Social monetization" className="" width={500} height={500} />
-          </figure>
+          </figure> */}
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Social economy! ❤️</h2>
+            <span className="text-6xl">❤️</span>
+            <h2 className="card-title text-2xl font-mono">Social economy! </h2>
             <p>
               Every like ❤️, comment 💬, and share 🔄 sends{" "}
               <Link href="https://circle.com/" target="_blank">
@@ -83,45 +86,15 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
-          <div className="lg:h-[300px]  w-full overflow-hidden flex justify-center items-center">
-            <figure className="px-10 pt-10 flex-shrink-0">
-              <Image src="/revenue.jpg" alt="Revenue" className="object-cover" width={500} height={500} />
-            </figure>
-          </div>
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Track your revenue! 💹</h2>
-            <p>Analyze your earnings and spendings in your revenue dashboard.</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/usdc-flag.jpg" alt="USDC Flag" className="" width={500} height={500} />
-          </figure>
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">USDC = native gas! ⛽</h2>
-            <p>
-              <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-              <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" /> is used to
-              pay for transactions and interactions on our{" "}
-              <Link href="https://www.avax.network/" target="_blank">
-                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche</span>
-                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              L1.
-            </p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
-          <div className="lg:h-[300px] w-full overflow-hidden flex justify-center items-center">
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+          {/* <div className="lg:h-[300px] w-full overflow-hidden flex justify-center items-center">
             <figure className="px-10 flex-shrink-0">
               <Image src="/usdc-yield.jpg" alt="Revenue" className=" object-cover" width={500} height={500} />
             </figure>
-          </div>
+          </div> */}
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Earn USDC yield! 🫰</h2>
+            <span className="text-6xl">🫰</span>
+            <h2 className="card-title text-2xl font-mono">Earn USDC yield! </h2>
             <p>
               Your{" "}
               <Link href="https://circle.com/" target="_blank">
@@ -143,57 +116,59 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/notifications.png" alt="Notifications" className="" width={500} height={500} />
-          </figure>
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Notifications! 🔔</h2>
+            <span className="text-6xl">⛽</span>
+            <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
+            <p>
+              <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+              <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" /> is used to
+              pay for transactions and interactions on our{" "}
+              <Link href="https://www.avax.network/" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche</span>
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              L1.
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">💹</span>
+            <h2 className="card-title text-2xl font-mono">Track your revenue! </h2>
+            <p>Analyze your earnings and spendings in your revenue dashboard.</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🔔</span>
+            <h2 className="card-title text-2xl font-mono">Notifications! </h2>
             <p>Get informed on activity on our web 🌐, your phone notifications 📱 or your mail 📧.</p>
           </div>
         </div>
 
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="lg:h-[300px]  w-full overflow-hidden flex justify-center items-center">
-            <figure className="px-10 pt-10 flex-shrink-0">
-              <Image src="/customize-profile.jpg" alt="Notifications" className="rounded-xl" width={500} height={500} />
-            </figure>
-          </div>
-
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Display your taste! 🎨</h2>
+            <span className="text-6xl">🎨</span>
+            <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
             <p>Create post collections, change cover photo, and so much more...</p>
           </div>
         </div>
 
-        {/* <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/social-login.jpeg" alt="Notifications" className="" width={500} height={500} />
-          </figure>
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Social login!</h2>
-            <p>Access with your wallet or your social accounts!</p>
-          </div>
-        </div> */}
-
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="lg:h-[300px] w-full overflow-hidden flex justify-center items-center">
-            <figure className="px-10 pt-10 flex-shrink-0">
-              <Image src="/messaging.jpg" alt="Messaging" width={500} height={500} />
-            </figure>
-          </div>
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Chat with friends! 💬</h2>
+            <span className="text-6xl">💬</span>
+            <h2 className="card-title text-2xl font-mono">Chat with friends! </h2>
             <p>Encrypted direct messaging and group chats.</p>
           </div>
         </div>
 
-        <div className="card lg:h-[500px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <figure className="px-10 pt-10 flex-shrink-0">
-            <Image src="/accesibility.jpg" alt="Accesibility" className="" width={500} height={500} />
-          </figure>
+        <div className="card lg:h-[300px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <h2 className="card-title text-2xl font-mono">Accesibility! 👨‍🦽</h2>
+            <span className="text-6xl">👨‍🦽</span>
+            <h2 className="card-title text-2xl font-mono">Accesibility! </h2>
             <p>PunkSociety can be used by people with visual or hearing impairments.</p>
           </div>
         </div>
