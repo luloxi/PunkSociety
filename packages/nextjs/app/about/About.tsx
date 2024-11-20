@@ -48,7 +48,14 @@ export const About = () => {
             <h2 className="card-title text-2xl font-mono">Post whatever! 🤹‍♂️</h2>
             <p>
               Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊. <br />
-              And yeah, <strong>they&apos;re all NFTs! 🤯</strong>
+              And yeah,{" "}
+              <strong>
+                they&apos;re all{" "}
+                <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
+                  <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>💎
+                </Link>{" "}
+                , digital collectibles that can be resold ! 🤯
+              </strong>
             </p>
           </div>
         </div>
@@ -196,7 +203,7 @@ export const About = () => {
         <h1 className="text-6xl font-mono text-center">Meet the team! 🤘</h1>
       </div>
       <div className="hero bg-base-200 ">
-        <div className="hero-content flex-col lg:flex-row-reverse ">
+        <div className="hero-content flex-col lg:flex-row">
           <div className="flex flex-col items-center gap-3 bg-base-100 rounded-lg">
             <figure className="px-10 pt-5 flex-shrink-0">
               <Image src="/lulox.jpg" alt="Lulox" className="rounded-xl" width={300} height={300} />
@@ -210,7 +217,25 @@ export const About = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <button className="btn btn-primary mt-2">Contact me</button>
+                <button className="btn btn-success mt-2">Contact me</button>
+              </a>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-center gap-3 bg-base-100 rounded-lg">
+            <figure className="px-10 pt-5 flex-shrink-0">
+              <Image src="/guest-profile.jpg" alt="Lulox" className="rounded-xl" width={300} height={300} />
+            </figure>
+            <div className="flex pb-5 flex-col items-center justify-center">
+              <h2 className="text-3xl">You</h2>
+              <span className="italic">?</span>
+              <a
+                className="flex justify-center items-center gap-1"
+                href="https://linktr.ee/lulox"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className="btn btn-primary mt-2">Contact Lulox!</button>
               </a>
             </div>
           </div>
