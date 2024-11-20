@@ -113,7 +113,7 @@ export const Footer = () => {
       <footer className="sticky lg:hidden bottom-0 w-full bg-base-100 px-4 py-2 flex justify-around items-center">
         <Link href="/not-found" passHref>
           <EnvelopeIcon
-            className={`h-6 w-6 text-red-600 ${
+            className={`h-6 w-6 text-gray-500 ${
               pathname === "/notifications" ? "text-blue-600" : "hover:text-blue-600"
             }`}
           />
@@ -121,7 +121,7 @@ export const Footer = () => {
 
         <Link href="/not-found" passHref>
           <BellIcon
-            className={`h-6 w-6 text-red-600 ${
+            className={`h-6 w-6 text-gray-500 ${
               pathname === "/notifications" ? "text-blue-600" : "hover:text-blue-600"
             }`}
           />
