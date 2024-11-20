@@ -25,12 +25,15 @@ export const About = () => {
             height={150}
           /> */}
           <div className="flex flex-col justify-center">
-            <h1 className="text-5xl font-bold font-mono ">
-              Meet <strong>PunkSociety 🤘</strong>
+            <h1
+              className="text-4xl font-bold text-center 
+          font-mono "
+            >
+              WTF is <strong>PunkSociety? 🤘</strong>
             </h1>
 
-            <span className="text-4xl text-center pt-2">
-              Use social media and <strong className="text-green-600">earn</strong> 💸
+            <span className="text-2xl text-center pt-2">
+              Use social media and <strong className="text-green-600">earn!</strong> 💸
             </span>
           </div>
         </div>
@@ -54,20 +57,6 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">💎</span>
-            <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
-            <p>
-              If you didn&apos;t know,{" "}
-              <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
-                <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>
-              </Link>{" "}
-              are digital collectibles that can be resold ! 🤯
-            </p>
-          </div>
-        </div>
-
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🔄</span>
@@ -79,6 +68,20 @@ export const About = () => {
                 <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
               </Link>{" "}
               paid to the post creator.
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">💎</span>
+            <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
+            <p>
+              If you didn&apos;t know,{" "}
+              <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
+                <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs</span>
+              </Link>
+              are digital collectibles that can be resold ! 🤯
             </p>
           </div>
         </div>
@@ -137,20 +140,6 @@ export const About = () => {
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🕵️‍♂️</span>
-            <h2 className="card-title text-2xl font-mono">Users are real humans! </h2>
-            <p>
-              We use{" "}
-              <Link href="https://0xparc.org/blog/zk-id-1" target="_blank">
-                <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">ZK-identity</span>
-              </Link>
-              to ensure that all users are real humans rather than AI 🤖...
-            </p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🤹‍♂️</span>
             <h2 className="card-title text-2xl font-mono">Post whatever!</h2>
             <p>Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊.</p>
@@ -162,6 +151,20 @@ export const About = () => {
             <span className="text-6xl">🎨</span>
             <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
             <p>Create post collections, change cover photo, and so much more...</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🕵️‍♂️</span>
+            <h2 className="card-title text-2xl font-mono">Users are real humans! </h2>
+            <p>
+              We use{" "}
+              <Link href="https://0xparc.org/blog/zk-id-1" target="_blank">
+                <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">ZK-identity</span>
+              </Link>
+              to ensure that all users are real humans rather than AI 🤖...
+            </p>
           </div>
         </div>
 
