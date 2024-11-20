@@ -24,15 +24,14 @@ export const About = () => {
             width={150}
             height={150}
           /> */}
-          <div>
-            <h1 className="text-4xl font-bold font-mono text-center">
-              Wanna <strong className="text-green-600">earn</strong> 💸 while using social media?
+          <div className="flex flex-col justify-center">
+            <h1 className="text-5xl font-bold font-mono ">
+              Meet <strong>PunkSociety 🤘</strong>
             </h1>
-            <p className="pt-6 flex justify-center">
-              <span className="text-5xl text-center ">
-                Meet <strong>PunkSociety 🤘</strong>!
-              </span>
-            </p>
+
+            <span className="text-4xl text-center pt-2">
+              Use social media and <strong className="text-green-600">earn</strong> 💸
+            </span>
           </div>
         </div>
       </div>
@@ -192,17 +191,17 @@ export const About = () => {
       </div>
 
       <div className="w-full pt-6 bg-base-200">
-        <h1 className="text-4xl font-mono text-center">Meet the team! 🤘</h1>
+        <h1 className="text-4xl font-mono text-center">Meet us! 🤘</h1>
       </div>
       <div className="hero bg-base-200 ">
-        <div className="hero-content flex-col lg:flex-row">
-          <div className="flex flex-col items-center gap-3 bg-base-100 rounded-lg">
+        <div className="hero-content flex-col md:flex-row">
+          <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg">
             <figure className="px-10 pt-5 flex-shrink-0">
-              <Image src="/lulox.jpg" alt="Lulox" className="rounded-xl" width={300} height={300} />
+              <Image src="/lulox.jpg" alt="Lulox" className="rounded-xl" width={200} height={200} />
             </figure>
             <div className="flex pb-5 flex-col items-center justify-center">
               <h2 className="text-3xl">Lulox</h2>
-              <span className="italic">buidler</span>
+              <span className="italic">Buidler</span>
               <a
                 className="flex justify-center items-center gap-1"
                 href="https://linktr.ee/lulox"
@@ -214,13 +213,19 @@ export const About = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-3 bg-base-100 rounded-lg">
+          <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg">
             <figure className="px-10 pt-5 flex-shrink-0">
-              <Image src="/guest-profile.jpg" alt="Lulox" className="rounded-xl" width={300} height={300} />
+              <Image
+                src="/guest-profile.jpg"
+                alt="Undefined profile picture"
+                className="rounded-xl"
+                width={200}
+                height={200}
+              />
             </figure>
             <div className="flex pb-5 flex-col items-center justify-center">
-              <h2 className="text-3xl">You</h2>
-              <span className="italic">?</span>
+              <h2 className="text-3xl">You?</h2>
+              <span className="italic">Fullstack web3 developer</span>
               <a
                 className="flex justify-center items-center gap-1"
                 href="https://linktr.ee/lulox"
