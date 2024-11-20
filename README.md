@@ -2,7 +2,7 @@ Social protocol where interactions are monetized 💰 allowing users to earn thr
 
 ❓ To know what this project aims to be, [see the about page](https://punksociety.xyz/about).
 
-📥 To see pending project tasks, [see this Trello](https://trello.com/b/HLBnvKSu/punksociety)
+📥 To see pending development tasks, [see this Trello](https://trello.com/b/HLBnvKSu/punksociety)
 
 # 🤘 Roadmap
 

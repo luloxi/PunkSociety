@@ -92,6 +92,25 @@ export const About = () => {
           </div>
         </div>
 
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">⛽</span>
+            <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
+            <p>
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              is used to pay for transactions and interactions on our{" "}
+              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              .
+            </p>
+          </div>
+        </div>
+
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫰</span>
@@ -108,28 +127,11 @@ export const About = () => {
                 <Image src="/aave-logo.png" alt="AAVE logo" width={20} height={20} className="inline-block" />
               </Link>{" "}
               while bridged to our{" "}
-              <Link href="https://www.avax.network/" target="_blank">
-                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche</span>
+              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
                 <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
               </Link>{" "}
-              L1!
-            </p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">⛽</span>
-            <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
-            <p>
-              <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-              <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" /> is used to
-              pay for transactions and interactions on our{" "}
-              <Link href="https://www.avax.network/" target="_blank">
-                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche</span>
-                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              L1.
+              !
             </p>
           </div>
         </div>
