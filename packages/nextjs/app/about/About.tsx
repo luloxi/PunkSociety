@@ -48,20 +48,6 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">💎</span>
-            <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
-            <p>
-              If you didn&apos;t know,{" "}
-              <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
-                <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>
-              </Link>{" "}
-              are digital collectibles that can be resold ! 🤯
-            </p>
-          </div>
-        </div>
-
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫂</span>
@@ -88,6 +74,20 @@ export const About = () => {
                 <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
               </Link>{" "}
               paid to the post creator.
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">💎</span>
+            <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
+            <p>
+              If you didn&apos;t know,{" "}
+              <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
+                <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs </span>
+              </Link>{" "}
+              are digital collectibles that can be resold ! 🤯
             </p>
           </div>
         </div>
