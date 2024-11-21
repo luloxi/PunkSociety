@@ -15,24 +15,20 @@ Social protocol where interactions are monetized 💰 allowing users to earn thr
 - ✅ **User profile page**
 - ✅ **Search**: By address or username
 - ✅ Enable options for sharing on other platforms
-- ✅ **Avalanche L1 with USDC as native gas:** Use an Avalanche L1 with USDC as native gas (Reference: [Create an Avalanche L1](https://docs.avax.network/tooling/create-deploy-avalanche-l1s/create-avalanche-l1))
-- ✅ Enable liking with incentive
-- ✅ Enable posting with a fee to owner
+- Enable following users, liking, commenting and sharing posts
+- **Individual post viewer**
+- **Multi-language support**: Switch between languages
 
 ## 📈 Phase 2 (Business model)
 
-- **Incentive model**: Social interactions send $ to the user on the other end
+- **Incentive model**: Likes and comments send $ to the user on the other end
+- Enable posting with a fee to owner
+- ⚠️ **Avalanche L1 with USDC as native gas:** Use an Avalanche L1 with USDC as native gas (Reference: [Create an Avalanche L1](https://docs.avax.network/tooling/create-deploy-avalanche-l1s/create-avalanche-l1))
 - **USDC Staking/Lending model**: Bridged USDC can be lent or staked on AAVE and/or Compound (or similar) so users can earn interest on their USDC while using the platform
-- **Business Model**: PunkSociety collects 1% fees from social interactions and from USDC lending revenue
+- **Fees**: PunkSociety collects fees from social interactions and from USDC lending revenue
 - **Easy onramp tool**: Easy USDC buying tool for onboarding new users. (Reference:[FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button) | [OnchainKit extension for Scaffold-ETH 2](https://github.com/scaffold-eth/create-eth-extensions/tree/onchainkit))
 - **Built-in bridge manager**: Built-in simple tool for bridging USDC and NFTs to and from Avalanche, Base, Ethereum, and other EVM chains (Reference: [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer) | [Chainlink CCIP Cross Chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
-- Make PunkSociety the only one who can deploy contracts on the chain (Reference: [Avalanche Contract Deployer Allowlist](https://academy.avax.network/course/multi-chain-architecture/06-permissioning-users/06-contract-deployer-allowlist))
 - **Dashboard Insights**: Track and analyze your revenue
-- Enable following users, liking, commenting and sharing posts on frontend
-- **Multi-language support**: Switch between languages (include emoji language)
-- **Individual post viewer**
-- **Accesibility support**: For the hearing and visually impaired, the app should be ARIA compliant to support screen readers and other assistive technologies (Reference: [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA))
-- **Add special metadata to NFTs** for screen readers and SEO
 
 ## 🌐 Phase 3 (Indexing)
 
@@ -52,8 +48,10 @@ Social protocol where interactions are monetized 💰 allowing users to earn thr
 
 ## 👨‍🦽 Phase 5 (Ease of use)
 
-- **Web 2.5 social login with account abstraction:** Sign up and log in with Google, Twitter, Instagram, etc. (Reference: [wagmi-thirdweb Connect Button](https://github.com/thirdweb-example/wagmi-thirdweb?ref=blog.thirdweb.com))
 - **Educational Content**: Include onboarding tutorials and step-by-step guides to help users understand what they can do on the platform
+- **Web 2.5 social login with account abstraction:** Sign up and log in with Google, Twitter, Instagram, etc. (Reference: [wagmi-thirdweb Connect Button](https://github.com/thirdweb-example/wagmi-thirdweb?ref=blog.thirdweb.com))
+- **Accesibility support**: For the hearing and visually impaired, the app should be ARIA compliant to support screen readers and other assistive technologies (Reference: [ARIA](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA))
+- **Add special metadata to NFTs** for screen readers and SEO
 
 # 🤘 Development
 
