@@ -16,16 +16,16 @@ Social protocol where interactions are monetized 💰 allowing users to earn thr
 - ✅ **Search**: By address or username
 - ✅ Enable options for sharing on other platforms
 - Enable following users, liking, commenting and sharing posts
+- **Incentive model**: Likes and comments send $ to the user on the other end
+- Posting is paid and interactions sends a fee to owner
 - **Individual post viewer**
 - **Multi-language support**: Switch between languages
 
 ## 📈 Phase 2 (Business model)
 
-- **Incentive model**: Likes and comments send $ to the user on the other end
-- Enable posting with a fee to owner
-- ⚠️ **Avalanche L1 with USDC as native gas:** Use an Avalanche L1 with USDC as native gas (Reference: [Create an Avalanche L1](https://docs.avax.network/tooling/create-deploy-avalanche-l1s/create-avalanche-l1))
-- **USDC Staking/Lending model**: Bridged USDC can be lent or staked on AAVE and/or Compound (or similar) so users can earn interest on their USDC while using the platform
-- **Fees**: PunkSociety collects fees from social interactions and from USDC lending revenue
+- ⏸️ **Avalanche L1 with USDC as native gas:** Use an Avalanche L1 with USDC as native gas (Reference: [Create an Avalanche L1](https://docs.avax.network/tooling/create-deploy-avalanche-l1s/create-avalanche-l1))
+- ⚠️ **USDC Staking/Lending model**: Bridged USDC can be lent or staked on AAVE and/or Compound (or similar) so users can earn interest on their USDC while using the platform
+- **Fees**: PunkSociety collects fees from USDC lending revenue
 - **Easy onramp tool**: Easy USDC buying tool for onboarding new users. (Reference:[FundButton from Coinbase](https://onchainkit.xyz/fund/fund-button) | [OnchainKit extension for Scaffold-ETH 2](https://github.com/scaffold-eth/create-eth-extensions/tree/onchainkit))
 - **Built-in bridge manager**: Built-in simple tool for bridging USDC and NFTs to and from Avalanche, Base, Ethereum, and other EVM chains (Reference: [avalanche-interchain-token-transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer) | [Chainlink CCIP Cross Chain Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens))
 - **Dashboard Insights**: Track and analyze your revenue
