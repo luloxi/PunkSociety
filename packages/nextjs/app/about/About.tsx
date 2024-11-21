@@ -249,6 +249,15 @@ export const About = () => {
         </div>
       </div>
 
+      <div className="flex flex-col p-6 justify-center items-center  bg-yellow-500 text-black">
+        <h1 className="text-4xl font-mono text-center">Wanna know how we&apos;re doing?</h1>
+        <div>
+          <Link href="/roadmap">
+            <button className="btn btn-primary bg-black hover:bg-gray-800">See our Roadmap</button>
+          </Link>
+        </div>
+      </div>
+
       <div className="w-full pt-6 bg-base-100">
         <h1 className="text-4xl font-mono text-center">Meet us! 🤘</h1>
       </div>

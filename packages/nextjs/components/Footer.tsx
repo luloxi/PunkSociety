@@ -88,6 +88,12 @@ export const Footer = () => {
               </div>
               <span>·</span>
               <div className="text-center">
+                <Link className="link" href="/roadmap" passHref>
+                  Roadmap
+                </Link>
+              </div>
+              <span>·</span>
+              <div className="text-center">
                 <a href="https://github.com/luloxi/PunkSociety/" target="_blank" rel="noreferrer" className="link">
                   Code
                 </a>
