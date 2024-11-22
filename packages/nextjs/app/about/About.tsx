@@ -179,14 +179,6 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">👨‍🦽</span>
-            <h2 className="card-title text-2xl font-mono">Accesibility! </h2>
-            <p>PunkSociety can be used by people with visual or hearing impairments.</p>
-          </div>
-        </div>
-
         <div className="card lg:h-[270px] w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🤹</span>
@@ -205,6 +197,14 @@ export const About = () => {
                 <span aria-label="customization">🎨</span> Customize your profile
               </li>
             </ul>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">👨‍🦽</span>
+            <h2 className="card-title text-2xl font-mono">Accesibility! </h2>
+            <p>PunkSociety can be used by people with visual or hearing impairments.</p>
           </div>
         </div>
 
