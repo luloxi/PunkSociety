@@ -58,7 +58,7 @@ export const About = () => {
       </div>
 
       <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫂</span>
             <h2 className="card-title text-2xl font-mono">Social economy! </h2>
@@ -73,7 +73,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🖼️✍️</span>
             <h2 className="card-title text-2xl font-mono">Pics with captions!</h2>
@@ -81,47 +81,49 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🗳️</span>
             <h2 className="card-title text-2xl font-mono">Survey! </h2>
 
-            <span>
-              How much{" "}
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              would you pay for a like?
-            </span>
-            <div className="max-w-28">
-              <input
-                type="number"
-                value={usdcPrice}
-                onChange={handleUsdcPriceChange}
-                placeholder="0"
-                className="input input-ghost focus-within:border-transparent outline-blue-500 focus:outline-green-500 focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] px-4 border-2 border-blue-500 w-full font-medium placeholder:text-accent/50 text-green-500"
-              />
+            <div className="flex flex-row gap-2">
+              <span>
+                How much{" "}
+                <Link href="https://circle.com/" target="_blank">
+                  <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                  <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+                </Link>{" "}
+                would you pay for a like?
+              </span>
+              <div className="max-w-28">
+                <input
+                  type="number"
+                  value={usdcPrice}
+                  onChange={handleUsdcPriceChange}
+                  placeholder="0"
+                  className="input input-ghost focus-within:border-transparent outline-blue-500 focus:outline-green-500 focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] px-4 border-2 border-blue-500 w-full font-medium placeholder:text-accent/50 text-green-500"
+                />
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🔄</span>
             <h2 className="card-title text-2xl font-mono">Sharing incentives! </h2>
             <p>
-              Every like ❤️ and comment 💬 that comes from your reposts gives you a portion of the{" "}
+              Interactions ❤️💬 from your reposts earn you a % of the post creator{" "}
               <Link href="https://circle.com/" target="_blank">
                 <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
                 <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
               </Link>{" "}
-              paid to the post creator.
+              earnings.
             </p>
           </div>
         </div>
 
-        {/* <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+        {/* <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫰</span>
             <h2 className="card-title text-2xl font-mono">Earn USDC yield! </h2>
@@ -146,7 +148,7 @@ export const About = () => {
           </div>
         </div> */}
 
-        {/* <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        {/* <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">⛽</span>
             <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
@@ -165,7 +167,7 @@ export const About = () => {
           </div>
         </div> */}
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">💎</span>
             <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
@@ -179,7 +181,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[240px] w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🤹</span>
             {/* <h2 className="card-title text-2xl font-mono">More features! </h2> */}
@@ -200,7 +202,7 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">👨‍🦽</span>
             <h2 className="card-title text-2xl font-mono">Accesibility! </h2>
@@ -208,7 +210,7 @@ export const About = () => {
           </div>
         </div>
 
-        {/* <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        {/* <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🕵️‍♂️</span>
             <h2 className="card-title text-2xl font-mono">Users are real humans! </h2>
@@ -223,7 +225,7 @@ export const About = () => {
         </div> */}
 
         {usdcPrice ? (
-          <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+          <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
             <div className="card-body items-center text-center flex-grow overflow-hidden">
               <span className="text-6xl">❤️</span>
               <h2 className="card-title text-2xl font-mono">Like the project? </h2>
@@ -245,7 +247,7 @@ export const About = () => {
         )}
 
         {averageUsdcPrice ? (
-          <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+          <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
             <div className="card-body items-center text-center flex-grow overflow-hidden">
               <span className="text-6xl">🗳️</span>
               <h2 className="card-title text-2xl font-mono">Statistics! </h2>
