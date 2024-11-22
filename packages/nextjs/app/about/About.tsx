@@ -14,6 +14,8 @@ export interface Post extends Partial<NFTMetaData> {
 
 export const About = () => {
   const [usdcPrice, setUsdcPrice] = useState<number>();
+  // const [averageUsdcPrice, setAverageUsdcPrice] = useState<number>();
+  const averageUsdcPrice = "";
 
   const handleUsdcPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
@@ -100,7 +102,6 @@ export const About = () => {
                 className="input input-ghost focus-within:border-transparent outline-blue-500 focus:outline-green-500 focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] px-4 border-2 border-blue-500 w-full font-medium placeholder:text-accent/50 text-green-500"
               />
             </div>
-            {/* <button className="btn btn-success">Send</button> */}
           </div>
         </div>
 
@@ -165,14 +166,6 @@ export const About = () => {
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🎨</span>
-            <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
-            <p>Create post collections, change cover photo, and so much more...</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">💎</span>
             <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
             <p>
@@ -182,14 +175,6 @@ export const About = () => {
               </Link>
               are digital collectibles that can be resold ! 🤯
             </p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">💹</span>
-            <h2 className="card-title text-2xl font-mono">Track your revenue! </h2>
-            <p>Analyze your earnings and spendings in your revenue dashboard.</p>
           </div>
         </div>
 
@@ -204,13 +189,19 @@ export const About = () => {
         <div className="card lg:h-[270px] w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🤹</span>
-            <h2 className="card-title text-2xl font-mono">More features! </h2>
-            <ul className="list-disc list-inside">
+            {/* <h2 className="card-title text-2xl font-mono">More features! </h2> */}
+            <ul className="list-disc list-inside mt-4">
+              <li>
+                <span aria-label="revenue">💹</span> Analyze your revenue
+              </li>
               <li>
                 <span aria-label="messaging">💬</span> Private and group chats
               </li>
               <li>
                 <span aria-label="notifications">🔔</span> Notifications on activity
+              </li>
+              <li>
+                <span aria-label="customization">🎨</span> Customize your profile
               </li>
             </ul>
           </div>
@@ -227,14 +218,6 @@ export const About = () => {
               </Link>
               to ensure that all users are real humans rather than AI 🤖...
             </p>
-          </div>
-        </div> */}
-
-        {/* <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🔔</span>
-            <h2 className="card-title text-2xl font-mono">Notifications! </h2>
-            <p>Get informed on activity on our web 🌐, your phone notifications 📱 or your mail 📧.</p>
           </div>
         </div> */}
 
@@ -260,19 +243,23 @@ export const About = () => {
           ""
         )}
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🗳️</span>
-            <h2 className="card-title text-2xl font-mono">Statistics! </h2>
-            <span>
-              So far, 0 people liked the project and the average price for a like is $0.00{" "}
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-            </span>
+        {averageUsdcPrice ? (
+          <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+            <div className="card-body items-center text-center flex-grow overflow-hidden">
+              <span className="text-6xl">🗳️</span>
+              <h2 className="card-title text-2xl font-mono">Statistics! </h2>
+              <span>
+                So far, 0 people liked the project and the average price for a like is $0.00{" "}
+                <Link href="https://circle.com/" target="_blank">
+                  <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                  <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+                </Link>{" "}
+              </span>
+            </div>
           </div>
-        </div>
+        ) : (
+          ""
+        )}
       </div>
 
       <div className="w-full  bg-yellow-500">
