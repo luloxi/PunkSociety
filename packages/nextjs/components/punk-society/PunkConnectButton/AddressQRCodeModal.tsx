@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Balance } from "./Balance";
 import { QRCodeSVG } from "qrcode.react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Address as AddressType } from "viem";
@@ -25,7 +26,11 @@ export const AddressQRCodeModal = ({ address, modalId }: AddressQRCodeModalProps
         <label htmlFor={`${modalId}`} className="modal cursor-pointer">
           <label className="modal-box relative">
             <div className="flex flex-col justify-center items-center text-center">
-              <h2 className="text-xl font-bold mb-4">Your Address</h2>
+              <h2 className="text-xl font-bold ">Your Address</h2>
+              <div className="flex flex-row justify-center items-center px-2 mb-4 rounded-lg bg-yellow-500 text-black">
+                <span className="font-bold">Balance: </span>
+                <Balance address={address} />
+              </div>
               <div className="bg-white p-4 rounded-lg shadow-lg mb-4">
                 <QRCodeSVG value={address} size={256} />
               </div>

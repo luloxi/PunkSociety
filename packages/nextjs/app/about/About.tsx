@@ -28,16 +28,21 @@ export const About = () => {
             width={150}
             height={150}
           /> */}
-          <div className="flex flex-col justify-center">
+          <div className="flex flex-col items-center justify-center">
             <h1
               className="text-4xl font-bold text-center 
           font-mono "
             >
               WTF is <strong>PunkSociety? 🤘</strong>
             </h1>
-
-            <span className="text-2xl text-center pt-2">
-              Use social media and <strong className="text-green-600">earn!</strong> 💸
+            <div className="my-2 flex items-center justify-center">
+              <span className="text-2xl text-center rounded-lg p-2 bg-green-600 text-white">
+                Use social media and earn! 🤑
+              </span>
+            </div>
+            <span className="text-lg text-center pt-2">
+              Social protocol where interactions are monetized 💰 <br />
+              Users earn through engaging with their community 🫂
             </span>
           </div>
         </div>
@@ -46,6 +51,14 @@ export const About = () => {
         <h1 className="text-4xl font-bold font-mono text-center">Features! 🤘</h1>
       </div>
       <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🖼️✍️</span>
+            <h2 className="card-title text-2xl font-mono">Pics with captions!</h2>
+            <p>Posts can have one image 🖼️ and up to 140 characters of text ✍️</p>
+          </div>
+        </div>
+
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫂</span>
@@ -57,21 +70,6 @@ export const About = () => {
                 <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
               </Link>{" "}
               to the post creator.
-            </p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🔄</span>
-            <h2 className="card-title text-2xl font-mono">Sharing incentives! </h2>
-            <p>
-              Every like ❤️ and comment 💬 that comes from your reposts gives you a portion of the{" "}
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              paid to the post creator.
             </p>
           </div>
         </div>
@@ -96,21 +94,22 @@ export const About = () => {
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">💎</span>
-            <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
+            <span className="text-6xl">🔄</span>
+            <h2 className="card-title text-2xl font-mono">Sharing incentives! </h2>
             <p>
-              If you didn&apos;t know,{" "}
-              <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
-                <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs</span>
-              </Link>
-              are digital collectibles that can be resold ! 🤯
+              Every like ❤️ and comment 💬 that comes from your reposts gives you a portion of the{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              paid to the post creator.
             </p>
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+        {/* <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫰</span>
             <h2 className="card-title text-2xl font-mono">Earn USDC yield! </h2>
@@ -133,9 +132,9 @@ export const About = () => {
               !
             </p>
           </div>
-        </div>
+        </div> */}
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+        {/* <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">⛽</span>
             <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
@@ -152,6 +151,28 @@ export const About = () => {
               .
             </p>
           </div>
+        </div> */}
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🎨</span>
+            <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
+            <p>Create post collections, change cover photo, and so much more...</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">💎</span>
+            <h2 className="card-title text-2xl font-mono">Posts are NFTs! </h2>
+            <p>
+              If you didn&apos;t know,{" "}
+              <Link href="https://opensea.io/learn/nft/what-are-nfts" target="_blank">
+                <span className="pr-1 text-emerald-600 font-bold underline underline-offset-2">NFTs</span>
+              </Link>
+              are digital collectibles that can be resold ! 🤯
+            </p>
+          </div>
         </div>
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
@@ -164,75 +185,68 @@ export const About = () => {
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🤹‍♂️</span>
-            <h2 className="card-title text-2xl font-mono">Post whatever!</h2>
-            <p>Posts can have text ✍️, image 🖼️, audio 🔈, video ▶️, links 🔗 and polls 📊.</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🎨</span>
-            <h2 className="card-title text-2xl font-mono">Display your taste! </h2>
-            <p>Create post collections, change cover photo, and so much more...</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">💬</span>
-            <h2 className="card-title text-2xl font-mono">Chat with friends! </h2>
-            <p>Enjoy our encrypted private and group messaging.</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🕵️‍♂️</span>
-            <h2 className="card-title text-2xl font-mono">Users are real humans! </h2>
-            <p>
-              We use{" "}
-              <Link href="https://0xparc.org/blog/zk-id-1" target="_blank">
-                <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">ZK-identity</span>
-              </Link>
-              to ensure that all users are real humans rather than AI 🤖...
-            </p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🔔</span>
-            <h2 className="card-title text-2xl font-mono">Notifications! </h2>
-            <p>Get informed on activity on our web 🌐, your phone notifications 📱 or your mail 📧.</p>
-          </div>
-        </div>
-
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">👨‍🦽</span>
             <h2 className="card-title text-2xl font-mono">Accesibility! </h2>
             <p>PunkSociety can be used by people with visual or hearing impairments.</p>
           </div>
         </div>
 
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+        <div className="card lg:h-[270px] w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">❤️</span>
-            <h2 className="card-title text-2xl font-mono">Like the project? </h2>
-
-            <span>
-              You said you&apos;d pay {usdcPrice}{" "}
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-              </Link>
-              , would you donate us the cost of a like? 🥺
-            </span>
-
-            <button className="btn btn-warning">Approve {usdcPrice} USDC</button>
+            <span className="text-6xl">🤹</span>
+            <h2 className="card-title text-2xl font-mono">More features! </h2>
+            <ul className="list-disc list-inside">
+              <li>
+                <span aria-label="messaging">💬</span> Private and group chats
+              </li>
+              <li>
+                <span aria-label="notifications">🔔</span> Notifications on activity
+              </li>
+            </ul>
           </div>
         </div>
+
+        {/* <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🕵️‍♂️</span>
+            <h2 className="card-title text-2xl font-mono">Users are real humans! </h2>
+            <p>
+              We use{" "}Create PunkPosts contract
+              <Link href="https://0xparc.org/blog/zk-id-1" target="_blank">
+                <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">ZK-identity</span>
+              </Link>
+              to ensure that all users are real humans rather than AI 🤖...
+            </p>
+          </div>
+        </div> */}
+
+        {/* <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🔔</span>
+            <h2 className="card-title text-2xl font-mono">Notifications! </h2>
+            <p>Get informed on activity on our web 🌐, your phone notifications 📱 or your mail 📧.</p>
+          </div>
+        </div> */}
+
+        {usdcPrice && (
+          <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
+            <div className="card-body items-center text-center flex-grow overflow-hidden">
+              <span className="text-6xl">❤️</span>
+              <h2 className="card-title text-2xl font-mono">Like the project? </h2>
+
+              <span>
+                You said you&apos;d pay {usdcPrice}{" "}
+                <Link href="https://circle.com/" target="_blank">
+                  <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                  <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+                </Link>
+                , would you donate us the cost of a like? 🥺
+              </span>
+
+              <button className="btn btn-warning">Approve {usdcPrice} USDC</button>
+            </div>
+          </div>
+        )}
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
@@ -249,12 +263,16 @@ export const About = () => {
         </div>
       </div>
 
-      <div className="flex flex-col p-6 justify-center items-center  bg-yellow-500 text-black">
-        <h1 className="text-4xl font-mono text-center">Wanna know how we&apos;re doing?</h1>
-        <div>
-          <Link href="/roadmap">
-            <button className="btn btn-primary bg-black hover:bg-gray-800">See our Roadmap</button>
-          </Link>
+      <div className="w-full  bg-yellow-500">
+        <div className="flex flex-col p-6 justify-center items-center  bg-yellow-500 text-black">
+          <h1 className="text-4xl font-mono text-center">Wanna know how we&apos;re doing?</h1>
+          <div>
+            <Link href="/roadmap">
+              <button className="btn btn-primary bg-black hover:bg-gray-800 border-0 text-yellow-300">
+                See our Roadmap
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 

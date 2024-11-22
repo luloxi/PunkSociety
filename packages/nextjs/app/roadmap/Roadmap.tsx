@@ -38,12 +38,16 @@ export const Roadmap = () => {
         </div>
       </div>
 
-      <div className="flex flex-col p-6 justify-center items-center  bg-yellow-500 text-black">
-        <h1 className="text-4xl font-mono text-center">What is this about?</h1>
-        <div>
-          <Link href="/about">
-            <button className="btn btn-primary bg-black hover:bg-gray-800">Read our description</button>
-          </Link>
+      <div className="w-full  bg-yellow-500">
+        <div className="flex flex-col p-6 justify-center items-center  bg-yellow-500 text-black">
+          <h1 className="text-4xl font-mono text-center">What is this about?</h1>
+          <div>
+            <Link href="/about">
+              <button className="btn btn-primary bg-black hover:bg-gray-800 border-0 text-yellow-300">
+                Read our description
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
@@ -86,12 +90,11 @@ export const Roadmap = () => {
               <li>
                 <strong>Incentive model:</strong> Likes and comments send $ to the user on the other end
               </li>
-              <li>Posting is paid and interactions send a fee to the owner</li>
               <li>
-                <strong>Individual post viewer</strong>
+                Posting and interactions send a <strong>fee to PunkSociety</strong>
               </li>
               <li>
-                <strong>Multi-language support:</strong> Switch between languages
+                <strong>Dynamic page to view individual posts</strong>
               </li>
             </ul>
           </section>
@@ -101,7 +104,7 @@ export const Roadmap = () => {
               📈 Phase 2 (Business model)
             </h3>
             <ul className="list-disc list-inside">
-              <li>
+              {/* <li>
                 ⏸️ <strong>Avalanche L1 with USDC as native gas:</strong> Use an Avalanche L1 with USDC as native gas
                 <Link
                   href="https://docs.avax.network/tooling/create-deploy-avalanche-l1s/create-avalanche-l1"
@@ -114,10 +117,10 @@ export const Roadmap = () => {
               <li>
                 ⚠️ <strong>USDC Staking/Lending model:</strong> Bridged USDC can be lent or staked on AAVE and/or
                 Compound (or similar) so users can earn interest on their USDC while using the platform
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <strong>Fees:</strong> PunkSociety collects fees from USDC lending revenue
-              </li>
+              </li> */}
               <li>
                 <strong>Easy onramp tool:</strong> Easy USDC buying tool for onboarding new users.
                 <Link
@@ -136,7 +139,7 @@ export const Roadmap = () => {
                   OnchainKit extension for Scaffold-ETH 2
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <strong>Built-in bridge manager:</strong> Built-in simple tool for bridging USDC and NFTs to and from
                 Avalanche, Base, Ethereum, and other EVM chains
                 <Link
@@ -154,7 +157,7 @@ export const Roadmap = () => {
                 >
                   Chainlink CCIP Cross Chain Tokens
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <strong>Dashboard Insights:</strong> Track and analyze your revenue
               </li>
@@ -185,6 +188,10 @@ export const Roadmap = () => {
                 </Link>
               </li>
               <li>
+                <strong>Categories:</strong> Allow users to categorize their posts, filter by category and search by
+                category
+              </li>
+              <li>
                 <strong>Notification system</strong>
               </li>
               <li>Search by post content</li>
@@ -202,10 +209,10 @@ export const Roadmap = () => {
                   Push Protocol
                 </Link>
               </li>
-              <li>Enable audio, video, and links with preview type of posts</li>
-              <li>
+              {/* <li>Enable audio, video, and links with preview type of posts</li> */}
+              {/* <li>
                 <strong>Polls:</strong> Allow users to create polls
-              </li>
+              </li> */}
               <li>
                 <strong>Customization:</strong> Allow users to customize their profile appearance
               </li>
@@ -215,10 +222,6 @@ export const Roadmap = () => {
               <li>
                 <strong>Groups:</strong> Allow users to create and join groups with custom chat and newsfeed
               </li>
-              <li>
-                <strong>Categories:</strong> Allow users to categorize their posts, filter by category and search by
-                category
-              </li>
             </ul>
           </section>
 
@@ -227,6 +230,9 @@ export const Roadmap = () => {
               👨‍🦽 Phase 5 (Ease of use)
             </h3>
             <ul className="list-disc list-inside">
+              <li>
+                <strong>Multi-language support:</strong> Switch between languages
+              </li>
               <li>
                 <strong>Educational Content:</strong> Include onboarding tutorials and step-by-step guides to help users
                 understand what they can do on the platform
