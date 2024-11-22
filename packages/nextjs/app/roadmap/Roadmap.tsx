@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
@@ -265,6 +266,55 @@ export const Roadmap = () => {
             </ul>
           </section>
         </section>
+
+        <div className="hero bg-base-100 flex flex-col justify-start ">
+          <div className="w-full pt-6 bg-base-100">
+            <h1 className="text-4xl font-mono text-center">Meet us! 🤘</h1>
+          </div>
+          <div className="hero-content flex-col md:flex-row">
+            <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg border-2">
+              <figure className="px-10 pt-5 flex-shrink-0">
+                <Image src="/lulox.jpg" alt="Lulox" className="rounded-xl" width={200} height={200} />
+              </figure>
+              <div className="flex pb-5 flex-col items-center justify-center">
+                <h2 className="text-3xl">Lulox</h2>
+                <span className="italic">Buidler</span>
+                <a
+                  className="flex justify-center items-center gap-1"
+                  href="https://linktr.ee/lulox"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <button className="btn btn-success mt-2">Linktree</button>
+                </a>
+              </div>
+            </div>
+
+            <div className="flex flex-col  items-center gap-3 bg-base-100 rounded-lg border-2">
+              <figure className="px-10 pt-5 flex-shrink-0">
+                <Image
+                  src="/guest-profile.jpg"
+                  alt="Undefined profile picture"
+                  className="rounded-xl"
+                  width={200}
+                  height={200}
+                />
+              </figure>
+              <div className="flex pb-5 flex-col items-center justify-center">
+                <h2 className="text-3xl">You?</h2>
+                <span className="italic">Buidler</span>
+                <a
+                  className="flex justify-center items-center gap-1"
+                  href="https://linktr.ee/lulox"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <button className="btn btn-primary mt-2">Contact Lulox!</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
