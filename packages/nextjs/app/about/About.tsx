@@ -56,15 +56,8 @@ export const About = () => {
       <div className="w-full pt-6 bg-base-300">
         <h1 className="text-4xl font-bold font-mono text-center">Features! 🤘</h1>
       </div>
-      <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
-        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🖼️✍️</span>
-            <h2 className="card-title text-2xl font-mono">Pics with captions!</h2>
-            <p>Posts can have one image 🖼️ and up to 140 characters of text ✍️</p>
-          </div>
-        </div>
 
+      <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🫂</span>
@@ -77,6 +70,14 @@ export const About = () => {
               </Link>{" "}
               to the post creator.
             </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🖼️✍️</span>
+            <h2 className="card-title text-2xl font-mono">Pics with captions!</h2>
+            <p>Posts can have one image 🖼️ and up to 140 characters of text ✍️</p>
           </div>
         </div>
 
