@@ -36,13 +36,13 @@ export const About = () => {
               WTF is <strong>PunkSociety? 🤘</strong>
             </h1>
             <div className="my-2 flex items-center justify-center">
-              <span className="text-2xl text-center rounded-lg p-2 bg-green-600 text-white">
+              <span className="text-2xl text-center rounded-lg p-2 text-green-600 font-bold">
                 Use social media and earn! 🤑
               </span>
             </div>
             <span className="text-lg text-center pt-2">
               Social protocol where interactions are monetized 💰 <br />
-              Users earn through engaging with their community 🫂
+              Users earn while engaging with their community 🫂
             </span>
           </div>
         </div>
