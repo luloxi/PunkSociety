@@ -44,7 +44,7 @@ export const Roadmap = () => {
           <div>
             <Link href="/about">
               <button className="btn btn-primary bg-black hover:bg-gray-800 border-0 text-yellow-300">
-                Read our description
+                Read our About page
               </button>
             </Link>
           </div>

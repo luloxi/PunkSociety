@@ -164,13 +164,13 @@ export const Explore = () => {
           Global
         </button>
         <button
-          className={`tab text-red-600 ${activeTab === "Following" ? "active" : ""}`}
+          className={`tab text-gray-500 ${activeTab === "Following" ? "active" : ""}`}
           onClick={() => handleTabClick("Following")}
         >
           Following
         </button>
         <button
-          className={`tab text-red-600 ${activeTab === "Groups" ? "active" : ""}`}
+          className={`tab text-gray-500 ${activeTab === "Groups" ? "active" : ""}`}
           onClick={() => handleTabClick("Groups")}
         >
           Groups

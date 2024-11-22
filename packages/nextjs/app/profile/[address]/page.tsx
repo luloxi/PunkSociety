@@ -273,7 +273,7 @@ const ProfilePage: NextPage = () => {
       <div className="flex flex-col items-center justify-center">
         <div className="tabs-bar ">
           <button
-            className={`tab text-red-600 ${activeTab === "Featured" ? "active" : ""}`}
+            className={`tab text-gray-500 ${activeTab === "Featured" ? "active" : ""}`}
             onClick={() => handleTabClick("Featured")}
           >
             Featured
@@ -282,13 +282,13 @@ const ProfilePage: NextPage = () => {
             Shared
           </button>
           <button
-            className={`tab text-red-600 ${activeTab === "Shared" ? "active" : ""}`}
+            className={`tab text-gray-500 ${activeTab === "Shared" ? "active" : ""}`}
             onClick={() => handleTabClick("Shared")}
           >
             Liked
           </button>
           <button
-            className={`tab text-red-600 ${activeTab === "Revenue" ? "active" : ""}`}
+            className={`tab text-gray-500 ${activeTab === "Revenue" ? "active" : ""}`}
             onClick={() => handleTabClick("Revenue")}
           >
             Revenue

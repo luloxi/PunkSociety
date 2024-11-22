@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { InputBase } from "~~/components/scaffold-eth";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
 
 export interface Post extends Partial<NFTMetaData> {
@@ -15,6 +14,11 @@ export interface Post extends Partial<NFTMetaData> {
 
 export const About = () => {
   const [usdcPrice, setUsdcPrice] = useState<number>();
+
+  const handleUsdcPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(e.target.value);
+    setUsdcPrice(value < 0 ? 0 : value);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -87,8 +91,14 @@ export const About = () => {
               </Link>{" "}
               would you pay for a like?
             </span>
-            <div className="max-w-24">
-              <InputBase value={usdcPrice} onChange={setUsdcPrice} placeholder="0" />
+            <div className="max-w-28">
+              <input
+                type="number"
+                value={usdcPrice}
+                onChange={handleUsdcPriceChange}
+                placeholder="0"
+                className="input input-ghost focus-within:border-transparent outline-blue-500 focus:outline-green-500 focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] px-4 border-2 border-blue-500 w-full font-medium placeholder:text-accent/50 text-green-500"
+              />
             </div>
             {/* <button className="btn btn-success">Send</button> */}
           </div>
@@ -228,14 +238,14 @@ export const About = () => {
           </div>
         </div> */}
 
-        {usdcPrice && (
+        {usdcPrice ? (
           <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
             <div className="card-body items-center text-center flex-grow overflow-hidden">
               <span className="text-6xl">❤️</span>
               <h2 className="card-title text-2xl font-mono">Like the project? </h2>
 
               <span>
-                You said you&apos;d pay {usdcPrice}{" "}
+                You said you&apos;d pay <span className="pr-1 text-blue-600 font-bold">{usdcPrice}</span>
                 <Link href="https://circle.com/" target="_blank">
                   <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
                   <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
@@ -246,6 +256,8 @@ export const About = () => {
               <button className="btn btn-warning">Approve {usdcPrice} USDC</button>
             </div>
           </div>
+        ) : (
+          ""
         )}
 
         <div className="card lg:h-[270px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
