@@ -83,28 +83,31 @@ export const About = () => {
 
         <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🗳️</span>
-            <h2 className="card-title text-2xl font-mono">Survey! </h2>
-
-            <div className="flex flex-row gap-2">
-              <span>
-                How much{" "}
-                <Link href="https://circle.com/" target="_blank">
-                  <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                  <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-                </Link>{" "}
-                would you pay for a like?
-              </span>
-              <div className="max-w-28">
-                <input
-                  type="number"
-                  value={usdcPrice}
-                  onChange={handleUsdcPriceChange}
-                  placeholder="0"
-                  className="input input-ghost focus-within:border-transparent outline-blue-500 focus:outline-green-500 focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] px-4 border-2 border-blue-500 w-full font-medium placeholder:text-accent/50 text-green-500"
-                />
+            <div className="flex flex-row items-center gap-2">
+              <span className="text-6xl">🗳️</span>
+              <div className="flex flex-col items-center justify-center gap-2">
+                <h2 className="card-title text-2xl font-mono">Survey! </h2>
+                <span>
+                  How much{" "}
+                  <Link href="https://circle.com/" target="_blank">
+                    <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                    <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+                  </Link>{" "}
+                  would you pay for a like?
+                </span>
+                <div className="max-w-28">
+                  <input
+                    type="number"
+                    value={usdcPrice}
+                    onChange={handleUsdcPriceChange}
+                    placeholder="0"
+                    className="input mt-2 input-ghost focus-within:border-transparent outline-blue-500 focus:outline-green-500 focus:bg-transparent focus:text-gray-400 h-[2.2rem] min-h-[2.2rem] px-4 border-2 border-blue-500 w-full font-medium placeholder:text-accent/50 text-green-500"
+                  />
+                </div>
               </div>
             </div>
+
+            <div className="flex flex-row gap-2"></div>
           </div>
         </div>
 
@@ -227,19 +230,23 @@ export const About = () => {
         {usdcPrice ? (
           <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
             <div className="card-body items-center text-center flex-grow overflow-hidden">
-              <span className="text-6xl">❤️</span>
-              <h2 className="card-title text-2xl font-mono">Like the project? </h2>
+              <div className="flex flex-row items-center gap-2">
+                <span className="text-6xl">❤️</span>
+                <div className="flex flex-col justify-center gap-2">
+                  <h2 className="font-bold first-letter text-2xl font-mono">Like the project? </h2>
 
-              <span>
-                You said you&apos;d pay <span className="pr-1 text-blue-600 font-bold">{usdcPrice}</span>
-                <Link href="https://circle.com/" target="_blank">
-                  <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                  <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-                </Link>
-                , would you donate us the cost of a like? 🥺
-              </span>
+                  <span>
+                    If you&apos;d pay <span className="pr-1 text-blue-600 font-bold">{usdcPrice}</span>
+                    <Link href="https://circle.com/" target="_blank">
+                      <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                      <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+                    </Link>
+                    , would you donate us the cost of a like? 🥺
+                  </span>
 
-              <button className="btn btn-warning">Approve {usdcPrice} USDC</button>
+                  <button className="btn btn-warning mt-2">Approve {usdcPrice} USDC</button>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
