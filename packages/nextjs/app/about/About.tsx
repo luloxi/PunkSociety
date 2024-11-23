@@ -13,7 +13,7 @@ export interface Post extends Partial<NFTMetaData> {
 }
 
 export const About = () => {
-  const [usdcPrice, setUsdcPrice] = useState<number>();
+  const [usdcPrice, setUsdcPrice] = useState<number>(1);
   // const [averageUsdcPrice, setAverageUsdcPrice] = useState<number>();
   const averageUsdcPrice = "";
 
