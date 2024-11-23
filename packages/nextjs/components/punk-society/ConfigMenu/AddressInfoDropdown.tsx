@@ -62,7 +62,7 @@ export const AddressInfoDropdown = ({ blockExplorerAddressLink }: AddressInfoDro
           <li className={selectingNetwork ? "hidden" : ""}>
             <label htmlFor="private-key-modal" className="btn-sm  !rounded-xl flex gap-3 py-3">
               <KeyIconOutline className="h-6 w-4 ml-2 sm:ml-0" />
-              <span className="whitespace-nowrap">View Private Key</span>
+              <span className="whitespace-nowrap">Save Private Key</span>
             </label>
           </li>
 
