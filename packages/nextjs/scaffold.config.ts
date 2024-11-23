@@ -38,7 +38,7 @@ const scaffoldConfig = {
   // and uncomment chains.foundry
   // targetNetworks: [punksociety, chains.baseSepolia, chains.avalancheFuji],
   // targetNetworks: [punksociety],
-  targetNetworks: [chains.sepolia],
+  targetNetworks: [chains.avalancheFuji],
   // targetNetworks: [chains.foundry],
 
   // The interval at which your front-end polls the RPC servers for new data

@@ -9,6 +9,7 @@ default_network = "${PUNKSOCIETY_RPC_URL}"
 localhost = "${PUNKSOCIETY_RPC_URL}"
 
 punksociety = "${PUNKSOCIETY_RPC_URL}"
+avalancheFuji = "https://api.avax-test.network/ext/bc/C/rpc"
 mainnet = "https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}"
 sepolia = "https://eth-sepolia.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
 arbitrum = "https://arb-mainnet.g.alchemy.com/v2/${ALCHEMY_API_KEY}"
