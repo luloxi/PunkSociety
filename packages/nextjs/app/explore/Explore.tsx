@@ -169,12 +169,12 @@ export const Explore = () => {
         >
           Following
         </button>
-        <button
+        {/* <button
           className={`tab text-gray-500 ${activeTab === "Groups" ? "active" : ""}`}
           onClick={() => handleTabClick("Groups")}
         >
           Groups
-        </button>
+        </button> */}
       </div>
       <NewsFeed posts={posts} isGrid={false} />
       <div ref={lastPostElementRef}></div>
