@@ -72,7 +72,7 @@ export const Explore = () => {
   } = useScaffoldEventHistory({
     contractName: "PunkSociety",
     eventName: "PostCreated",
-    fromBlock: 36807639n,
+    fromBlock: 18350669n,
     watch: true,
   });
 
