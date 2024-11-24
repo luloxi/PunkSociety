@@ -28,18 +28,18 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
 
     // Upload file to Pinata
     setLoading(true);
-    const notificationId = notification.loading("Uploading image to Pinata...");
+    // const notificationId = notification.loading("Uploading image to Pinata...");
     try {
       const response = await uploadToPinata(file);
-      notification.success("Image uploaded to Pinata!");
+      // notification.success("Image uploaded to Pinata!");
       setUploadedImageIpfsPath(response.IpfsHash); // Store IPFS hash for later use
       setLoading(false);
-      notification.remove(notificationId);
+      // notification.remove(notificationId);
     } catch (error) {
       console.error("Error uploading image to Pinata:", error);
       notification.error("Failed to upload image to Pinata.");
       setLoading(false);
-      notification.remove(notificationId);
+      // notification.remove(notificationId);
     }
   };
 

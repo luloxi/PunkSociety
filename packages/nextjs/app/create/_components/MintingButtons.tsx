@@ -22,18 +22,18 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
   const [loading, setLoading] = useState(false);
 
   const uploadToIPFS = async () => {
-    const notificationId = notification.loading("Uploading to Pinata...");
+    // const notificationId = notification.loading("Uploading to Pinata...");
     try {
       const file = new Blob([JSON.stringify(yourJSON)], { type: "application/json" });
       const fileName = "PunkPostMetadata.json"; // Provide a desired file name
       const modifiedFile = new File([file], fileName, { lastModified: Date.now() });
       const uploadedItem = await uploadToPinata(modifiedFile);
-      notification.remove(notificationId);
-      notification.success("Metadata uploaded to Pinata");
+      // notification.remove(notificationId);
+      // notification.success("Metadata uploaded to Pinata");
 
       return uploadedItem.IpfsHash;
     } catch (error) {
-      notification.remove(notificationId);
+      // notification.remove(notificationId);
       notification.error("Failed to upload to Pinata");
       throw error;
     }
