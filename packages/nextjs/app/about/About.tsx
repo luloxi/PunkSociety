@@ -13,7 +13,7 @@ export interface Post extends Partial<NFTMetaData> {
 }
 
 export const About = () => {
-  const [usdcPrice, setUsdcPrice] = useState<number>();
+  const [usdcPrice, setUsdcPrice] = useState<number>(1);
   // const [averageUsdcPrice, setAverageUsdcPrice] = useState<number>();
   const averageUsdcPrice = "";
 
@@ -268,6 +268,78 @@ export const About = () => {
         ) : (
           ""
         )}
+      </div>
+
+      <div className="w-full pt-6 bg-base-100">
+        <h1 className="text-4xl font-bold font-mono text-center">Tech stack! 🤘</h1>
+      </div>
+
+      <div className="hero bg-base-100 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
+        <div className="card lg:h-[280px] max-w-[400px] flex flex-col justify-between bg-base-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <Image src="/usdc-logo.png" alt="USDC logo" width={70} height={70} />
+            <h2 className="card-title text-2xl font-mono">Circle USDC</h2>
+            <p>
+              Payment for likes and comments is done with{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              for easy accountability.
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[280px] max-w-[400px] flex flex-col justify-between bg-base-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <Image src="/chainlink-logo.png" alt="Chainlink logo" width={70} height={70} />
+            <h2 className="card-title text-2xl font-mono">Chainlink CCIP</h2>
+            <p>
+              Bridge NFTs and USDC to other blockchains using{" "}
+              <Link href="https://chain.link/cross-chain" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">Chainlink CCIP</span>
+                <Image src="/chainlink-logo.png" alt="Chainlink logo" width={20} height={20} className="inline-block" />
+              </Link>
+              .
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[280px] max-w-[400px] flex flex-col justify-between bg-base-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <Image src="/thegraph-logo.png" alt="The Graph logo" width={70} height={70} />
+            <h2 className="card-title text-2xl font-mono">The Graph</h2>
+            <p>
+              Using{" "}
+              <Link href="https://thegraph.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">The Graph</span>
+                <Image src="/thegraph-logo.png" alt="The Graph logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              provides efficient, scalable, and real-time querying of blockchain data for Web3 dApps.
+            </p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[280px] max-w-[400px] flex flex-col justify-between bg-base-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <Image src="/scaffold-eth.svg" alt="Scaffold-ETH 2 logo" width={70} height={70} />
+            <h2 className="card-title text-2xl font-mono">Scaffold-ETH 2</h2>
+            <p>
+              Built with{" "}
+              <Link href="https://scaffoldeth.io/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">Scaffold-ETH 2</span>
+                <Image
+                  src="/scaffold-eth.svg"
+                  alt="Scaffold-ETH 2 logo"
+                  width={20}
+                  height={20}
+                  className="inline-block"
+                />
+              </Link>{" "}
+              , using the latest tech stack to build web3 dApps.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div className="w-full  bg-yellow-500">

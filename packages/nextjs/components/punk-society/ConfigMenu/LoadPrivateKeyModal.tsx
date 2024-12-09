@@ -1,12 +1,16 @@
-import Image from "next/image";
+import { useState } from "react";
+import { InputBase } from "~~/components/scaffold-eth";
 
 type LoadPrivateKeyModalProps = {
   modalId: string;
 };
 
 export const LoadPrivateKeyModal = ({ modalId }: LoadPrivateKeyModalProps) => {
+  const [privateKey, setPrivateKey] = useState("");
+
   const handleLoadPrivateKeyClick = () => {
-    window.open("https://core.app/es/", "_blank");
+    localStorage.setItem("burnerWallet.pk", privateKey);
+    window.location.reload();
   };
   return (
     <>
@@ -14,14 +18,13 @@ export const LoadPrivateKeyModal = ({ modalId }: LoadPrivateKeyModalProps) => {
         <input type="checkbox" id={`${modalId}`} className="modal-toggle" />
         <label htmlFor={`${modalId}`} className="modal cursor-pointer">
           <label className="modal-box relative" htmlFor="">
-            <div className="flex flex-col justify-center items-center text-center">
-              <h2 className="text-xl font-bold mb-4 text-red-600">Sorry, we can&apos;t load private keys yet.</h2>
-              <button
-                onClick={handleLoadPrivateKeyClick}
-                className="btn btn-primary border-0 flex items-center bg-black hover:bg-green-600 active:bg-green-600"
-              >
-                <Image src="/corewallet.png" alt="Import your key in Core!" width={40} height={40} className="mr-2" />
-                Import your key in Core!
+            <div className="flex flex-col justify-center items-center gap-3 text-center">
+              <h2 className="text-xl font-bold  text-green-600 text-wrap">
+                Enter your private key to load your account
+              </h2>
+              <InputBase value={privateKey} onChange={setPrivateKey} placeholder="Enter your private key" />
+              <button onClick={handleLoadPrivateKeyClick} className="btn btn-success border-0 flex items-center ">
+                Load account!
               </button>
               <label
                 htmlFor={`${modalId}`}
