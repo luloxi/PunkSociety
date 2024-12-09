@@ -57,7 +57,7 @@ yarn chain
 
 > NOTE: To test using your own Avalanche L1, **[follow this instructions](./AVALANCHE-L1.md)**.
 
-2. Duplicate and rename `packages/foundry/.env.example` to `packages/foundry/.env`. Fill the `DEPLOYER_PRIVATE_KEY` with the private key of the account you want to use to deploy the contracts.
+2. Duplicate and rename `packages/foundry/.env.example` to `packages/foundry/.env`. Fill the `DEPLOYER_PRIVATE_KEY` with the private key of the account you want to use to deploy the contracts. Remember to append `0x` at the beginning of the private key.
 
 > NOTE: `ETHERSCAN_API_KEY` and `ALCHEMY_API_KEY` are not required until you deploy to a live EVM like Avalanche, Base, Ethereum, etc.
 
