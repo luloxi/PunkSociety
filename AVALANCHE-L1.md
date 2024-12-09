@@ -1,3 +1,9 @@
+This guide is for deploying your own Avalanche L1 and use USDC as native gas token.
+
+The intention is also for the [Avalanche L1](https://github.com/ava-labs/avalanche-starter-kit) to bridge [ERC20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) and [ERC721](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/) using [Avalanche Interchain Token Transfer](https://github.com/ava-labs/avalanche-interchain-token-transfer) and [Chainlink CCIP Transfer Tokens](https://docs.chain.link/ccip/tutorials/cross-chain-tokens) with [EVM compatible chains](https://ethereum.org/en/developers/docs/scaling/sidechains/#evm-compatibility).
+
+It'd be ideal to run it with one command like `yarn subnet` with a config file, but for now, we'll have to do it manually. You'll start a local Avalanche L1 using [Ava Labs avalanche-starter-kit](https://github.com/ava-labs/avalanche-starter-kit). The network runs on your local machine and can be used for testing and development.
+
 # How to run a local Avalanche L1
 
 General avalanche instructions: `avalanche -h`
@@ -27,7 +33,9 @@ It'll take some time to load, go take a walk or do something else while it loads
 
 ## 2. Load RPC URL into your scaffold-eth
 
-Add the rpc url on `packages/foundry/.env` and on `packages/nextjs/.env` variable called `PUNKSOCIETY_RPC_URL` and `NEXT_PUBLIC_PUNKSOCIETY_RPC_URL` respectively
+Add the rpc url on `packages/foundry/.env` and on `packages/nextjs/.env` variable called `PUNKSOCIETY_RPC_URL` and `NEXT_PUBLIC_PUNKSOCIETY_RPC_URL` respectively.
+
+Go to `packages/nextjs/scaffold.config.ts` and change the `targetNetworks` to `[punksociety]`.
 
 > NOTE: When using codespace on github, load the global URL, NOT the local (127.0.0.1) one
 
