@@ -89,10 +89,8 @@ export const Roadmap = () => {
                 <span aria-label="option enabled">✅</span> Enable following users, liking, commenting and sharing posts
               </li>
               <li>
-                <strong>Incentive model:</strong> Likes and comments send $ to the user on the other end
-              </li>
-              <li>
-                Posting and interactions send a <strong>fee to PunkSociety</strong>
+                <strong>Incentive model:</strong> Likes and comments send $ to the user on the other end. Posting sends
+                $ to PunkSociety&apos;s deployer.
               </li>
               <li>
                 <strong>Dynamic page to view individual posts</strong>

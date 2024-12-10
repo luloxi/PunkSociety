@@ -1,17 +1,18 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { ErrorComponent } from "../../../components/punk-society/ErrorComponent";
 import { LoadingBars } from "../../../components/punk-society/LoadingBars";
 import { NewsFeed } from "../../../components/punk-society/NewsFeed";
-import ProfilePictureUpload from "../_components/ProfilePictureUpload";
+import EditProfile from "../_components/EditProfile";
 import { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { PencilIcon } from "@heroicons/react/24/outline";
+import Modal from "~~/components/punk-society/Modal";
 import { Address, Balance } from "~~/components/scaffold-eth";
-import { InputBase } from "~~/components/scaffold-eth";
-import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldEventHistory, useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
@@ -23,25 +24,30 @@ export interface Post extends Partial<NFTMetaData> {
   date?: string;
 }
 
-const defaultProfilePicture = "/guest-profile.jpg";
-
 const ProfilePage: NextPage = () => {
-  const [username, setUsername] = useState("");
-  const [bio, setBio] = useState("");
-  const [profilePicture, setProfilePicture] = useState<string>("");
-  const [isEditing, setIsEditing] = useState(false); // New state for edit mode
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(true);
   const [page, setPage] = useState(1); // Start from page 1 to get the last post first
-  const [loadingProfile, setLoadingProfile] = useState(true);
   const [activeTab, setActiveTab] = useState("Minted");
+  const [isEditing, setIsEditing] = useState(false); // New state for edit mode
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const closeModal = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setIsAnimating(false);
+      setIsEditing(false);
+    }, 300); // Adjust the timeout to match your animation duration
+  };
 
   const handleTabClick = (tab: any) => {
     setActiveTab(tab);
   };
 
   const observer = useRef<IntersectionObserver | null>(null);
+
+  const defaultProfilePicture = "/guest-profile.jpg";
 
   const { address: connectedAddress } = useAccount();
 
@@ -55,8 +61,6 @@ const ProfilePage: NextPage = () => {
     watch: true,
   });
 
-  const { writeContractAsync: punkProfileWriteAsync } = useScaffoldWriteContract("PunkProfile");
-
   const {
     data: createEvents,
     // isLoading: createIsLoadingEvents,
@@ -67,29 +71,6 @@ const ProfilePage: NextPage = () => {
     fromBlock: 18350669n,
     watch: true,
   });
-
-  const handleEditProfile = async () => {
-    try {
-      // Check if the current profile picture is the default one
-      if (profilePicture === defaultProfilePicture) {
-        // Unset the current profile picture before editing the profile
-        setProfilePicture("");
-      }
-
-      await punkProfileWriteAsync({
-        functionName: "setProfile",
-        args: [username, bio, profilePicture],
-      });
-
-      notification.success("Profile Edited Successfully");
-      setIsEditing(false);
-    } catch (error) {
-      console.error("Error during editing profile:", error);
-
-      // Log the error and notify the user
-      notification.error("Editing profile, please try again.");
-    }
-  };
 
   const fetchPosts = useCallback(
     async (page: number) => {
@@ -164,15 +145,6 @@ const ProfilePage: NextPage = () => {
     [loadingMore],
   );
 
-  useEffect(() => {
-    if (!isEditing && punkProfile) {
-      setUsername(punkProfile[0] || "");
-      setBio(punkProfile[1] || "");
-      setProfilePicture(punkProfile[2] ? punkProfile[2] : defaultProfilePicture);
-      setLoadingProfile(false);
-    }
-  }, [punkProfile, isEditing]);
-
   // Ensure the address is available before rendering the component
   if (!address) {
     return <p>Inexistent address, try again...</p>;
@@ -190,83 +162,65 @@ const ProfilePage: NextPage = () => {
     <>
       <div className="flex flex-col items-center">
         {/* User Profile Section */}
-        {loadingProfile ? (
-          <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
-            <div className="flex items-center justify-center w-full h-full">
-              <LoadingBars />
-            </div>
-          </div>
-        ) : (
-          <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
-            {/* Profile Picture */}
-            <div className="avatar ">
-              <ProfilePictureUpload
+        <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
+          {/* Profile Picture */}
+          <div className="avatar ">
+            {/* <ProfilePictureUpload
                 isEditing={isEditing}
                 profilePicture={profilePicture}
                 setProfilePicture={setProfilePicture}
-              />
-            </div>
-            {/* User Info Section */}
-            <div className="flex flex-col justify-center items-center">
-              {isEditing ? (
-                <InputBase placeholder="Your Name" value={username} onChange={setUsername} />
-              ) : (
-                <>
-                  <h2 className="text-2xl font-bold">{username || "Guest user"}</h2>
-
-                  {bio && <p className="text-base-content">{bio}</p>}
-
-                  <div className="mt-2">
-                    <div className="text-base-content">
-                      <Address address={address} />
-                      <div className="flex flex-row items-center">
-                        <span>Balance: </span>
-                        <Balance address={address} />
-                      </div>
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-            {/* Div to align info in the center */}
-            <div></div>
-            {/* User Bio */}{" "}
-            {isEditing ? (
-              <div className="flex-grow text-center md:mx-auto mt-4 md:mt-0">
-                <>
-                  <InputBase placeholder="Your Bio" value={bio} onChange={setBio} />
-                </>
-              </div>
-            ) : (
-              <></>
-            )}
-            {/* Edit/Cancel Button */}
-            {address === connectedAddress && (
-              <>
-                {isEditing ? (
-                  <button
-                    className="absolute top-4 right-4 btn btn-secondary btn-sm"
-                    onClick={() => setIsEditing(false)}
-                  >
-                    X Cancel
-                  </button>
-                ) : (
-                  <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
-                    <PencilIcon className="h-5 w-5" />
-                    Edit
-                  </button>
-                )}
-                {isEditing && (
-                  <div className="mt-2 flex items-center gap-2">
-                    <button className="cool-button" onClick={handleEditProfile}>
-                      Save changes
-                    </button>
-                  </div>
-                )}
-              </>
-            )}
+              /> */}
+            <Image
+              src={punkProfile?.[2] ? punkProfile?.[2] : defaultProfilePicture}
+              alt="Profile Picture"
+              className="rounded-full object-cover w-32 h-32"
+              width={128}
+              height={128}
+            />
           </div>
-        )}
+          {/* User Info Section */}
+          <div className="flex flex-col justify-center items-center">
+            {(isEditing || isAnimating) && (
+              <Modal isOpen={isEditing} onClose={closeModal}>
+                <EditProfile />
+              </Modal>
+            )}
+
+            <>
+              <h2 className="text-2xl font-bold">{punkProfile?.[0] || "Guest user"}</h2>
+
+              {punkProfile?.[1] && <p className="text-base-content">{punkProfile?.[1]}</p>}
+
+              <div className="mt-2">
+                <div className="text-base-content">
+                  <Address address={address} />
+                  <div className="flex flex-row items-center">
+                    <span>Balance: </span>
+                    <Balance address={address} />
+                  </div>
+                </div>
+              </div>
+            </>
+          </div>
+          <div> </div>
+
+          {/* Edit/Cancel Button */}
+          {address === connectedAddress && (
+            <>
+              {isEditing ? (
+                <button className="absolute top-4 right-4 btn btn-secondary btn-sm" onClick={() => setIsEditing(false)}>
+                  X Cancel
+                </button>
+              ) : (
+                <button className="absolute top-4 right-4 btn btn-primary btn-sm" onClick={() => setIsEditing(true)}>
+                  <PencilIcon className="h-5 w-5" />
+                  Edit
+                </button>
+              )}
+              {isEditing && <div className="mt-2 flex items-center gap-2"></div>}
+            </>
+          )}
+        </div>
       </div>
       {/* {loading && <LoadingBars />} */}
 

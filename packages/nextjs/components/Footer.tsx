@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Create from "../app/create/Create";
-import Modal from "../app/create/Modal";
 import { useAccount } from "wagmi";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/24/solid";
+import Modal from "~~/components/punk-society/Modal";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 export const Footer = () => {

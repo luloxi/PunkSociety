@@ -110,9 +110,7 @@ export const Header = () => {
           </div>
         </div>
         <div className="flex flex-row items-center justify-center gap-3">
-          {/* <div className="lg:mr-2"></div> */}
-
-          <div className=" lg:ml-4 mr-4">
+          <div className="mr-2 lg:mr-0">
             <ConfigMenu />
           </div>
         </div>

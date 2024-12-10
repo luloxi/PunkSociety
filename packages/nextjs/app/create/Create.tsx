@@ -1,12 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ImageUploader } from "./_components/ImageUploader";
 import { MintingButtons } from "./_components/MintingButtons";
-import { TextInput } from "./_components/TextInput";
 import generateTokenURI from "./_components/generateTokenURI";
-
-// import type { NextPage } from "next";
+import { ImageUploader } from "~~/components/punk-society/ImageUploader";
+import { TextInput } from "~~/components/punk-society/TextInput";
 
 const Create = ({ onClose }: { onClose: any }) => {
   const [description, setDescription] = useState("");
@@ -53,12 +51,9 @@ const Create = ({ onClose }: { onClose: any }) => {
               />
             </div>
             <div className="text-left flex-shrink-0 w-full">
-              <TextInput description={description} setDescription={setDescription} />
+              <TextInput placeholder="Text for your post" description={description} setDescription={setDescription} />
             </div>
           </div>
-
-          {/* JSON Viewer */}
-          {/* <JSONViewer yourJSON={yourJSON} setYourJSON={setYourJSON} /> */}
 
           <MintingButtons
             description={description}
