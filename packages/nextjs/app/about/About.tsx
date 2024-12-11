@@ -15,7 +15,7 @@ export interface Post extends Partial<NFTMetaData> {
 export const About = () => {
   const [usdcPrice, setUsdcPrice] = useState<number>(1);
   // const [averageUsdcPrice, setAverageUsdcPrice] = useState<number>();
-  const averageUsdcPrice = "";
+  const averageUsdcPrice = "1";
 
   const handleUsdcPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(e.target.value);
@@ -46,6 +46,7 @@ export const About = () => {
                 Use social media and earn! 🤑
               </span>
             </div>
+
             <span className="text-lg text-center pt-2">
               Social protocol where interactions are monetized 💰 <br />
               Users earn while engaging with their community 🫂
@@ -106,50 +107,6 @@ export const About = () => {
                 <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
               </Link>{" "}
               earnings.
-            </p>
-          </div>
-        </div> */}
-
-        {/* <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🫰</span>
-            <h2 className="card-title text-2xl font-mono">Earn USDC yield! </h2>
-            <p>
-              Your{" "}
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              generates interest on{" "}
-              <Link href="https://aave.com/" target="_blank">
-                <span className="pr-1 text-indigo-600 font-bold underline underline-offset-2">AAVE</span>
-                <Image src="/aave-logo.png" alt="AAVE logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              while bridged to our{" "}
-              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
-                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              !
-            </p>
-          </div>
-        </div> */}
-
-        {/* <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">⛽</span>
-            <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
-            <p>
-              <Link href="https://circle.com/" target="_blank">
-                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              is used to pay for transactions and interactions on our{" "}
-              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
-                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
-              </Link>{" "}
-              .
             </p>
           </div>
         </div> */}
@@ -337,6 +294,83 @@ export const About = () => {
                 <Image src="/thegraph-logo.png" alt="The Graph logo" width={20} height={20} className="inline-block" />
               </Link>{" "}
               provides efficient, scalable, and real-time querying of blockchain data for Web3 dApps.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full pt-6 bg-base-300">
+        <h1 className="text-4xl font-bold font-mono text-center">Bigger picture! 🤘</h1>
+      </div>
+
+      <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
+        <div className="flex flex-col gap-3 text-center">
+          <span>
+            PunkSociety is an <strong>open source framework</strong> for building social networks where posts are NFTs
+            and likes send funds to post creators.
+          </span>
+          <span>
+            Instructions on{" "}
+            <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+              <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">
+                {" "}
+                PunkSociety&apos;s GitHub repo
+              </span>
+            </Link>
+            explain how to deploy the project on any EVM compatible blockchain.{" "}
+            <strong>Start your own community!</strong>
+          </span>
+          <span>
+            If you want to <strong>deploy it as an appchain</strong>, there are also instructions to test with an{" "}
+            <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+              <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
+              <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+            </Link>{" "}
+            , which allows features such as these:
+          </span>
+        </div>
+      </div>
+
+      <div className="hero bg-base-300 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">⛽</span>
+            <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
+            <p>
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              is used to pay for transactions and interactions on our{" "}
+              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              .
+            </p>
+          </div>
+        </div>
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🫰</span>
+            <h2 className="card-title text-2xl font-mono">Earn USDC yield! </h2>
+            <p>
+              Your{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              generates interest on{" "}
+              <Link href="https://aave.com/" target="_blank">
+                <span className="pr-1 text-indigo-600 font-bold underline underline-offset-2">AAVE</span>
+                <Image src="/aave-logo.png" alt="AAVE logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              while bridged to our{" "}
+              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              !
             </p>
           </div>
         </div>
