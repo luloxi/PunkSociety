@@ -105,18 +105,18 @@ export const Footer = () => {
                 </a>
               </div>
               <span>·</span>
-              <div className="flex justify-center items-center gap-2">
-                <p className="m-0 text-center">
-                  Built with <HeartIcon className="inline-block h-4 w-4" /> by
+              <div className="flex flex-row justify-center items-center gap-2">
+                <p className="m-0 text-center flex items-center gap-1">
+                  Built with <HeartIcon className="inline-block h-4 w-4" /> by{" "}
+                  <a
+                    className="flex items-center gap-1"
+                    href="https://linktr.ee/lulox"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <span className="link">Lulox</span>
+                  </a>
                 </p>
-                <a
-                  className="flex justify-center items-center gap-1"
-                  href="https://linktr.ee/lulox"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <span className="link">Lulox</span>
-                </a>
               </div>
             </div>
           </ul>

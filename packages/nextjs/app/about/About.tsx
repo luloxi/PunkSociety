@@ -88,7 +88,7 @@ export const About = () => {
 
       <div className="w-full  bg-yellow-500">
         <div className="flex flex-col p-6 justify-center items-center  bg-yellow-500 text-black">
-          <h1 className="text-4xl font-mono text-center">Like reading PDFs?</h1>
+          <h1 className="text-4xl font-mono text-center">Prefer reading PDFs?</h1>
           <div>
             <Link href="/PunkPaper.pdf" target="_blank">
               <button className="btn btn-primary bg-black hover:bg-gray-800 border-0 text-yellow-300">
@@ -120,8 +120,8 @@ export const About = () => {
                   height={350}
                 />
                 <div>
-                  <h1 className="text-5xl font-bold">Example build 🤘</h1>
-                  <p className="pt-6 text-green-600 text-3xl">Use social media and earn! 🤑</p>
+                  <h1 className="text-5xl font-bold">About this build 🤘</h1>
+                  <p className="pt-6 text-green-600 text-2xl">Use social media and earn! 🤑</p>
                   <p className="">
                     Social protocol where interactions are monetized 💰 <br />
                     Users earn while engaging with their community 🫂
@@ -315,7 +315,7 @@ export const About = () => {
         )} */}
       </div>
 
-      <div className="w-full pt-6 bg-base-300">
+      {/* <div className="w-full pt-6 bg-base-300">
         <h1 className="text-4xl font-bold font-mono text-center">Tech stack! 🤘</h1>
       </div>
 
@@ -385,7 +385,7 @@ export const About = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="hero-content flex-col lg:flex-row-reverse lg:px-14">
         <span className="text-xl">
