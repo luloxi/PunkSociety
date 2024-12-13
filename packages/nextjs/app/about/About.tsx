@@ -37,8 +37,9 @@ export const About = () => {
           <div className="flex flex-col items-center justify-center">
             <div className="hero bg-base-200">
               <div className="hero-content flex-col lg:flex-row-reverse text-2xl">
-                <img
+                <Image
                   src="https://www.rawshorts.com/blog/wp-content/uploads/2019/08/instagram-ads.gif"
+                  alt="Animation showing how to enter PunkSociety, and the experience of scrolling the home feed"
                   className="max-w-sm rounded-lg shadow-2xl mx-3"
                 />
                 <div>
