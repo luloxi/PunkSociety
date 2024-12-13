@@ -35,129 +35,50 @@ export const About = () => {
             height={150}
           /> */}
           <div className="flex flex-col items-center justify-center">
-            <h1
-              className="text-4xl font-bold text-center 
-          font-mono "
-            >
-              WTF is <strong>PunkSociety? 🤘</strong>
-            </h1>
-
-            <div className="flex flex-col gap-3 text-center w-[600px]">
-              <span>
-                PunkSociety is an <strong>open source framework</strong> for building EVM compatible dapps that interact
-                with{" "}
-                <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-                  <span className=" text-blue-600 font-bold underline underline-offset-2">ERC20</span>
-                </Link>{" "}
-                and{" "}
-                <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-                  <span className=" text-pink-600 font-bold underline underline-offset-2">ERC721</span>
-                </Link>{" "}
-                tokens (<span className=" text-blue-600 font-bold">fungible</span> and{" "}
-                <span className=" text-pink-600 font-bold">non-fungible</span>).
-              </span>
-
-              <span>
-                Instructions on{" "}
-                <Link href="https://github.com/luloxi/PunkSociety" target="_blank">
-                  <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">
-                    {" "}
-                    PunkSociety&apos;s GitHub repo
-                  </span>
-                </Link>
-                explain how to deploy the project on any{" "}
-                <Link
-                  href="https://blog.thirdweb.com/evm-compatible-blockchains-and-ethereum-virtual-machine/"
-                  target="_blank"
-                >
-                  <span className=" text-green-600 font-bold underline underline-offset-2">
-                    EVM compatible blockchain.
-                  </span>
-                </Link>
-              </span>
-
-              <span>
-                If you want to{" "}
-                <strong>
-                  deploy it as an{" "}
-                  <Link
-                    href="https://www.coingecko.com/learn/what-are-appchains-application-specific-blockchains"
-                    target="_blank"
-                  >
-                    <span className="pr-1 text-red-600 font-bold underline underline-offset-2">appchain</span>
-                  </Link>
-                </strong>
-                , there are also instructions to test with an{" "}
-                <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-                  <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
-                  <Image
-                    src="/avalanche-logo.png"
-                    alt="Avalanche logo"
-                    width={20}
-                    height={20}
-                    className="inline-block"
-                  />
-                </Link>{" "}
-                , which allows features such as these:
-              </span>
-            </div>
-
-            <div className="hero bg-base-200 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
-              <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
-                <div className="card-body items-center text-center flex-grow overflow-hidden">
-                  <span className="text-6xl">⛽</span>
-                  <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
-                  <p>
-                    <Link href="https://circle.com/" target="_blank">
-                      <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                      <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
-                    </Link>{" "}
-                    is used to pay for transactions and interactions on our{" "}
+            <div className="hero bg-base-200">
+              <div className="hero-content flex-col lg:flex-row-reverse text-2xl">
+                <img
+                  src="https://www.rawshorts.com/blog/wp-content/uploads/2019/08/instagram-ads.gif"
+                  className="max-w-sm rounded-lg shadow-2xl mx-3"
+                />
+                <div>
+                  <h1 className="text-5xl font-bold">WTF is PunkSociety? 🤘</h1>
+                  <p className="pt-6">
+                    It is an <strong>open source framework</strong> for building dapps that interact with{" "}
                     <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-                      <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
-                      <Image
-                        src="/avalanche-logo.png"
-                        alt="Avalanche logo"
-                        width={20}
-                        height={20}
-                        className="inline-block"
-                      />
+                      <span className=" text-blue-600 font-bold underline underline-offset-2">ERC20</span>
                     </Link>{" "}
-                    .
-                  </p>
-                </div>
-              </div>
-              <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
-                <div className="card-body items-center text-center flex-grow overflow-hidden">
-                  <span className="text-6xl">🫰</span>
-                  <h2 className="card-title text-2xl font-mono">Earn USDC yield! </h2>
-                  <p>
-                    Your{" "}
-                    <Link href="https://circle.com/" target="_blank">
-                      <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
-                      <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
-                    </Link>{" "}
-                    generates interest on{" "}
-                    <Link href="https://aave.com/" target="_blank">
-                      <span className="pr-1 text-indigo-600 font-bold underline underline-offset-2">AAVE</span>
-                      <Image src="/aave-logo.png" alt="AAVE logo" width={20} height={20} className="inline-block" />
-                    </Link>{" "}
-                    while bridged to our{" "}
+                    and{" "}
                     <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-                      <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
-                      <Image
-                        src="/avalanche-logo.png"
-                        alt="Avalanche logo"
-                        width={20}
-                        height={20}
-                        className="inline-block"
-                      />
+                      <span className=" text-pink-600 font-bold underline underline-offset-2">ERC721</span>
                     </Link>{" "}
-                    !
+                    tokens (<span className=" text-blue-600 font-bold">fungible</span> and{" "}
+                    <span className=" text-pink-600 font-bold">non-fungible</span>).
                   </p>
+                  <p className="">
+                    Instructions on{" "}
+                    <Link href="https://github.com/luloxi/PunkSociety" target="_blank">
+                      <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">
+                        {" "}
+                        PunkSociety&apos;s GitHub repo
+                      </span>
+                    </Link>
+                    explain how to deploy the project on any{" "}
+                    <Link
+                      href="https://blog.thirdweb.com/evm-compatible-blockchains-and-ethereum-virtual-machine/"
+                      target="_blank"
+                    >
+                      <span className=" text-green-600 font-bold underline underline-offset-2">
+                        EVM compatible blockchain.
+                      </span>
+                    </Link>
+                  </p>
+                  {/* <button className="btn btn-primary">Get Started</button> */}
                 </div>
               </div>
             </div>
+
+            {/* <hr className="w-full border-2 border-white mb-6" /> */}
           </div>
         </div>
       </div>
@@ -186,7 +107,7 @@ export const About = () => {
           Users earn while engaging with their community 🫂
         </span>
 
-        <span className="pt-4 text-center">
+        <span className="pt-4 text-center italic">
           This website is a social network where posts are NFTs and likes send USDC to post creators.{" "}
           <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
             <br />
@@ -434,6 +355,72 @@ export const About = () => {
                 <Image src="/thegraph-logo.png" alt="The Graph logo" width={20} height={20} className="inline-block" />
               </Link>{" "}
               provides efficient, scalable, and real-time querying of blockchain data for Web3 dApps.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="hero-content flex-col lg:flex-row-reverse lg:px-14">
+        <span className="text-xl">
+          If you want to{" "}
+          <strong>
+            deploy it as an{" "}
+            <Link
+              href="https://www.coingecko.com/learn/what-are-appchains-application-specific-blockchains"
+              target="_blank"
+            >
+              <span className=" text-red-600 font-bold underline underline-offset-2">appchain</span>
+            </Link>
+          </strong>
+          , there are instructions to test with an{" "}
+          <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+            <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
+            <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+          </Link>
+          , which allows more customization of the experience with features such as:
+        </span>
+      </div>
+
+      <div className="hero bg-base-200 flex flex-wrap justify-around gap-3 py-4 lg:p-4">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">⛽</span>
+            <h2 className="card-title text-2xl font-mono">USDC = native gas! </h2>
+            <p>
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              is used to pay for transactions and interactions on our{" "}
+              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              .
+            </p>
+          </div>
+        </div>
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between items-center bg-base-100 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🫰</span>
+            <h2 className="card-title text-2xl font-mono">Earn USDC yield! </h2>
+            <p>
+              Your{" "}
+              <Link href="https://circle.com/" target="_blank">
+                <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
+                <Image src="/usdc-logo.png" alt="USDC logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              generates interest on{" "}
+              <Link href="https://aave.com/" target="_blank">
+                <span className="pr-1 text-indigo-600 font-bold underline underline-offset-2">AAVE</span>
+                <Image src="/aave-logo.png" alt="AAVE logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              while bridged to our{" "}
+              <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
+                <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+              </Link>{" "}
+              !
             </p>
           </div>
         </div>
