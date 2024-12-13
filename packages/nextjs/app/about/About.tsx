@@ -41,6 +41,8 @@ export const About = () => {
                   src="https://www.rawshorts.com/blog/wp-content/uploads/2019/08/instagram-ads.gif"
                   alt="Animation showing how to enter PunkSociety, and the experience of scrolling the home feed"
                   className="max-w-sm rounded-lg shadow-2xl mx-3"
+                  width={350}
+                  height={350}
                 />
                 <div>
                   <h1 className="text-5xl font-bold">WTF is PunkSociety? 🤘</h1>
@@ -97,26 +99,50 @@ export const About = () => {
         </div>
       </div>
 
-      <div className="w-full py-6 bg-base-300 flex flex-col justify-center items-center">
-        <h1 className="text-4xl font-bold font-mono text-center">Base build! 🤘</h1>
-        <span className="text-2xl text-center rounded-lg p-2 text-green-600 font-bold">
-          Use social media and earn! 🤑
-        </span>
+      <div className="hero bg-base-200 ">
+        <div className="hero-content flex-col lg:flex-row-reverse lg:px-14">
+          {/* INSERT HERE A GIF SHOWING HOW A LIKE BECOMES MONEY */}
+          {/* <Image
+            src="/like-dollar.png"
+            alt="Animation clicking a like button and increasing USDC balance"
+            className="max-w-sm rounded-lg"
+            width={150}
+            height={150}
+          /> */}
+          <div className="flex flex-col items-center justify-center">
+            <div className="hero bg-base-200">
+              <div className="hero-content flex-col lg:flex-row-reverse ">
+                <Image
+                  src="https://www.rawshorts.com/blog/wp-content/uploads/2019/08/instagram-ads.gif"
+                  alt="Animation showing how to enter PunkSociety, and the experience of scrolling the home feed"
+                  className="max-w-sm rounded-lg shadow-2xl mx-3"
+                  width={350}
+                  height={350}
+                />
+                <div>
+                  <h1 className="text-5xl font-bold">Example build 🤘</h1>
+                  <p className="pt-6 text-green-600 text-3xl">Use social media and earn! 🤑</p>
+                  <p className="">
+                    Social protocol where interactions are monetized 💰 <br />
+                    Users earn while engaging with their community 🫂
+                  </p>
+                  {/* <button className="btn btn-primary">Get Started</button> */}
+                  <span className="pt-4 text-center italic">
+                    This website is a social network where posts are NFTs and likes send USDC to post creators.{" "}
+                    <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                      <br />
+                      <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">
+                        Clone it and <strong>start your own community!</strong>
+                      </span>
+                    </Link>{" "}
+                  </span>
+                </div>
+              </div>
+            </div>
 
-        <span className="text-lg text-center pt-2">
-          Social protocol where interactions are monetized 💰 <br />
-          Users earn while engaging with their community 🫂
-        </span>
-
-        <span className="pt-4 text-center italic">
-          This website is a social network where posts are NFTs and likes send USDC to post creators.{" "}
-          <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
-            <br />
-            <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">
-              Clone it and <strong>start your own community!</strong>
-            </span>
-          </Link>{" "}
-        </span>
+            {/* <hr className="w-full border-2 border-white mb-6" /> */}
+          </div>
+        </div>
       </div>
 
       <div className="w-full pt-6 bg-base-100">
