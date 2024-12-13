@@ -113,8 +113,8 @@ export const About = () => {
             <div className="hero bg-base-200">
               <div className="hero-content flex-col lg:flex-row-reverse ">
                 <Image
-                  src="https://www.rawshorts.com/blog/wp-content/uploads/2019/08/instagram-ads.gif"
-                  alt="Animation showing how to enter PunkSociety, and the experience of scrolling the home feed"
+                  src="/sending-money.jpg"
+                  alt="A dollar bill traveling from one phone to another"
                   className="max-w-sm rounded-lg shadow-2xl mx-3"
                   width={350}
                   height={350}
