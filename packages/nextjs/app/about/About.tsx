@@ -120,7 +120,7 @@ export const About = () => {
                   height={350}
                 />
                 <div>
-                  <h1 className="text-5xl font-bold">About this build 🤘</h1>
+                  <h1 className="text-4xl font-bold">About this build 🤘</h1>
                   <p className="pt-6 text-green-600 text-2xl">Use social media and earn! 🤑</p>
                   <p className="">
                     Social protocol where interactions are monetized 💰 <br />
