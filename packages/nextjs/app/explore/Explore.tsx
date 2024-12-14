@@ -1,12 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-// import Image from "next/image";
+import Image from "next/image";
 import { LoadingBars } from "../../components/punk-society/LoadingBars";
 import { NewsFeed } from "../../components/punk-society/NewsFeed";
-// import { useAccount } from "wagmi";
-import { useScaffoldEventHistory } from "~~/hooks/scaffold-eth";
-// import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useAccount } from "wagmi";
+import { useScaffoldEventHistory, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 import { getMetadataFromIPFS } from "~~/utils/simpleNFT/ipfs-fetch";
 import { NFTMetaData } from "~~/utils/simpleNFT/nftsMetadata";
@@ -25,8 +24,8 @@ export const Explore = () => {
   const [page, setPage] = useState(0);
   const [activeTab, setActiveTab] = useState("Global");
 
-  // const { address: connectedAddress } = useAccount();
-  // const { writeContractAsync } = useScaffoldWriteContract("SimpleFaucet");
+  const { address: connectedAddress } = useAccount();
+  const { writeContractAsync } = useScaffoldWriteContract("SimpleFaucet");
 
   const handleTabClick = (tab: any) => {
     setActiveTab(tab);
@@ -34,36 +33,36 @@ export const Explore = () => {
 
   const observer = useRef<IntersectionObserver | null>(null);
 
-  // const { data: isClaimed } = useScaffoldReadContract({
-  //   contractName: "SimpleFaucet",
-  //   functionName: "hasClaimed",
-  //   args: [connectedAddress],
-  //   watch: true,
-  // });
+  const { data: isClaimed } = useScaffoldReadContract({
+    contractName: "SimpleFaucet",
+    functionName: "hasClaimed",
+    args: [connectedAddress],
+    watch: true,
+  });
 
-  // const handleClaimUSDC = async () => {
-  //   if (!connectedAddress) {
-  //     notification.error("Please connect your wallet");
-  //     return;
-  //   }
+  const handleClaimUSDC = async () => {
+    if (!connectedAddress) {
+      notification.error("Please connect your wallet");
+      return;
+    }
 
-  //   setLoading(true);
+    setLoading(true);
 
-  //   try {
-  //     const contractResponse = await writeContractAsync({
-  //       functionName: "claim",
-  //       // args: [],
-  //     });
+    try {
+      const contractResponse = await writeContractAsync({
+        functionName: "claim",
+        // args: [],
+      });
 
-  //     if (contractResponse) {
-  //       notification.success("Claimed 10 USDC successfully!");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error during claiming USDC:", error);
-  //     notification.error("Claiming USDC failed, please try again.");
-  //   } finally {
-  //   }
-  // };
+      if (contractResponse) {
+        notification.success("Claimed 10 USDC successfully!");
+      }
+    } catch (error) {
+      console.error("Error during claiming USDC:", error);
+      notification.error("Claiming USDC failed, please try again.");
+    } finally {
+    }
+  };
 
   const {
     data: createEvents,
@@ -72,7 +71,8 @@ export const Explore = () => {
   } = useScaffoldEventHistory({
     contractName: "PunkSociety",
     eventName: "PostCreated",
-    fromBlock: 18350669n,
+    // fromBlock: 18350669n,
+    fromBlock: 0n,
     watch: true,
   });
 
@@ -150,7 +150,7 @@ export const Explore = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {/* {!isClaimed && (
+      {!isClaimed && (
         <button
           onClick={handleClaimUSDC}
           className="btn btn-primary text-white bg-[#2E79CC] hover:bg-blue-700 active:bg-blue-700 border-0 mt-2"
@@ -158,7 +158,7 @@ export const Explore = () => {
           <Image src="/usdc-logo.png" alt="USDC logo" width={40} height={40} className="mr-2" />
           <span>Claim 10 USDC from Faucet</span>
         </button>
-      )} */}
+      )}
       <div className="tabs-bar ">
         <button className={`tab ${activeTab === "Global" ? "active" : ""}`} onClick={() => handleTabClick("Global")}>
           Global

@@ -5,6 +5,7 @@ import { PunkPosts } from "../contracts/PunkPosts.sol";
 import { PunkProfile } from "../contracts/PunkProfile.sol";
 import { PunkSociety } from "../contracts/PunkSociety.sol";
 import { SimpleFaucet } from "../contracts/SimpleFaucet.sol";
+import { MockUSDC } from "../contracts/MockUSDC.sol";
 import "./DeployHelpers.s.sol";
 
 contract DeployScript is ScaffoldETHDeploy {
@@ -14,6 +15,7 @@ contract DeployScript is ScaffoldETHDeploy {
   PunkProfile punkProfile;
   PunkSociety punkSociety;
 
+  MockUSDC mockUSDC;
   SimpleFaucet simpleFaucet;
 
   error InvalidPrivateKey(string);
@@ -27,7 +29,11 @@ contract DeployScript is ScaffoldETHDeploy {
     }
     vm.startBroadcast(deployerPrivateKey);
 
-    // Deploying just to get the ABI from the frontend
+    mockUSDC = new MockUSDC();
+    console.logString(
+      string.concat("MockUSDC deployed at: ", vm.toString(address(mockUSDC)))
+    );
+
     punkPosts = new PunkPosts();
     console.logString(
       string.concat("PunkPosts deployed at: ", vm.toString(address(punkPosts)))
@@ -40,7 +46,9 @@ contract DeployScript is ScaffoldETHDeploy {
       )
     );
 
-    punkSociety = new PunkSociety(address(punkProfile), address(punkPosts));
+    punkSociety = new PunkSociety(
+      address(punkProfile), address(punkPosts), address(mockUSDC)
+    );
     console.logString(
       string.concat(
         "PunkSociety deployed at: ", vm.toString(address(punkSociety))
@@ -55,12 +63,14 @@ contract DeployScript is ScaffoldETHDeploy {
       )
     );
 
-    simpleFaucet = new SimpleFaucet();
+    simpleFaucet = new SimpleFaucet(address(mockUSDC));
     console.logString(
       string.concat(
         "SimpleFaucet deployed at: ", vm.toString(address(simpleFaucet))
       )
     );
+
+    mockUSDC.transfer(address(simpleFaucet), 50000 * 1e18);
 
     // Transfer 5000 USDC to the simpleFaucet
     // payable(address(simpleFaucet)).transfer(5000 * 1e18);

@@ -5,8 +5,8 @@ libs = ['lib']
 fs_permissions = [{ access = "read-write", path = "./"}]
 
 [rpc_endpoints]
-default_network = "${PUNKSOCIETY_RPC_URL}"
-localhost = "${PUNKSOCIETY_RPC_URL}"
+default_network = "http://127.0.0.1:8545"
+localhost = "http://127.0.0.1:8545"
 
 punksociety = "${PUNKSOCIETY_RPC_URL}"
 avalancheFuji = "https://api.avax-test.network/ext/bc/C/rpc"

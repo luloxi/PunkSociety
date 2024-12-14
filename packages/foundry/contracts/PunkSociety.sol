@@ -5,6 +5,8 @@ import { PunkProfile } from "./PunkProfile.sol";
 import { PunkPosts } from "./PunkPosts.sol";
 
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
+
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 // import { EIP712 } from "@openzeppelin/contracts/utils/cryptography/EIP712.sol";
 // import { ECDSA } from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
@@ -65,6 +67,7 @@ contract PunkSociety is Ownable {
   uint256 public postIds;
   PunkProfile public punkProfile;
   PunkPosts public punkPosts;
+  IERC20 public mockUSDC;
 
   mapping(uint256 => address) public postIdToUser;
   mapping(address => uint256[]) public userPosts;
@@ -94,9 +97,14 @@ contract PunkSociety is Ownable {
                             CONSTRUCTOR FUNCTION
   //////////////////////////////////////////////////////////////*/
 
-  constructor(address _punkProfile, address _punkPosts) Ownable(msg.sender) {
+  constructor(
+    address _punkProfile,
+    address _punkPosts,
+    address _mockUSDC
+  ) Ownable(msg.sender) {
     punkProfile = PunkProfile(_punkProfile);
     punkPosts = PunkPosts(_punkPosts);
+    mockUSDC = IERC20(_mockUSDC);
   }
 
   /*//////////////////////////////////////////////////////////////
@@ -111,6 +119,7 @@ contract PunkSociety is Ownable {
     postIdToUser[postId] = msg.sender;
     userPosts[msg.sender].push(postId);
 
+    mockUSDC.transferFrom(msg.sender, owner(), 3 * 1e6);
     punkPosts.mint(_tokenURI);
     // payable(owner()).transfer(3 ether);
 

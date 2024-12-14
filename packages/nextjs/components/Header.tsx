@@ -1,12 +1,15 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ConfigMenu } from "./punk-society/ConfigMenu";
 import { PunkConnectButton } from "./punk-society/PunkConnectButton";
 import { FaucetButton } from "./scaffold-eth";
+import { useAccount } from "wagmi";
 import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 /**
  * Site header
@@ -14,12 +17,23 @@ import { BellIcon, EnvelopeIcon, HomeIcon, MagnifyingGlassIcon } from "@heroicon
 export const Header = () => {
   const pathname = usePathname();
 
+  const { address: connectedAddress } = useAccount();
+
+  const { data: usdcBalance } = useScaffoldReadContract({
+    contractName: "MockUSDC",
+    functionName: "balanceOf",
+    args: [connectedAddress],
+    watch: true,
+  });
+
+  const formattedUsdcBalance = usdcBalance ? (Number(usdcBalance.toString()) / 1e6).toFixed(2) : "0.00";
+
   return (
     <div className="sticky  top-0 navbar bg-base-100 min-h-0 flex-shrink-0 justify-between z-20 px-0 sm:px-2">
       <div className="navbar-start  lg:ml-2">
         <div className="flex lg:hidden">
           {/* <ConfigMenu /> */}
-          <div className="flex justify-center items-center ml-8 lg:ml-0">
+          {/* <div className="flex justify-center items-center ml-8 lg:ml-0">
             <Link href="/" passHref>
               <span className="inline-flex items-center gap-2">
                 <strong>PunkSociety</strong>{" "}
@@ -28,7 +42,11 @@ export const Header = () => {
                 </span>
               </span>
             </Link>
-          </div>
+          </div> */}
+          <span className="items-center justify-center gap-1 ml-4 text-lg text-blue-600 font-bold">
+            <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+            <span>{formattedUsdcBalance}</span>
+          </span>
         </div>
         <div className="flex flex-row gap-3 ">
           <Link href="/" passHref>
@@ -100,19 +118,27 @@ export const Header = () => {
       </div>
 
       <div className="navbar-end relative ">
-        <div className="flex justify-center items-center  ">
+        {/* <div className="flex justify-center items-center  ">
+          <span className="text-blue-600">USDC {usdcBalance}</span>
+        </div> */}
+
+        <div className="flex flex-row items-center justify-center gap-3">
+          <span className="hidden lg:flex items-center justify-center gap-1 text-lg text-blue-600 font-bold">
+            <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+            {formattedUsdcBalance}
+          </span>
           <div className="flex items-center justify-center">
             <PunkConnectButton />
           </div>
-
           <div>
             <FaucetButton />
           </div>
-        </div>
-        <div className="flex flex-row items-center justify-center gap-3">
-          <div className="mr-2 lg:mr-0">
+          <div>
             <ConfigMenu />
           </div>
+        </div>
+        <div className="flex flex-row items-center justify-center gap-3">
+          <div className="mr-2 lg:mr-0"></div>
         </div>
       </div>
     </div>

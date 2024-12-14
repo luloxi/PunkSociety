@@ -68,7 +68,8 @@ const ProfilePage: NextPage = () => {
   } = useScaffoldEventHistory({
     contractName: "PunkSociety",
     eventName: "PostCreated",
-    fromBlock: 18350669n,
+    // fromBlock: 18350669n,
+    fromBlock: 0n,
     watch: true,
   });
 
