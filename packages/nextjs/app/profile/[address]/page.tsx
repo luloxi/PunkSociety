@@ -164,20 +164,20 @@ const ProfilePage: NextPage = () => {
         {/* User Profile Section */}
         <div className="relative flex flex-col md:flex-row justify-between items-center bg-base-100 p-6 rounded-lg shadow-md w-full m-2">
           {/* Profile Picture */}
-          <div className="avatar ">
-            {/* <ProfilePictureUpload
+          {/* <div className="avatar "> */}
+          {/* <ProfilePictureUpload
                 isEditing={isEditing}
                 profilePicture={profilePicture}
                 setProfilePicture={setProfilePicture}
               /> */}
-            <Image
-              src={punkProfile?.[2] ? punkProfile?.[2] : defaultProfilePicture}
-              alt="Profile Picture"
-              className="rounded-full object-cover w-32 h-32"
-              width={128}
-              height={128}
-            />
-          </div>
+          <Image
+            src={punkProfile?.[2] ? punkProfile?.[2] : defaultProfilePicture}
+            alt="Profile Picture"
+            className="rounded-full object-cover w-32 h-32"
+            width={128}
+            height={128}
+          />
+          {/* </div> */}
           {/* User Info Section */}
           <div className="flex flex-col justify-center items-center">
             {(isEditing || isAnimating) && (
