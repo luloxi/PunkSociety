@@ -119,7 +119,9 @@ contract PunkSociety is Ownable {
     postIdToUser[postId] = msg.sender;
     userPosts[msg.sender].push(postId);
 
-    mockUSDC.transferFrom(msg.sender, owner(), 3 * 1e6);
+    bool sent = mockUSDC.transferFrom(msg.sender, owner(), 3 * 1e6);
+    require(sent, "Failed to send USDC to the post owner");
+
     punkPosts.mint(_tokenURI);
     // payable(owner()).transfer(3 ether);
 
@@ -148,12 +150,14 @@ contract PunkSociety is Ownable {
     address postOwner = postIdToUser[_postID];
     require(postOwner != address(0), "Post owner does not exist");
 
-    userToPostLikes[msg.sender][_postID] = true;
-    postToLikes[_postID]++;
-
     // Transfer 1 USDC to the post owner
+    bool sent = mockUSDC.transferFrom(msg.sender, postOwner, 1 * 1e6);
+    require(sent, "Failed to send USDC to the post owner");
     // (bool sent,) = postOwner.call{ value: 1 ether }("");
     // require(sent, "Failed to send USDC to the post owner");
+
+    userToPostLikes[msg.sender][_postID] = true;
+    postToLikes[_postID]++;
 
     emit PostLiked(_postID, msg.sender, block.timestamp);
   }
@@ -182,9 +186,9 @@ contract PunkSociety is Ownable {
 
   function commentOnPost(uint256 _postID, string memory _text) public {
     _requirePostExists(_postID);
-    // set max length at 250 characters
+    // set max length at 140 characters
     require(
-      bytes(_text).length <= 250, "Comment must be less than 250 characters"
+      bytes(_text).length <= 140, "Comment must be 140 characters or less"
     );
     uint256 commentIndex = postToComments[_postID].length;
     postToComments[_postID].push(Comment(msg.sender, _text, commentIndex));
