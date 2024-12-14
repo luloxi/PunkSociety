@@ -177,22 +177,22 @@ export const About = () => {
             <span className="text-6xl">🫂</span>
             <h2 className="card-title text-2xl font-mono">Social economy! </h2>
             <p>
-              Likes ❤️ and comments 💬 send{" "}
+              Likes ❤️ send{" "}
               <Link href="https://circle.com/" target="_blank">
                 <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
                 <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
               </Link>{" "}
-              to the post creator.
+              to the post creator. You&apos;ll earn from engagement!
             </p>
           </div>
         </div>
 
-        {/* <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-100 shadow-xl">
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-300 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
             <span className="text-6xl">🔄</span>
             <h2 className="card-title text-2xl font-mono">Sharing incentives! </h2>
             <p>
-              Interactions ❤️💬 from your reposts earn you a % of the post creator{" "}
+              Likes ❤️ from your reposts 🔄 earn you a % of the post creator{" "}
               <Link href="https://circle.com/" target="_blank">
                 <span className="pr-1 text-blue-600 font-bold underline underline-offset-2">USDC</span>
                 <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
@@ -200,7 +200,31 @@ export const About = () => {
               earnings.
             </p>
           </div>
-        </div> */}
+        </div>
+
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">💹</span>
+            <h2 className="card-title text-2xl font-mono">Track your revenue! </h2>
+            <p>Track your spending and income from likes ❤️ with simple analytics tools.</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">🔔</span>
+            <h2 className="card-title text-2xl font-mono">Notifications! </h2>
+            <p>Get notified on your phone or email when someone interacts with you.</p>
+          </div>
+        </div>
+
+        <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-base-300 shadow-xl">
+          <div className="card-body items-center text-center flex-grow overflow-hidden">
+            <span className="text-6xl">💬</span>
+            <h2 className="card-title text-2xl font-mono">Private messaging! </h2>
+            <p>Send direct messages to other users in a private encrypted way.</p>
+          </div>
+        </div>
 
         {/* <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between  lg:rounded-xl bg-black border-2 text-yellow-300 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
@@ -229,24 +253,6 @@ export const About = () => {
             </div>
           </div>
         </div> */}
-
-        <div className="card lg:h-[240px] w-[400px] flex flex-col justify-between bg-base-300 shadow-xl">
-          <div className="card-body items-center text-center flex-grow overflow-hidden">
-            <span className="text-6xl">🤹</span>
-            {/* <h2 className="card-title text-2xl font-mono">More features! </h2> */}
-            <ul className="list-disc text-xl list-inside mt-4">
-              <li>
-                <span aria-label="revenue">💹</span> Analyze your revenue
-              </li>
-              <li>
-                <span aria-label="notifications">🔔</span> Notifications on activity
-              </li>
-              <li>
-                <span aria-label="messaging">💬</span> Private and group chats
-              </li>
-            </ul>
-          </div>
-        </div>
 
         <div className="card lg:h-[240px] max-w-[400px] flex flex-col justify-between bg-base-300 shadow-xl">
           <div className="card-body items-center text-center flex-grow overflow-hidden">
