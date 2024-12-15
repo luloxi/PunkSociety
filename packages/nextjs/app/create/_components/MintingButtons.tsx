@@ -134,7 +134,7 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
         <div className="flex items-center">
           {/* <span>{allowance?.toString()}</span> */}
           <button className="cool-button" disabled={loading} onClick={handleCreatePost}>
-            Create Post
+            Create Post ($3)
           </button>
         </div>
       </div>

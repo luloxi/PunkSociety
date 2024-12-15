@@ -45,7 +45,7 @@ export const Header = () => {
           </div> */}
           <span className="items-center justify-center gap-1 ml-4 text-lg text-blue-600 font-bold">
             <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
-            <span>{formattedUsdcBalance}</span>
+            <span className="ml-2">{formattedUsdcBalance}</span>
           </span>
         </div>
         <div className="flex flex-row gap-3 ">
@@ -122,8 +122,8 @@ export const Header = () => {
           <span className="text-blue-600">USDC {usdcBalance}</span>
         </div> */}
 
-        <div className="flex flex-row items-center justify-center gap-3">
-          <span className="hidden lg:flex items-center justify-center gap-1 text-lg text-blue-600 font-bold">
+        <div className="flex flex-row items-center justify-center ">
+          <span className="mr-2 hidden lg:flex items-center justify-center gap-1 text-lg text-blue-600 font-bold">
             <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
             {formattedUsdcBalance}
           </span>

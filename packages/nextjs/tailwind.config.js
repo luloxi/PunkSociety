@@ -41,20 +41,20 @@ module.exports = {
       },
       {
         dark: {
-          primary: "#555555",
+          primary: "#4B2C2C", // Dark Bordeaux
           "primary-content": "#F9FBFF",
-          secondary: "#333333",
+          secondary: "#3A1F1F", // Darker Bordeaux
           "secondary-content": "#F9FBFF",
-          accent: "#FFFFFF",
+          accent: "#5C3A3A", // Accent Bordeaux
           "accent-content": "#F9FBFF",
           neutral: "#F9FBFF",
           "neutral-content": "#111111",
-          "base-100": "#111111",
-          "base-200": "#222222",
-          "base-300": "#333333",
-          "base-400": "#232323",
+          "base-100": "#2C1A1A", // Base Bordeaux
+          "base-200": "#3A1F1F", // Darker Base Bordeaux
+          "base-300": "#4B2C2C", // Darkest Base Bordeaux
+          "base-400": "#5C3A3A", // Accent Base Bordeaux
           "base-content": "#F9FBFF",
-          info: "#111111",
+          info: "#2C1A1A", // Info Bordeaux
           success: "#34EEB6",
           warning: "#FFCF72",
           error: "#FF8863",
