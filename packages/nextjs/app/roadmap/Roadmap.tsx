@@ -89,6 +89,7 @@ export const Roadmap = () => {
                 <span aria-label="option enabled">✅</span> Enable following users, liking, commenting and sharing posts
               </li>
               <li>
+                <span aria-label="option enabled">✅</span>
                 <strong>Incentive model:</strong> Likes and comments send $ to the user on the other end. Posting sends
                 $ to PunkSociety&apos;s deployer.
               </li>
