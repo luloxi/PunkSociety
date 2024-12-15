@@ -33,6 +33,24 @@ const ProfilePage: NextPage = () => {
   const [isEditing, setIsEditing] = useState(false); // New state for edit mode
   const [isAnimating, setIsAnimating] = useState(false);
 
+  const observer = useRef<IntersectionObserver | null>(null);
+
+  const defaultProfilePicture = "/guest-profile.jpg";
+
+  const pathname = usePathname();
+  const address = pathname.split("/").pop();
+
+  const { address: connectedAddress } = useAccount();
+
+  const { data: usdcBalance } = useScaffoldReadContract({
+    contractName: "MockUSDC",
+    functionName: "balanceOf",
+    args: [address],
+    watch: true,
+  });
+
+  const formattedUsdcBalance = usdcBalance ? (Number(usdcBalance.toString()) / 1e6).toFixed(2) : "0.00";
+
   const closeModal = () => {
     setIsAnimating(true);
     setTimeout(() => {
@@ -44,15 +62,6 @@ const ProfilePage: NextPage = () => {
   const handleTabClick = (tab: any) => {
     setActiveTab(tab);
   };
-
-  const observer = useRef<IntersectionObserver | null>(null);
-
-  const defaultProfilePicture = "/guest-profile.jpg";
-
-  const { address: connectedAddress } = useAccount();
-
-  const pathname = usePathname();
-  const address = pathname.split("/").pop();
 
   const { data: punkProfile } = useScaffoldReadContract({
     contractName: "PunkProfile",
@@ -193,10 +202,14 @@ const ProfilePage: NextPage = () => {
               {punkProfile?.[1] && <p className="text-base-content">{punkProfile?.[1]}</p>}
 
               <div className="mt-2">
-                <div className="text-base-content">
+                <div className="flex flex-col justify-center items-center">
                   <Address address={address} />
-                  <div className="flex flex-row items-center">
+                  <div className="flex flex-row items-center gap-2">
                     <span>Balance: </span>
+                    <span className="hidden lg:flex items-center justify-center gap-1 text-blue-600 font-bold">
+                      <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
+                      {formattedUsdcBalance}
+                    </span>
                     <Balance address={address} />
                   </div>
                 </div>
