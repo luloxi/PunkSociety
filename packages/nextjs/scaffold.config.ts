@@ -37,9 +37,10 @@ const scaffoldConfig = {
 
   // For working locally, comment out chains.sepolia or chains.arbitrum
   // and uncomment chains.foundry
+  // targetNetworks: [chains.foundry],
   // targetNetworks: [punksociety],
   // targetNetworks: [chains.baseSepolia],
-  targetNetworks: [chains.foundry],
+  targetNetworks: [chains.zkSyncSepoliaTestnet],
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)

@@ -46,7 +46,9 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
   const formattedUsdcBalance = balanceOf ? (Number(balanceOf.toString()) / 1e6).toFixed(2) : "0.00";
 
   useEffect(() => {
-    if (allowance && parseInt(allowance.toString()) < 3000000) {
+    // console.log("Allowance:", allowance?.toString());
+    if (allowance !== undefined && parseInt(allowance.toString()) < 3 * 1e6) {
+      // console.log("Setting showModal to true");
       setShowModal(true);
     }
   }, [allowance]);
@@ -61,28 +63,20 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
       return;
     }
 
-    // setLoading(true);
-
     try {
-      // const ipfsPath = await uploadToIPFS();
-
       const contractResponse = await USDCwriteContractAsync({
         functionName: "approve",
         args: [punkSocietyContractData?.address, allowanceAmount ? BigInt(allowanceAmount * 1e6) : BigInt(0)],
-        // value: parseEther("3"),
       });
 
       if (contractResponse) {
         notification.success("Allowance increased successfully!");
       }
-      // resetForm();
-      // onPostCreated();
     } catch (error) {
       console.error("Error increasing allowance:", error);
       notification.error("Increasing allowance failed, please try again.");
     } finally {
       setShowModal(false);
-      // setLoading(false);
     }
   };
 

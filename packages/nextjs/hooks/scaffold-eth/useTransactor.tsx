@@ -50,6 +50,12 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
     let transactionHash: Hash | undefined = undefined;
     let transactionReceipt: TransactionReceipt | undefined;
     let blockExplorerTxURL = "";
+
+    // Type guard to check if the transaction receipt is of the correct type
+    function isTransactionReceipt(receipt: any): receipt is TransactionReceipt {
+      return receipt && typeof receipt.status === "string" && Array.isArray(receipt.logs);
+    }
+
     try {
       const network = await walletClient.getChainId();
       // Get full transaction from public client
@@ -73,10 +79,16 @@ export const useTransactor = (_walletClient?: WalletClient): TransactionFunc => 
         <TxnNotification message="Waiting for transaction to complete." blockExplorerLink={blockExplorerTxURL} />,
       );
 
-      transactionReceipt = await publicClient.waitForTransactionReceipt({
+      const receipt = await publicClient.waitForTransactionReceipt({
         hash: transactionHash,
         confirmations: options?.blockConfirmations,
       });
+
+      if (!isTransactionReceipt(receipt)) {
+        throw new Error("Invalid transaction receipt");
+      }
+
+      transactionReceipt = receipt;
       notification.remove(notificationId);
 
       if (transactionReceipt.status === "reverted") throw new Error("Transaction reverted");
