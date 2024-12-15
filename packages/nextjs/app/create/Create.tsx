@@ -51,7 +51,12 @@ const Create = ({ onClose }: { onClose: any }) => {
               />
             </div>
             <div className="text-left flex-shrink-0 w-full">
-              <TextInput placeholder="Text for your post" description={description} setDescription={setDescription} />
+              <TextInput
+                maxLength={140}
+                placeholder="Text for your post"
+                description={description}
+                setDescription={setDescription}
+              />
             </div>
           </div>
 

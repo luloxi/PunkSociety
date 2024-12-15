@@ -8,6 +8,7 @@ interface TextInputProps {
   prefix?: ReactNode;
   suffix?: ReactNode;
   reFocus?: boolean;
+  maxLength?: number; // Add maxLength prop
 }
 
 export const TextInput: React.FC<TextInputProps> = ({
@@ -18,6 +19,7 @@ export const TextInput: React.FC<TextInputProps> = ({
   prefix,
   suffix,
   reFocus,
+  maxLength, // Add maxLength prop
 }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -57,6 +59,7 @@ export const TextInput: React.FC<TextInputProps> = ({
           ref={textAreaRef}
           onFocus={onFocus}
           rows={3} // You can adjust the initial height as needed
+          maxLength={maxLength} // Add maxLength prop
         />
         {suffix}
       </div>

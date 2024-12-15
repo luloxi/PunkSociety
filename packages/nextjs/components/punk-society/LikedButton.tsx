@@ -3,7 +3,7 @@ import Image from "next/image";
 // import { parseEther } from "viem";
 import { useAccount } from "wagmi";
 import Modal from "~~/components/punk-society/Modal";
-import { InputBase } from "~~/components/scaffold-eth";
+// import { InputBase } from "~~/components/scaffold-eth";
 import { useDeployedContractInfo, useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 
@@ -167,7 +167,13 @@ const LikeButton: React.FC<LikeButtonProps> = ({ postId }) => {
                 {formattedUsdcBalance}
               </span>
             </span>
-            <InputBase placeholder="USDC value here (1.00)" value={allowanceAmount} onChange={setAllowanceAmount} />
+            <input
+              type="number"
+              className="input input-bordered"
+              placeholder="USDC value here (1.00)"
+              value={allowanceAmount}
+              onChange={e => setAllowanceAmount(Number(e.target.value))}
+            />
             <div className="flex items-center mb-2">
               <button className="cool-button" onClick={handleAllowanceChange}>
                 Increase allowance

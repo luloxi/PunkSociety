@@ -48,11 +48,11 @@ export const About = () => {
                   <h1 className="text-5xl font-bold">WTF is PunkSociety? 🤘</h1>
                   <p className="pt-6">
                     It is an <strong>open source framework</strong> for building dapps that interact with{" "}
-                    <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                    <Link href="https://ethereum.org/en/developers/docs/standards/tokens/erc-20/" target="_blank">
                       <span className=" text-blue-600 font-bold underline underline-offset-2">ERC20</span>
                     </Link>{" "}
                     and{" "}
-                    <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                    <Link href="https://ethereum.org/en/developers/docs/standards/tokens/erc-721/" target="_blank">
                       <span className=" text-pink-600 font-bold underline underline-offset-2">ERC721</span>
                     </Link>{" "}
                     tokens (<span className=" text-blue-600 font-bold">fungible</span> and{" "}
@@ -129,7 +129,7 @@ export const About = () => {
                   {/* <button className="btn btn-primary">Get Started</button> */}
                   <span className="pt-4 text-center italic">
                     This website is a social network where posts are NFTs and likes send USDC to post creators.{" "}
-                    <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
+                    <Link href="https://github.com/luloxi/PunkSociety/" target="_blank">
                       <br />
                       <span className="pr-1 text-orange-600 font-bold underline underline-offset-2">
                         Clone it and <strong>start your own community!</strong>
@@ -409,6 +409,13 @@ export const About = () => {
           <Link href="https://docs.avax.network/avalanche-l1s" target="_blank">
             <span className="pr-1 text-red-600 font-bold underline underline-offset-2">Avalanche L1</span>
             <Image src="/avalanche-logo.png" alt="Avalanche logo" width={20} height={20} className="inline-block" />
+          </Link>{" "}
+          or a{" "}
+          <Link href="https://docs.optimism.io/builders/chain-operators/self-hosted" target="_blank">
+            <span className="pr-1 text-red-600 font-bold underline underline-offset-2">
+              L2 rollup with the OP stack
+            </span>
+            <Image src="/optimism-logo.png" alt="Optimism logo" width={20} height={20} className="inline-block" />
           </Link>
           , which allows more customization of the experience with features such as:
         </span>
