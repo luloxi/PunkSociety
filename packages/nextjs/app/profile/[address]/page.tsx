@@ -206,7 +206,7 @@ const ProfilePage: NextPage = () => {
                   <Address address={address} />
                   <div className="flex flex-row items-center gap-2">
                     <span>Balance: </span>
-                    <span className="hidden lg:flex items-center justify-center gap-1 text-blue-600 font-bold">
+                    <span className="flex items-center justify-center gap-1 text-blue-600 font-bold">
                       <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
                       {formattedUsdcBalance}
                     </span>

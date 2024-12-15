@@ -56,7 +56,7 @@ export const AddressQRCodeModal = ({ address, modalId }: AddressQRCodeModalProps
               <div className="flex flex-row justify-around gap-3 items-center mt-4">
                 <div className="flex flex-row justify-center items-center px-2 gap-2 rounded-lg bg-yellow-500 text-black text-xl">
                   <span className="font-bold">Balance: </span>
-                  <span className="hidden lg:flex items-center justify-center gap-1 text-blue-600 font-bold">
+                  <span className="flex items-center justify-center gap-1 text-blue-600 font-bold">
                     <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
                     {formattedUsdcBalance}
                   </span>
