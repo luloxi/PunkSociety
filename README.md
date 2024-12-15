@@ -2,6 +2,11 @@
 
 📥 If you wanna collaborate, here are the [pending development tasks on this Trello board](https://trello.com/b/HLBnvKSu/punksociety)
 
+PunkSociety's builds:
+
+- [PunkSociety](https://punksociety.xyz) (social media)
+- [BasedShop](https://basedshop.vercel.app) (ecommerce)
+
 # 🤘 Development
 
 ## 🛠️ Technical details
