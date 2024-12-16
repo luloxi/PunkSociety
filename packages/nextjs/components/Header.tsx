@@ -48,9 +48,9 @@ export const Header = () => {
             <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
             <span className="ml-2">{formattedUsdcBalance}</span>
           </span>
-          <div className="ml-2">
+          {/* <div className="ml-2">
             <PunkBalance address={connectedAddress} />
-          </div>
+          </div> */}
         </div>
         <div className="hidden lg:flex flex-row gap-3 ">
           <Link href="/" passHref>
