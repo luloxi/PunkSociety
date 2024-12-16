@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ConfigMenu } from "./punk-society/ConfigMenu";
+import { PunkBalance } from "./punk-society/PunkBalance";
 import { PunkConnectButton } from "./punk-society/PunkConnectButton";
 import { FaucetButton } from "./scaffold-eth";
 import { useAccount } from "wagmi";
@@ -47,8 +48,11 @@ export const Header = () => {
             <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
             <span className="ml-2">{formattedUsdcBalance}</span>
           </span>
+          <div className="ml-2">
+            <PunkBalance address={connectedAddress} />
+          </div>
         </div>
-        <div className="flex flex-row gap-3 ">
+        <div className="hidden lg:flex flex-row gap-3 ">
           <Link href="/" passHref>
             <button
               className={`bg-transparent hover:bg-transparent border-none hidden lg:flex flex-row items-center justify-center text-xl ${
@@ -123,6 +127,9 @@ export const Header = () => {
         </div> */}
 
         <div className="flex flex-row items-center justify-center ">
+          <div className="hidden lg:flex justify-center mr-2">
+            <PunkBalance address={connectedAddress} />
+          </div>
           <span className="mr-2 hidden lg:flex items-center justify-center gap-1 text-lg text-blue-600 font-bold">
             <Image src="/usdc-logo.png" alt="USDC" width={20} height={20} className="inline-block" />
             {formattedUsdcBalance}

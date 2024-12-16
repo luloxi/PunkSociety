@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
-import { PunkBalance } from "../PunkBalance";
+// import { PunkBalance } from "../PunkBalance";
 import { NetworkOptions } from "./NetworkOptions";
 // import { FundButton, getOnrampBuyUrl } from "@coinbase/onchainkit/fund";
 import { getAddress } from "viem";
@@ -81,8 +81,9 @@ export const AddressInfoDropdown = ({ address }: AddressInfoDropdownProps) => {
           className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
         >
           <NetworkOptions hidden={!selectingNetwork} />
-
-          <PunkBalance address={connectedAddress} />
+          {/* <div className="flex lg:hidden justify-center">
+            <PunkBalance address={connectedAddress} />
+          </div> */}
           <li className={selectingNetwork ? "hidden" : ""}>
             <Link className="p-0 flex items-center justify-center" href={`/profile/${connectedAddress}`} passHref>
               <div className="btn-sm w-full !rounded-xl flex items-center justify-start gap-2 py-3 text-white bg-orange-600 hover:bg-orange-500 active:bg-orange-500">
