@@ -98,11 +98,13 @@ export const Explore = () => {
 
             const ipfsHash = tokenURI.replace("https://ipfs.io/ipfs/", "");
             const nftMetadata: NFTMetaData = await getMetadataFromIPFS(ipfsHash);
+            const date = event.args?.timestamp;
 
             postsUpdate.push({
               postId: parseInt(event.args?.postId?.toString() ?? "0"),
               uri: tokenURI,
               user: user || "",
+              date: date?.toString(),
               ...nftMetadata,
             });
           } catch (e) {

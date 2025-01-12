@@ -61,11 +61,33 @@ export const PostCard = ({ post }: { post: Post; isGrid: boolean }) => {
     }
   };
 
+  const getTimePassed = (timestamp: number): string => {
+    const now = Date.now();
+    const postTime = timestamp * 1000; // Convert to milliseconds
+    const diff = now - postTime;
+
+    const seconds = Math.floor(diff / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+
+    if (days > 0) {
+      return `${days} day${days > 1 ? "s" : ""} ago`;
+    } else if (hours > 0) {
+      return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+    } else if (minutes > 0) {
+      return `${minutes} min${minutes > 1 ? "s" : ""} ago`;
+    } else {
+      return `${seconds} sec${seconds > 1 ? "s" : ""} ago`;
+    }
+  };
+
   return (
     <div className="flex justify-center items-center">
       <div className={`card-compact bg-base-300 w-full relative group rounded-lg`}>
-        <div className="flex space-x-3 p-3 items-center">
+        <div className="flex justify-between p-3 items-center">
           <ProfileAddress address={post.user} />
+          <p className="my-0 text-sm">{post.date ? getTimePassed(Number(post.date)) : "No date available"}</p>
         </div>
         {/* Image Section */}
         {post.image && post.image !== "https://ipfs.io/ipfs/" && (
