@@ -115,7 +115,6 @@ contract PunkProfile {
     }
 
     bytes memory verifiedString = new bytes(inputBytes.length);
-    bool lastCharacterWasPeriod = false;
 
     for (uint256 i = 0; i < inputBytes.length; i++) {
       bytes1 character = inputBytes[i];
@@ -131,18 +130,7 @@ contract PunkProfile {
         (character >= 0x61 && character <= 0x7A) // a-z
           || (character >= 0x30 && character <= 0x39) // 0-9
           || character == 0x5F // _
-          || character == 0x2E // .
       ) {
-        // Check for consecutive periods
-        if (character == 0x2E) {
-          // .
-          if (lastCharacterWasPeriod) {
-            revert("Invalid username: consecutive periods are not allowed");
-          }
-          lastCharacterWasPeriod = true;
-        } else {
-          lastCharacterWasPeriod = false;
-        }
         verifiedString[i] = character;
       } else {
         revert("Invalid character in username");

@@ -150,7 +150,9 @@ export const Footer = () => {
         <div className="flex flex-row items-center justify-center gap-3">
           <Link href={`/profile/${connectedAddress}`} passHref>
             <div
-              className="w-8 h-8 rounded-full flex items-center justify-center cursor-pointer"
+              className={`${
+                pathname === `/profile/${connectedAddress}` ? "border-2 border-blue-600" : ""
+              } w-8 h-8 rounded-full flex items-center justify-center cursor-pointer`}
               style={{
                 backgroundImage: `url(${profilePicture})`,
                 backgroundSize: "cover",

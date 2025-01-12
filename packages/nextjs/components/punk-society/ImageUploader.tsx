@@ -85,6 +85,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
         type="file"
         accept="image/*" // This will disable non-image files and camera on mobile
         onChange={handleFileInputChange}
+        capture="environment"
         className="hidden"
       />
       {previewImage ? (
@@ -113,6 +114,7 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ image, setUploaded
             <input
               type="file"
               accept="image/*"
+              capture="environment"
               multiple={false}
               className="hidden"
               onChange={handleFileInputChange} // Handle file input
