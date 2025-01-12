@@ -46,6 +46,10 @@ export const MintingButtons: React.FC<MintingFormProps> = ({ yourJSON, resetForm
   const formattedUsdcBalance = balanceOf ? (Number(balanceOf.toString()) / 1e6).toFixed(2) : "0.00";
 
   useEffect(() => {
+    setAllowanceAmount(balanceOf ? Number(balanceOf.toString()) / 1e6 : 0);
+  }, [balanceOf]);
+
+  useEffect(() => {
     // console.log("Allowance:", allowance?.toString());
     if (allowance !== undefined && parseInt(allowance.toString()) < 3 * 1e6) {
       // console.log("Setting showModal to true");

@@ -134,6 +134,10 @@ const LikeButton: React.FC<LikeButtonProps> = ({ postId }) => {
   // }, [allowance]);
 
   useEffect(() => {
+    setAllowanceAmount(balanceOf ? Number(balanceOf.toString()) / 1e6 : 0);
+  }, [balanceOf]);
+
+  useEffect(() => {
     if (isLikedPost !== undefined) {
       setLikedPost(isLikedPost);
     }
