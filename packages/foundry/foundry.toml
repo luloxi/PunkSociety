@@ -31,6 +31,8 @@ zkSync = "https://mainnet.era.zksync.io"
 scrollSepolia = "https://sepolia-rpc.scroll.io"
 scroll = "https://rpc.scroll.io"
 
+modeTestnet = "https://mode.drpc.org/"
+
 [etherscan]
 polygonMumbai = { key = "${ETHERSCAN_API_KEY}" }
 sepolia = { key = "${ETHERSCAN_API_KEY}" }
